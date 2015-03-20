@@ -50,6 +50,7 @@
     if (notificationSettings.types != UIUserNotificationTypeNone) {
         [self addLocalNotification];
     }
+    [application registerForRemoteNotifications];
 }
 
 // 添加本地通知
@@ -88,6 +89,61 @@
 }
 
 #pragma mark - Remote notification
+// 在此接收设备令牌
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [self addDeviceToken:deviceToken];
+    NSLog(@"device token:%@",deviceToken);
+}
+
+// 获取device token失败后
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"didFailToRegisterForRemoteNotificationsWithError:%@",error.localizedDescription);
+    [self addDeviceToken:nil];
+}
+
+// 接收到推送通知之后
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"receiveRemoteNotification,userInfo is %@",userInfo);
+}
+
+/**
+ *  添加设备令牌到服务器端
+ *
+ *  @param deviceToken 设备令牌
+ */
+-(void)addDeviceToken:(NSData *)deviceToken {
+    NSString *key = @"DeviceToken";
+    NSData *oldToken = [[NSUserDefaults standardUserDefaults]objectForKey:key];
+    //如果偏好设置中的已存储设备令牌和新获取的令牌不同则存储新令牌并且发送给服务器端
+    if (![oldToken isEqualToData:deviceToken]) {
+        [[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:key];
+        [self sendDeviceTokenWidthOldDeviceToken:oldToken newDeviceToken:deviceToken];
+    }
+}
+
+-(void)sendDeviceTokenWidthOldDeviceToken:(NSData *)oldToken newDeviceToken:(NSData *)newToken {
+    //注意一定确保真机可以正常访问下面的地址
+    NSString *urlStr = @"http://192.168.1.101/RegisterDeviceToken.aspx";
+    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *requestM = [NSMutableURLRequest requestWithURL:url cachePolicy:0 timeoutInterval:10.0];
+    [requestM setHTTPMethod:@"POST"];
+    NSString *bodyStr = [NSString stringWithFormat:@"oldToken=%@&newToken=%@",oldToken,newToken];
+    NSData *body = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
+    [requestM setHTTPBody:body];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:requestM completionHandler:^(NSData *data,
+                                                                                               NSURLResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"Send failure,error is :%@", error.localizedDescription);
+        }else{
+            NSLog(@"Send Success!");
+        }
+        
+    }];
+    
+    [dataTask resume];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
