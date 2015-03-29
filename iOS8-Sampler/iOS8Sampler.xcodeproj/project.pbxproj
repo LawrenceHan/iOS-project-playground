@@ -1076,7 +1076,7 @@
 					};
 					8AA4B9F019A175F4006BC800 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 9Z86A4AWDE;
+						DevelopmentTeam = 2L4985KKX7;
 						SystemCapabilities = {
 							com.apple.HomeKit = {
 								enabled = 1;
@@ -1085,6 +1085,7 @@
 					};
 					8AA4BA0919A175F5006BC800 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 2L4985KKX7;
 						TestTargetID = 8AA4B9F019A175F4006BC800;
 					};
 				};
@@ -1498,7 +1499,7 @@
 				INFOPLIST_FILE = iOS8Sampler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "05e38306-be11-4e6e-987a-196191f363e3";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOS8Sampler/iOS8Sampler-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1511,13 +1512,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOS8Sampler/entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = iOS8Sampler/PrefixHeader.pch;
 				INFOPLIST_FILE = iOS8Sampler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f6a87770-1e54-49a5-a275-9fa9a8609dd9";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOS8Sampler/iOS8Sampler-Bridging-Header.h";
 			};
 			name = Release;
