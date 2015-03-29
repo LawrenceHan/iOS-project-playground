@@ -18,27 +18,50 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ypx-5e-p9r">
-                                <rect key="frame" x="0.0" y="28" width="320" height="540"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="knd-1B-9ew"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="ge8-aK-64g"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="axK-nv-MCe">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ON8-Xr-bda"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="N0e-U4-h0R"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cug-tS-Q6w" firstAttribute="top" secondItem="ypx-5e-p9r" secondAttribute="bottom" id="3nI-m3-8d9"/>
-                            <constraint firstItem="ypx-5e-p9r" firstAttribute="top" secondItem="a9C-N8-kRj" secondAttribute="bottom" constant="8" id="8iK-l7-KTy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ypx-5e-p9r" secondAttribute="trailing" constant="-16" id="a8Y-OA-0kq"/>
-                            <constraint firstItem="ypx-5e-p9r" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="lci-k4-jlT"/>
+                            <constraint firstItem="cug-tS-Q6w" firstAttribute="top" secondItem="ypx-5e-p9r" secondAttribute="bottom" id="Cce-cA-jhe"/>
+                            <constraint firstItem="axK-nv-MCe" firstAttribute="top" secondItem="a9C-N8-kRj" secondAttribute="bottom" id="Ddk-K6-ssU"/>
+                            <constraint firstItem="ypx-5e-p9r" firstAttribute="top" secondItem="axK-nv-MCe" secondAttribute="bottom" id="LFG-pJ-xY0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ypx-5e-p9r" secondAttribute="trailing" constant="-16" id="LqD-IH-DR9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="axK-nv-MCe" secondAttribute="trailing" constant="-16" id="MVn-g9-8Jc"/>
+                            <constraint firstItem="ypx-5e-p9r" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="mfs-HK-OYr"/>
+                            <constraint firstItem="axK-nv-MCe" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="tHG-Zg-FZ6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchDisplayController" destination="Z9I-EI-ckp" id="M6f-Zj-dL2"/>
                         <outlet property="tableView" destination="ypx-5e-p9r" id="9y6-xX-lc9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Z9I-EI-ckp">
+                    <connections>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="hpq-Zk-Lxk"/>
+                        <outlet property="searchBar" destination="axK-nv-MCe" id="itm-VB-Xm6"/>
+                        <outlet property="searchContentsController" destination="vXZ-lx-hvc" id="xkW-re-dgp"/>
+                        <outlet property="searchResultsDataSource" destination="vXZ-lx-hvc" id="anU-a6-95f"/>
+                        <outlet property="searchResultsDelegate" destination="vXZ-lx-hvc" id="4o8-y2-wkc"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="174" y="337"/>
         </scene>
