@@ -15,6 +15,8 @@
 		028BC7B81AE77C010054F6B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 028BC7B61AE77C010054F6B0 /* LaunchScreen.xib */; };
 		028BC7C41AE77C010054F6B0 /* CAShapelayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC7C31AE77C010054F6B0 /* CAShapelayerTests.m */; };
 		028BC7CF1AE77C3B0054F6B0 /* LHShapelayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC7CE1AE77C3B0054F6B0 /* LHShapelayerView.m */; };
+		028BC7D41AE78DA30054F6B0 /* LHCircularLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC7D31AE78DA30054F6B0 /* LHCircularLoaderView.m */; };
+		028BC7D91AE8BEA00054F6B0 /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = 028BC7D81AE8BEA00054F6B0 /* card.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,9 @@
 		028BC7C31AE77C010054F6B0 /* CAShapelayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAShapelayerTests.m; sourceTree = "<group>"; };
 		028BC7CD1AE77C3B0054F6B0 /* LHShapelayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHShapelayerView.h; sourceTree = "<group>"; };
 		028BC7CE1AE77C3B0054F6B0 /* LHShapelayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHShapelayerView.m; sourceTree = "<group>"; };
+		028BC7D21AE78DA30054F6B0 /* LHCircularLoaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHCircularLoaderView.h; sourceTree = "<group>"; };
+		028BC7D31AE78DA30054F6B0 /* LHCircularLoaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHCircularLoaderView.m; sourceTree = "<group>"; };
+		028BC7D81AE8BEA00054F6B0 /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +89,15 @@
 		028BC7A61AE77C010054F6B0 /* CAShapelayer */ = {
 			isa = PBXGroup;
 			children = (
+				028BC7D81AE8BEA00054F6B0 /* card.png */,
 				028BC7AB1AE77C010054F6B0 /* AppDelegate.h */,
 				028BC7AC1AE77C010054F6B0 /* AppDelegate.m */,
 				028BC7AE1AE77C010054F6B0 /* ViewController.h */,
 				028BC7AF1AE77C010054F6B0 /* ViewController.m */,
 				028BC7CD1AE77C3B0054F6B0 /* LHShapelayerView.h */,
 				028BC7CE1AE77C3B0054F6B0 /* LHShapelayerView.m */,
+				028BC7D21AE78DA30054F6B0 /* LHCircularLoaderView.h */,
+				028BC7D31AE78DA30054F6B0 /* LHCircularLoaderView.m */,
 				028BC7B11AE77C010054F6B0 /* Main.storyboard */,
 				028BC7B41AE77C010054F6B0 /* Images.xcassets */,
 				028BC7B61AE77C010054F6B0 /* LaunchScreen.xib */,
@@ -205,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				028BC7B31AE77C010054F6B0 /* Main.storyboard in Resources */,
+				028BC7D91AE8BEA00054F6B0 /* card.png in Resources */,
 				028BC7B81AE77C010054F6B0 /* LaunchScreen.xib in Resources */,
 				028BC7B51AE77C010054F6B0 /* Images.xcassets in Resources */,
 			);
@@ -225,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				028BC7B01AE77C010054F6B0 /* ViewController.m in Sources */,
+				028BC7D41AE78DA30054F6B0 /* LHCircularLoaderView.m in Sources */,
 				028BC7AD1AE77C010054F6B0 /* AppDelegate.m in Sources */,
 				028BC7CF1AE77C3B0054F6B0 /* LHShapelayerView.m in Sources */,
 				028BC7AA1AE77C010054F6B0 /* main.m in Sources */,
@@ -422,6 +432,7 @@
 				028BC7C91AE77C010054F6B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		028BC7CA1AE77C010054F6B0 /* Build configuration list for PBXNativeTarget "CAShapelayerTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +441,7 @@
 				028BC7CC1AE77C010054F6B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
