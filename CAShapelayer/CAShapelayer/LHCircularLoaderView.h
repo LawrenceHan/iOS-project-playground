@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LHCircularLoaderView : UIView
-@property (nonatomic, assign) CGFloat indicatorProgress;
+
+@property (nonatomic, strong) IBInspectable UIColor *color;
+@property (nonatomic, assign) IBInspectable CGFloat indicatorProgress;
 
 - (void)reveal;
 @end

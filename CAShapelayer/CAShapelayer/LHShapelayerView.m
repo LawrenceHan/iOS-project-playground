@@ -8,6 +8,7 @@
 
 #import "LHShapelayerView.h"
 
+IB_DESIGNABLE
 @implementation LHShapelayerView {
     CAShapeLayer *_circle;
     UITapGestureRecognizer *_tapGestureRecognizer;

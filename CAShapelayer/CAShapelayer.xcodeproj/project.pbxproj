@@ -101,12 +101,12 @@
 				028BC7CE1AE77C3B0054F6B0 /* LHShapelayerView.m */,
 				028BC7D21AE78DA30054F6B0 /* LHCircularLoaderView.h */,
 				028BC7D31AE78DA30054F6B0 /* LHCircularLoaderView.m */,
+				028BC7DA1AE9E3A70054F6B0 /* LHProgressView.h */,
+				028BC7DB1AE9E3A70054F6B0 /* LHProgressView.m */,
 				028BC7B11AE77C010054F6B0 /* Main.storyboard */,
 				028BC7B41AE77C010054F6B0 /* Images.xcassets */,
 				028BC7B61AE77C010054F6B0 /* LaunchScreen.xib */,
 				028BC7A71AE77C010054F6B0 /* Supporting Files */,
-				028BC7DA1AE9E3A70054F6B0 /* LHProgressView.h */,
-				028BC7DB1AE9E3A70054F6B0 /* LHProgressView.m */,
 			);
 			path = CAShapelayer;
 			sourceTree = "<group>";

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LHShapelayerView : UIView
-@property (nonatomic, assign) BOOL on;
+@property (nonatomic, assign) IBInspectable BOOL on;
 
 @end

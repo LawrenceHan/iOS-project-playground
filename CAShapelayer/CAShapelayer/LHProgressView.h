@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LHProgressView : UIView
-@property (nonatomic) CGFloat progress;
+
+- (void)animateProgressView;
 
 @end

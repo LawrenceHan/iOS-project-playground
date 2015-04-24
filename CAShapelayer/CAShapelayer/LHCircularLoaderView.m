@@ -8,6 +8,7 @@
 //
 
 #import "LHCircularLoaderView.h"
+IB_DESIGNABLE
 @interface LHCircularLoaderView ()
 @property (nonatomic, strong) CAShapeLayer *circlePathLayer;
 @property (nonatomic, assign) CGFloat circleRadius;

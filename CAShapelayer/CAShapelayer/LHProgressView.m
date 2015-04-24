@@ -7,8 +7,12 @@
 //
 
 #import "LHProgressView.h"
-
-@implementation LHProgressView
+IB_DESIGNABLE
+@implementation LHProgressView {
+    CAShapeLayer *progressLayer;
+    CAGradientLayer *gradientLayer;
+    UILabel *loadingLabel;
+}
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -27,12 +31,13 @@
 }
 
 - (void)createProgressBar {
+    self.backgroundColor = [UIColor whiteColor];
     CGFloat startAngle = M_PI_2;
     CGFloat endAngle = 2 * M_PI + M_PI_2;
     CGPoint centerPoint = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     
-    CAGradientLayer *gradientLayer = [self gradientLayer];
-    CAShapeLayer *progressLayer = [CAShapeLayer layer];
+    gradientLayer = [self gradientLayer];
+    progressLayer = [CAShapeLayer layer];
     progressLayer.path = [UIBezierPath bezierPathWithArcCenter:centerPoint radius:CGRectGetWidth(self.frame) / 2 - 30.0
                                                     startAngle:startAngle endAngle:endAngle clockwise:YES].CGPath;
     progressLayer.backgroundColor = [UIColor clearColor].CGColor;
@@ -47,17 +52,51 @@
 }
 
 - (CAGradientLayer *)gradientLayer {
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = self.bounds;
+    CAGradientLayer *gradien = [CAGradientLayer layer];
+    gradien.frame = self.bounds;
     
-    gradientLayer.locations = @[@0.0, @1.0];
+    gradien.locations = @[@0.0, @1.0];
     
-    id colorTop = (id)[UIColor colorWithRed:1.0 green:213/255.0 blue:63/255.0 alpha:1.0].CGColor;
-    id colorButtom = (id)[UIColor colorWithRed:1.0 green:198/255.0 blue:5/255.0 alpha:1.0].CGColor;
-    gradientLayer.colors = @[colorTop, colorButtom];
+    id colorTop = (id)[UIColor redColor].CGColor;
+    id colorButtom = (id)[UIColor greenColor].CGColor;
+    gradien.colors = @[colorTop, colorButtom];
     
-    return gradientLayer;
+    return gradien;
 }
+
+- (void)animateProgressView {
+    loadingLabel = [UILabel new];
+    loadingLabel.textAlignment = NSTextAlignmentCenter;
+    loadingLabel.text = @"Loading";
+    loadingLabel.textColor = [UIColor blueColor];
+    [loadingLabel sizeToFit];
+    CGFloat width, height;
+    width = loadingLabel.frame.size.width;
+    height = loadingLabel.frame.size.height;
+    CGRect labelFrame = CGRectMake(0, 0, width, height);
+    labelFrame.origin.x = CGRectGetMidX(self.bounds) - CGRectGetMidX(labelFrame);
+    labelFrame.origin.y = CGRectGetMidY(self.bounds) - CGRectGetMidY(labelFrame);
+    loadingLabel.frame = labelFrame;
+    [self addSubview:loadingLabel];
+    
+    progressLayer.strokeStart = 0.0;
+    
+    CABasicAnimation *animation = [CABasicAnimation animation];
+    animation.fromValue = @(0.0);
+    animation.toValue = @(2.0);
+    animation.duration = 1.0;
+    animation.delegate = self;
+    animation.removedOnCompletion = NO;
+    animation.additive = YES;
+    animation.fillMode = kCAFillModeForwards;
+    
+    [progressLayer addAnimation:animation forKey:@"strokeEnd"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    loadingLabel.text = @"Done";
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
