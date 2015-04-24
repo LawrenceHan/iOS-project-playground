@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LHShapelayerView.h"
 #import "LHCircularLoaderView.h"
+#import "LHProgressView.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) LHShapelayerView *shapeLayerView;
