@@ -18,6 +18,8 @@
 		028BC7FA1AEA35330054F6B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 028BC7F81AEA35330054F6B0 /* LaunchScreen.xib */; };
 		028BC8061AEA35330054F6B0 /* StanfordPlayingCardDeckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC8051AEA35330054F6B0 /* StanfordPlayingCardDeckTests.m */; };
 		028BC8121AEA355B0054F6B0 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC8111AEA355B0054F6B0 /* Card.m */; };
+		02A9E8391B01E2BB00EDA0F6 /* flip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 02A9E8381B01E2BB00EDA0F6 /* flip.wav */; };
+		02A9E83B1B01E48500EDA0F6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A9E83A1B01E48500EDA0F6 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		028BC8051AEA35330054F6B0 /* StanfordPlayingCardDeckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StanfordPlayingCardDeckTests.m; sourceTree = "<group>"; };
 		028BC8101AEA355B0054F6B0 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		028BC8111AEA355B0054F6B0 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		02A9E8381B01E2BB00EDA0F6 /* flip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flip.wav; sourceTree = "<group>"; };
+		02A9E83A1B01E48500EDA0F6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A9E83B1B01E48500EDA0F6 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +80,7 @@
 		028BC7DD1AEA35320054F6B0 = {
 			isa = PBXGroup;
 			children = (
+				02A9E83A1B01E48500EDA0F6 /* AVFoundation.framework */,
 				028BC7E81AEA35320054F6B0 /* StanfordPlayingCardDeck */,
 				028BC8021AEA35330054F6B0 /* StanfordPlayingCardDeckTests */,
 				028BC7E71AEA35320054F6B0 /* Products */,
@@ -93,6 +99,7 @@
 		028BC7E81AEA35320054F6B0 /* StanfordPlayingCardDeck */ = {
 			isa = PBXGroup;
 			children = (
+				02A9E8371B01E2B000EDA0F6 /* Sound */,
 				028BC80F1AEA35480054F6B0 /* Model */,
 				028BC7ED1AEA35320054F6B0 /* AppDelegate.h */,
 				028BC7EE1AEA35320054F6B0 /* AppDelegate.m */,
@@ -145,6 +152,14 @@
 				020090541B01B02B003F8D47 /* PlayingCardDeck.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		02A9E8371B01E2B000EDA0F6 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				02A9E8381B01E2BB00EDA0F6 /* flip.wav */,
+			);
+			name = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A9E8391B01E2BB00EDA0F6 /* flip.wav in Resources */,
 				028BC7F51AEA35320054F6B0 /* Main.storyboard in Resources */,
 				028BC7FA1AEA35330054F6B0 /* LaunchScreen.xib in Resources */,
 				028BC7F71AEA35320054F6B0 /* Images.xcassets in Resources */,
