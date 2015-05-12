@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0200904F1B01A55B003F8D47 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0200904E1B01A55B003F8D47 /* Deck.m */; };
+		020090521B01A819003F8D47 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 020090511B01A819003F8D47 /* PlayingCard.m */; };
+		020090551B01B02B003F8D47 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 020090541B01B02B003F8D47 /* PlayingCardDeck.m */; };
 		028BC7EC1AEA35320054F6B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC7EB1AEA35320054F6B0 /* main.m */; };
 		028BC7EF1AEA35320054F6B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC7EE1AEA35320054F6B0 /* AppDelegate.m */; };
 		028BC7F21AEA35320054F6B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC7F11AEA35320054F6B0 /* ViewController.m */; };
@@ -28,6 +31,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0200904D1B01A55B003F8D47 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		0200904E1B01A55B003F8D47 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		020090501B01A819003F8D47 /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCard.h; sourceTree = "<group>"; };
+		020090511B01A819003F8D47 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
+		020090531B01B02B003F8D47 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
+		020090541B01B02B003F8D47 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
 		028BC7E61AEA35320054F6B0 /* StanfordPlayingCardDeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StanfordPlayingCardDeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		028BC7EA1AEA35320054F6B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		028BC7EB1AEA35320054F6B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -128,6 +137,12 @@
 			children = (
 				028BC8101AEA355B0054F6B0 /* Card.h */,
 				028BC8111AEA355B0054F6B0 /* Card.m */,
+				020090501B01A819003F8D47 /* PlayingCard.h */,
+				020090511B01A819003F8D47 /* PlayingCard.m */,
+				0200904D1B01A55B003F8D47 /* Deck.h */,
+				0200904E1B01A55B003F8D47 /* Deck.m */,
+				020090531B01B02B003F8D47 /* PlayingCardDeck.h */,
+				020090541B01B02B003F8D47 /* PlayingCardDeck.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -232,8 +247,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				020090521B01A819003F8D47 /* PlayingCard.m in Sources */,
+				0200904F1B01A55B003F8D47 /* Deck.m in Sources */,
 				028BC7F21AEA35320054F6B0 /* ViewController.m in Sources */,
 				028BC7EF1AEA35320054F6B0 /* AppDelegate.m in Sources */,
+				020090551B01B02B003F8D47 /* PlayingCardDeck.m in Sources */,
 				028BC7EC1AEA35320054F6B0 /* main.m in Sources */,
 				028BC8121AEA355B0054F6B0 /* Card.m in Sources */,
 			);
@@ -430,6 +448,7 @@
 				028BC80B1AEA35330054F6B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		028BC80C1AEA35330054F6B0 /* Build configuration list for PBXNativeTarget "StanfordPlayingCardDeckTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +457,7 @@
 				028BC80E1AEA35330054F6B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
