@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="LHWatchKitDemo_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <slider width="1" alignment="left" value="0.59999999999999998" steps="5" id="3cB-4k-enK" userLabel="number slider">
+                            <connections>
+                                <action selector="updateGuess:" destination="AgC-eL-Hgc" id="RjQ-XF-M4G"/>
+                            </connections>
+                        </slider>
+                        <label alignment="center" verticalAlignment="center" text="Your guess is 3" id="T8b-iZ-9iv" userLabel="result label"/>
+                        <button width="1" alignment="center" verticalAlignment="center" title="Guess" id="cwC-FV-YGl" userLabel="Guess button">
+                            <connections>
+                                <action selector="startGuess" destination="AgC-eL-Hgc" id="2WU-gS-KWQ"/>
+                            </connections>
+                        </button>
+                        <label alignment="center" verticalAlignment="bottom" text="Press Guess to play" minimumScaleFactor="0.50000000000000011" id="F2g-KN-mZn" userLabel="title label"/>
+                    </items>
+                    <connections>
+                        <outlet property="guessLabel" destination="T8b-iZ-9iv" id="eQx-Ht-Jg5"/>
+                        <outlet property="guessSlider" destination="3cB-4k-enK" id="47G-AI-1eo"/>
+                        <outlet property="resultLabel" destination="F2g-KN-mZn" id="SBT-1i-eP1"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="304" y="325"/>
+        </scene>
+    </scenes>
+</document>
