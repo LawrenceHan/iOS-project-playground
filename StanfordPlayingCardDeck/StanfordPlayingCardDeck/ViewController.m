@@ -9,26 +9,34 @@
 #import "ViewController.h"
 #import "PlayingCardDeck.h"
 #import "PlayingCard.h"
+#import "CardMatchingGame.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface ViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
-@property (nonatomic) int flipsCount;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic) PlayingCardDeck *playingDeck;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
+@property (nonatomic, strong) CardMatchingGame *game;
 @end
 
 @implementation ViewController
+
+- (CardMatchingGame *)game {
+    if (!_game) _game = [[CardMatchingGame alloc]
+                         initWithCardCount:self.cardButtons.count usingDeck:[self createDeck]];
+    return _game;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (PlayingCardDeck *)playingDeck {
-    if (!_playingDeck) _playingDeck = [[PlayingCardDeck alloc] init];
-    return _playingDeck;
+- (Deck *)createDeck {
+    return [[PlayingCardDeck alloc] init];
 }
+
 
 - (AVAudioPlayer *)audioPlayer {
     if (!_audioPlayer) {
@@ -38,26 +46,30 @@
     return _audioPlayer;
 }
 
-- (void)setFlipsCount:(int)flipsCount {
-    _flipsCount = flipsCount;
-    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipsCount];
-}
 - (IBAction)touchCardButton:(UIButton *)sender {
-    if ([sender.currentTitle length]) {
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardBack"]
-                          forState:UIControlStateNormal];
-        [sender setTitle:@"" forState:UIControlStateNormal];
-        
-    } else {
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardFront"]
-                          forState:UIControlStateNormal];
-        Card *randomCard = [self.playingDeck drawRandomCard];
-        [sender setTitle:randomCard.contents forState:UIControlStateNormal];
-        [self.audioPlayer play];
-    }
-    self.flipsCount++;
+    NSInteger cardIndex = [self.cardButtons indexOfObject:sender];
+    [self.game chooseCardAtIndex:cardIndex];
+    [self updateUI];
 }
 
+- (void)updateUI {
+    for (UIButton *cardButton in self.cardButtons) {
+        NSInteger cardIndex = [self.cardButtons indexOfObject:cardButton];
+        Card *card = [self.game cardAtIndex:cardIndex];
+        [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:[self backgroundImageForCard:card]
+                              forState:UIControlStateNormal];
+        cardButton.enabled = !card.isMatched;
+    }
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
+}
 
+- (NSString *)titleForCard:(Card *)card {
+    return card.isChosen ? card.contents : @"";
+}
+
+- (UIImage *)backgroundImageForCard:(Card *)card {
+    return [UIImage imageNamed:card.isChosen ? @"cardFront" : @"cardback_01"];
+}
 
 @end

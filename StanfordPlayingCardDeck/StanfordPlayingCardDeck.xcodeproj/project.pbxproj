@@ -18,6 +18,7 @@
 		028BC7FA1AEA35330054F6B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 028BC7F81AEA35330054F6B0 /* LaunchScreen.xib */; };
 		028BC8061AEA35330054F6B0 /* StanfordPlayingCardDeckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC8051AEA35330054F6B0 /* StanfordPlayingCardDeckTests.m */; };
 		028BC8121AEA355B0054F6B0 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 028BC8111AEA355B0054F6B0 /* Card.m */; };
+		028FA0081B184C760033D664 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 028FA0071B184C760033D664 /* CardMatchingGame.m */; };
 		02A9E8391B01E2BB00EDA0F6 /* flip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 02A9E8381B01E2BB00EDA0F6 /* flip.wav */; };
 		02A9E83B1B01E48500EDA0F6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A9E83A1B01E48500EDA0F6 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,8 @@
 		028BC8051AEA35330054F6B0 /* StanfordPlayingCardDeckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StanfordPlayingCardDeckTests.m; sourceTree = "<group>"; };
 		028BC8101AEA355B0054F6B0 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		028BC8111AEA355B0054F6B0 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		028FA0061B184C760033D664 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
+		028FA0071B184C760033D664 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		02A9E8381B01E2BB00EDA0F6 /* flip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flip.wav; sourceTree = "<group>"; };
 		02A9E83A1B01E48500EDA0F6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -99,6 +102,7 @@
 		028BC7E81AEA35320054F6B0 /* StanfordPlayingCardDeck */ = {
 			isa = PBXGroup;
 			children = (
+				028FA0051B184C610033D664 /* Game logic */,
 				02A9E8371B01E2B000EDA0F6 /* Sound */,
 				028BC80F1AEA35480054F6B0 /* Model */,
 				028BC7ED1AEA35320054F6B0 /* AppDelegate.h */,
@@ -152,6 +156,15 @@
 				020090541B01B02B003F8D47 /* PlayingCardDeck.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		028FA0051B184C610033D664 /* Game logic */ = {
+			isa = PBXGroup;
+			children = (
+				028FA0061B184C760033D664 /* CardMatchingGame.h */,
+				028FA0071B184C760033D664 /* CardMatchingGame.m */,
+			);
+			name = "Game logic";
 			sourceTree = "<group>";
 		};
 		02A9E8371B01E2B000EDA0F6 /* Sound */ = {
@@ -267,6 +280,7 @@
 				0200904F1B01A55B003F8D47 /* Deck.m in Sources */,
 				028BC7F21AEA35320054F6B0 /* ViewController.m in Sources */,
 				028BC7EF1AEA35320054F6B0 /* AppDelegate.m in Sources */,
+				028FA0081B184C760033D664 /* CardMatchingGame.m in Sources */,
 				020090551B01B02B003F8D47 /* PlayingCardDeck.m in Sources */,
 				028BC7EC1AEA35320054F6B0 /* main.m in Sources */,
 				028BC8121AEA355B0054F6B0 /* Card.m in Sources */,
