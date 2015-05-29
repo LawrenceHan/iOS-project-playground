@@ -18,6 +18,8 @@
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
+- (void)redeal;
+
 @property (readonly, nonatomic) NSInteger score;
 
 @end

@@ -20,7 +20,9 @@
 @property (nonatomic, strong) CardMatchingGame *game;
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    BOOL _defaultCardBack;
+}
 
 - (CardMatchingGame *)game {
     if (!_game) _game = [[CardMatchingGame alloc]
@@ -31,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _defaultCardBack = YES;
 }
 
 - (Deck *)createDeck {
@@ -51,7 +54,16 @@
     [self.game chooseCardAtIndex:cardIndex];
     [self updateUI];
 }
+- (IBAction)redealTouched:(UIButton *)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LS(@"Re-deal")
+                                                    message:LS(@"Are you sure you want to re-deal?")
+                                                   delegate:self cancelButtonTitle:LS(@"NO")
+                                          otherButtonTitles:LS(@"OK"), nil];
+    alert.tag = 101;
+    [alert show];
+}
 
+#pragma mark - Methods
 - (void)updateUI {
     for (UIButton *cardButton in self.cardButtons) {
         NSInteger cardIndex = [self.cardButtons indexOfObject:cardButton];
@@ -69,7 +81,23 @@
 }
 
 - (UIImage *)backgroundImageForCard:(Card *)card {
-    return [UIImage imageNamed:card.isChosen ? @"cardFront" : @"cardback_01"];
+    NSString *cardback = _defaultCardBack ? @"cardback_01" : @"cardback_02";
+    return [UIImage imageNamed:card.isChosen ? @"cardFront" : cardback];
+}
+
+- (void)redeal {
+    [self.game redeal];
+    _defaultCardBack = !_defaultCardBack;
+    [self updateUI];
+}
+#pragma mark - UIAlertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 101) {
+        if (buttonIndex == 1) {
+            [self redeal];
+        }
+    }
+    
 }
 
 @end

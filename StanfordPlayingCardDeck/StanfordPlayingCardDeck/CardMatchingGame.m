@@ -18,7 +18,9 @@ static const NSInteger COST_TO_CHOOSE = 1;
 
 @end
 
-@implementation CardMatchingGame
+@implementation CardMatchingGame {
+    Class _currentDeckClass;
+}
 
 - (NSMutableArray *)cards {
     if (!_cards) _cards = [NSMutableArray new];
@@ -31,17 +33,11 @@ static const NSInteger COST_TO_CHOOSE = 1;
     self = [super init];
     
     if (self) {
-        for (int i = 0; i < count; i++) {
-            Card *card = [deck drawRandomCard];
-            if (card) {
-                [self.cards addObject:card];
-            } else {
-                @throw [NSException
-                        exceptionWithName:@"Out of bounds"
-                        reason:@"Init with too many cards" userInfo:nil];
-                self = nil;
-                break;
-            }
+        self.cards = [self cardsWithCount:count usingDeck:deck];
+        if (self.cards.count) {
+            _currentDeckClass = deck.class;
+        } else {
+            return nil;
         }
     }
     
@@ -85,6 +81,39 @@ static const NSInteger COST_TO_CHOOSE = 1;
 
 - (Card *)cardAtIndex:(NSUInteger)index {
     return (index < self.cards.count) ? self.cards[index] : nil;
+}
+
+- (NSMutableArray *)cardsWithCount:(NSUInteger)count usingDeck:(Deck *)deck {
+    NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithCapacity:count];
+    
+    if (count <= 1) {
+        @throw [NSException
+                exceptionWithName:@"Out of bounds"
+                reason:@"Cards count must greater than 1" userInfo:nil];
+        return nil;
+    }
+    
+    for (int i = 0; i < count; i++) {
+        Card *card = [deck drawRandomCard];
+        if (card) {
+            [mutableArray addObject:card];
+        } else {
+            @throw [NSException
+                    exceptionWithName:@"Out of bounds"
+                    reason:@"Init with too many cards" userInfo:nil];
+            mutableArray = nil;
+            break;
+        }
+    }
+    
+    return mutableArray;
+}
+
+- (void)redeal {
+    NSInteger cardsCount = self.cards.count;
+    Deck *deck = [[_currentDeckClass alloc] init];
+    [self.cards removeAllObjects];
+    self.cards = [self cardsWithCount:cardsCount usingDeck:deck];
 }
 
 @end
