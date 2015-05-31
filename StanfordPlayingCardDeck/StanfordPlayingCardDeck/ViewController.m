@@ -18,6 +18,8 @@
 @property (strong, nonatomic) PlayingCardDeck *playingDeck;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) CardMatchingGame *game;
+@property (weak, nonatomic) IBOutlet UISwitch *gameModeSwitcher;
+
 @end
 
 @implementation ViewController {
@@ -99,5 +101,9 @@
     }
     
 }
+
+- (IBAction)switchedGame:(UISwitch *)sender {
+}
+
 
 @end

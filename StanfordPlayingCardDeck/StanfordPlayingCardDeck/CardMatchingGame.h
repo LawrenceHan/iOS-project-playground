@@ -9,17 +9,27 @@
 #import <Foundation/Foundation.h>
 #import "Deck.h"
 
+typedef enum : NSUInteger {
+    GameModeTwoCard,
+    GameModeThreeCard,
+} GameMode;
+
 @interface CardMatchingGame : NSObject
 
-// Designated initializer
+// Designated initializer, default is 2-card game
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck;
+
+- (instancetype)initWithCardCount:(NSUInteger)count
+                        usingDeck:(Deck *)deck withMode:(GameMode)mode;
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 - (void)redeal;
+- (void)redealWithMode:(GameMode)mode;
 
 @property (readonly, nonatomic) NSInteger score;
+@property (readonly, nonatomic) GameMode currentMode;
 
 @end

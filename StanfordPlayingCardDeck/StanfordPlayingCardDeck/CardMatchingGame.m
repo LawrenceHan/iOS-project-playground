@@ -15,6 +15,7 @@ static const NSInteger COST_TO_CHOOSE = 1;
 @interface CardMatchingGame ()
 @property (readwrite, nonatomic) NSInteger score;
 @property (strong, nonatomic) NSMutableArray *cards; // of cards
+@property (readwrite, nonatomic) GameMode currentMode;
 
 @end
 
@@ -30,10 +31,22 @@ static const NSInteger COST_TO_CHOOSE = 1;
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck
 {
+    self = [self initWithCardCount:count usingDeck:deck withMode:GameModeTwoCard];
+    
+    if (self) {
+        
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithCardCount:(NSUInteger)count
+                        usingDeck:(Deck *)deck withMode:(GameMode)mode {
     self = [super init];
     
     if (self) {
         self.cards = [self cardsWithCount:count usingDeck:deck];
+        self.currentMode = mode;
         if (self.cards.count) {
             _currentDeckClass = deck.class;
         } else {
@@ -110,6 +123,11 @@ static const NSInteger COST_TO_CHOOSE = 1;
 }
 
 - (void)redeal {
+    [self redealWithMode:GameModeTwoCard];
+}
+
+- (void)redealWithMode:(GameMode)mode {
+    self.currentMode = mode;
     NSInteger cardsCount = self.cards.count;
     Deck *deck = [[_currentDeckClass alloc] init];
     [self.cards removeAllObjects];
