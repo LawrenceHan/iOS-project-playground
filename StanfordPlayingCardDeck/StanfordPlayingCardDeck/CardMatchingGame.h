@@ -27,9 +27,9 @@ typedef enum : NSUInteger {
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 - (void)redeal;
-- (void)redealWithMode:(GameMode)mode;
 
 @property (readonly, nonatomic) NSInteger score;
 @property (nonatomic) GameMode currentMode;
+@property (readonly, nonatomic) NSString *gameLog;
 
 @end

@@ -15,6 +15,7 @@ static const NSInteger COST_TO_CHOOSE = 1;
 @interface CardMatchingGame ()
 @property (readwrite, nonatomic) NSInteger score;
 @property (strong, nonatomic) NSMutableArray *cards; // of cards
+@property (readwrite, nonatomic) NSString *gameLog;
 
 @end
 
@@ -25,6 +26,11 @@ static const NSInteger COST_TO_CHOOSE = 1;
 - (NSMutableArray *)cards {
     if (!_cards) _cards = [NSMutableArray new];
     return _cards;
+}
+
+- (NSString *)gameLog {
+    if (!_gameLog) _gameLog = @"";
+    return _gameLog;
 }
 
 - (instancetype)initWithCardCount:(NSUInteger)count
@@ -79,9 +85,19 @@ static const NSInteger COST_TO_CHOOSE = 1;
                             self.score += matchScore * MATCH_BOUNS;
                             card.matched = YES;
                             otherCard.matched = YES;
+                            
+                            // record game log
+                            NSString *log = [NSString stringWithFormat:@"Matched %@%@ for %ld points!\n",
+                                            card.contents, otherCard.contents, self.score];
+                            self.gameLog = [self.gameLog stringByAppendingString:log];
                         } else {
                             self.score -= MISMATCH_PENALTY;
                             otherCard.chosen = NO;
+                            
+                            // record game log
+                            NSString *log = [NSString stringWithFormat:@"%@%@ don't match! %ld points penalty\n",
+                                             card.contents, otherCard.contents, self.score];
+                            self.gameLog = [self.gameLog stringByAppendingString:log];
                         }
                         break;
                     }
@@ -99,15 +115,31 @@ static const NSInteger COST_TO_CHOOSE = 1;
                     if (matchScore) {
                         self.score += matchScore * MATCH_BOUNS;
                         card.matched = YES;
+                        
+                        NSString *otherCardsContents = @"";
                         for (Card *otherCard in otherCards) {
                             otherCard.matched = YES;
+                            otherCardsContents = [otherCardsContents stringByAppendingString:otherCard.contents];
                         }
+                        
+                        // record game log
+                        NSString *log = [NSString stringWithFormat:@"Matched %@%@ for %ld points!\n",
+                                         card.contents, otherCardsContents, self.score];
+                        self.gameLog = [self.gameLog stringByAppendingString:log];
                         
                     } else {
                         self.score -= MISMATCH_PENALTY * 2;
+                        
+                        NSString *otherCardsContents = @"";
                         for (Card *otherCard in otherCards) {
                             otherCard.chosen = NO;
+                            otherCardsContents = [otherCardsContents stringByAppendingString:otherCard.contents];
                         }
+                        
+                        // record game log
+                        NSString *log = [NSString stringWithFormat:@"%@%@ don't match! %ld points penalty\n",
+                                         card.contents, otherCardsContents, self.score];
+                        self.gameLog = [self.gameLog stringByAppendingString:log];
                     }
                     
                 }
@@ -155,6 +187,7 @@ static const NSInteger COST_TO_CHOOSE = 1;
     Deck *deck = [[_currentDeckClass alloc] init];
     [self.cards removeAllObjects];
     self.cards = [self cardsWithCount:cardsCount usingDeck:deck];
+    self.gameLog = @"";
 }
 
 @end

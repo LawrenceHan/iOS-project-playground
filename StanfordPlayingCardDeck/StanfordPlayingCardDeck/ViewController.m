@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *gameModeSwitcher;
 @property (weak, nonatomic) IBOutlet UIButton *redealButton;
 @property (weak, nonatomic) IBOutlet UIView *cardsView;
+@property (weak, nonatomic) IBOutlet UITextView *gameLogTextView;
+@property (weak, nonatomic) IBOutlet UIButton *showLogButton;
 
 @end
 
@@ -70,6 +72,10 @@
         self.gameModeSwitcher.enabled = NO;
     }
     
+    if (!self.showLogButton.isEnabled) {
+        self.showLogButton.enabled = YES;
+    }
+    
     NSInteger cardIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:cardIndex];
     [self updateUI];
@@ -98,6 +104,7 @@
         cardButton.enabled = !card.isMatched;
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
+    self.gameLogTextView.text = self.game.gameLog;
 }
 
 - (NSString *)titleForCard:(Card *)card {
@@ -122,6 +129,10 @@
         self.cardsView.alpha = 1.0;
     }];
 }
+- (IBAction)showGameLog:(UIButton *)sender {
+    self.gameLogTextView.hidden = !self.gameLogTextView.hidden;
+}
+
 #pragma mark - UIAlertView delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 101) {

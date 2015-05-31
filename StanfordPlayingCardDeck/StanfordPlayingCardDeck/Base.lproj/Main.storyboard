@@ -173,6 +173,24 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOo-dm-oUp" userLabel="show log">
+                                <rect key="frame" x="230" y="393" width="80" height="25"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Show log">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.54117647059999996" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showGameLog:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5Gg-cx-nsX"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pL-22-X4r">
                                 <rect key="frame" x="115" y="437" width="89" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -191,6 +209,12 @@
                                     <action selector="redealTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wao-jH-o4h"/>
                                 </connections>
                             </button>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BP3-Dr-XEA" userLabel="game log">
+                                <rect key="frame" x="0.0" y="18" width="320" height="370"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -202,9 +226,11 @@
                     </view>
                     <connections>
                         <outlet property="cardsView" destination="hJl-8w-Kwh" id="spg-AX-Z0K"/>
+                        <outlet property="gameLogTextView" destination="BP3-Dr-XEA" id="N1x-yX-tCM"/>
                         <outlet property="gameModeSwitcher" destination="Rbg-0d-TPv" id="Cyg-vY-5ez"/>
                         <outlet property="redealButton" destination="7pL-22-X4r" id="SWi-gh-TcV"/>
                         <outlet property="scoreLabel" destination="n3T-ov-Fef" id="2eq-uM-pFF"/>
+                        <outlet property="showLogButton" destination="LOo-dm-oUp" id="nVG-32-NTQ"/>
                         <outletCollection property="cardButtons" destination="grF-sU-Bpt" id="DNy-7j-Azc"/>
                         <outletCollection property="cardButtons" destination="qH9-tz-rkz" id="kpk-7R-9oV"/>
                         <outletCollection property="cardButtons" destination="vXz-d5-q8h" id="irm-ys-zE0"/>
