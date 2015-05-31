@@ -64,6 +64,12 @@
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender {
+    if (self.gameModeSwitcher.isEnabled) {
+        BOOL isOn = self.gameModeSwitcher.isOn;
+        self.game.currentMode = isOn ? GameModeThreeCard : GameModeTwoCard;
+        self.gameModeSwitcher.enabled = NO;
+    }
+    
     NSInteger cardIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:cardIndex];
     [self updateUI];
@@ -104,10 +110,13 @@
 }
 
 - (void)redeal {
-    BOOL isOn = self.gameModeSwitcher.isOn;
-    [self.game redealWithMode:isOn ? GameModeThreeCard : GameModeTwoCard];
+    if (!self.gameModeSwitcher.isEnabled) {
+        self.gameModeSwitcher.enabled = YES;
+    }
+    [self.game redeal];
     _defaultCardBack = !_defaultCardBack;
     [self updateUI];
+    
     self.cardsView.alpha = 0.0;
     [UIView animateWithDuration:0.5 animations:^{
         self.cardsView.alpha = 1.0;

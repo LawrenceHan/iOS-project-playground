@@ -30,6 +30,6 @@ typedef enum : NSUInteger {
 - (void)redealWithMode:(GameMode)mode;
 
 @property (readonly, nonatomic) NSInteger score;
-@property (readonly, nonatomic) GameMode currentMode;
+@property (nonatomic) GameMode currentMode;
 
 @end
