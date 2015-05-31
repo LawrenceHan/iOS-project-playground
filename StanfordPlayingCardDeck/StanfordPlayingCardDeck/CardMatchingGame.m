@@ -71,21 +71,50 @@ static const NSInteger COST_TO_CHOOSE = 1;
         if (card.isChosen) {
             card.chosen = NO;
         } else {
-            // match against other card
-            for (Card *otherCard in self.cards) {
-                if (otherCard.isChosen && !otherCard.isMatched) {
-                    NSInteger matchScore = [card match:@[otherCard]];
+            // match against other cards
+            if (self.currentMode == GameModeTwoCard) {
+                for (Card *otherCard in self.cards) {
+                    if (otherCard.isChosen && !otherCard.isMatched) {
+                        NSInteger matchScore = [card match:@[otherCard]];
+                        if (matchScore) {
+                            self.score += matchScore * MATCH_BOUNS;
+                            card.matched = YES;
+                            otherCard.matched = YES;
+                        } else {
+                            self.score -= MISMATCH_PENALTY;
+                            otherCard.chosen = NO;
+                        }
+                        break;
+                    }
+                }
+            } else if (self.currentMode == GameModeThreeCard) {
+                NSMutableArray *otherCards = [NSMutableArray new];
+                for (Card *otherCard in self.cards) {
+                    if (otherCard.isChosen && !otherCard.isMatched) {
+                        [otherCards addObject:otherCard];
+                    }
+                }
+
+                if (otherCards.count == 2) {
+                    NSInteger matchScore = [card match:otherCards];
                     if (matchScore) {
                         self.score += matchScore * MATCH_BOUNS;
                         card.matched = YES;
-                        otherCard.matched = YES;
+                        for (Card *otherCard in otherCards) {
+                            otherCard.matched = YES;
+                        }
+                        
                     } else {
-                        self.score -= MISMATCH_PENALTY;
-                        otherCard.chosen = NO;
+                        self.score -= MISMATCH_PENALTY * 2;
+                        for (Card *otherCard in otherCards) {
+                            otherCard.chosen = NO;
+                        }
                     }
-                    break;
+                    
                 }
             }
+            
+            
             card.chosen = YES;
             self.score -= COST_TO_CHOOSE;
         }

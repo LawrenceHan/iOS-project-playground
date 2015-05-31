@@ -19,11 +19,14 @@
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UISwitch *gameModeSwitcher;
+@property (weak, nonatomic) IBOutlet UIButton *redealButton;
+@property (weak, nonatomic) IBOutlet UIView *cardsView;
 
 @end
 
 @implementation ViewController {
     BOOL _defaultCardBack;
+    BOOL _finishedFirstTimeSetup;
 }
 
 - (CardMatchingGame *)game {
@@ -35,7 +38,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+}
+
+- (void)firstTimeSetup {
     _defaultCardBack = YES;
+    self.cardsView.hidden = NO;
+    
+    [self redeal];
+    [self.redealButton setTitle:LS(@"Re-deal") forState:UIControlStateNormal];
+    _finishedFirstTimeSetup = YES;
 }
 
 - (Deck *)createDeck {
@@ -57,12 +69,16 @@
     [self updateUI];
 }
 - (IBAction)redealTouched:(UIButton *)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LS(@"Re-deal")
-                                                    message:LS(@"Are you sure you want to re-deal?")
-                                                   delegate:self cancelButtonTitle:LS(@"NO")
-                                          otherButtonTitles:LS(@"OK"), nil];
-    alert.tag = 101;
-    [alert show];
+    if (!_finishedFirstTimeSetup) {
+        [self firstTimeSetup];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LS(@"Re-deal")
+                                                        message:LS(@"Are you sure you want to re-deal?")
+                                                       delegate:self cancelButtonTitle:LS(@"NO")
+                                              otherButtonTitles:LS(@"OK"), nil];
+        alert.tag = 101;
+        [alert show];
+    }
 }
 
 #pragma mark - Methods
@@ -88,9 +104,14 @@
 }
 
 - (void)redeal {
-    [self.game redeal];
+    BOOL isOn = self.gameModeSwitcher.isOn;
+    [self.game redealWithMode:isOn ? GameModeThreeCard : GameModeTwoCard];
     _defaultCardBack = !_defaultCardBack;
     [self updateUI];
+    self.cardsView.alpha = 0.0;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.cardsView.alpha = 1.0;
+    }];
 }
 #pragma mark - UIAlertView delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
