@@ -128,6 +128,11 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.cardsView.alpha = 1.0;
     }];
+//    
+    if (self.showLogButton.isEnabled) {
+        self.showLogButton.enabled = NO;
+    }
+    
 }
 - (IBAction)showGameLog:(UIButton *)sender {
     self.gameLogTextView.hidden = !self.gameLogTextView.hidden;

@@ -188,6 +188,7 @@ static const NSInteger COST_TO_CHOOSE = 1;
     [self.cards removeAllObjects];
     self.cards = [self cardsWithCount:cardsCount usingDeck:deck];
     self.gameLog = @"";
+    self.score = 0;
 }
 
 @end
