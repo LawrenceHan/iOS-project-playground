@@ -1,0 +1,20 @@
+%p 亲爱的康语用户，
+%p
+  您不仅可以使用康语评价医院和医生，还可以用它构建自己的健康网络，和您的朋友分享就医经验和窍门！现在只要邀请您的两位朋友注册并在康语中发表评价，您将免费获得6个月的《乐活 健康时尚》杂志！
+  = link_to '邀请您的朋友注册', api_invitation_url(email: URI.escape(@email))
+%p 康语团队
+%p 敬上
+%p 如果您对改进康语有任何的想法，请使用下面这个简单的调查告诉我们：
+%p= link_to 'https://fr.surveymonkey.com/s/kangyuusers', 'https://fr.surveymonkey.com/s/kangyuusers'
+= link_to(image_tag("#{ApplicationHelper.host}#{asset_path('weibo.png')}"), 'http://weibo.com/kangyu2013')
+%hr
+%p Dear KangYu pioneers,
+%p
+  You can not only use Kangyu to publish reviews, but also start to build your health network by sharing reviews with your own network or trusted community. To begin with, invite two friends to register and post a review on KangYu! You will also get 6 months free subscription to Lohas lifetyle and healthy magazine for you or to offer to any of your friend!
+  = link_to 'Invite my friends now', api_invitation_url(email: @email)
+%p Many thanks again for your interest!
+%p Sincerely yours,
+%p Your dedicated Kangyu team
+%p If you wish to share your thoughts and contribution with us, you can tell us with the following short survey:
+%p= link_to 'https://fr.surveymonkey.com/s/kangyuusers', 'https://fr.surveymonkey.com/s/kangyuusers'
+= link_to(image_tag("#{ApplicationHelper.host}#{asset_path('weibo.png')}"), 'http://weibo.com/kangyu2013')

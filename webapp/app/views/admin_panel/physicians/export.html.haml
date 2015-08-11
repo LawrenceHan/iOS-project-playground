@@ -1,0 +1,19 @@
+%table{border: 1, cellpadding: 2}
+  %thead
+    %tr
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' } ID
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Physician.human_attribute_name(:name)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Physician.human_attribute_name(:avg_rating)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Physician.human_attribute_name(:gender)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Physician.human_attribute_name(:age)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Physician.human_attribute_name(:speciality)
+
+  %tbody
+    - @physicians.each do |physician|
+      %tr
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= physician.vendor_id
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= physician.name
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= physician.avg_rating
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= physician.gender
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= physician.age
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= physician.specialities.map{|x| "#{x.name}(#{x.vendor_id})"}.join(', ')

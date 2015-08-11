@@ -1,0 +1,6 @@
+%tr{id: "admin_#{admin.id}"}
+  %td= admin.email
+  %td= admin.created_at
+  %td
+    = link_to t('button.edit'), edit_admin_panel_admin_path(admin), class: 'btn btn-primary btn-xs various fancybox.ajax'
+    = link_to t('button.destroy'), admin_panel_admin_path(admin), method: :delete, data: { confirm: t('button.confirm') , remote: true }, class: 'btn btn-danger btn-xs'

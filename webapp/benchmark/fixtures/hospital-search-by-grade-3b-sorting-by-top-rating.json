@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "三甲",
+    "type": "Hospital"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

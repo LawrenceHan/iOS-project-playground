@@ -1,0 +1,90 @@
+.health_conditions-controller {
+  #form {
+    background-color: #E5ECEE;
+    padding: 20px 10px;
+  }
+
+  .health-condition {
+    color: white;
+    position: relative;
+    margin: 10px auto;
+    padding-right: 50px;
+
+    .name {
+      border: 3px solid #8DB8C3;
+      @include border-radius(3px);
+      background-color: #42899C;
+      padding: 9px;
+      font-size: 18px;
+    }
+
+    .remove-button, .add-button {
+      position: absolute;
+      right: 0;
+      top: 3px;
+      width: 43px;
+      height: 43px;
+      line-height: 43px;
+      text-align: center;
+      font-size: 35px;
+      cursor: pointer;
+    }
+
+    .bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: block;
+      @include border-radius(1px);
+    }
+
+    .times, .plus {
+      z-index: 10;
+      position:relative;
+    }
+
+    .add-field {
+      color: grey;
+      width: 100%;
+      display: block;
+      @include box-sizing(border-box);
+      height: 49px;
+      font-size: 18px;
+    }
+  }
+
+  #results {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    padding-right: 50px;
+    @include box-sizing(border-box);
+    font-size: 18px;
+
+    .parent-list {
+      background: #127084;
+      padding: 5px;
+      margin: 0;
+    }
+
+    li  {
+      list-style: none;
+    }
+
+    .section {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .row {
+      background: #005F74;
+      padding: 8px;
+      margin: 5px 0;
+    }
+  }
+
+
+
+}

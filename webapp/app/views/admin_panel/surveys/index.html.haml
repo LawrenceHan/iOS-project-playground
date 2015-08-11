@@ -1,0 +1,15 @@
+%h3.inline.text-muted= t('headline.index', record: Survey::Survey.model_name.human)
+
+%table.table.table-striped#survey_table
+  %thead
+    %tr
+      %th= Survey::Survey.human_attribute_name(:title)
+      %th= Survey::Survey.human_attribute_name(:type)
+      %th= Survey::Survey.human_attribute_name(:url)
+      %th{ width: 115 }
+
+  %tbody= render partial: 'survey', collection: @surveys
+
+= paginate @surveys
+
+%div= link_to t('button.create', record: Survey::Survey.model_name.human), new_admin_panel_survey_path, class: 'btn btn-success various fancybox.ajax'

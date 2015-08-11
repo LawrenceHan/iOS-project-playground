@@ -1,0 +1,4 @@
+- if @admin.destroyed?
+  $('#admin_table tbody tr#admin_#{@admin.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

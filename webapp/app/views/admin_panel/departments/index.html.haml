@@ -1,0 +1,19 @@
+%h3.text-muted.pull-left= t('headline.index', record: Department.model_name.human)
+
+- unless request.xhr?
+  .pull-right= link_to t('admin_panel.users.index.export_excel'), admin_panel_departments_path(export: true), class: 'btn btn-success'
+
+%table.table.table-striped#department_table
+  %thead
+    %tr
+      %th ID
+      %th= Department.human_attribute_name(:name)
+      %th= Department.human_attribute_name(:created_at)
+      - unless request.xhr?
+        %th{ width: 150 }
+
+  %tbody= render @departments
+
+- unless request.xhr?
+  = paginate @departments
+  %div= link_to t('button.create', record: Department.model_name.human), new_admin_panel_department_path, class: 'btn btn-success various fancybox.ajax'

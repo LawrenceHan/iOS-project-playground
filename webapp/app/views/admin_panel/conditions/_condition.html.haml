@@ -1,0 +1,7 @@
+%tr{id: "condition_#{condition.id}"}
+  %td= condition.name
+  %td= condition.category
+  %td= condition.created_at
+  %td
+    = link_to t('button.edit'), edit_admin_panel_condition_path(condition), class: 'btn btn-primary btn-xs various fancybox.ajax'
+    = link_to t('button.destroy'), admin_panel_condition_path(condition), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

@@ -1,0 +1,4 @@
+- if @invitation.destroyed?
+  $('#invitation_table tbody tr#invitation_#{@invitation.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

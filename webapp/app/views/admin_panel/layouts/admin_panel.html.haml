@@ -1,0 +1,38 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{ charset: "utf-8"}/
+    %meta{ content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{ content: "", name: "description"}/
+    %meta{ content: "", name: "author"}/
+    %link{ href: asset_path('favicon.ico'), rel: "shortcut icon"}/
+    %title CareVoice Management Panel
+    = stylesheet_link_tag 'application', media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "admin", "data-turbolinks-track" => true
+    = yield :top_js
+    = csrf_meta_tags
+    /[if lt IE 9]
+      = javascript_include_tag 'http://html5shiv.googlecode.com/svn/trunk/html5.js'
+  %body
+    .navbar.navbar-fixed-top.navbar-inverse{:role => "navigation"}
+      .container
+        = render 'navbar'
+    .container.admin
+      .row.row-offcanvas.row-offcanvas-right
+        .col-xs-12.col-sm-9
+          - alert_mapping = { notice: 'alert-success',
+            alert: 'alert-warning',
+            error: 'alert-danger' }.with_indifferent_access
+          - flash.each do |type, message|
+            .alert.alert-dismissable{ class: alert_mapping[type] }
+              %button(type="button" class="close" data-dismiss="alert" aria-hidden="true") &times;
+              = message
+
+
+          .well= yield
+        = render 'sidebar'
+
+      %hr/
+      %footer
+        %p= "© #{t('footer.name')} 2013"

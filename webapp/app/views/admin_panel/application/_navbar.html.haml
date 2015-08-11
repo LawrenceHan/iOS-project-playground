@@ -1,0 +1,23 @@
+.navbar-header
+  = link_to root_url, class: 'navbar-brand' do
+    #logo
+    = t('nav.logo')
+.collapse.navbar-collapse
+  %ul.nav.navbar-nav
+    %li= link_to t('nav.api_doc'), '/api/swagger', target: '_blank'
+    %li{ class: controller_name == 'push_notifications' ? 'active' : nil }
+      = link_to t('nav.send_push'), admin_panel_push_notification_url
+    %li{ class: controller_name == 'sms_messages' ? 'active' : nil }
+      = link_to t('nav.send_sms'), admin_panel_sms_message_url
+    %li{ class: controller_name == 'app_messages' ? 'active' : nil }
+      = link_to t('nav.send_app'), admin_panel_app_message_url
+
+  .navbar-text.pull-right
+    = link_to 'English', url_for(params.merge(locale: 'en'))
+    |
+    = link_to '简体中文', url_for(params.merge(locale: 'zh-CN'))
+  .navbar-text.pull-right
+    = current_admin.email
+    |
+    = link_to t('nav.logout'), admin_panel_logout_path
+

@@ -1,0 +1,25 @@
+= simple_form_for([:admin_panel, @hospital], remote: true, html: {class: 'form-horizontal', role: 'form' }, defaults: { input_html: { class: 'form-control'}, label_html: { class: 'col-lg-2' } }) do |f|
+  = f.error_notification
+  = f.input :name
+  - if @hospital.new_record?
+    = f.input :vendor_id, label: 'ID', hint: 'note: to handle with good care. ID is a unique identifier, it should not conflict database'
+  - unless APP_CONFIG[:node] == 'india'
+    = f.input :official_name
+  = f.input :phone
+  = f.input :address
+  = f.input :post_code
+  = f.input :h_class, collection: Hospital::H_CLASSES
+  = f.input :ownership, collection: ownership_collection
+  = f.association :departments, collection: Department.select(:id, :name, :vendor_id).map{|x| ["#{x.name} (ID: #{x.vendor_id})", x.id]},  input_html: { class: 'chosen-select' }
+
+  .form-group
+    .col-lg-offset-2
+      = f.button :submit, class: 'btn btn-primary'
+
+:javascript
+  $(".chosen-select").chosen({
+    disable_search_threshold: 10,
+    no_results_text: 'Oops, nothing found!',
+    allow_single_deselect: true,
+    width: '100%'
+  })

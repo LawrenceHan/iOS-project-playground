@@ -1,0 +1,5 @@
+- if @department.errors.empty?
+  $('#department_table tbody').append("#{j(render('department', department: @department))}");
+  $.fancybox.close();
+- else
+  alert("#{@department.errors.full_messages.join('\n')}");

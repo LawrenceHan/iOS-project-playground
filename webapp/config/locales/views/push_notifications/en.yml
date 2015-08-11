@@ -1,0 +1,12 @@
+---
+en:
+  admin_panel:
+    push_notifications:
+      index:
+        bytes: bytes
+        get_payload_size: Get Payload Size
+        hint: Click 'Get Payload Size' button to view the size of the generated message payload, which should be equal or less than 256 bytes
+        payload_size: Payload Size
+        push_content: Message Body
+        send: Send
+        title: Send Push Notification to ALL Users

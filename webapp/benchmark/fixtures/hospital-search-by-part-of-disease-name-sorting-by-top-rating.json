@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "心脏",
+    "type": "Hospital"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

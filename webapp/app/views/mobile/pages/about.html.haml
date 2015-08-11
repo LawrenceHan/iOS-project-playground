@@ -1,0 +1,29 @@
+.top_logo{style: 'display: table;'}
+  - if I18n.locale == :en
+    .logo{style: 'display: table-cell;'}
+      = image_tag('mobile/logo.png', id: 'logo')
+  - elsif I18n.locale == :"zh-CN"
+    .logo-cn{style: 'display: table-cell;'}
+      = image_tag 'zh_logo_240.png', id: 'logo'
+= separator_tag
+
+.about
+  / .terms_link=link_to 'Terms and Conditions', api_terms_path(locale: 'en')
+  .desc
+    %div{class: "#{'text-cn' if I18n.locale == :'zh-CN'}"}
+      - if I18n.locale == :en
+        %div.align-right=link_to t('signup.terms'), mobile_terms_path, class: 'link', target: '_blank'
+      - elsif I18n.locale == :'zh-CN'
+        %div.align-right=link_to t('signup.terms'), api_terms_path, class: 'link', target: '_blank'
+      %div= t('about.about')
+      - if I18n.locale == :'zh-CN'
+        %div= t('about.about_more')
+
+    %div{class: "#{'text-cn' if I18n.locale == :'zh-CN'}"}
+      = t('about.visit_more')
+      = link_to "http://www.kangyu.co", "http://www.kangyu.co"
+      - if I18n.locale == :'zh-CN'
+        %div.text-cn= link_to t('about.sina_weibo'), "http://weibo.com/kangyu2013"
+
+  #actions-section{class: "#{'btn-text-cn' if I18n.locale == :'zh-CN'}"}
+    = link_to_button t('about.feedback'), new_mobile_feedback_path

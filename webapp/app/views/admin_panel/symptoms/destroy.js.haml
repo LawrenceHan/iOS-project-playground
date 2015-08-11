@@ -1,0 +1,4 @@
+- if @symptom.destroyed?
+  $('#symptom_table tbody tr#symptom_#{@symptom.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

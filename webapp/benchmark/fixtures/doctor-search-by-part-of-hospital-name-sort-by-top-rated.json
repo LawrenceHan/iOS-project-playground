@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "瑞金医院",
+    "type": "Physician"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

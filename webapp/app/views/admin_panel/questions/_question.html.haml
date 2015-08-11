@@ -1,0 +1,6 @@
+%tr{id: "question_#{question.id}"}
+  %td= question.category
+  %td= question.content
+  %td
+    = link_to t('button.edit'), edit_admin_panel_question_path(question), class: 'btn btn-primary btn-xs various fancybox.ajax'
+    = link_to t('button.destroy'), admin_panel_question_path(question), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

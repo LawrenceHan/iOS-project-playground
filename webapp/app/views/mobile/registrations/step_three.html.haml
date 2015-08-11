@@ -1,0 +1,59 @@
+= navigation_bar(title: t('step_three.title'), skip_menu: true)
+.label.block
+  .text-center= t('step_three.top_title')
+.step-markers= registration_step_markers
+
+= form_for [:mobile, @profile], url: mobile_registrations_step_three_path do |form|
+  = hidden_field_tag :step, 'step_three'
+  = hidden_field_tag :id, @profile.id
+
+  = form.hidden_field :interests, value: @profile.interests.to_a.delete_if(&:blank?).join('#')
+  .interests
+    .field.clearfix.first-interest
+      .title= t('step_three.sub_title')
+      .label
+        .pull-left= t('step_three.mobile_interests0')
+      = yes_or_no_for(Profile::MOBILE_INTERESTS[0])
+    .field.clearfix
+      .label
+        .pull-left= t('step_three.mobile_interests1')
+      = yes_or_no_for(Profile::MOBILE_INTERESTS[1])
+    .field
+      .clearfix
+        .label
+          .pull-left= t('step_three.mobile_interests2')
+        = yes_or_no_for(Profile::MOBILE_INTERESTS[2])
+      .example= t('step_three.example')
+  #actions-section.half
+    = link_to_button t('common.skip'), mobile_my_account_path, icon: 'remove', bg: 'dark_cyan', class: 'pull-left'
+    = link_to_button t('common.finish'), nil, icon: 'tick', form: form, class: 'pull-right'
+
+- content_for :javascript do
+  :javascript
+    $(function(){
+      // Remove interest
+      $(document).on('click', '.yes_btn', function(e) {
+        var $this = $(e.currentTarget),
+          interest = $this.prev('.label').text(),
+          currentInterests = $('#profile_interests').val() ? $('#profile_interests').val().split('#') : [];
+        if (interest && currentInterests.indexOf(interest) !== -1) {
+          currentInterests = $.grep(currentInterests, function(value) {
+            return value != interest;
+          });
+          $('#profile_interests').val($.unique(currentInterests).join('#'));
+          $this.removeClass('yes_btn').addClass('no_btn').text("#{t('common._no')}");
+        }
+      });
+
+      // Add interest
+      $(document).on('click', '.no_btn', function(e) {
+        var $this = $(e.currentTarget),
+          interest = $this.prev('.label').text(),
+          currentInterests = $('#profile_interests').val() ? $('#profile_interests').val().split('#') : [];
+        if (interest && currentInterests.indexOf(interest) === -1) {
+          currentInterests.push(interest);
+          $('#profile_interests').val($.unique(currentInterests).join('#'));
+          $this.removeClass('no_btn').addClass('yes_btn').text("#{t('common._yes')}");
+        }
+      });
+    });

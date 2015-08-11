@@ -1,0 +1,4 @@
+- if @user.destroyed?
+  $('#user_table tbody tr#user_#{@user.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

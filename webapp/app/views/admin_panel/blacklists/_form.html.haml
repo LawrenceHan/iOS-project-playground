@@ -1,0 +1,7 @@
+= simple_form_for([:admin_panel, @blacklist], remote: true, html: {class: 'form-horizontal', role: 'form' }, defaults: { input_html: { class: 'form-control'}, label_html: { class: 'col-lg-2' } }) do |f|
+  = f.error_notification
+  = f.input :word
+
+  .form-group
+    .col-lg-offset-2
+      = f.button :submit, class: 'btn btn-primary'

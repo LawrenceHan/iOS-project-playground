@@ -1,0 +1,5 @@
+- if @<%= singular_table_name %>.errors.empty?
+  $('#<%= singular_table_name %>_table tbody').append("#{j(render('<%= singular_table_name %>', <%= singular_table_name %>: @<%= singular_table_name %>))}");
+  $.fancybox.close();
+- else
+  alert("#{@<%= singular_table_name %>.errors.full_messages.join('\n')}");

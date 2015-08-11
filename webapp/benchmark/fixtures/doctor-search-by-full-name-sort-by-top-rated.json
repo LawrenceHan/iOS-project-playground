@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "王良旭",
+    "type": "Physician"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

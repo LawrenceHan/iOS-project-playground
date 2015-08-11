@@ -1,0 +1,20 @@
+%h3.text-muted Title
+
+= simple_form_for :sms_message, html: { class: 'form-horizontal', role: 'form', id: 'sms_form' },
+  defaults: { input_html: { class: 'form-control' }, label_html: { class: 'col-lg-3' } } do |f|
+
+  = f.input :user_phones, as: :text, label: 'SMS users', input_html: { rows: 5 }, hint: 'one mobile phone per line, leave it empty to send to all users'
+  = f.input :content, as: :text, label: 'SMS content', input_html: { rows: 5, value: '【康语】' }
+
+  .form-group
+    .col-lg-6.col-lg-offset-3
+      = f.submit 'Send', class: 'btn-danger'
+
+:javascript
+  $(function() {
+    $('#sms_form').submit(function() {
+      if ($('#sms_message_user_phones').val().length == 0) {
+        return confirm('Are you sure to send to all users?');
+      }
+    });
+  });

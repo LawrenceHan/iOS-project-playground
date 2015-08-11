@@ -1,0 +1,13 @@
+%tr{id: "physician_#{physician.id}"}
+  %td= physician.vendor_id
+  %td= physician.name
+  %td= physician.gender
+  %td= physician.age
+  %td= physician.hospital_name
+  %td= physician.position
+  %td= physician.department_name
+  %td= physician.human_specialities
+  %td= physician.avg_rating
+  %th
+    = link_to t('button.edit'), edit_admin_panel_physician_path(physician), class: 'btn btn-primary btn-xs various fancybox.ajax'
+    = link_to t('button.destroy'), admin_panel_physician_path(physician), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

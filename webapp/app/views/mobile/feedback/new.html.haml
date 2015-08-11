@@ -1,0 +1,7 @@
+= navigation_bar(title: t('feedback.title'))
+= form_for [:mobile, @feedback], remote: true do |form|
+  .field
+    = form.text_area :content, placeholder: t('feedback.content')
+
+  #actions-section
+    = link_to_button t('feedback.submit'), nil, icon: 'tick', form: form

@@ -1,0 +1,104 @@
+.label.block.social-title
+  %p= t('step_one.connect_with_social')
+
+  %small= t('step_one.description').html_safe
+#actions-section
+  - if I18n.locale == :en
+    = link_to_button connection_btn_text(:facebook), 'javascript: void(0);', icon: 'facebook', bg: 'dark_cyan', class: 'dark_cyan', disabled: true, id: 'facebook'
+    = link_to_button connection_btn_text(:twitter), 'javascript: void(0);', icon: 'twitter', bg: 'dark_cyan', id: 'twitter'
+  - elsif I18n.locale == :"zh-CN"
+    = link_to_button connection_btn_text(:weibo), 'javascript: void(0);', icon: 'weibo', bg: 'dark_cyan', class: 'dark_cyan social-weibo', disabled: true, id: 'weibo'
+    = link_to_button connection_btn_text(:tqq), 'javascript: void(0);', icon: 'tqq', bg: 'dark_cyan', class: 'social-tqq', id: 'tqq'
+
+  = yield
+
+- content_for :javascript do
+  = javascript_include_tag 'mobile/oauth.io.js'
+
+  :javascript
+    $(function(){
+      // Facebook connect button
+      $('#facebook').on('click', function(e){
+        var $label = $(this).find('.text');
+        $label.text('Connecting...');
+        OAuth.initialize('#{APP_CONFIG[:auth][:oauth_io][:app_id]}');
+        OAuth.popup('facebook')
+          .done(function (result) {
+            var token = result.access_token,
+            expires_in = result.expires_in;
+            result.get({ url: '/me', data: {fields: 'id'}, dataType: 'json'}).done(function(res) {
+             var uid = res.id;
+             Registration.pushToken({provider: 'facebook', uid: uid, token: token, expires_in: expires_in}, function(response){
+               $label.text(response ? 'Facebook' : 'Connected');
+             });
+            });
+          })
+          .fail(function (error) {
+            showNotification(error);
+            $label.text('Facebook');
+          });
+      });
+
+      // Twitter connect button
+      $('#twitter').on('click', function(e){
+        var $label = $(this).find('.text');
+        $label.text('Connecting...');
+        OAuth.initialize('#{APP_CONFIG[:auth][:oauth_io][:app_id]}');
+        OAuth.popup('twitter')
+          .done(function (result) {
+            result.get("/1.1/account/verify_credentials.json").done(function(data) {
+              var uid = data.id_str,
+                token = result.oauth_token,
+                token_secret = result.oauth_token_secret;
+
+              Registration.pushToken({provider: 'twitter', uid: uid, token: token, token_secret: token_secret}, function(response){
+                $label.text(response ? 'Twitter' : 'Connected');
+              });
+            });
+          })
+          .fail(function (error) {
+            showNotification(error);
+            $label.text('Twitter');
+          });
+      });
+
+      // Weibo connect button
+      $('#weibo').on('click', function(e){
+        var $label = $(this).find('.text');
+        $label.text('#{t('my_account.social.connecting')}');
+        OAuth.initialize('#{APP_CONFIG[:auth][:oauth_io][:app_id]}');
+        OAuth.popup('sinaweibo')
+          .done(function (result) {
+            result.get('/2/account/get_uid.json').done(function(data) {
+              var uid = data.uid,
+                token = result.access_token;
+              Registration.pushToken({provider: 'weibo', uid: uid, token: token}, function(response){
+                $label.text(response ? "#{t('social_network.weibo')}" : "#{t('my_account.connected')}");
+              });
+            });
+          })
+          .fail(function (error) {
+            showNotification(error);
+            $label.text("#{t('social_network.weibo')}");
+          });
+      });
+
+      // Tencent Weibo connect button
+      $('#tqq').on('click', function(e){
+        var $label = $(this).find('.text');
+        $label.text('#{t('my_account.social.connecting')}');
+        OAuth.initialize('#{APP_CONFIG[:auth][:oauth_io][:app_id]}');
+        OAuth.popup('tencentweibo')
+          .done(function (result) {
+            var uid = result.openid,
+              token = result.access_token;
+            Registration.pushToken({provider: 'tqq', uid: uid, token: token}, function(response){
+              $label.text(response ? "#{t('social_network.tqq')}" : "#{t('my_account.connected')}");
+            });
+          })
+          .fail(function (error) {
+            showNotification(error);
+            $label.text("#{t('social_network.tqq')}");
+          });
+      });
+    });

@@ -1,0 +1,13 @@
+$icons-layout: vertical;
+$icons-spacing: 20px;
+@import 'mobile/icons/*.png';
+@include all-icons-sprites(true);
+
+@import 'mobile/settings/*.png';
+@include all-settings-sprites(true);
+
+@import 'mobile/search-menu/*.png';
+@include all-search-menu-sprites(true);
+
+@import 'mobile/reviews/*.png';
+@include all-reviews-sprites(true);

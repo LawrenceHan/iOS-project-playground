@@ -1,0 +1,220 @@
+!!!
+%html
+  %head
+    %meta{content: "initial-scale=1.0, user-scalable=no", name: "viewport"}/
+    = csrf_meta_tags
+    :css
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      section { margin: 3px; padding: 3px; }
+      #full-height-container {
+        box-sizing: border-box;
+        height: 100vh;
+        width: 100%;
+        padding-top: 50px;
+      }
+
+      #map-canvas {
+        height: 100%;
+      }
+
+      #header {
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        line-height: 50px;
+        padding: 0 30px;
+      }
+
+      input#address {
+        width: 350px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+    %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+    %script{src: "http://maps.googleapis.com/maps/api/js?key=#{APP_CONFIG[:google][:browser_key]}&sensor=false", type: "text/javascript"}
+
+    = javascript_include_tag 'jquery.noty.packaged.min'
+    = javascript_include_tag 'sprintf.min'
+    :javascript
+      $(function() {
+        $(document).ajaxSend(function(e, xhr, options) {
+         var token = $("meta[name='csrf-token']").attr("content");
+          xhr.setRequestHeader("X-CSRF-Token", token);
+        });
+      
+        $.noty.defaults.layout = 'bottomCenter';
+        $.noty.defaults.animation.speed = 250;
+
+        var geocoder =  new google.maps.Geocoder();
+
+        function codeAddress(address, success) {
+          geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              success(results);
+            } else {
+              noty({ text: status, timeout: 1500, type: 'error' });
+            }
+          });
+        }
+
+        var myLatlng = new google.maps.LatLng(#{@lat}, #{@lng});
+        var mapOptions = {
+          center: myLatlng,
+          zoom: #{@zoom},
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+          mapOptions);
+
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          draggable: true,
+          title: "#{@hospital.name}"
+        });
+        marker.setAnimation(google.maps.Animation.DROP);
+        google.maps.event.addListener(marker, 'dragend', function () {
+          $.ajax({
+            url:  '#{update_geocoding_admin_panel_hospital_path(@hospital)}',
+            type: 'PUT',
+            data: {hospital: {latitude: marker.position.lat(), longitude: marker.position.lng()}},
+            success: function(data) {
+              if (data.success) {
+                setLatlngSpan(marker);
+                noty({ text: 'Updated!', timeout: 1500, type: 'success' });
+              } else {
+                noty({ text: data.message, timeout: 1500, type: 'error' });
+              }
+            }
+          });
+        });
+
+        $('#address').keydown(function(event) {
+          if (event.which == 13) {
+            $('#geocode').click();
+          }
+        });
+
+        var newLocationMarker = null;
+
+        $('#geocode').click(function() {
+          codeAddress($('#address').val(), function(results) {
+            console.log(results);
+            var result = results[0];
+
+            clearNewLocationMarker();
+
+            newLocationMarker = new google.maps.Marker({
+              position: result.geometry.location,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                title: result.formatted_address,
+                icon: "#{image_path('mobile/hospital_marker_selected.png')}"
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: infoWindowContent(result)
+            });
+
+            infowindow.open(map, newLocationMarker);
+
+            map.panToBounds(result.geometry.viewport);
+            
+          });
+        });
+
+        function infoWindowContent(result) {
+          $('#info-address').text(result.formatted_address);
+          $('#info-lat').text(result.geometry.location.lat());
+          $('#info-lng').text(result.geometry.location.lng());
+          return $('#info-template').html();
+        }
+
+        function clearNewLocationMarker() {
+          if (newLocationMarker) {
+            newLocationMarker.setMap(null);
+            newLocationMarker = null;
+          } 
+        }
+
+        function updateToNewLocation() {
+          if (newLocationMarker) {
+            $.ajax({
+              url:  '#{update_geocoding_admin_panel_hospital_path(@hospital)}',
+              type: 'PUT',
+              data: {hospital: {latitude: newLocationMarker.position.lat(), 
+                                longitude: newLocationMarker.position.lng()}},
+              success: function(data) {
+                if (data.success) {
+                  marker.setPosition(newLocationMarker.position);
+                  setLatlngSpan(marker);
+                  clearNewLocationMarker();
+                  noty({ text: 'Position updated!', timeout: 1500, type: 'success' });
+                } else {
+                  noty({ text: data.message, type: 'error' });
+                }
+              }
+            });
+            
+          }
+        }
+
+        function setLatlngSpan(marker) {
+          var latlngStr = sprintf("(%.4f, %.4f)", marker.position.lat(), marker.position.lng());
+          $('#latlng').text(latlngStr);
+        }
+
+        window.updateToNewLocation = updateToNewLocation;
+      
+        $('#reload-address').click(function() {
+          $('#address').val("#{@hospital.address}");
+        });
+
+        $('#update-address').click(function() {
+          $.ajax({
+            headers: { 
+              Accept: "application/json",
+            },
+            url:  '#{admin_panel_hospital_path(@hospital)}',
+            type: 'PUT',
+            data: {hospital: { address: $('#address').val() }}
+          }).done(function(data) {
+            noty({ text: 'Address updated!', timeout: 1500, type: 'success' });
+          }).fail(function(error) {
+            noty({ text: data.message, type: 'error' });
+          });        
+        });
+      });
+
+  %body
+    .hidden
+      #info-template
+        %h4 Geocoded:
+        %p
+          Address:
+          %span#info-address
+        %p
+          lat:
+          %span#info-lat
+          lng:
+          %span#info-lng
+        %p
+          %button(onclick="updateToNewLocation()") Update to this location
+
+
+
+    #full-height-container
+      #header
+        #{@hospital.name} <span id="latlng">(#{@lat.round(4)}, #{@lng.round(4)})</span>
+        = text_field_tag 'address', @hospital.address
+        = button_tag 'Geocode', id: 'geocode'
+        = button_tag 'Reload Address', id: 'reload-address'
+        = button_tag 'Update Address', id: 'update-address'
+      #map-canvas
+

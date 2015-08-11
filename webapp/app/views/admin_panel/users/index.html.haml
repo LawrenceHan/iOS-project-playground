@@ -1,0 +1,23 @@
+%h3.text-muted.pull-left= t('headline.index', record: User.model_name.human)
+= form_tag(admin_panel_users_path, method: :get, class: 'pull-right form-inline form-search') do
+  .form-group
+    = text_field_tag(:profile_id, params[:profile_id], placeholder: "Enter Profile ID", class: 'form-control')
+    = text_field_tag(:id, params[:id], placeholder: "Enter ID", class: 'form-control')
+    = text_field_tag(:keyword, params[:keyword], placeholder: "Enter username, email or phone", class: 'form-control')
+  = submit_tag(t('button.search'), class: 'btn btn-info')
+  = link_to t('.export_excel'), export_admin_panel_users_path, class: 'btn btn-success'
+%table.table.table-striped#user_table
+  %thead
+    %tr
+      %th= User.human_attribute_name(:username)
+      %th= User.human_attribute_name(:email)
+      %th= User.human_attribute_name(:phone)
+      %th= User.human_attribute_name(:social_link)
+      %th= User.human_attribute_name(:created_at)
+      %th{ width: 190 }
+
+  %tbody= render @users
+
+= paginate @users
+
+.clearfix= link_to 'New User', new_admin_panel_user_path, class: 'btn btn-success various fancybox.ajax pull-left'

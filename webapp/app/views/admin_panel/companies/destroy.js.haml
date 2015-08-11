@@ -1,0 +1,4 @@
+- if @company.destroyed?
+  $('#company_table tbody tr#company_#{@company.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

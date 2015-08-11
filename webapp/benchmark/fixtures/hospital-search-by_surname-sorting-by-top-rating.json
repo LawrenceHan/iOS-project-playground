@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "王",
+    "type": "Hospital"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

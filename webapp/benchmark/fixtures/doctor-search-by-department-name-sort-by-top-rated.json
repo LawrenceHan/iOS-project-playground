@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "口腔科",
+    "type": "Physician"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

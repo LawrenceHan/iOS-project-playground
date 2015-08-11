@@ -1,0 +1,10 @@
+= navigation_bar(title: t('search.review_search'))
+
+#search-menu
+  #title
+    %span.search-logo= image_tag "mobile/search-menu/logo.png"
+    = t('search.select_criteria')
+
+  = action_button t('search.by_doctors'), bg: 'dark_cyan', icon: 'search-menu-physician', href: mobile_search_review_path(params.merge(type: 'physician'))
+  = action_button t('search.by_hospitals'), bg: 'dark_cyan', icon: 'search-menu-hospital', href: mobile_search_review_path(params.merge(type: 'hospital'))
+  = action_button t('search.by_drugs'), bg: 'dark_cyan', icon: 'search-menu-drug', href: mobile_search_review_path(params.merge(type: 'medication'))

@@ -1,0 +1,176 @@
+---
+en:
+  male: Male
+  female: Female
+  unknown: Unknown
+  一级甲等: "Class 1"
+  一级乙等: "Class 1"
+  一级丙等: "Class 1"
+  一级: "Class 1"
+  一级未评: "Class 1"
+  二级甲等: "Class 2"
+  二级乙等: "Class 2"
+  二级丙等: "Class 2"
+  二级: "Class 2"
+  二级未评: "Class 2"
+  三级甲等: "Class 3"
+  三级乙等: "Class 3"
+  三级丙等: "Class 3"
+  三级: "Class 3"
+  三级未评: "Class 3"
+  未评定: "undefined"
+  私立: "Private"
+
+  public_owned: 'Public'
+  private_owned: 'Private'
+  military_owned: 'Military'
+
+  脊椎科医生: Spine surgeon
+  牙科医生: Dentist
+  内科医生: Internist
+  中医主治医师: Chinese Traditional Medicine physician
+  主治医生: Doctor
+  麻醉科医生: Anesthesiologists
+  主任中医师: Director of Chinese medicine
+  无: None
+  超声诊断医生: Ultrasound diagnosis doctor
+  主任技师: Chief Technician
+  全科主任: General Director
+  药剂科副主任: Deputy Director of Pharmacy
+  理疗顾问: Physiotherapy consultant
+  主任医师: Chief Physician
+  皮肤科医生: Dermatologist
+  内科主任: Medical director
+  医师: Physician
+  消化科医生: Gastroenterology Doctor
+  主管技师: Competent technician
+  急诊医生: Emergency Doctor
+  妇产科医生: Gynecologist
+  实验室与血库主任: Laboratory and director of the blood bank
+  药剂科主任: Pharmacy Director
+  副主任护师: Deputy director of the nurse
+  助理医师: Physician assistant
+  全科医生: GPs
+  放射科医生: Radiologist
+  主管检验师: Competent examiner
+  临床心理科主任: Director of Clinical Psychology
+  住院中医师: Hospital Chinese medicine practitioner
+  主治中医师: Indications practitioners
+  整形外科医生: Plastic surgeon
+  研究员: Researcher
+  口腔正畸医生: Orthodontics doctor
+  副主任医师: Deputy Chief Physician
+  中医科医生: Chinese medicine practitioner
+  药剂科顾问: Pharmacy Advisor
+  主治医师: Physician
+  妇产科主任: Director of Obstetrics and Gynecology
+  风湿病医生: Rheumatologists
+  教授: Professor
+  乳腺外科医生: Breast Surgeon
+  副主任医生: Deputy Director
+  住院医师: Resident physician
+  外科主任: Surgical director
+  医院管理: Hospital Management
+  儿科医生: Pediatrician
+  口腔保健顾问: Oral health care adviser
+  副主任技师: Deputy Chief Technician
+  技师: Technician
+  护师: Nurse
+  副主任中医师: Deputy director of Chinese medicine
+  理疗科主任: Physiotherapy department director
+  主管医师: Competent physician
+  妇科医生: Gynecologist
+  医疗总监: Medical Director
+  主管护师: Charge nurse
+  验光师: Optometrist
+  口腔科种植牙顾问: Dental implant consultant
+  副教授: Associate Professor
+  轮转医师: Rotary Physician
+  放射科总监: Director of Radiology
+  定科住院医师: Scheduled inpatient physician
+  医学博士: Doctor of medicine
+  妇产科院长: Obstetrics Dean
+  主管药师: Chief Pharmacist
+  其他: Other
+  骨科医生: Orthopedic surgeon
+  副主任药师: Deputy Chief Pharmacist
+  药师: Pharmacist
+  儿科主任: Pediatrics
+  超声科医生: Ultrasound doctor
+
+  anonymous: Anonymous
+
+  word:
+    waiting_time: Waiting time
+    not_match: is not match
+    not_found: not found
+
+    male: male
+    female: female
+    unknown: unknown
+
+    m: m
+    km: km
+
+    男: male
+    女: female
+    未知: unknown
+
+    map: Map
+    geocode: 'Geocode'
+  nav:
+    send_push: Send Push Notification
+  messages:
+    successfully_sent_push_to_all: Push notification has been sent to all users!
+    push_payload_too_long: 'Unable to send: Payload size is greater than 256 bytes!'
+  errors:
+    messages:
+      wrong_email: is invalid
+  messages:
+    push_payload_too_long: 'Unable to send: Payload size is greater than 256 bytes!'
+    successfully_sent_push_to_all: Push notification has been sent to all users!
+  nav:
+    send_push: Send Push Notification
+  push_notifications:
+    helpful: "恭喜，有人觉得您在康语上的评价有用哦"
+  word:
+    female: female
+    geocode: Geocode
+    male: male
+    map: Map
+    not_found: not found
+    not_match: is not match
+    unknown: unknown
+    m: m
+    km: km
+    waiting_time: Waiting time
+    "女": female
+    "未知": unknown
+    "男": male
+  decorators:
+    profile_decorator:
+      years_old: Years old
+      height: Height
+      weight: Weight
+  views:
+    admin_panel:
+      push_notifications:
+        index:
+          title: Title
+          push_content: Push content
+          hint: Hint
+          payload_size: Payload size
+          bytes: Bytes
+          get_payload_size: Get payload size
+          send: Send
+      referral_codes:
+        index:
+          generate_form:
+            generate_label: Generate label
+            unit_label: Unit label
+            submit: Submit
+      users:
+        index:
+          export_excel: Export excel
+        profile:
+          no_profile: No profile

@@ -1,0 +1,7 @@
+%p 欢迎您 #{@email}!
+
+%p 请点击以下链接来验证您的邮箱地址:
+
+%p= link_to '确认账号', api_confirm_url(confirmation_token: @token)
+
+%p 谢谢使用康语!

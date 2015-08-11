@@ -1,0 +1,26 @@
+= navigation_bar title: t('review.medication_search')
+
+#search-bar
+  = form_tag mobile_medications_path, id: 'search-form', method: :get do
+    = text_field_tag 'drug_name', params[:drug_name], placeholder: t('review.type_medication_name'),
+      class: 'search-field'
+    - if params[:proceed_to]
+      = hidden_field_tag 'proceed_to', params[:proceed_to]
+    = action_button '', icon: 'icons-magnifying_glass', type: :button,
+      bg: 'dark_cyan', opts: {id: 'search'}
+
+- if @medications
+  #results-count
+    = t('review.found') + "#{@medications.total_count}" + t('review.medications')
+
+  %ul.simple-list
+    = render @medications
+
+
+- content_for :javascript do
+  :javascript
+    $(function() {
+      if (#{@has_more ? 'true' : 'false'}) {
+        $('.simple-list').loadMore('.simple-list li:last');
+      }
+    });

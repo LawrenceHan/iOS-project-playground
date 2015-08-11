@@ -1,0 +1,18 @@
+%h3.text-muted= t('headline.index', record: Feedback.model_name.human)
+
+%table.table.table-striped#feedback_table
+  %thead
+    %tr
+      %th= Feedback.human_attribute_name(:user)
+      %th= Feedback.human_attribute_name(:content)
+      %th{ width: 65 }
+
+  %tbody
+    - @feedback.each do |feedback|
+      %tr{id: "feedback_#{feedback.id}"}
+        %td= feedback.user_email
+        %td= feedback.content
+        %td
+          = link_to t('button.destroy'), admin_panel_feedback_path(feedback), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'
+
+= paginate @feedback

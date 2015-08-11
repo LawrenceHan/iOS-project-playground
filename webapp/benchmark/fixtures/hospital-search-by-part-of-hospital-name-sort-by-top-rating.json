@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "仁济",
+    "type": "Hospital"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

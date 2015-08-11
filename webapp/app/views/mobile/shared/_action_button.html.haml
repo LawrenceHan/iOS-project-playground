@@ -1,0 +1,11 @@
+- inner_html = capture do
+  = image_tag("mobile/#{opts[:bg]}_button.svg", class: 'bg')
+  - if opts[:icon]
+    .button-icon.icons-#{opts[:icon]}
+
+  %span= text
+
+- if opts[:form]
+  = opts[:form].button inner_html, method_opts
+- else
+  = link_to inner_html, opts[:href], method_opts

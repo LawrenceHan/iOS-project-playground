@@ -1,0 +1,4 @@
+- if @feedback.destroyed?
+  $('#feedback_table tbody tr#feedback_#{@feedback.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

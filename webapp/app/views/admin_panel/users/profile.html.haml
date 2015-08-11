@@ -1,0 +1,49 @@
+%h3.text-muted= Profile.model_name.human
+%hr.thin
+#profile_info
+  - if @profile
+    #avatar.text-muted
+      = image_tag @profile.thumb_avatar
+      %br/
+      =Profile.human_attribute_name(:avatar)
+    %p
+      %b #{Profile.human_attribute_name(:gender)}:
+      = @profile.gender
+    %p
+      %b #{Profile.human_attribute_name(:birthdate)}:
+      = @profile.birthdate
+    %p
+      %b #{Profile.human_attribute_name(:height)}:
+      = @profile.height
+    %p
+      %b #{Profile.human_attribute_name(:weight)}:
+      = @profile.weight
+    %p
+      %b #{Profile.human_attribute_name(:pathway)}:
+      = @profile.pathway
+    %p
+      %b #{Profile.human_attribute_name(:occupation)}:
+      = @profile.occupation
+    %p
+      %b #{Profile.human_attribute_name(:education_level)}:
+      = @profile.education_level
+    %p
+      %b #{Profile.human_attribute_name(:country)}:
+      = @profile.country
+    %p
+      %b #{Profile.human_attribute_name(:city)}:
+      = @profile.city
+    %p
+      %b #{Profile.human_attribute_name(:income_level)}:
+      = @profile.income_level
+    %p
+      %b #{Profile.human_attribute_name(:human_conditions)}:
+      = @profile.human_conditions
+    %p
+      %b #{Profile.human_attribute_name(:human_interests)}:
+      = @profile.human_interests
+    %p
+      %b #{Profile.human_attribute_name(:human_completion)}:
+      = @profile.human_completion
+  - else
+    %h3.text-info= t('.no_profile')

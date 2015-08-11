@@ -1,0 +1,5 @@
+- if @medical_experience.errors.empty?
+  $('tr#medical_experience_#{@medical_experience.id}').replaceWith("#{j(render('medical_experience', medical_experience: @medical_experience))}");
+  $.fancybox.close();
+- else
+  alert("#{@medical_experience.errors.full_messages.join('\n')}");

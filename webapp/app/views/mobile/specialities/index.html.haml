@@ -1,0 +1,33 @@
+= navigation_bar title: t('review.doctor_speciality')
+
+#search-bar
+  = text_field_tag 'speciality_name', params[:speciality_name], placeholder: t('review.search_specialities'),
+    class: 'search-field', id: 'search-field', 'ng-model' => 'query'
+  = action_button '', icon: 'icons-magnifying_glass', type: :button,
+      bg: 'dark_cyan', opts: {id: 'search'}
+
+%ul.simple-list.hidden(ng-controller="SpecialityCtrl")
+  %li(ng-repeat="speciality in specialities | filter: query | limitTo: 1000")
+    = link_to proceed_to_path(:speciality) do
+      .arrow
+        = icon 'angle-right'
+        = image_tag 'mobile/dark_cyan_button.svg', class: 'arrow-bg'
+      .name
+        {{speciality.name}}
+
+
+- content_for :javascript do
+  = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js'
+  :javascript
+    window.Specialities = #{@specialities_json};
+  :javascript
+    $(function() {
+      var app = angular.module('CareVoice', []);
+      app.controller('SpecialityCtrl', function($scope) {
+        $scope.specialities = window.Specialities;
+      });
+
+      angular.bootstrap(document, ['CareVoice']);
+
+      $('.simple-list').removeClass('hidden');
+    });

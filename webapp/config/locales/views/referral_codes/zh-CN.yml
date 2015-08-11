@@ -1,0 +1,9 @@
+---
+zh-CN:
+  admin_panel:
+    referral_codes:
+      index:
+        generate_form:
+          generate_label: "生成"
+          unit_label: "个邀请码"
+          submit: "开始生成"

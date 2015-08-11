@@ -1,0 +1,4 @@
+- if @physician.destroyed?
+  $('#physician_table tbody tr#physician_#{@physician.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

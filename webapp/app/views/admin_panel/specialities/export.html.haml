@@ -1,0 +1,11 @@
+%table{border: 1, cellpadding: 2}
+  %thead
+    %tr
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' } ID
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Speciality.human_attribute_name(:name)
+
+  %tbody
+    - @specialities.each do |speciality|
+      %tr
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= speciality.vendor_id
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= speciality.name

@@ -1,0 +1,5 @@
+- if @review.errors.empty?
+  $('tr#review_#{@review.id}').replaceWith("#{j(render('review', review: @review))}");
+  $.fancybox.close();
+- else
+  alert("#{@review.errors.full_messages.join('\n')}");

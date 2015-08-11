@@ -1,0 +1,23 @@
+= link_to proceed_to_path(physician) do
+  .physician-list-cell
+    .side-bar
+      = image_tag 'mobile/location_marker.svg', class: 'location-marker'
+      - if physician.respond_to?(:distance) and physician.distance.respond_to?(:round) and physician.distance < 1.0/0
+        = physician.distance.round(2)
+        %span.gray= t('common.m')
+
+    %ul
+      %li.name= physician.name
+      %li.rating
+        = rating_stars_tag physician.avg_rating
+        = physician.reviews_count
+        %span.gray= t('search.physician.reviews')
+      - if physician.hospital
+        - h_class = physician.hospital.h_class.blank? ? nil : "(#{physician.hospital.h_class})"
+        %li.hospital-name #{physician.hospital.name} #{h_class}
+        - if I18n.locale == :en
+          %li #{physician.hospital.address}
+      %li.physician-speciality= physician.specialities.sort.map(&:name).join(', ')
+      %li
+        - age = physician.birthdate.present? ? "#{physician.age} Years Old" : nil
+        = [physician.position, physician.gender, age].reject(&:blank?).join(' ')

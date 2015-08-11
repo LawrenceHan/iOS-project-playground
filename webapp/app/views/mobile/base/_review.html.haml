@@ -1,0 +1,15 @@
+.review.clearfix
+  = link_to mobile_review_path(review) do
+    .detail
+      .rating-middle{data: {rating: review.avg_rating}}
+      .reviewable_name= review.reviewable_name
+      .note= truncate(review.note, length: review_length)
+      .helpful-date.clearfix
+        .helpful.pull-left= "#{review.helpfuls_count}" + "#{t('review.helpful_votes')}"
+        .date.pull-right= review.created_at.to_date
+
+    - if review.user
+      = link_to review.is_anonymous ? 'javascript:' : [:mobile, review.user] do
+        .user.pull-right{class: linked_to_network_class(review)}
+          .user_avatar= image_tag review.is_anonymous ? review.profile.avatar.small.default_url : review.small_avatar
+          .username= review.username

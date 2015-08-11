@@ -1,0 +1,14 @@
+%h3.text-muted= t('headline.index', record: Blacklist.model_name.human)
+
+%table.table.table-striped#blacklist_table
+  %thead
+    %tr
+      %th= Blacklist.human_attribute_name(:word)
+      %th= Blacklist.human_attribute_name(:created_at)
+      %th{ width: 115 }
+
+  %tbody= render @blacklists
+
+= paginate @blacklists
+
+%div= link_to t('button.create', record: Blacklist.model_name.human), new_admin_panel_blacklist_path, class: 'btn btn-success various fancybox.ajax'

@@ -1,0 +1,57 @@
+= navigation_bar(title: t('step_one.complete_profile'), skip_menu: true)
+.label.block
+  .text-center= t('step_one.completed_desc')
+
+.step-markers= registration_step_markers
+
+= form_for [:mobile, @profile], url: mobile_registrations_step_one_path do |form|
+  = hidden_field_tag :step, 'step_one'
+  = hidden_field_tag :id, @profile.id
+
+
+  .field.avatar
+    = image_tag @profile.avatar.thumb.url, id: 'thumb_avatar'
+    = form.file_field :avatar, class: 'invisible'
+    = image_tag 'mobile/upload_btn.png', id: 'upload_btn'
+  .field.username
+    .arrow-down-wrapper
+      .arrow-down
+    = form.label :username, t('settings.username'), class: 'label block'
+    = form.text_field :username
+  .field.clearfix
+    = form.label :gender, class: 'label inline'
+    = form.hidden_field :gender
+    .pull-right
+      = link_to I18n.t('word.male'), 'javascript: void(0);', class: gender_btn_class(@profile)[:male], id: 'male_btn'
+      = link_to I18n.t('word.female'), 'javascript: void(0);', class: gender_btn_class(@profile)[:female], id: 'female_btn'
+
+  .field.birthdate.clearfix
+    = form.label :birthdate, class: 'label inline'
+    = form.date_field :birthdate, class: 'pull-right'
+
+  = render layout: 'social_connect' do
+    = link_to_button t('common.next'), nil, icon: 'tick', form: form
+
+- content_for :javascript do
+  :javascript
+    $(function(){
+      // Trigger file input
+      $('img#upload_btn').on('click', function(event){
+        event.preventDefault();
+        $('input#profile_avatar').trigger('click');
+      });
+
+      // Select male
+      $('a#male_btn').on('click', function(event){
+        $(this).removeClass('icons-left_off icons-left_on').addClass('icons-left_on');
+        $('a#female_btn').removeClass('icons-right_on').addClass('icons-right_off');
+        $('input#profile_gender').val('male');
+      });
+
+      // Select female
+      $('a#female_btn').on('click', function(event){
+        $(this).removeClass('icons-right_off icons-right_on').addClass('icons-right_on');
+        $('a#male_btn').removeClass('icons-left_on').addClass('icons-left_off');
+        $('input#profile_gender').val('female');
+      });
+    });

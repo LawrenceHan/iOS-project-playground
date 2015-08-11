@@ -1,0 +1,126 @@
+#general
+  #completion
+    = t('review.complete')
+    .completion-percent= @medical_experience.human_completion
+
+  - if I18n.locale == :"zh-CN"
+    = (@medical_experience.created_at || Time.now).strftime("%Y年%-m月%-d日")
+    = t("common.date.#{(@medical_experience.created_at || Time.now).strftime('%A')}")
+  - else
+    = (@medical_experience.created_at || Time.now).strftime("%A %B %-d, %-Y")
+
+  .arrow-down
+#health-condition
+  .section-header
+    %span.reviews= image_tag "mobile/reviews/health_condition_icon.png", width: 25, height: 20
+    = t('review.health_condition')
+    = link_to edit_conditions_path(@medical_experience) do
+      = image_tag 'mobile/plus_button.svg', class: 'plus-button'
+
+  - if @medical_experience.health_condition_ids.present?
+    .section-row
+      .title= t('review.health_condition')
+      .subtitle= @medical_experience.health_conditions.map(&:name).join(', ')
+
+#hospital-review
+  .section-header
+    %span.reviews= image_tag "mobile/reviews/hospital_icon.png", width: 25, height: 22
+    = t('review.hospital_review')
+    - if !@medical_experience.hospital_review
+      = link_to add_hospital_review_path do
+        = image_tag 'mobile/plus_button.svg', class: 'plus-button'
+
+  - if review = @medical_experience.hospital_review
+    .section-row
+      .title= review.hospital.name
+      .subtitle
+        - if I18n.locale == :"zh-CN"
+          = review.created_at.strftime("%Y年%-m月%-d日")
+          = t("common.date.#{review.created_at.strftime('%A')}")
+        - else
+          = review.created_at.strftime("%A %B %-d, %-Y")
+      = action_button t('common.delete'), href: mobile_review_path(review),
+        opts: { method: 'delete', data: {confirm: 'Are you sure?'} }
+
+#physician-reviews
+  .section-header
+    %span.reviews= image_tag "mobile/reviews/physician_icon.png", width: 25, height: 22
+    = t('review.physician_review')
+    = link_to add_physician_review_path do
+      = image_tag 'mobile/plus_button.svg', class: 'plus-button'
+
+  - @medical_experience.physician_reviews.includes(:physician).each do |physician_review|
+    .section-row
+      .title= physician_review.physician.name
+      .subtitle
+        - if I18n.locale == :"zh-CN"
+          = physician_review.created_at.strftime("%Y年%-m月%-d日")
+          = t("common.date.#{physician_review.created_at.strftime('%A')}")
+        - else
+          = physician_review.created_at.strftime("%A %B %-d, %-Y")
+      = action_button t('common.delete'), href: mobile_review_path(physician_review),
+        opts: { method: 'delete', data: {confirm: 'Are you sure?'} }
+
+
+#medication-reviews
+  .section-header
+    %span.reviews= image_tag "mobile/reviews/medication_icon.png", width: 25, height: 20
+    = t('review.medication_review')
+    = link_to mobile_medications_path(proceed_to: 'new_review') do
+      = image_tag 'mobile/plus_button.svg', class: 'plus-button'
+
+  - @medical_experience.medication_reviews.includes(:medication).each do |medication_review|
+    .section-row
+      .title= medication_review.medication.name
+      .subtitle
+        - if I18n.locale == :"zh-CN"
+          = medication_review.created_at.strftime("%Y年%-m月%-d日")
+          = t("common.date.#{medication_review.created_at.strftime('%A')}")
+        - else
+          = medication_review.created_at.strftime("%A %B %-d, %-Y")
+      = action_button t('common.delete'), href: mobile_review_path(medication_review),
+        opts: { method: 'delete', data: {confirm: 'Are you sure?'} }
+
+#others
+  = form_for([:mobile, @medical_experience]) do |f|
+    = hidden_field_tag 'proceed_to', 'edit_conditions', disabled: true, id: 'proceed_to'
+    = hidden_field_tag 'finished', '1'
+    =# hidden_field_tag 'is_anonymous', '1'
+    .fields-group.clearfix
+      %span= t('review.add_visible_mark')
+      - if I18n.locale == :"zh-CN"
+        %br
+        %span= t('review.add_visible_mark2')
+      - if I18n.locale == :"zh-CN"
+        .switch-cn= f.switch :network_visible
+      - elsif I18n.locale == :en
+        = f.switch :network_visible
+
+
+    .fields-group
+      %span= t('review.act_on_behalf')
+      = switch_tag 'behalf_switch', f.object.behalf.present?
+      = f.text_field :behalf, class: 'clear'
+
+    .button-wrapper
+      = action_button t('review.submit'), form: f
+
+- content_for :javascript do
+  :javascript
+    var hasAnySocialNetworkLinked = #{user_signed_in? ? current_user.authentications.any?.to_json : 'false'};
+
+    function createMEAndEditConditions() {
+      $('#proceed_to').prop('disabled', false);
+      $('#new_medical_experience').submit();
+    }
+
+    $(function() {
+      if (!hasAnySocialNetworkLinked) {
+        $('#medical_experience_network_visible').change(function() {
+          if (this.checked) {
+            showNotification("#{t('review.link_warning')}");
+            this.checked = false;
+          }
+        });
+      }
+    });

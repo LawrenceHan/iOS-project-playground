@@ -1,0 +1,4 @@
+- if @<%= singular_table_name %>.destroyed?
+  $('#<%= singular_table_name %>_table tbody tr#<%= singular_table_name %>_#{@<%= singular_table_name %>.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

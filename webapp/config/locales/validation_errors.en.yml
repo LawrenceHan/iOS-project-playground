@@ -1,0 +1,6 @@
+---
+en:
+  errors:
+    attributes:
+      birthdate:
+        inclusion: "- you must be at least 17 years old"

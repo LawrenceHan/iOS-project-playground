@@ -1,0 +1,42 @@
+= navigation_bar title: t('settings.personal_info')
+
+= form_for current_user.profile, url: mobile_my_account_path(from: 'personal_infos'), html: {id: 'edit-profile'} do |f|
+  = hidden_field_tag :proceed_to, settings_mobile_my_account_path
+  = hidden_field_tag :from, action_name
+
+  .field-group
+    = f.label :username, t('settings.username'), class: 'block'
+    = f.text_field :username
+  .field-group
+    = f.label :gender, t('settings.gender'), class: 'block'
+    - class_hash = { 'female' => 'left', 'male' => 'right' }
+    .gender-switch{ class: class_hash[f.object.gender] }
+      = f.radio_button :gender, 'female', class: 'hidden'
+      = f.radio_button :gender, 'male', class: 'hidden'
+      = f.label :gender_female, class: 'left' do
+        .icons-left_on= t('settings.female')
+        .icons-left_off= t('settings.female')
+      = f.label :gender_male, class: 'right' do
+        .icons-right_on= t('settings.male')
+        .icons-right_off= t('settings.male')
+
+  .field-group
+    = f.label :birthdate, t('settings.birthdate'), class: 'block'
+    = f.date_field :birthdate
+
+
+  .button-wrapper
+    = action_button t('settings.submit'), form: f
+
+
+
+- content_for :javascript do
+  :javascript
+    $(function() {
+      $('label.left').click(function() {
+        $(this).closest('.gender-switch').addClass('left').removeClass('right');
+      });
+      $('label.right').click(function() {
+        $(this).closest('.gender-switch').removeClass('left').addClass('right');
+      });
+    });

@@ -1,0 +1,9 @@
+%tr{id: "medication_#{medication.id}"}
+  %td= medication.vendor_id
+  %td= medication.name
+  %td= medication.code
+  %td= medication.company
+  %td= medication.avg_rating
+  %th
+    = link_to t('button.edit'), edit_admin_panel_medication_path(medication), class: 'btn btn-primary btn-xs various fancybox.ajax'
+    = link_to t('button.destroy'), admin_panel_medication_path(medication), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

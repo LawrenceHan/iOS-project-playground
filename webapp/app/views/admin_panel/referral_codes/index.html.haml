@@ -1,0 +1,20 @@
+%div
+  %h3.inline.text-muted= t('headline.index', record: ReferralCode.model_name.human)
+
+  .well.inline.pull-right
+    = simple_form_for(:referral_code, url: admin_panel_referral_codes_path, remote: true) do |f|
+      = f.label :count, t('.generate_form.generate_label')
+      = f.input_field :count, as: :integer, style: 'width: 50px', value: 5
+      = f.label :count, t('.generate_form.unit_label')
+      = f.button :submit, "#{t('.generate_form.submit')}", class: 'btn btn-success btn-sm'
+%table.table.table-striped#referral_code_table
+  %thead
+    %tr
+      %th= ReferralCode.human_attribute_name(:code)
+      %th= ReferralCode.human_attribute_name(:using_times)
+      %th= ReferralCode.human_attribute_name(:memo)
+      %th{ width: 115 }
+
+  %tbody= render @referral_codes
+
+= paginate @referral_codes

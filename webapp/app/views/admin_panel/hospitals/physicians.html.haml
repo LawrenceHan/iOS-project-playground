@@ -1,0 +1,25 @@
+%h3.text-muted= t('headline.index', record: Physician.model_name.human)
+
+%table.table.table-striped#physician_table
+  %thead
+    %tr
+      %th ID
+      %th= Physician.human_attribute_name(:name)
+      %th= Physician.human_attribute_name(:gender)
+      %th= Physician.human_attribute_name(:age)
+      %th= Physician.human_attribute_name(:position)
+      %th= Physician.human_attribute_name(:department)
+      %th= Physician.human_attribute_name(:speciality)
+      %th= Physician.human_attribute_name(:avg_rating)
+
+  %tbody
+    - @physicians.each do |physician|
+      %tr
+        %td= physician.vendor_id
+        %td= physician.name
+        %td= physician.gender
+        %td= physician.age
+        %td= physician.position
+        %td= physician.department_name
+        %td= physician.human_specialities
+        %td= physician.avg_rating

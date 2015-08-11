@@ -1,0 +1,5 @@
+- if @admin.errors.empty?
+  $('tr#admin_#{@admin.id}').replaceWith("#{j(render('admin', admin: @admin))}");
+  $.fancybox.close();
+- else
+  alert("#{@admin.errors.full_messages.join('\n')}");

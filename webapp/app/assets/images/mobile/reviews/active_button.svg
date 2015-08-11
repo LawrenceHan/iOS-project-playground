@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve" preserveAspectRatio="none">
+  <rect width="50" height="50" style="fill: #f28e25;" />
+  <polygon style="fill: #e57326; stroke-width: 0; stroke: #e57326;" points="0,0 0,50 25,25 " />
+  <polygon style="fill: #dc5f26; stroke-width: 0; stroke: #dc5f26;" points="0,0 50,0 25,25 " />
+  <polygon style="fill: #e57326; stroke-width: 0; stroke: #e57326;" points="50,0 25,25 50,50 " />
+  <polygon style="fill: #f28e25; stroke-width: 0; stroke: #f28e25;" points="0,50 25,25 50,50 " />
+</svg>

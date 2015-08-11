@@ -1,0 +1,64 @@
+%h3.text-muted.pull-left= t('headline.index', record: Hospital.model_name.human)
+= form_tag(admin_panel_hospitals_path, method: :get, class: 'pull-right form-inline text-right', style: 'width: 80%;') do
+  %div
+    .form-group
+      = text_field_tag(:lat, params[:lat], placeholder: 'Latitude', class: 'form-control')
+    .form-group
+      = text_field_tag(:lnt, params[:lng], placeholder: 'Longitude', class: 'form-control')
+    .form-group
+      = label_tag(:keyword, 'Hospital address', class: 'sr-only')
+      = text_field_tag(:keyword, params[:keyword], placeholder: "Enter hospital name", class: 'form-control')
+    = submit_tag t('button.search'), class: 'btn btn-info'
+    = submit_tag t('admin_panel.users.index.export_excel'), class: 'btn btn-success'
+  .col-lg-8.pull-right.vendor_id_range
+    .input-group
+      %span.input-group-addon ID form:
+      = text_field_tag :vendor_id_from, params[:vendor_id_from], class: 'form-control'
+      %span.input-group-addon to
+      = text_field_tag :vendor_id_to, params[:vendor_id_to], class: 'form-control'
+
+%table.table.table-striped#hospital_table
+  %thead
+    %tr
+      %th{ width: 100 } ID
+      %th{ width: 200 }= Hospital.human_attribute_name(:name)
+      %th{ width: 200 }= Hospital.human_attribute_name(:address)
+      %th{ width: 200 }= Hospital.human_attribute_name(:departments)
+      %th{ id: 'h_class', width: 100 }= Hospital.human_attribute_name(:h_class)
+      %th{ width: 50 }= Hospital.human_attribute_name(:avg_rating)
+      %th{ width: I18n.locale.to_s == 'en' ? 295 : 220 }
+
+  %tbody= render @hospitals
+
+= paginate @hospitals
+
+%div= link_to t('button.create', record: Hospital.model_name.human), new_admin_panel_hospital_path, class: 'btn btn-success various fancybox.ajax'
+
+= content_for :top_js, javascript_include_tag("http://maps.googleapis.com/maps/api/js?key=#{APP_CONFIG[:google][:browser_key]}&sensor=false")
+
+:javascript
+  $(document).on('click', 'a.geocode', function(e) {
+    e.preventDefault();
+    var $link, geocoder, address, position, hospitalId;
+    $link = $(e.currentTarget);
+    geocoder = new google.maps.Geocoder();
+    address = $link.data('address');
+    hospitalId = $link.data('hospital-id');
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        position = results[0].geometry.location;
+        if (confirm('提交当前位置？')) {
+          $.ajax({
+            url:  '/admin_panel/hospitals/' + hospitalId + '/update_geocoding',
+            type: 'PUT',
+            data: {hospital: {latitude: position.pb, longitude: position.qb}},
+            success: function(data) {
+              if (!data.success) { alert(data.message); }
+            }
+          });
+        }
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  });

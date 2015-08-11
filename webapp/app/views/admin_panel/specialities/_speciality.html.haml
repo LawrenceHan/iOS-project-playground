@@ -1,0 +1,7 @@
+%tr{id: "speciality_#{speciality.id}"}
+  %td= speciality.vendor_id
+  %td= speciality.name
+  %td= speciality.created_at
+  %td
+    = link_to t('button.edit'), edit_admin_panel_speciality_path(speciality), class: 'btn btn-primary btn-xs various fancybox.ajax'
+    = link_to t('button.destroy'), admin_panel_speciality_path(speciality), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

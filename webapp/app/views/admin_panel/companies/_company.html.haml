@@ -1,0 +1,7 @@
+%tr{id: "company_#{company.id}"}
+  %td= company.vendor_id
+  %td= company.name
+  %td= company.created_at
+  %td
+    = link_to t('button.edit'), edit_admin_panel_company_path(company), class: 'btn btn-primary btn-xs various fancybox.ajax'
+    = link_to t('button.destroy'), admin_panel_company_path(company), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

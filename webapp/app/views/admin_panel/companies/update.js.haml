@@ -1,0 +1,5 @@
+- if @company.errors.empty?
+  $('tr#company_#{@company.id}').replaceWith("#{j(render('company', company: @company))}");
+  $.fancybox.close();
+- else
+  alert("#{@company.errors.full_messages.join('\n')}");

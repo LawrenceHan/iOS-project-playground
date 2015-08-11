@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "旭良",
+    "type": "Hospital"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

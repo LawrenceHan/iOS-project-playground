@@ -1,0 +1,8 @@
+---
+zh-CN:
+  admin_panel:
+    users:
+      profile:
+        no_profile: "该用户还未提交任何用户信息!"
+      index:
+        export_excel: "导出Excel"

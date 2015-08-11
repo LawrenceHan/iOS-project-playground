@@ -1,0 +1,52 @@
+= navigation_bar(title: @profile.username) do
+  - if @my_profile
+    #navigation-right
+      = link_to settings_mobile_my_account_path do
+        = image_tag 'mobile/cog.png'
+
+- if @my_profile
+  = link_to edit_mobile_my_account_path do
+    #completion
+      = t('common.profile_completed')
+      .completion-percent= @profile.human_completion
+- else
+  #completion.invisible
+
+#avatar
+  = pie(@profile.completion, radius: 100, color: '#c02327')
+  = image_tag @profile.avatar.thumb.url
+
+#description
+  %p
+    %strong= @description_line
+
+  %p= @profile.conditions.map(&:name).join(', ')
+
+#links
+  - if @my_profile
+    %div{class: "#{ 'my_profile' if I18n.locale == :en}"}
+      = action_button t('my_account.medical_experience'), icon: 'icons-ME_folder',
+        href: mobile_my_account_medical_experiences_path do
+        #me-count= @user.medical_experiences.count
+
+  - else
+    = action_button t('search.reviews'), icon: 'icons-ME_folder',
+      href: mobile_user_reviews_path(@user) do
+      #me-count= @user.reviews.count
+
+
+  #review-counts
+    .arrow-wrapper
+      .arrow
+
+    %table
+      %tr
+        %td.left
+          = image_tag 'mobile/hospital_avatar.png', class: 'icon'
+          = @user.hospital_reviews.count
+        %td.center
+          = image_tag 'mobile/physician_avatar.png', class: 'icon'
+          = @user.physician_reviews.count
+        %td.right
+          = image_tag 'mobile/medication_avatar.png', class: 'icon'
+          = @user.medication_reviews.count

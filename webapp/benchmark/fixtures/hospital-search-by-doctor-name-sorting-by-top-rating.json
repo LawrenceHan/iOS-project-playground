@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "张伟滨",
+    "type": "Hospital"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

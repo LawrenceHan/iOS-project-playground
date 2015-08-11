@@ -1,0 +1,33 @@
+fetch_social_friends:
+  # run every day at 5 AM
+  cron: "0 5 * * *"
+  # cron: "* * * * *"
+  queue: social_network
+  class: FetchSocialFriends
+  args:
+  description: 'Fetch social friends who linked to carevoice'
+
+# fetch_geo_for_hospital:
+#   # run every day at 5 AM
+#   cron: "* 5 * * * "
+#   # cron: "* * * * *"
+#   queue: geo_for_hospital
+#   class: FetchGeo
+#   args:
+#   description: 'Fetch longitude and latitude for hospital'
+
+new_users_email:
+  # run every day at 6pm
+  cron: "0 18 * * *"
+  queue: mail_to_new_users
+  class: MailToNewUsers
+  args:
+  description: 'email for new users'
+
+# weekly_new_users_email:
+#   # run every day at 6pm
+#   cron: "0 18 * * *"
+#   queue: mail_to_has_review_new_users
+#   class: MailToHasReviewNewUsers
+#   args:
+#   description: 'email for existing Users who have published at least one review'

@@ -1,0 +1,13 @@
+%tr{id: "review_#{review.id}"}
+  %td= review.user_phone || review.user_email
+  %td= review.reviewable_type
+  %td= review.reviewable_name
+  %td= review.helpfuls_count
+  %td= review.avg_rating
+  %td= review.completion
+  %td= review.created_at
+  %td= review.human_status
+  %td
+    = review_audit_link_button(review)
+    = link_to t('button.edit'), edit_admin_panel_review_path(review), class: 'btn btn-primary btn-xs various fancybox.ajax'
+    = link_to t('button.destroy'), admin_panel_review_path(review), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

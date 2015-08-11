@@ -1,0 +1,12 @@
+{
+  "query": {
+    "text": "仁济",
+    "type": "Hospital"
+  },
+  "sort": {
+    "distance": {
+      "lat": "31.282726",
+      "lng": "121.471862"
+    }
+  }
+}

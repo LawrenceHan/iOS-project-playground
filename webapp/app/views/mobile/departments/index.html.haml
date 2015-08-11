@@ -1,0 +1,17 @@
+= navigation_bar title: @hospital.name
+
+#results-count
+  = "#{@departments.count}" + " #{t('search.departs_found')}" + " #{@hospital.name}"
+
+
+%ul.simple-list
+  - @departments.each do |department|
+    %li
+      = link_to mobile_hospital_department_physicians_path(@hospital.id, department.id,
+        params: params.slice('proceed_to')) do
+        .arrow
+          = icon 'angle-right'
+          = image_tag 'mobile/dark_cyan_button.svg', class: 'arrow-bg'
+        .name
+          = department.name
+          .number= @physicians_counts_hash[department.id]

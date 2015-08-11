@@ -1,0 +1,9 @@
+{
+  "query": {
+    "text": "延安东路",
+    "type": "Hospital"
+  },
+  "sort": {
+    "ranking": "true"
+  }
+}

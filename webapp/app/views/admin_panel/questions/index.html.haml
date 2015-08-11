@@ -1,0 +1,14 @@
+%h3.text-muted= t('headline.index', record: Question.model_name.human)
+
+%table.table.table-striped#question_table
+  %thead
+    %tr
+      %th= Question.human_attribute_name(:category)
+      %th= Question.human_attribute_name(:content)
+      %th{ width: 115 }
+
+  %tbody= render @questions
+
+= paginate @questions
+
+%div= link_to t('button.create', record: Question.model_name.human), new_admin_panel_question_path, class: 'btn btn-success various fancybox.ajax'

@@ -1,0 +1,6 @@
+---
+zh-CN:
+  errors:
+    attributes:
+      birthdate:
+        inclusion: "- 您必须大于17岁"

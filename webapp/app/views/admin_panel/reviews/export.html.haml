@@ -1,0 +1,58 @@
+%table{border: 1, cellpadding: 2}
+  %thead
+    %tr
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:user)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:type)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:reviewable_name)
+      - if @klass == PhysicianReview
+        %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Physician.human_attribute_name(:hospital_name)
+        %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Physician.human_attribute_name(:speciality)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:avg_rating)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:helpfuls)
+      - if @klass == MedicationReview
+        %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Medication.human_attribute_name(:eph_name)
+        %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:dosage)
+        %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:intake_frequency)
+        %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:duration)
+        %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:adverse_effects)
+        %th{ style: 'background-color: #999; font-size: 14px; height: 26px' } Master ID
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:completion)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:note)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:status)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:created_at)
+      / %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= @klass.human_attribute_name(:avg_rating)
+      - @questions.each do |content|
+        %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= content
+
+  %tbody
+    -  @reviews.each do |review|
+      %tr
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.user_phone || review.user_email
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.reviewable_type
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.reviewable_name
+        - if @klass == PhysicianReview
+          %th{ style: 'font-size: 12px; text-align: left; padding: 3px; vertical-align: top;' }= review.physician.hospital_name
+          %th{ style: 'font-size: 12px; text-align: left; padding: 3px; vertical-align: top;' }= review.physician_human_specialities
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.avg_rating
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.helpfuls_count
+        - if @klass == MedicationReview
+          %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.medication_eph_name
+          %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.dosage
+          %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.intake_frequency
+          %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.duration
+          %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.adverse_effects
+          %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.medication.try(:master_id)
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.completion
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.note
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.human_status
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= review.created_at
+        / %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= avg_ratings_preview(review.question_avg_ratings)
+        - question_avg_ratings = review.question_avg_ratings
+        - @questions.each do |content|
+          %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= question_avg_ratings[content]
+
+      / %tr
+      /   - colspan_num = ((@klass == PhysicianReview) ? 9 : (@klass == MedicationReview ? 14 : 7))
+      /   %td{style: "background-color: #acd6ff;"}
+      /   %td{colspan: 2, style: "background-color: #acd6ff;"}= render 'ratings', ratings: review.question_avg_ratings
+      /   %td{colspan: colspan_num, style: "background-color: #acd6ff;"}

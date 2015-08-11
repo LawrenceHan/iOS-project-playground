@@ -1,0 +1,49 @@
+.top_logo.result-page
+  - if I18n.locale == :en
+    = image_tag('mobile/tutorial/intro_logo.png')
+  - elsif I18n.locale == :"zh-CN"
+    = image_tag 'zh_logo_240.png', id: 'logo'
+.summay
+  .date
+    %div= t('guest_flow.result.title')
+    %span= @medical_experience.created_at.to_date
+  = completion_pie(@medical_experience.completion, wrapper: true)
+  .title= t('guest_flow.result.subtitle')
+
+= separator_tag
+
+.medical-experience-cell
+  .left
+    = completion_pie(@medical_experience.completion, wrapper: true)
+    .rating-small{ data: {rating: @medical_experience.avg_rating} }
+    .date= @medical_experience.created_at.to_date
+    .arrow-left-lightblue
+    .arrow-left-darkblue
+  .right
+    - @medical_experience.reviews.each do |review|
+      .review
+        .avatar= reviewable_avatar(review.type)
+        .detail
+          .reviewable_name= review.reviewable_name
+          .review_completion_wrapper
+            .review_completion{style: "width: #{number_to_percentage(review.completion * 100, precision: 0)}"}
+
+#actions-section
+  = link_to_button t('common.search'), mobile_search_path, icon: 'search', bg: 'dark_cyan', class: 'dark_cyan search_btn'
+  = link_to_button t('guest_flow.landing.sign_in'), mobile_sign_in_path, icon: 'login'
+  = link_to_button t('guest_flow.landing.register'), mobile_sign_up_path, icon: 'register', bg: 'dark_cyan'
+
+- content_for :javascript do
+  :javascript
+    $(function(){
+      // Raty
+      $('.rating-small').raty({
+        readOnly: true,
+        starOff : '#{asset_path("mobile/icons/star-off.png")}',
+        starOn  : '#{asset_path("mobile/icons/star-on.png")}',
+        width: 130,
+        score: function() {
+          return $(this).data('rating');
+        }
+      });
+    });

@@ -1,0 +1,203 @@
+.physicians-controller {
+  .page {
+
+    .icon-btn .three-bars {
+      max-height: 45px !important;
+    }
+
+    .info.hospital {
+      margin-bottom: 40px;
+
+      .details {
+        .attr {
+          line-height: 24px;
+
+          &.hospital_name {
+            font-size: 20px;
+          }
+          &.waiting_time {
+            font-size: 16px;
+
+            span { color: #024757; }
+          }
+        }
+      }
+    }
+
+    .highly_reted_deps {
+      .title, .deps {
+        padding: 10px;
+        font-size: 20px;
+      }
+
+      .title {
+        background-color: #f2f6f6;
+        color: #666;
+      }
+      .deps {
+        background-color: #d9e4e6;
+        margin: 0 0 5px;
+
+        span {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.hospitals-controller {
+  .map-disabled {
+    #map-canvas {
+      display: none;
+    }
+
+    .list-placeholder {
+      display: none;
+    }
+  }
+
+  #navigation-right {
+    font-size: 0.8em;
+
+    .button {
+      height: 100%;
+      line-height: 2.7rem;
+    }
+  }
+
+
+  #navigation {
+    z-index: 10;
+  }
+
+  #map-container {
+    position: relative;
+  }
+
+  #map-canvas {
+    height: 100%;
+    .loading-indicator {
+      width: 206px;
+      margin: 10% auto;
+    }
+  }
+
+  #search-layer {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding-top: 63px;
+    pointer-events: none;
+    @include box-sizing(border-box);
+
+  }
+
+  #search-bar, #search-results, .list-placeholder {
+    pointer-events: auto;
+  }
+
+  #search-results-container {
+    height: 100%;
+    margin-top: -70px;
+    padding-top: 70px;
+    @include box-sizing(border-box);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #notification {
+    background-color: rgba(2, 107, 129, 0.8);
+    padding: 1em 0;
+    color: white;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    display: none;
+  }
+
+  #search-results {
+    height: 100%;
+    overflow: auto;
+    @include transition(height .25s, opacity .25s, bottom .25s);
+
+    &.condensed {
+      height: 7.75em;
+      position: absolute;
+      bottom: -7em;
+      width: 100%;
+      overflow: hidden;
+
+      &.selected {
+        bottom: 0;
+      }
+    }
+  }
+
+
+
+  .list-placeholder {
+    height: 10em;
+  }
+}
+
+.hospital-list-cell {
+  display: block;
+  position: relative;
+  background-color: rgba(2, 107, 129, 0.8);
+  color: white;
+  font-size: 0.9em;
+  margin: 3px auto;
+  padding: 10px;
+  height: 7.5em;
+
+  &:link, &:visited {
+    text-decoration: none;
+    color: white;
+  }
+
+  .side-bar {
+    background-color: rgba(53, 137, 154, 0.4);
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+    text-align: center;
+    @include box-sizing(border-box);
+  }
+
+  .icon {
+    display: block;
+    margin: 10px auto;
+    max-width: 65%;
+  }
+
+  .location-marker {
+    vertical-align: baseline;
+  }
+
+  .rating-star {
+    height: 1.5em;
+    margin: 0.1em;
+    width: auto;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0 0 0 20%;
+    padding: 0;
+  }
+
+  li {
+    margin: 5px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

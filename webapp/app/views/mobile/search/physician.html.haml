@@ -1,0 +1,14 @@
+= navigation_bar title: t('review.doctor')
+
+#search-menu
+  #title
+    .search-menu-physician_avatar
+    = t('review.search_doctor_by')
+  %div{class: "#{'search-physician-cn' if I18n.locale == :'zh-CN'}"}
+    = action_button t('review.by_name'), href: mobile_physicians_path(params.slice(:proceed_to)),
+      bg: 'dark_cyan', icon: 'search-menu-physician'
+    = action_button t('review.by_hospital'),
+      href: mobile_hospitals_path( {view_departments: 1}.merge(params.slice(:proceed_to)) ),
+      bg: 'dark_cyan', icon: 'search-menu-hospital'
+    = action_button t('review.by_speciality'), href: mobile_specialities_path(params.slice(:proceed_to)),
+      bg: 'dark_cyan', icon: 'search-menu-physician_specialty'

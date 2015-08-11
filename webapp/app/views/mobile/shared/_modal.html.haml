@@ -1,0 +1,20 @@
+#notificationModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog.modal-dialog-center
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title.text-center= t('common.app_title')
+      .modal-body.text-center
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"}= t('common.close')
+
+#confirmationModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog.modal-dialog-center
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title.text-center= t('common.app_title')
+      .modal-body.text-center
+      .modal-footer
+        %button.btn.btn-default.btn-cancel{"data-dismiss" => "modal", type: "button"}= t('common.cancel')
+        %button.btn.btn-primary.btn-ensure{"data-dismiss" => "modal", type: "button"}= t('common.ensure')

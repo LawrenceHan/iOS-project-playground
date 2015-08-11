@@ -1,0 +1,4 @@
+- if @medication.destroyed?
+  $('#medication_table tbody tr#medication_#{@medication.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

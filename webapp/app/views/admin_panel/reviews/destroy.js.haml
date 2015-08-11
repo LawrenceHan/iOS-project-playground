@@ -1,0 +1,4 @@
+- if @review.destroyed?
+  $('#review_table tbody tr#review_#{@review.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

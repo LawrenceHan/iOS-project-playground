@@ -1,0 +1,5 @@
+- if @physician.errors.empty?
+  $('tr#physician_#{@physician.id}').replaceWith("#{j(render('physician', physician: @physician))}");
+  $.fancybox.close();
+- else
+  alert("#{@physician.errors.full_messages.join('\n')}");

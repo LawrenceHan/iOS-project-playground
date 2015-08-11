@@ -1,0 +1,13 @@
+---
+en:
+  decorators:
+    profile:
+      female: Female
+      height: "%{height}m"
+      male: Male
+      unknown: Unknown
+      weight: "%{weight}kg"
+      years_old: "%{years} YO"
+      "女": Female
+      "未知": Unknown
+      "男": Male

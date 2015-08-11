@@ -1,0 +1,38 @@
+#login-header
+  - if I18n.locale == :en
+    = image_tag 'mobile/login_logo.png', id: 'logo'
+  - elsif I18n.locale == :"zh-CN"
+    = image_tag 'zh_logo_240.png', id: 'logo'
+
+= separator_tag
+
+= form_for @user, url: mobile_sign_up_path, html: {class: 'form'} do |f|
+  #login-fields-section
+    = f.email_field :email, placeholder: t('common.email'), class: 'icons-email'
+    = f.password_field :password, placeholder: t('common.password'), class: 'icons-password'
+    .input-wrapper.icons-phone
+      = f.phone_field :phone, placeholder: t('signup.phone')
+      = action_button t('signup.validate'), opts: { id: 'validate_button' }, href: 'javascript:'
+
+    = f.text_field :sms_token, placeholder: t('signup.validation_code'), class: 'icons-validation_code'
+    .input-section.align-center.smaller
+      = t('signup.i_agree_to')
+      - if I18n.locale == :en
+        = link_to t('signup.terms'), mobile_terms_path, class: 'link', target: '_blank'
+      - elsif I18n.locale == :"zh-CN"
+        = link_to t('signup.terms'), api_terms_path, class: 'link', target: '_blank'
+
+  #login-actions-section
+    = action_button t('common.sign_up'), icon: 'icons-register', form: f
+    = action_button t('common.sign_in'), bg: 'dark_cyan', icon: 'icons-login', href: mobile_sign_in_path
+
+- content_for :javascript do
+  :javascript
+    $(function() {
+      $('#validate_button').click(function() {
+        $.post('#{mobile_request_validation_path}',
+               { 'phone': $('#user_phone').val() }).done(function(message) {
+          showNotification(message);
+        });
+      });
+    });

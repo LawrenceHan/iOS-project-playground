@@ -1,0 +1,46 @@
+$texty_inputs: 'input[type=text], input[type=password], input[type=url], input[type=tel], input[type=number], input[type=color], input[type=email], input[type=search]';
+
+@mixin placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+@mixin arrow-up($color, $width, $height) {
+  width: 0;
+  height: 0;
+  border-left: $width / 2 solid transparent;
+  border-right: $width / 2 solid transparent;
+
+  border-bottom: $height solid $color;
+}
+
+@mixin arrow-down($color, $width, $height) {
+  width: 0;
+  height: 0;
+  border-left: $width / 2 solid transparent;
+  border-right: $width / 2 solid transparent;
+
+  border-top: $height solid $color;
+}
+
+@mixin arrow-left($color, $width, $height) {
+  width: 0;
+  height: 0;
+  border-top: $width / 2 solid transparent;
+  border-bottom: $width / 2 solid transparent;
+
+  border-right: $height solid $color;
+}
+
+$small: 480px;
+$large: 1080px;
+@mixin respond-to($width) {
+  @if $width == 480 {
+    @media only screen and (max-width: $small) { @content; }
+  }
+  @else if $width == 1080 {
+    @media only screen and (min-width: $small + 1) and (max-width: $large) { @content; }
+  }
+}

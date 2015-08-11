@@ -1,0 +1,5 @@
+- if @symptom.errors.empty?
+  $('tr#symptom_#{@symptom.id}').replaceWith("#{j(render('symptom', symptom: @symptom))}");
+  $.fancybox.close();
+- else
+  alert("#{@symptom.errors.full_messages.join('\n')}");

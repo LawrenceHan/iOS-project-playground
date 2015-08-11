@@ -1,0 +1,7 @@
+%tr{id: "referral_code_#{referral_code.id}", class: new_tr_color}
+  %td= referral_code.code
+  %td= referral_code.medical_experiences_count
+  %td= referral_code.memo
+  %td
+    = link_to t('button.edit'), edit_admin_panel_referral_code_path(referral_code), class: 'btn btn-primary btn-xs various fancybox.ajax'
+    = link_to t('button.destroy'), admin_panel_referral_code_path(referral_code), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

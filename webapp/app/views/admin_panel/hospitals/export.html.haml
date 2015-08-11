@@ -1,0 +1,19 @@
+%table{border: 1, cellpadding: 2}
+  %thead
+    %tr
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' } ID
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Hospital.human_attribute_name(:name)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Hospital.human_attribute_name(:avg_rating)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Hospital.human_attribute_name(:address)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Hospital.human_attribute_name(:departments)
+      %th{ style: 'background-color: #999; font-size: 14px; height: 26px' }= Hospital.human_attribute_name(:physicians)
+
+  %tbody
+    - @hospitals.each do |hospital|
+      %tr
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= hospital.vendor_id
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= hospital.name
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= hospital.avg_rating
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= hospital.address
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= hospital.departments.map{|x| "#{x.name}(#{x.vendor_id})"}.join(', ')
+        %td{ style: "font-size: 12px; text-align: left; padding: 3px; vertical-align: top;"}= hospital.physicians.map{|x| "#{x.name}(#{x.vendor_id})"}.join(', ')

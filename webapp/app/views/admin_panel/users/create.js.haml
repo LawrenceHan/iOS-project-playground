@@ -1,0 +1,5 @@
+- if @user.errors.empty?
+  $('#user_table tbody').append("#{j(render('user', user: @user))}");
+  $.fancybox.close();
+- else
+  alert("#{@user.errors.full_messages.join('\n')}");

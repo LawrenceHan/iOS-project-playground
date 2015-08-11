@@ -1,0 +1,63 @@
+---
+en:
+  audit: Audit %{stuff}
+  button:
+    audit: Audit
+    confirm: Are you sure?
+    create: New %{record}
+    destroy: Destroy
+    edit: Edit
+    login_as: Login As
+    preview: Preview
+    profile: Profile
+    publish: Publish
+    reject: Reject
+    search: Search
+    show: Show
+  category:
+    hospital: Hospital
+    medication: Medication
+    physician: Physician
+  footer:
+    name: CareVoice
+  headline:
+    edit: Edit %{record}
+    index: "%{record} list"
+    new: New %{record}
+    show: "%{record} info"
+  nav:
+    api_doc: API
+    choose_language: 'Choose language:'
+    logo: Management Panel
+    logout: Logout
+  sidebar:
+    accounts: Accounts
+    data: Data
+    options: Options
+    reviews: Reviews
+    setting: Setting
+  social_network:
+    facebook: Facebook
+    tqq: Tencent Weibo
+    twitter: Twitter
+    weibo: Weibo
+  status:
+    pending: pending
+    published: published
+    read: read
+    rejected: rejected
+    unread: unread
+  unit:
+    hour: 'h '
+    hours: 'h '
+    inr: " INR"
+    minute: min
+    minutes: min
+    rmb: " RMB"
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: Last &raquo;
+      next: Next &rsaquo;
+      previous: "&lsaquo; Prev"
+      truncate: "..."

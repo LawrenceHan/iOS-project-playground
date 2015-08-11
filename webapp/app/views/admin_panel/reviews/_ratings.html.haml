@@ -1,0 +1,14 @@
+%table{border: 1, cellpadding: 1, cellspacing: 1, width: '100%'}
+  %thead
+    %tr
+      %td{ colspan: 2, style: 'font-size: 16px; height: 20px; background-color: #acd6ff;' } Ratings:
+    %tr
+      %td{ style: 'font-size: 12px; height: 20px;' }= Question.human_attribute_name(:content)
+      %td{ style: 'font-size: 12px; height: 20px; text-align: center;' }= Review.human_attribute_name(:avg_rating)
+
+
+  %tbody
+    - ratings.each do |content, value|
+      %tr
+        %td{ style: 'font-size: 12px; vertical-align: top;' }= content
+        %td{ align: :center, style: 'font-size: 12px; vertical-align: top;' }= value

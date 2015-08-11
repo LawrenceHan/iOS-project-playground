@@ -1,0 +1,698 @@
+entity_id,string,entity_type,field_name,language
+55,Pediatrics,Department,name,en
+347,Pediatrics,Department,name,en
+4453,Pediatrics,Department,name,en
+58,Oncology,Department,name,en
+322,Oncology,Department,name,en
+4448,Oncology,Department,name,en
+222,Neurology,Department,name,en
+4445,Neurology,Department,name,en
+218,Gynecology,Department,name,en
+4446,Gynecology,Department,name,en
+4449,General Surgery,Department,name,en
+784,General Medicine,Department,name,en
+4451,General Medicine,Department,name,en
+127,Dermatology,Department,name,en
+4452,Dermatology,Department,name,en
+367,Dentistry,Department,name,en
+4447,Dentistry,Department,name,en
+2202,Cosmetology,Department,name,en
+4450,Cosmetology,Department,name,en
+23334,Qi Zhi,Physician,name,en
+24274,Linda He,Physician,name,en
+24270,Sanjeev Choubey,Physician,name,en
+24271,Melanie Casas,Physician,name,en
+15996,Clark Li,Physician,name,en
+24269,Jerry Tian,Physician,name,en
+24272,Samson Cho,Physician,name,en
+24273,Jaeson Lee,Physician,name,en
+6,Oncology,Speciality,name,en
+8,Pediatrics,Speciality,name,en
+11,Dermatology,Speciality,name,en
+14,Gynecology,Speciality,name,en
+20,Neurology,Speciality,name,en
+21,Neurology,Speciality,name,en
+23,Oncology,Speciality,name,en
+24,Pediatrics,Speciality,name,en
+35,Dermatology,Speciality,name,en
+37,Oncology,Speciality,name,en
+41,Dentistry,Speciality,name,en
+53,General Medicine,Speciality,name,en
+72,Dentistry,Speciality,name,en
+97,Pain,Speciality,name,en
+121,Cosmetology,Speciality,name,en
+513,Cough,Condition,name,en
+514,Phlegm,Condition,name,en
+515,Lung infection,Condition,name,en
+516,pulmonary abscess ,Condition,name,en
+517,Tuberculosis,Condition,name,en
+518,non stop cough,Condition,name,en
+519,Chronic bronchitis,Condition,name,en
+520,Permanent lung disease,Condition,name,en
+521,Asthma,Condition,name,en
+522,Clogged blood vessel,Condition,name,en
+523,High Blood Pressure,Condition,name,en
+524,Poor heart function,Condition,name,en
+525,Idiopathic pulmonary fibrosis,Condition,name,en
+526,proteinosis,Condition,name,en
+527,Diffuse interstitial lung disease,Condition,name,en
+528,nodule disease,Condition,name,en
+529,Pleural effusion,Condition,name,en
+530,Primary lung cancer,Condition,name,en
+531,very slow breathing during sleep,Condition,name,en
+532,Respiratory failure,Condition,name,en
+533,difficulty of breathing,Condition,name,en
+534,aeropleura,Condition,name,en
+535,partial heart attack,Condition,name,en
+536,permanent heart damage,Condition,name,en
+537,fast heart beat,Condition,name,en
+538,slow heart beat,Condition,name,en
+539,no heart beat,Condition,name,en
+540,sino-auriculau heart-block,Condition,name,en
+541,sick sinus syndrome,Condition,name,en
+542,premature atrial contraction,Condition,name,en
+543,auricular tachycardia,Condition,name,en
+544,atrial flutter,Condition,name,en
+545,atrial fibrillation,Condition,name,en
+546,atrioventricular junctional premature beats,Condition,name,en
+547,atrioventricular junctional escape beat,Condition,name,en
+548,non-paroxysmal AV junctional tachyca rdia,Condition,name,en
+549,Reentrant tachycardia,Condition,name,en
+550,anomalous atrioventricular excitation,Condition,name,en
+551,ventricular premature contraction threshold,Condition,name,en
+552,ventricular tachycardia,Condition,name,en
+553,ventricular flutter,Condition,name,en
+554,ventricular fibrillation,Condition,name,en
+555,atrioventricular heart-block,Condition,name,en
+556,intra ventricular block,Condition,name,en
+557,hole in the heart,Condition,name,en
+558,interventricular septal defect,Condition,name,en
+559,Patent ductus arteriosus,Condition,name,en
+560,Bicuspid aortic valve,Condition,name,en
+561,narrowing of blood vessel,Condition,name,en
+562,obstructed blood flow in the heart,Condition,name,en
+563,Upper right part of the heart is abnormally large in size,Condition,name,en
+564,increase in size of the main artery,Condition,name,en
+565,blue baby syndrome,Condition,name,en
+566,Eisenmenger syndrome,Condition,name,en
+567,hyperpiesia,Condition,name,en
+568,Angina,Condition,name,en
+569,heart attack,Condition,name,en
+570,Myocardial ischemia,Condition,name,en
+571,narrowing of the hearts chamber,Condition,name,en
+572,Mitral regurgitation,Condition,name,en
+573,aorta angusta,Condition,name,en
+574,reverse blood flow inside the heart,Condition,name,en
+575,resistance of blood flow inside the heart,Condition,name,en
+576,reverse blood flow inside the heart,Condition,name,en
+577,reverse blood flow inside the heart,Condition,name,en
+578,Multiple valvular disease,Condition,name,en
+579,inflammation inside the heart,Condition,name,en
+580,heart muscle disease,Condition,name,en
+581,Specific cardiomyopathy,Condition,name,en
+582,Myocarditis,Condition,name,en
+583,infected heart,Condition,name,en
+584,heart swelling due to infection,Condition,name,en
+585,tearing of the heart,Condition,name,en
+586,no pulse in the lefs and feet,Condition,name,en
+587,blood clot inside the blood vessels,Condition,name,en
+588,Anxiety,Condition,name,en
+589,gastric reflux,Condition,name,en
+590,esopangeal cancer,Condition,name,en
+591,stomachache,Condition,name,en
+592,stomachache,Condition,name,en
+593,ulcer,Condition,name,en
+594,carcinoma ventriculi,Condition,name,en
+595,enterophthisis,Condition,name,en
+596,peritoneal infection,Condition,name,en
+597,stomachache,Condition,name,en
+598,Regional Enteritis or Inflammation of Bowels,Condition,name,en
+599,colon cancer,Condition,name,en
+600,dyspepsia,Condition,name,en
+601,diarrhea,Condition,name,en
+602,diarrhea,Condition,name,en
+603,Intestinal tumors,Condition,name,en
+604,Appendicitis,Condition,name,en
+605,Intestinal polyps,Condition,name,en
+606,Hemorrhoid,Condition,name,en
+607,archosyrinx,Condition,name,en
+608,anal cleft,Condition,name,en
+609,imporforated anus,Condition,name,en
+610,proctoptoma,Condition,name,en
+611,fatty liver,Condition,name,en
+612,autoimmune hepatitis,Condition,name,en
+613,Jaundice,Condition,name,en
+614,bladder cancer,Condition,name,en
+615,kidney stone,Condition,name,en
+616,liver cirrhosis,Condition,name,en
+617,liver cancer,Condition,name,en
+618,inability of the liver to remove toxins which later infect the blood,Condition,name,en
+619,inflammed pancreas,Condition,name,en
+620,inflammed pancreas,Condition,name,en
+621,pancreatic cancer,Condition,name,en
+622,pancreatic cyst,Condition,name,en
+623,insuloma,Condition,name,en
+624,alimentary tract hemorrhage,Condition,name,en
+625,maga-esophagus,Condition,name,en
+626, oesophageal diverticula,Condition,name,en
+627,kidney infection,Condition,name,en
+628,non specific kidney disease,Condition,name,en
+629,kidney inflammation,Condition,name,en
+630,fibrous nephritis,Condition,name,en
+631,UTI,Condition,name,en
+632,acidic blood due to kidney failure filter it out of the blood,Condition,name,en
+633,failure of the kidney to absorb mineral and excrete it al through urine,Condition,name,en
+634,narrowing of renal blood vessel,Condition,name,en
+635,obstructed renal blood vessel,Condition,name,en
+636,arteriolar nephrosclerosis,Condition,name,en
+637,Obstructed veins in the legs,Condition,name,en
+638,temporary kidney failure,Condition,name,en
+639,permanent kidney failure,Condition,name,en
+640,urethral injury,Condition,name,en
+641,Urinary system tumors,Condition,name,en
+642,TB infection in Urinary System,Condition,name,en
+643,Immature Urinary System,Condition,name,en
+644,distended kidney,Condition,name,en
+645,retention of urine,Condition,name,en
+646,Kidney Stone,Condition,name,en
+647,Iron Deficiency Anemia,Condition,name,en
+648,red blood cell deficiency anemia,Condition,name,en
+649,failure to produce matured blood,Condition,name,en
+650,anemia,Condition,name,en
+651,leukopenia,Condition,name,en
+652,ineffective production of blood cells,Condition,name,en
+653,blood cancer,Condition,name,en
+654,blood cell tumor,Condition,name,en
+655,myelomatosis multiplex,Condition,name,en
+656,blood malignancy disorder,Condition,name,en
+657,hypersplenia,Condition,name,en
+658, allergic purpura,Condition,name,en
+659,decrease in platelet,Condition,name,en
+660,inabilit of the blood to clot,Condition,name,en
+661,vitamin K deficiency,Condition,name,en
+662,disseminated inravascular coagulation; DIC,Condition,name,en
+663,obstructed blood vessel,Condition,name,en
+664,hypophysoma,Condition,name,en
+665,gigantism,Condition,name,en
+666,Simmonds-sheehan syndrome,Condition,name,en
+667, dwarfism,Condition,name,en
+668,Diabetes,Condition,name,en
+669,syndrome of inappropriate ADH secretion; SIADHS,Condition,name,en
+670,infection of lymph node,Condition,name,en
+671,hyperthyrea,Condition,name,en
+672,hypothyroidism,Condition,name,en
+673,thyreoitis,Condition,name,en
+674,Thyroid lump,Condition,name,en
+675,cancerous goiter,Condition,name,en
+676,Cushing syndrome,Condition,name,en
+677,overproduction of aldosterone,Condition,name,en
+678,primary chronic adrenocortica hypofunction,Condition,name,en
+679,chromaffin tumor,Condition,name,en
+680,tumor parathyroid gland,Condition,name,en
+681,tumor in endocrine gland,Condition,name,en
+682,Ectopic endocrine syndrome,Condition,name,en
+683,Hydrocephalus,Condition,name,en
+684,Traumatic brain injury,Condition,name,en
+685,Brain Cancer,Condition,name,en
+686,Intraspinal tumors,Condition,name,en
+687,Intracranial and intraspinal vascular disease,Condition,name,en
+688,consciousness-threshold,Condition,name,en
+689,cognitive handicap,Condition,name,en
+691,ruptured blood vessel in the brain,Condition,name,en
+692,bleeding inside the head,Condition,name,en
+693,Alzheimer's disease,Condition,name,en
+694,Nervous system infections,Condition,name,en
+695,Paralysis of limbs,Condition,name,en
+696,Parkinson's disease,Condition,name,en
+697,Huntington's disease,Condition,name,en
+698,Epilepsy,Condition,name,en
+699,diseases of spinal cord,Condition,name,en
+700,Trigeminal Neuralgia,Condition,name,en
+701,Facial paralysis,Condition,name,en
+702,asthenic bulbar paralysis,Condition,name,en
+703,Periodic paralysis,Condition,name,en
+704,Muscular dystrophy,Condition,name,en
+705,Ataxia,Condition,name,en
+706,Insomnia,Condition,name,en
+707,Narcolepsy,Condition,name,en
+708,congenital malformation,Condition,name,en
+709,bone injury,Condition,name,en
+710,chronic soft tissue injury,Condition,name,en
+711,Chronic damage of bone,Condition,name,en
+712,Chronic injury of cartilage,Condition,name,en
+713,loose spinal disk,Condition,name,en
+714,cervical syndrome,Condition,name,en
+715,medullitis,Condition,name,en
+716,arthritis,Condition,name,en
+717,bone infection,Condition,name,en
+718,bone cancer,Condition,name,en
+719,diabetes,Condition,name,en
+720,Type 1 diabetes mellitus,Condition,name,en
+721,Type 2 diabetes mellitus,Condition,name,en
+722,Other specific types of diabetes,Condition,name,en
+723,Diabetes during pregnancy,Condition,name,en
+724,low blood glucose level,Condition,name,en
+725,abnormal amount of lipids,Condition,name,en
+726,adiposis,Condition,name,en
+727,hyperuricacidemia,Condition,name,en
+728,osteoporosis,Condition,name,en
+729,rheumatoid arthritis,Condition,name,en
+730,immune system attack own body cells and tissues,Condition,name,en
+731,permanent spine joint inflammation,Condition,name,en
+732,dry eyes and mouth,Condition,name,en
+733,blood vessel inflammation,Condition,name,en
+734,Muscle inflammation,Condition,name,en
+735,Thickening of Skin,Condition,name,en
+736,cyanosis,Condition,name,en
+737,osteoarthritis,Condition,name,en
+738,abnormal pain stimulation,Condition,name,en
+739,eyelid disease,Condition,name,en
+740,Lacrimal gland diseases,Condition,name,en
+741,xeroma,Condition,name,en
+742,sore eye,Condition,name,en
+743,Subconjunctival hemorrhage,Condition,name,en
+744,Disease of cornea,Condition,name,en
+745,cataract,Condition,name,en
+746,loss of field of vision,Condition,name,en
+747,blood leak in the eye,Condition,name,en
+748,retinal vascular disease,Condition,name,en
+749,vision loss,Condition,name,en
+750,vision impairment,Condition,name,en
+751,eye cancer,Condition,name,en
+752,ophthalmologist,Condition,name,en
+753,near sighted,Condition,name,en
+754,far sighted,Condition,name,en
+755,inability to focus well,Condition,name,en
+756,eye mucle disalignment,Condition,name,en
+757,blunt vision,Condition,name,en
+758,eye traumas,Condition,name,en
+759,blind,Condition,name,en
+760,Congenital deformity of nose,Condition,name,en
+761,trauma of nose,Condition,name,en
+762,nasitis,Condition,name,en
+763,nasal polyp,Condition,name,en
+764,hemorrhinia,Condition,name,en
+765,inflammamed pharynx,Condition,name,en
+766,inflammed tonsil,Condition,name,en
+767,pharyngeal infection,Condition,name,en
+768,inflammed larynx,Condition,name,en
+769,swollen larynx,Condition,name,en
+770,Congenital deformity of ear,Condition,name,en
+771,trauma of ear,Condition,name,en
+772,inflamation inside ear,Condition,name,en
+773,come and goes loss of hearing,Condition,name,en
+774,deafness,Condition,name,en
+775,otoncus,Condition,name,en
+776,gingivitis,Condition,name,en
+777,paradentitis,Condition,name,en
+778,dental ulcer,Condition,name,en
+779,intoxation,Condition,name,en
+780,calentura,Condition,name,en
+781,frozen stiff,Condition,name,en
+782,altitude disease,Condition,name,en
+783,drowning,Condition,name,en
+784,ictus fulminis,Condition,name,en
+785,Bite,Condition,name,en
+786,Congenital malformations of the male reproductive organs,Condition,name,en
+787,male sexual dysfunction,Condition,name,en
+788,male infertility,Condition,name,en
+789,external abdominal hernia,Condition,name,en
+790,sexually transmitted diseases,Condition,name,en
+791,herpes simplex,Condition,name,en
+792,herpes zoster,Condition,name,en
+793,wart,Condition,name,en
+794,hand-foot-and-mouth disease,Condition,name,en
+795,hot tub rash,Condition,name,en
+796,boil,Condition,name,en
+797,carbuncle,Condition,name,en
+798,skin rash,Condition,name,en
+799,skin infection,Condition,name,en
+800,"ulcer common in boarder of nose, vagina, mouth and tongue",Condition,name,en
+801,leprosy,Condition,name,en
+802,fungal infection,Condition,name,en
+803,STD,Condition,name,en
+804,Pediculosis,Condition,name,en
+805,skin lesion,Condition,name,en
+806,skin lesion,Condition,name,en
+807,allergic reaction pale red skin rashes,Condition,name,en
+808,drug rash,Condition,name,en
+809,solarius dermatitis,Condition,name,en
+810,heat rash,Condition,name,en
+811,red spots due to cold,Condition,name,en
+812,clavus,Condition,name,en
+813,Rhagadia ,Condition,name,en
+814,scabies,Condition,name,en
+815,atopic dermatitis,Condition,name,en
+816,rashes that can cause the first layer of the skin to detached,Condition,name,en
+817,red and white patches commonly known as diaper rash,Condition,name,en
+818,erythroderma,Condition,name,en
+819,flaking or scaling of the skin,Condition,name,en
+820,muscus,Condition,name,en
+821,lupus erythematosus,Condition,name,en
+822,Muscle and Skin Inflammation,Condition,name,en
+823,Hardening of the skin,Condition,name,en
+824,Blisters and Sores,Condition,name,en
+825,purple skin,Condition,name,en
+826,pimple,Condition,name,en
+827,rosacea,Condition,name,en
+828,hair loss,Condition,name,en
+829,excess perspiration or sweating,Condition,name,en
+830,Body Odor,Condition,name,en
+831,hair loss,Condition,name,en
+832,Loss of pigmentation,Condition,name,en
+833,darkening of the face of pregnant woman,Condition,name,en
+834,ephelis,Condition,name,en
+835,hyperpigmentation,Condition,name,en
+836,"dry, thick, scaly skin",Condition,name,en
+837,dark crusty patches on the skin,Condition,name,en
+838,dermatoma,Condition,name,en
+839,STD,Condition,name,en
+840,STD,Condition,name,en
+841,condyloma acuminatum,Condition,name,en
+842,chancroid,Condition,name,en
+843,Acute mastitis,Condition,name,en
+844,Cystic hyperplasia,Condition,name,en
+845,Breast fibroadenoma,Condition,name,en
+846,Intraductal papilloma,Condition,name,en
+847,Breast sarcoma,Condition,name,en
+848,Breast cancer,Condition,name,en
+849,Non-invasive cancer,Condition,name,en
+850,Early invasive carcinoma,Condition,name,en
+851,Special invasive cancer,Condition,name,en
+852,Special non-invasive cancer (the most common clinical prognosis is poor),Condition,name,en
+853,Inflammation of the vulva and vagina,Condition,name,en
+854,Non vulvar intraepithelial neoplasia,Condition,name,en
+855,Cervical inflammation,Condition,name,en
+856,Pelvic inflammatory disease,Condition,name,en
+857,Genital Tuberculosis,Condition,name,en
+858,Vulvar cancer,Condition,name,en
+859,Cervical Cancer,Condition,name,en
+860,Uterine fibroids,Condition,name,en
+861,Endometrial cancer,Condition,name,en
+862,Uterine sarcoma,Condition,name,en
+863,Ovarian tumor,Condition,name,en
+864,Fallopian tube tumor,Condition,name,en
+865,Gestational trophoblastic disease,Condition,name,en
+866,Dysfunctional uterine bleeding,Condition,name,en
+867,Loss of menstrual period,Condition,name,en
+868,Polycystic ovary syndrome,Condition,name,en
+869,Dysmenorrhea,Condition,name,en
+870,Premenstrual Syndrome,Condition,name,en
+871,Menopausal syndrome,Condition,name,en
+872,Hyperprolactinemia,Condition,name,en
+873,Endometriosis,Condition,name,en
+874,Adenomyosis,Condition,name,en
+875,Pelvic organ prolapse,Condition,name,en
+876,Stress urinary incontinence,Condition,name,en
+877,Reproductive tract fistula,Condition,name,en
+878,Infertility,Condition,name,en
+879,Sexual dysfunction,Condition,name,en
+880,Female genital abnormalities,Condition,name,en
+881,"Miscarriage, natural death of fetus",Condition,name,en
+882,Birth less than 9 months old,Condition,name,en
+883,Birth more than 38 weeks old,Condition,name,en
+884,Hypertensive disorder complicating pregnancy,Condition,name,en
+885,Jaundice of Pregnancy,Condition,name,en
+886,Vomiting during pregnancy,Condition,name,en
+887,incomplete pregnancy,Condition,name,en
+888,placental abruption,Condition,name,en
+889,placenta praevia,Condition,name,en
+890,multiple pregnancy,Condition,name,en
+891,very big baby at birth,Condition,name,en
+892,excess fluid during pregnancy,Condition,name,en
+893,inefficiend fluid during pregnancy,Condition,name,en
+894,Fetal growth restriction,Condition,name,en
+895,Congenital fetal malformation,Condition,name,en
+896,stillborn foetus,Condition,name,en
+897,fetal distress,Condition,name,en
+898,premature rupture of membranes,Condition,name,en
+899,Fetal abnormalities,Condition,name,en
+900,perverse labor,Condition,name,en
+901,postpartum hemorrhage,Condition,name,en
+902,amnionic fluid embolism,Condition,name,en
+903,rupture of uterus,Condition,name,en
+904,abnormality of umbilial cord,Condition,name,en
+905,Female reproductive system related Infection,Condition,name,en
+906,postpartum depression,Condition,name,en
+907,puerperal heat-stroke,Condition,name,en
+908,Nutritional disorders,Condition,name,en
+909,Asphyxia,Condition,name,en
+910,Hypoxic-ischemic encephalopathy,Condition,name,en
+911,Intracranial hemorrhage,Condition,name,en
+912,Meconium aspiration syndrome,Condition,name,en
+913,Respiratory distress syndrome,Condition,name,en
+914,Yellow skin color,Condition,name,en
+915,Hemolytic disease of newborn,Condition,name,en
+916,Neonatal infections,Condition,name,en
+917,Neonatal cold injury syndrome,Condition,name,en
+918,Neonatal necrotizing enterocolitis,Condition,name,en
+919,Neonatal hemorrhagic disease,Condition,name,en
+920,Neonatal hypoglycemia and hyperglycemia,Condition,name,en
+921,Neonatal hypocalcemia,Condition,name,en
+922,Newborn umbilical disease,Condition,name,en
+923,Neonatal birth trauma disorders,Condition,name,en
+924,Trisomy 21 (Down's syndrome),Condition,name,en
+925,Phenylketonuria,Condition,name,en
+926,Wilson's disease,Condition,name,en
+927,Immunodeficiency disease,Condition,name,en
+928,Rheumatic fever,Condition,name,en
+929,Kawasaki disease,Condition,name,en
+930,Measles,Condition,name,en
+931,Polio,Condition,name,en
+932,Chicken pox,Condition,name,en
+933,Mumps,Condition,name,en
+934,Congenital hypertrophic pyloric stenosis,Condition,name,en
+935,Intussusception,Condition,name,en
+936,Intestine can not function,Condition,name,en
+937,Diarrhea with blood,Condition,name,en
+938,Infant hepatitis syndrome,Condition,name,en
+939,Respiratory tract infections,Condition,name,en
+940,Congenital heart disease,Condition,name,en
+941,Nutritional anemia,Condition,name,en
+942,Convulsions,Condition,name,en
+943,Purulent meningitis,Condition,name,en
+944,Brain membranes inflammation,Condition,name,en
+945,Cerebral Palsy,Condition,name,en
+946,Muscular dystrophy,Condition,name,en
+947,Early puberty,Condition,name,en
+948,Growth hormone deficiency,Condition,name,en
+949,Child diabetes,Condition,name,en
+950,viral hepatitis,Condition,name,en
+951,influenza,Condition,name,en
+952,Human avian influenza,Condition,name,en
+953,haemorrhagic fever with renal syndrome,Condition,name,en
+954,epidemic encephalitis type B,Condition,name,en
+955,cynolyssa,Condition,name,en
+956,HIV,Condition,name,en
+957,exogenous febrile disease,Condition,name,en
+958,paratyphoid fever,Condition,name,en
+959,cholera,Condition,name,en
+960,bacillary dysentery,Condition,name,en
+961,plague,Condition,name,en
+962,anthrax,Condition,name,en
+963,diphtheria,Condition,name,en
+964,bronchocephalitis,Condition,name,en
+965,Scarlet Fever,Condition,name,en
+966,epidemic cerebrospinal meningitis,Condition,name,en
+967,tuberculosis,Condition,name,en
+968,intestinal amebiasis,Condition,name,en
+969,helopyra,Condition,name,en
+970,Black Fever (Parasite),Condition,name,en
+971,parasitic infection,Condition,name,en
+972,schizophrenia,Condition,name,en
+973,brain organic psychosis,Condition,name,en
+974,neurosis,Condition,name,en
+975,mood disorder,Condition,name,en
+976,dissociative disorder,Condition,name,en
+690,Headache,Condition,name,en
+977,Dry throat,Condition,name,en
+980,Pregnancy,Condition,name,en
+981,Heart disease,Condition,name,en
+982,Scald,Condition,name,en
+983,Burns,Condition,name,en
+984,Sprain,Condition,name,en
+185,cold,Symptom,name,en
+186,cold,Symptom,name,en
+187,cough,Symptom,name,en
+188,phlegm,Symptom,name,en
+189,coughing with blood,Symptom,name,en
+190,pharyngalgia,Symptom,name,en
+191,Shortness of Breath,Symptom,name,en
+192,Difficulty of breathing,Symptom,name,en
+193,anhelation,Symptom,name,en
+194,pectoralgia,Symptom,name,en
+195,chest pain,Symptom,name,en
+196,fever,Symptom,name,en
+197,ague,Symptom,name,en
+198,dark skin color due to lack of oxygen,Symptom,name,en
+199,acropachy,Symptom,name,en
+200,cardiopalmus,Symptom,name,en
+201,Heart Pain,Symptom,name,en
+202,chest pain associated with irregular heart beat,Symptom,name,en
+203,Back pain,Symptom,name,en
+204,breath lessness,Symptom,name,en
+205,coughing out blood,Symptom,name,en
+206,dizzy giddy,Symptom,name,en
+207,hypodynamia,Symptom,name,en
+208,apopsychia,Symptom,name,en
+209,heart attack,Symptom,name,en
+210,hyperpiesia,Symptom,name,en
+211,hypopiesia,Symptom,name,en
+212,fast heart beat,Symptom,name,en
+213,slow hear beat,Symptom,name,en
+214,heart beat stopped,Symptom,name,en
+215,swelling,Symptom,name,en
+216,aglutition,Symptom,name,en
+217,signs to vomit,Symptom,name,en
+218,throw up,Symptom,name,en
+219,belch,Symptom,name,en
+220,Gastric reflux,Symptom,name,en
+221,burning sensation cause by Gastric reflux,Symptom,name,en
+222,anepithymia,Symptom,name,en
+223,Anorexia,Symptom,name,en
+224,early fullness,Symptom,name,en
+225,indigestion,Symptom,name,en
+226,swelling abdomen,Symptom,name,en
+227,abdominal pain,Symptom,name,en
+228,frequent defecation,Symptom,name,en
+229,can not defecate,Symptom,name,en
+230,swelling abdomen,Symptom,name,en
+231,edema on the abdomen,Symptom,name,en
+232,spasm of rectal muscle,Symptom,name,en
+233,"jaundice, yellow colored skin",Symptom,name,en
+234,nose bleeding,Symptom,name,en
+235,morbus niger,Symptom,name,en
+236,hemafecia,Symptom,name,en
+237,low excretion of protein,Symptom,name,en
+238,blood in the urine,Symptom,name,en
+239,low urine,Symptom,name,en
+240,bed wetting,Symptom,name,en
+241,nocturnal emission,Symptom,name,en
+242,urination,Symptom,name,en
+243,urgency,Symptom,name,en
+244,odynuria,Symptom,name,en
+245,removing of toxic waste in the blood and convert it to urine,Symptom,name,en
+246,uroschesis,Symptom,name,en
+247,uracratia,Symptom,name,en
+248,lumbago,Symptom,name,en
+249,lack red blood cells in the blood,Symptom,name,en
+250,ochrodermia,Symptom,name,en
+251,jaundice,Symptom,name,en
+252,xerosis cutis,Symptom,name,en
+253,blood spots in the skin,Symptom,name,en
+254,gum bleeding,Symptom,name,en
+255,nose bleeding,Symptom,name,en
+256,trichoxerosis,Symptom,name,en
+257,dystrophia,Symptom,name,en
+258,dizziness,Symptom,name,en
+259,ringing in the ear,Symptom,name,en
+261,ahypnia,Symptom,name,en
+262,dreaminess,Symptom,name,en
+263,hypomnesis,Symptom,name,en
+264, hypoprosexia,Symptom,name,en
+265,loss control of the tongue,Symptom,name,en
+266,inflammation of the tongue,Symptom,name,en
+267,inflammation of mouth and lips,Symptom,name,en
+268,lymphadenectasis,Symptom,name,en
+269,loss of weight,Symptom,name,en
+270,asarcia,Symptom,name,en
+271,night sweat,Symptom,name,en
+272,repeated infection,Symptom,name,en
+273,excessive mentrual bleeding,Symptom,name,en
+274,drowsiness,Symptom,name,en
+275,eating disorder (he or she will vomit after eating),Symptom,name,en
+276,eating disorder (he or she isn't going to eat),Symptom,name,en
+277,growth retardation,Symptom,name,en
+278,no growth of sexual organs,Symptom,name,en
+279,under develop bone,Symptom,name,en
+280,decreace in bone density that leads to bone deformation,Symptom,name,en
+281,no hair growth,Symptom,name,en
+282,loss of hair,Symptom,name,en
+283,proeotia,Symptom,name,en
+284, hypaphrodisia,Symptom,name,en
+285,anandria,Symptom,name,en
+286,menstrual disorder,Symptom,name,en
+287,increase in cell numbers leads to growth of mammary,Symptom,name,en
+288,abnormal enlargement of male's breast,Symptom,name,en
+289,infertility,Symptom,name,en
+290,Personality change,Symptom,name,en
+291,depression,Symptom,name,en
+292,hypnody,Symptom,name,en
+293,Muscle weakness,Symptom,name,en
+294,muscle spasm,Symptom,name,en
+295,pigmentation of skin,Symptom,name,en
+296,Hypopigmentation of skin,Symptom,name,en
+297,diureses,Symptom,name,en
+298,dipsesis,Symptom,name,en
+299,frequent urination,Symptom,name,en
+300,colliquative sweating,Symptom,name,en
+301,polyphrasia,Symptom,name,en
+302,anxietas,Symptom,name,en
+303,Irritable,Symptom,name,en
+304,hypomnesia,Symptom,name,en
+305,gain weight,Symptom,name,en
+306,obesity,Symptom,name,en
+307,Consciousness disorder,Symptom,name,en
+308,Coma,Symptom,name,en
+309,agitated,Symptom,name,en
+310,Cognitive handicap,Symptom,name,en
+311,Aphasia,Symptom,name,en
+312,defective vision,Symptom,name,en
+313,Nystagmus,Symptom,name,en
+314,epicophosis,Symptom,name,en
+315,Dizziness,Symptom,name,en
+316,Epilepsy,Symptom,name,en
+317,Paralysis,Symptom,name,en
+318,Numbness,Symptom,name,en
+319,sensory disability,Symptom,name,en
+320,Muscle atrophy,Symptom,name,en
+321,Gait abnormalities,Symptom,name,en
+322,Involuntary movements,Symptom,name,en
+323,involuntary face muscle movement,Symptom,name,en
+324,lack of voluntary muscle coordination,Symptom,name,en
+325,polyuria,Symptom,name,en
+326,urethral discharge,Symptom,name,en
+327,urethralgia,Symptom,name,en
+328,tumor of aedea,Symptom,name,en
+329, hypaphrodisia,Symptom,name,en
+330,hyperaesthesia sexualis,Symptom,name,en
+331,PE premature ejaculation or early ejaculation,Symptom,name,en
+332,seminal emissions,Symptom,name,en
+333,inability to ejaculate,Symptom,name,en
+334,ejaculatory duct obstruction,Symptom,name,en
+335,no penile erection,Symptom,name,en
+336,menlulagra,Symptom,name,en
+337,Abnormal vaginal secretions,Symptom,name,en
+338,leukorrhagia,Symptom,name,en
+339,abnormal leukorrhea,Symptom,name,en
+340,vaginal itching,Symptom,name,en
+341,swelling of the outer layer of vagina,Symptom,name,en
+342,herpes,Symptom,name,en
+343,efflorescence,Symptom,name,en
+344,pain,Symptom,name,en
+345,Joint movement disorder,Symptom,name,en
+346,allomorphosis,Symptom,name,en
+347,fear,Symptom,name,en
+348,injured,Symptom,name,en
+349,separation of bone or amputation,Symptom,name,en
+350,excessive hunger,Symptom,name,en
+351,colliquative sweating,Symptom,name,en
+352,tension,Symptom,name,en
+353,anxiety,Symptom,name,en
+354,Cold limbs,Symptom,name,en
+355,fibroma lipoidicum,Symptom,name,en
+356,numbness,Symptom,name,en
+357,nostalgia,Symptom,name,en
+358,muscle weakness,Symptom,name,en
+359,morning stiffness,Symptom,name,en
+360,joint pain,Symptom,name,en
+361,arthrocele,Symptom,name,en
+362,Joint deformities,Symptom,name,en
+363,languor,Symptom,name,en
+364,back pain,Symptom,name,en
+365,Joint movement disorder,Symptom,name,en
+366,poker spine,Symptom,name,en
+367,dry mouth,Symptom,name,en
+368,mouth sore,Symptom,name,en
+370,Dry throat,Symptom,name,en
+260,Headache,Symptom,name,en

@@ -1,0 +1,28 @@
+= navigation_bar(title: t('recover.forgot_password'), skip_menu: true)
+
+= form_for :user, html: {class: 'form', id: 'recover_password'} do |form|
+  #login-fields-section
+    = form.label :email, t('common.email')
+    = form.email_field :email, placeholder: t('common.email'), class: 'icons-email', required: true
+  #login-actions-section
+    = action_button t('recover.reset_password'), icon: 'icons-tick', form: form
+    = action_button t('common.sign_up'), bg: 'dark_cyan', icon: 'icons-register', href: mobile_sign_up_path
+
+- content_for :javascript do
+  :javascript
+    $(function(){
+      $('form#recover_password').on('submit', function(e){
+        e.preventDefault();
+        $('button:submit .button-text').html("#{t('recover.email_sending')}")
+        $.post('/v1/account/password/recover', {email: $('#user_email').val(), locale: 'en'})
+        .complete(function(data){
+          $('button:submit .button-text').html("#{t('recover.reset_password')}")
+          if (data && data.responseJSON && data.responseJSON.error) {
+            showNotification(data.responseJSON.error);
+            $('#user_email').val('');
+          } else {
+            showNotification("#{t('recover.notice')}");
+          }
+        });
+      });
+    });

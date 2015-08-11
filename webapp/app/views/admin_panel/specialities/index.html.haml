@@ -1,0 +1,29 @@
+%h3.text-muted.pull-left= t('headline.index', record: Speciality.model_name.human)
+= form_tag(admin_panel_specialities_path, method: :get, class: 'pull-right form-inline text-right', style: 'width: 80%;') do
+  %div
+    .form-group{style: 'width: 415px;'}
+      = label_tag(:keyword, 'Speciality name', class: 'sr-only')
+      = text_field_tag(:keyword, params[:keyword], placeholder: "Enter speciality name", class: 'form-control')
+    = submit_tag(t('button.search'), class: 'btn btn-info')
+    = submit_tag t('admin_panel.users.index.export_excel'), class: 'btn btn-success'
+  .col-lg-8.pull-right.vendor_id_range
+    .input-group
+      %span.input-group-addon ID form:
+      = text_field_tag :vendor_id_from, params[:vendor_id_from], class: 'form-control'
+      %span.input-group-addon to
+      = text_field_tag :vendor_id_to, params[:vendor_id_to], class: 'form-control'
+
+
+%table.table.table-striped#speciality_table
+  %thead
+    %tr
+      %th ID
+      %th= Speciality.human_attribute_name(:name)
+      %th= Speciality.human_attribute_name(:created_at)
+      %th{ width: 115 }
+
+  %tbody= render @specialities
+
+= paginate @specialities
+
+%div= link_to t('button.create', record: Speciality.model_name.human), new_admin_panel_speciality_path, class: 'btn btn-success various fancybox.ajax'

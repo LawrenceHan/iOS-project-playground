@@ -1,0 +1,135 @@
+= navigation_bar(title: t('settings.my_health_condition'))
+
+#form(ng-controller='searchCtrl')
+  = form_for @scope, url: url_for_scope(@scope), method: @method, html: { :class => 'edit-health-conditions' } do |f|
+    - if params[:proceed_to]
+      = hidden_field_tag 'proceed_to', params[:proceed_to]
+
+    -# Before submition, if no symtoms or conditions were added, these 2 fields should be enabled,
+      To clear those fields on the server side
+    = hidden_field_tag "#{@model_name}[clear_symptom_ids]", '1', disabled: true
+    = hidden_field_tag "#{@model_name}[clear_condition_ids]", '1', disabled: true
+
+    .health-conditions
+      - if @scope.respond_to?(:health_conditions)
+        - @scope.health_conditions.each do |health_condition|
+          .health-condition
+            - if health_condition.is_a?(Symptom)
+              = hidden_field_tag f.object_name + '[symptom_ids][]', health_condition.id
+            - else
+              = hidden_field_tag f.object_name + '[condition_ids][]', health_condition.id
+
+            .name=health_condition.name
+            .remove-button
+              = image_tag 'mobile/dark_cyan_button.svg', class: 'bg'
+              %span.times &times;
+
+  .health-condition
+    %input(type="search" id="add-field" class="add-field" ng-model="query" autocomplete="off"
+           placeholder="#{t('settings.type_condition')}")
+    %label(for="add-field" class='add-button')
+      = image_tag 'mobile/yellow_button.svg', class: 'bg'
+      %span.plus +
+
+    #results.hidden(ng-hide="autocompletionIsEmpty")
+      %ul.parent-list
+        %li(ng-repeat="(category, healthConditions) in filteredAndGroupedHealthConditions")
+          {{category}}
+          %ul.section
+            %li(ng-repeat="hc in healthConditions" class="row")
+              {{hc.name}}
+              .health-condition.hidden
+                %input(type='hidden' name="#{@model_name}[{{hc.type.toLowerCase()}}_ids][]" value="{{hc.id}}")
+                .name {{hc.name}}
+                .remove-button
+                  = image_tag 'mobile/dark_cyan_button.svg', class: 'bg'
+                  %span.times &times;
+
+
+.button-wrapper
+  = action_button t('settings.submit'), href: 'javascript:$(".edit-health-conditions").submit()'
+
+
+- content_for :javascript do
+  -#= javascript_include_tag '//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js'
+  = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js'
+  :javascript
+    var HealthConditions = #{@health_conditions_json};
+  :javascript
+    $(function() {
+      $(".edit-health-conditions").submit(function() {
+        var $healthConditionInputs = $(this).find('input[name="#{@model_name}[symptom_ids][]"], ' +
+                                                  'input[name="#{@model_name}[condition_ids][]"]');
+        if ($healthConditionInputs.length == 0) {
+          $('input[name="#{@model_name}[clear_condition_ids]"], ' +
+            'input[name="#{@model_name}[clear_symptom_ids]"]').prop('disabled', false);
+        }
+      });
+
+
+      $('.edit-health-conditions').on('click', '.remove-button', function() {
+        $(this).closest('.health-condition').remove();
+      });
+
+      var $results = $('#results');
+
+      $('#add-field').on('keydown change', function() {
+        if ($(this).val().length >= 2) {
+          $results.removeClass('hidden');
+        } else {
+          $results.addClass('hidden');
+        }
+      });
+
+      $results.on('click', '.row', function() {
+        $('#add-field').val('');
+        $results.addClass('hidden');
+        $(this).find('.health-condition').clone().removeClass('hidden').appendTo('.health-conditions');
+      });
+
+      function groupByCategory(healthConditions) {
+        var ret = {};
+        for (var i = 0; i < healthConditions.length; i++) {
+          var hc = healthConditions[i];
+          var arr = ret[hc.category];
+          if (!arr) {
+            arr = [];
+            ret[hc.category] = arr;
+          }
+
+          arr.push(hc);
+        }
+
+        return ret;
+      };
+
+      var app = angular.module('CareVoice', []);
+
+      app.controller('searchCtrl', function($scope) {
+        $scope.healthConditions = HealthConditions;
+        $scope.filteredAndGroupedHealthConditions = [];
+        $scope.autocompletionIsEmpty = true;
+
+        $scope.$watch('query', function(newValue) {
+          var filtered = [];
+          var limit = 10;
+          var query = newValue || "";
+
+          // Hand written filter because it can filter and limit at the same time, thus better
+          // performance (like LIMIT and WHERE together in SQL)
+          for (var i = 0; i < $scope.healthConditions.length && filtered.length < limit; i++) {
+            var hc = $scope.healthConditions[i]
+            if (hc.name.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+              filtered.push(hc);
+            }
+          }
+
+          $scope.filteredAndGroupedHealthConditions = groupByCategory(filtered);
+          $scope.autocompletionIsEmpty = $.isEmptyObject($scope.filteredAndGroupedHealthConditions);
+        });
+
+      });
+
+      angular.bootstrap(document, ['CareVoice']);
+    });
+

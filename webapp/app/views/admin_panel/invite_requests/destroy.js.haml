@@ -1,0 +1,4 @@
+- if @invite_request.destroyed?
+  $('#invite_request_table tbody tr#invite_request_#{@invite_request.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

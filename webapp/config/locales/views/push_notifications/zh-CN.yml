@@ -1,0 +1,12 @@
+---
+zh-CN:
+  admin_panel:
+    push_notifications:
+      index:
+        title: "发送推送通知到所有用户"
+        push_content: "消息内容"
+        hint: 点击"计算报文长度"来查看最终生成的消息报文长度。报文长度不得超过256字节
+        get_payload_size: "计算报文长度"
+        send: "发送"
+        payload_size: "报文长度"
+        bytes: "字节"

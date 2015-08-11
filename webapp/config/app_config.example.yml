@@ -1,0 +1,117 @@
+defaults: &defaults
+  # Server node:
+  # for China: china
+  # for India: india
+  node: china
+  # time_zone: New Delhi
+  time_zone: Beijing
+  locale: en
+  # locale: zh-CN
+
+  # geolocation
+  #for shanghai
+  lat: 31.223216
+  long: 121.446437
+
+  #for india
+  # lat: 23.1842107
+  # long: 78.7469883
+
+
+  anonymous_profile_id: 7744
+
+  # use `rake secret` to generate a secure secret key
+  secret_key_base: '<rake secret>'
+
+  host: 'localhost:3000'
+  protocol: 'http://'
+
+  sms_provider: emay
+  emay_key: 6SDK-EMY-6688-KDQTM
+  emay_password: 236629
+
+  auth:
+    weibo:
+      app_id: 1782246452
+      app_secret: 5d3bc1ab14ebbb5d205c3c8924c19fcc
+    tqq:
+      app_id: 801518217
+      app_secret: f0fb906ceff44d49db8aea546773ef36
+    facebook:
+      app_id: 1510085625874404
+      app_secret: 4938c2ad64b45a29f3269b81635c986a
+    twitter:
+      app_id: vGSARHRWKcecB1KU84dvSGmwq
+      app_secret: KwxsMZjdM6udSAQPsuCt0UEmoATVNQrYgTXC8QWzcwbOLkwPqJ
+    oauth_io:
+      app_id: EPbSnlTzjgEg9TNfng_f3UKg-3s
+      app_secret: pQGX4o2Yr2mw6oE2_IVvvicYJEA
+
+  # Baidu API secret key, used for get latitude/longitude for each hospital
+  baidu_ak: 664b8077912aed923ca6a8160f2e63ca
+
+  google:
+    browser_key: AIzaSyCfI5Wht9eOu7r05nt0HiYkCGhIuywtut8
+
+  mailer:
+    default_url_options:
+      host: 'localhost:3000'
+    delivery_method: :smtp
+    mailer_sender: 'no-reply@carevoice.com'
+    smtp:
+      address: "ekohe.com"
+      port: 25
+      domain: "ekohe.com"
+
+  resque:
+    basic_auth:
+      username: admin
+      password: admin
+
+  # Phone number validation by SMS
+  # SMS service provide by [www.sms7.cn]
+  sms:
+    test_mode: true
+    china:
+      username: thecarevoice
+      password: smsthecarevoice
+    india:
+      username: tcv001
+      password: tcv0012345
+      sender_name: TCVIND
+
+  # always provide at least the testing snippet
+  # https://www.google.com/analytics/web/?hl=en#management/Settings/a57980386w91832615p95565775/
+  # The Carevoice > Mobile Site for India
+  # ga: 'UA-46287028-2'
+  # The Carevoice > Mobile Site for China
+  # ga: 'UA-46287028-3'
+  # The Carevoice (Testing) > Mobile Site for China
+  ga: 'UA-57980386-2'
+
+  #variable for the sample size formulas
+  sample_size:
+    confidence_level: 1.96
+    percentage_population: 0.5
+    confidence_interval: 0.04
+
+  #google drive API access
+  google_drive:
+    token_credential_uri: 
+    audience: 
+    scope: 
+    issuer: 
+    sub:
+    path_p12:
+
+development:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,0 +1,4 @@
+- if @survey.destroyed?
+  $('#survey_table tbody tr#survey_#{@survey.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

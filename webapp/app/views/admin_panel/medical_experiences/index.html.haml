@@ -1,0 +1,19 @@
+%h3.text-muted.pull-left= t('headline.index', record: MedicalExperience.model_name.human)
+
+.pull-right= link_to t('admin_panel.users.index.export_excel'), export_admin_panel_medical_experiences_path, class: 'btn btn-success'
+
+%table.table.table-striped#medical_experience_table
+  %thead
+    %tr
+      %th= MedicalExperience.human_attribute_name(:user)
+      %th= MedicalExperience.human_attribute_name(:referral_code)
+      %th= MedicalExperience.human_attribute_name(:network_visible)
+      %th= MedicalExperience.human_attribute_name(:behalf)
+      %th= MedicalExperience.human_attribute_name(:human_completion)
+      %th= MedicalExperience.human_attribute_name(:avg_rating)
+      %th= MedicalExperience.human_attribute_name(:created_at)
+      %th{ width: 160 }
+
+  %tbody= render @medical_experiences
+
+= paginate @medical_experiences

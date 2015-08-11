@@ -1,0 +1,10 @@
+%tr{id: "qrcode_#{qrcode.id}"}
+  %td= qrcode.title
+  %td
+    .source_url= qrcode.url
+  %td
+    .destination_url= qrcode_url(qrcode, locale: nil)
+  %td= image_tag qrcode.code_url
+  %td= qrcode.count
+  %th
+    = link_to t('button.edit'), edit_admin_panel_qrcode_path(qrcode), class: 'btn btn-primary btn-xs various fancybox.ajax'

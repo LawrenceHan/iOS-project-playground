@@ -1,0 +1,4 @@
+- if @hospital.destroyed?
+  $('#hospital_table tbody tr#hospital_#{@hospital.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

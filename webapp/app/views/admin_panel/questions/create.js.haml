@@ -1,0 +1,5 @@
+- if @question.errors.empty?
+  $('#question_table tbody').append("#{j(render('question', question: @question))}");
+  $.fancybox.close();
+- else
+  alert("#{@question.errors.full_messages.join('\n')}");

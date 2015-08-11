@@ -1,0 +1,128 @@
+= navigation_bar(title: t('step_two.title'), skip_menu: true)
+.label.block
+  .text-center= t('step_two.top_title')
+.step-markers= registration_step_markers
+
+= form_for [:mobile, @profile], url: mobile_registrations_step_two_path do |form|
+  = hidden_field_tag :step, 'step_two'
+  = hidden_field_tag :id, @profile.id
+
+  .field.small-avatar
+    = image_tag @profile.avatar.small.url
+  .field.conditions
+    .arrow-down-wrapper
+      .arrow-down
+    = form.label :condition_ids, t('step_two.sub_title'), class: 'label block'
+    = form.hidden_field :condition_ids, value: @profile.condition_ids.to_a.delete_if(&:blank?).join(',')
+    .condition-list
+      .condition.clearfix.hidden#example
+        .condition-name Pharyngitis
+        .icon-btn.condition-action.remove_btn
+          = image_tag('mobile/dark_cyan_button.svg', class: 'bg')
+          = image_tag('mobile/icons/remove.png', class: 'icon')
+      - @profile.conditions.each do |condition|
+        .condition.clearfix{data: {id: condition.id}}
+          .condition-name= condition.name
+          .icon-btn.condition-action.remove_btn
+            = image_tag('mobile/dark_cyan_button.svg', class: 'bg')
+            = image_tag('mobile/icons/remove.png', class: 'icon')
+    .add-condition.clearfix
+      = text_field_tag :condition_name, nil, class: 'condition-name block', id: 'condition_autocomplete', placeholder: t('step_two.placeholder')
+
+      %label.icon-btn.condition-action#add_btn{for: 'condition_autocomplete'}
+        = image_tag('mobile/yellow_button.svg', class: 'bg')
+        = image_tag('mobile/icons/add.png', class: 'icon')
+  #actions-section.half
+    = link_to_button t('common.skip'), mobile_registrations_step_three_path, icon: 'remove', bg: 'dark_cyan', class: 'pull-left'
+    = link_to_button t('common.next'), nil, icon: 'tick', form: form, class: 'pull-right'
+
+- content_for :javascript do
+  :javascript
+    $(function(){
+      // Adjust width for all condition label
+      $('.condition-name').outerWidth($('.condition-list').innerWidth() - $('.icon-btn.condition-action').outerWidth() - 10);
+      $(window).on('resize', function() {
+        $('.condition-name').outerWidth($('.condition-list').innerWidth() - $('.icon-btn.condition-action').outerWidth() - 10);
+      });
+
+      // Autocomplete
+      $('#condition_autocomplete').catcomplete({
+        minLength: 2,
+        autoFocus: true,
+        messages: {
+            noResults: '',
+            results: function() {}
+        },
+        source: function(request, response) {
+          $.ajax({
+            url: "/v1/search/conditions",
+            dataType: "json",
+            data: { name: $.trim(request.term.toLowerCase()), locale: 'en' },
+            success: function(data) {
+              var currentIds = $('#profile_condition_ids').val().split(',');
+              response(
+                // Filter result, not show the selected items
+                $.map(data, function(group) {
+                  _objects = $.grep(group.objects, function(object) {
+                    return currentIds.indexOf(object.id.toString()) === -1;
+                  });
+                  return {
+                    name: group.name,
+                    objects: _objects
+                  };
+                })
+              );
+            }
+          });
+        },
+        open: function(event, ui ) {
+          // Adjust result list width
+          $('.ui-autocomplete').outerWidth($(this).outerWidth());
+        },
+        select: function(event, ui) {
+          event.preventDefault();
+          $(this).val(ui.item.label).data('id', ui.item.value.toString());
+          $('#add_btn').trigger('click');
+        }
+      });
+
+      // Add new condition
+      $('#add_btn').on('click', function(e) {
+        var $newCondition,
+          currentIds = $('#profile_condition_ids').val().split(','),
+          id = $('#condition_autocomplete').data('id'),
+          conditionName = $('#condition_autocomplete').val();
+        if (id && conditionName && currentIds.indexOf(id) === -1) {
+          id = id.toString();
+          // Reset input
+          $('#condition_autocomplete').val('');
+
+          // Append label
+          $newCondition = $('#example').clone();
+          $newCondition.removeClass('hidden').removeAttr('id');
+          $newCondition.data('id', id);
+          $('.condition-name', $newCondition).text(conditionName);
+          $('.condition-list').append($newCondition);
+
+          // Append value
+          currentIds.push(id);
+          $('#profile_condition_ids').val($.unique(currentIds).join());
+        } else {
+          $('#condition_autocomplete').catcomplete( "search", "  " );
+        }
+      });
+
+      // Remove condition
+      $(document).on('click', '.condition-action.remove_btn', function(e) {
+        var $this = $(e.currentTarget),
+          $currentLabel = $this.parent(),
+          currentId = $currentLabel.data('id'),
+          currentIds = $('#profile_condition_ids').val().split(',');
+
+          currentIds = $.grep(currentIds, function(value) {
+            return value != currentId;
+          });
+          $('#profile_condition_ids').val(currentIds);
+          $currentLabel.remove();
+      });
+    });

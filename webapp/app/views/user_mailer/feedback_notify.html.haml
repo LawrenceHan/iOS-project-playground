@@ -1,0 +1,21 @@
+%p 康语管理员，您好！
+
+%p 用户#{@email}提交了新的反馈信息,信息如下:
+
+%p
+  APP版本：
+  %strong= @feedback.app_version
+%p
+  手机型号：
+  %strong= @feedback.device_model
+%p
+  系统版本：
+  %strong= @feedback.system_version
+%p
+  反馈内容：
+  %strong= @feedback.content
+%p
+  反馈时间：
+  %strong= @feedback.created_at
+
+%p 谢谢使用康语！

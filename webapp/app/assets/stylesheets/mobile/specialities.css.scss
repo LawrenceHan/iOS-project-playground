@@ -1,0 +1,65 @@
+.simple-list {
+  list-style-type: none;
+  padding: 0 10px;
+  font-size: 20px;
+  color: white;
+
+  a {
+    &:link, &:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  li {
+    margin: 10px;
+    position: relative;
+  }
+
+  .number {
+    color: #003333;
+    position: absolute;
+    right: 80px;
+    top: 3px;
+    z-index: 10;
+  }
+
+  .name {
+    background-color: #42899c;
+    border: 3px solid #8db8c3;
+    @include border-radius(3px);
+    height: 60px;
+    line-height: 60px;
+    padding: 0 40px 0 7px;
+    @include box-shadow(0 0 15px 8px rgba(0, 0, 0, 0.13) inset);
+    margin-right: 70px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .arrow {
+    margin-top: 3px;
+    float: right;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    position: relative;
+
+  }
+
+  .fa {
+    line-height: 60px;
+    font-size: 40px;
+  }
+
+  .arrow-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+}

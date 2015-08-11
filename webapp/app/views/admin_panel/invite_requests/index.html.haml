@@ -1,0 +1,20 @@
+%h3.text-muted= t('headline.index', record: InviteRequest.model_name.human)
+
+%table.table.table-striped#invite_request_table
+  %thead
+    %tr
+      %th= InviteRequest.human_attribute_name(:user_email)
+      %th= InviteRequest.human_attribute_name(:emails)
+      %th= InviteRequest.human_attribute_name(:created_at)
+      %th{ width: 70 }
+
+  %tbody
+    - @invite_requests.each do |invite_request|
+      %tr{id: "invite_request_#{invite_request.id}"}
+        %td= invite_request.user_email
+        %td= invite_request.human_emails
+        %td= invite_request.created_at
+        %td
+          = link_to t('button.destroy'), admin_panel_invite_request_path(invite_request), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'
+
+= paginate @invite_requests

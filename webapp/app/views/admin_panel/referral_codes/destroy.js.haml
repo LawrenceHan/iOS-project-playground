@@ -1,0 +1,4 @@
+- if @referral_code.destroyed?
+  $('#referral_code_table tbody tr#referral_code_#{@referral_code.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

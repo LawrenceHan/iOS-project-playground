@@ -1,0 +1,16 @@
+%h3.text-muted= t('headline.index', record: Qrcode.model_name.human)
+
+%table.table.table-striped#qrcode_table
+  %thead
+    %tr
+      %th= Qrcode.human_attribute_name(:title)
+      %th= Qrcode.human_attribute_name(:source_url)
+      %th= Qrcode.human_attribute_name(:destination_url)
+      %th= Qrcode.human_attribute_name(:code)
+      %th= Qrcode.human_attribute_name(:count)
+      %th{ width: 120 }
+  %tbody= render @qrcodes
+
+= paginate @qrcodes
+
+%div= link_to t('button.create', record: Qrcode.model_name.human), new_admin_panel_qrcode_path, class: 'btn btn-success various fancybox.ajax'

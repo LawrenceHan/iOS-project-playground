@@ -1,0 +1,22 @@
+%h3.text-muted Listing <%= plural_table_name %>
+
+%table.table.table-striped#<%= singular_table_name %>_table
+  %thead
+    %tr
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+      %th <%= attribute.human_name %>
+<% end -%>
+      %th{ width: 200 }
+
+  %tbody
+    - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+      %tr{id: "<%= singular_table_name %>_#{<%= singular_table_name %>.id}"}
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+        %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+        %td
+          = link_to 'Show', <%= singular_table_name %>, class: 'btn btn-default btn-xs various fancybox.ajax'
+          = link_to t('button.edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-primary btn-xs various fancybox.ajax'
+          = link_to t('button.destroy'), <%= singular_table_name %>, method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'
+
+= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, class: 'btn btn-success various fancybox.ajax'

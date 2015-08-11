@@ -1,0 +1,5 @@
+- if @medication.errors.empty?
+  $('#medication_table tbody').append("#{j(render('medication', medication: @medication))}");
+  $.fancybox.close();
+- else
+  alert("#{@medication.errors.full_messages.join('\n')}");

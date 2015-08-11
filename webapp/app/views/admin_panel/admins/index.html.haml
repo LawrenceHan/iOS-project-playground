@@ -1,0 +1,14 @@
+%h3.text-muted= t('headline.index', record: Admin.model_name.human)
+
+%table.table.table-striped#admin_table
+  %thead
+    %tr
+      %th= Admin.human_attribute_name(:email)
+      %th= Admin.human_attribute_name(:created_at)
+      %th{ width: 120 }
+
+  %tbody= render @admins
+
+= paginate @admins
+
+%div= link_to t('button.create', record: Admin.model_name.human), new_admin_panel_admin_path, class: 'btn btn-success various fancybox.ajax'

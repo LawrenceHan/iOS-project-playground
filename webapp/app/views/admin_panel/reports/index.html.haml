@@ -1,0 +1,13 @@
+%h3.text-muted= t('headline.index', record: Report.model_name.human)
+
+%table.table.table-striped#report_table
+  %thead
+    %tr
+      %th= Report.human_attribute_name(:user)
+      %th= Report.human_attribute_name(:type)
+      %th= Report.human_attribute_name(:content)
+      %th{ width: 125 }
+
+  %tbody= render @reports
+
+= paginate @reports

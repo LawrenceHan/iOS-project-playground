@@ -1,0 +1,246 @@
+.medical_experiences-controller {
+  #general {
+    background-color: #33889a;
+    padding: 15px 0;
+    color: white;
+    text-align: center;
+    font-size: 17px;
+    border-bottom: #dfdfdf 5px solid;
+    position: relative;
+    margin-bottom: 15px;
+  }
+
+  .arrow-down {
+    @include arrow-down(#33889a, 40px, 20px);
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #completion {
+    font-size: 14px;
+    width: 6.5em;
+    height: 6.5em;
+    @include border-radius(3.25em);
+    @include box-sizing(border-box);
+    background-color: #034858;
+    margin: 0 auto 0.5em;
+    padding: 2em 0;
+  }
+
+  .completion-percent {
+    font-size: 18px;
+  }
+
+  .section-header {
+    height: 2em;
+    line-height: 2em;
+    color: white;
+    background-color: #127084;
+    margin: 15px 10px;
+    padding: .5em;
+    font-size: 0.9em;
+  }
+
+  .section-row {
+    margin: 10px;
+    color: white;
+    background-color: #70abb8;
+    font-size: 0.8em;
+    padding: .5em;
+    position: relative;
+    line-height: 1.3em;
+
+    .title {
+      color: #004d5e;
+    }
+
+    .button {
+      position: absolute;
+      right: .8em;
+      top: .8em;
+      padding: 0 1em;
+      width: auto;
+      height: 2em;
+      line-height: 2em;
+    }
+  }
+
+  .plus-button {
+    float: right;
+    width: 2.2em;
+    height: 2.2em;
+  }
+
+  .fields-group {
+    color: #666666;
+    background-color: #e5ecee;
+    padding: 10px;
+    margin: 5px auto;
+
+    span {
+      width: 60%;
+      display: inline-block;
+    }
+  }
+
+  #others {
+    .switch-cn {
+      .onoffswitch {
+        top: -20px;
+      }
+    }
+  }
+
+  #medical_experience_behalf {
+    margin-top: 1em;
+  }
+
+  .button, #{$texty_inputs} {
+    width: 100%;
+  }
+
+  #{$texty_inputs} {
+    @include box-sizing(border-box);
+  }
+
+  .onoffswitch {
+    float: right;
+  }
+
+  .medical-experience-cell {
+    margin: 5px 0;
+  }
+}
+
+.medical-experience-cell {
+  background-color: #e5f0f2;
+  color: #034858;
+  min-height: 10em;
+  position: relative;
+  padding-left: 8rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &.network-visible {
+    min-height: 12em;
+  }
+
+  .left {
+    width: 8rem;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    padding-top: 1em;
+    background-color: #cde1e6;
+    border-right: 4px solid #034858;
+    top: 0;
+    left: 0;
+    font-size: 0.8em;
+
+    @include box-sizing(border-box);
+  }
+
+  .arrow-left-lightblue {
+    @include arrow-left(#e5f0f2, 24px, 12px);
+    top: 66px;
+    z-index: 2;
+  }
+
+  .arrow-left-darkblue {
+    @include arrow-left(#034858, 36px, 18px);
+    top: 60px;
+    z-index: 1;
+  }
+
+  .arrow-left-lightblue, .arrow-left-darkblue {
+    position: absolute;
+    right: -4px;
+  }
+
+  .rating-small {
+    height: 1.2em;
+    margin: 0 auto;
+    img {
+      width: 1em;
+      margin: 0 -3px;
+    }
+  }
+
+  .date {
+    margin: 0.4em 0;
+  }
+
+  .network-visible {
+    font-size: 0.7em;
+    line-height: 1em;
+    padding: 0 0.2em;
+    color: #f28e25;
+  }
+
+  .network-symbol {
+    height: 1.6em;
+  }
+
+  .right {
+    vertical-align: top;
+    padding: 10px 20px 10px 10px;
+  }
+
+  .review {
+    font-size: 0.7em;
+    padding: 0.4em 0 0 3em;
+    position: relative;
+    min-height: 3.2em;
+
+    &.gray {
+      opacity: 0.5;
+    }
+  }
+
+  .avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3em;
+    text-align: center;
+
+    img {
+      width: 2em;
+    }
+  }
+
+  .detail {
+    vertical-align: bottom;
+  }
+
+  .reviewable_name {
+    margin-bottom: 5px;
+  }
+
+  .review_completion_wrapper {
+    background-color: #034858;
+    text-align: left;
+    height: 2px;
+
+  }
+
+  .review_completion {
+    background-color: #f28e25;
+    height: 2px;
+  }
+
+  .delete-button {
+    float: right;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font-size: 0.8em;
+    line-height: normal;
+  }
+}

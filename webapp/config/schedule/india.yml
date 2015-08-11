@@ -1,0 +1,16 @@
+fetch_social_friends:
+  # run every day at 5 AM
+  cron: "0 5 * * *"
+  # cron: "* * * * *"
+  queue: social_network
+  class: FetchSocialFriends
+  args:
+  description: 'Fetch social friends who linked to carevoice'
+
+new_users_email:
+  # run every day at 8pm30
+  cron: "30 20 * * *"
+  queue: mail_to_new_users
+  class: MailToNewUsers
+  args:
+  description: 'email for new users'

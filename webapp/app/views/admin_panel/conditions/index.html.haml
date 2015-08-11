@@ -1,0 +1,15 @@
+%h3.text-muted= t('headline.index', record: Condition.model_name.human)
+
+%table.table.table-striped#condition_table
+  %thead
+    %tr
+      %th= Condition.human_attribute_name(:name)
+      %th= Condition.human_attribute_name(:category)
+      %th= Condition.human_attribute_name(:created_at)
+      %th{ width: 115 }
+
+  %tbody= render @conditions
+
+= paginate @conditions
+
+%div= link_to t('button.create', record: Condition.model_name.human), new_admin_panel_condition_path, class: 'btn btn-success various fancybox.ajax'

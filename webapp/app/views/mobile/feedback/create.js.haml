@@ -1,0 +1,5 @@
+- if @feedback.errors.empty?
+  showNotification("#{t('feedback.thanks')}");
+  $('#feedback_content').val('');
+- else
+  showNotification("#{@feedback.errors.full_messages.join('\n')}");

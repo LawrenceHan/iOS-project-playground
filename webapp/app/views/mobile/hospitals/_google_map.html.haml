@@ -1,0 +1,313 @@
+:javascript
+  $(function() {
+    $('.map-disabled').removeClass('map-disabled');
+    var map = initMap();
+    var currentLocation;
+    var allHospitals = {};
+    var allMarkers = {};
+    var cellTemplate = $('#cell-template').text();
+    var searchTabTemplate = $('#search-tab-hospital').text();
+    Mustache.compile(cellTemplate);
+    var $searchResults = $('#search-results');
+    var disableNextMapIdle = false;
+
+    function renderHospitalList(hospitals) {
+      function onoffs() {
+        var avgRating = Math.floor(this.hospital.avg_rating);
+        var ret = [];
+        var on = '#{image_tag('mobile/icons/star-on.png', class: "rating-star")}';
+        var off = '#{image_tag('mobile/icons/star-off.png', class: "rating-star")}';
+        for (var i = 0; i < 5; i++) {
+          if (i < avgRating) {
+            ret.push(on);
+          } else {
+            ret.push(off);
+          }
+        }
+
+        return ret;
+      }
+
+      var html = '<div class="list-placeholder"></div>';
+      html += Mustache.render(searchTabTemplate);
+      for (var i = 0; i < hospitals.length; i++) {
+        var hospital = hospitals[i];
+        hospital.onoffs = onoffs;
+        if(hospital.distance > 9999){
+          hospital.distance = (hospital.distance/1000).toFixed() + "km";
+        }
+        else {
+          if (hospital.distance!=null) {
+            hospital.distance += "m";
+          }
+        }
+        html += Mustache.render(cellTemplate, { "hospital": hospital });
+      }
+
+      $searchResults.removeClass('hidden').html(html);
+
+      $(".search-hospital a").on('click', function(e){
+        var q = $('#search-field').val();
+        if (q.length>0) {
+          doSearch($(e.target).attr("href").split("#")[1]);
+        } else {
+          mapIdle($(e.target).attr("href").split("#")[1]);
+        }
+      });
+
+      $(".search-type-tab").removeClass('hidden');
+    }
+
+    function renderHospitalMarkers(hospitalHash) {
+      for (var id in hospitalHash) {
+        var hospital = hospitalHash[id];
+        if (existingHospital = allHospitals[id]) {
+          if (existingHospital.isSelected == hospital.isSelected) {
+            continue;
+          } else {
+            var marker = allMarkers[hospital.id];
+            setMarkerSelected(marker, hospital.isSelected);
+          }
+        } else {
+          var marker = addMarkerForHospital(hospital);
+          allMarkers[hospital.id] = marker;
+        }
+      }
+    }
+
+    function removeUnusedMarkers(hospitalHash) {
+      for (var id in allMarkers) {
+        if (!hospitalHash[id]) {
+          var marker = allMarkers[id];
+          marker.setMap(null);
+          delete allMarkers[id];
+        }
+      }
+    }
+
+    function setHospitals(hospitals) {
+      if (hospitals.length == 0) {
+        allHospitals = {};
+        $(".search-type-tab").addClass('hidden');
+        $searchResults.addClass('hidden');
+      } else {
+        var hospitalHash = {};
+        for (var i = 0; i < hospitals.length; i++) {
+          var hospital = hospitals[i];
+          hospitalHash[hospital.id] = hospital;
+        }
+
+        var selectedHospital = findSelectedHospital(allHospitals);
+        if (selectedHospital) {
+          var hospital = hospitalHash[selectedHospital.id];
+          if (hospital) {
+            hospital.isSelected = true;
+          } else {
+            $searchResults.removeClass('selected');
+          }
+        } else {
+          $searchResults.removeClass('selected').removeClass('hidden').removeClass('condensed').scrollTop(0);
+        }
+
+        renderHospitalList(hospitals);
+        renderHospitalMarkers(hospitalHash);
+        removeUnusedMarkers(hospitalHash);
+        allHospitals = hospitalHash;
+      }
+    }
+
+    function findSelectedHospital(hospitalHash) {
+      for (var id in hospitalHash) {
+        var hospital = hospitalHash[id];
+        if (hospital.isSelected) {
+          return hospital;
+        }
+      }
+
+      return null;
+    }
+
+    function setMarkerSelected(marker, isSelected) {
+      if (isSelected) {
+        map.setCenter(new google.maps.LatLng(marker.position.k, marker.position.B));
+        marker.setIcon('#{image_url 'mobile/hospital_marker_selected.png'}');
+      } else {
+        marker.setIcon('#{image_url 'mobile/hospital_marker.png'}');
+      }
+    }
+
+    function initMap() {
+      var mapOptions = {
+        // "center": new google.maps.LatLng(31.223216, 121.446437),
+        // "center": new google.maps.LatLng(23.1842107, 78.7469883),
+        "zoom": 15,
+        "disableDefaultUI": true
+      };
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+      navigator.geolocation.getCurrentPosition(
+        function(location) {
+          if ($searchResults.hasClass('hidden')) {
+            currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
+            map.setCenter(currentLocation);
+            addMarkerForCurrentLocation(currentLocation);
+            map.setZoom(15);
+          }
+        },
+        function(error) {
+          currentLocation = new google.maps.LatLng(#{APP_CONFIG[:lat]}, #{APP_CONFIG[:long]})
+          map.setCenter(currentLocation);
+          addMarkerForCurrentLocation(currentLocation);
+          map.setZoom(10);
+          //showNotification("Please turn on location service to use the map.");
+        }
+      );
+
+      google.maps.event.addDomListener(map, 'idle', mapIdle);
+      return map;
+    }
+
+    function mapIdle(type) {
+      if (disableNextMapIdle) {
+        // Skip this idle event. Usually because it's triggered programmatically
+        disableNextMapIdle = false;
+      } else {
+        var q = $('#search-field').val();
+        if (q.length>0) { return; }
+
+        var bounds = map.getBounds();
+        if (bounds) {
+          $.get("#{in_area_mobile_hospitals_path}", { "bounds": bounds.toUrlValue(), "google_location": currentLocation.toUrlValue(), type: type })
+          .done(function(hospitals) {
+            setHospitals(hospitals);
+            $(".loading-indicator").remove();
+
+            if(type){
+              $("a[href=#" + type + "]").addClass("active");
+              $("a[href=#" + type + "]").siblings().removeClass("active");
+            }
+          });
+        }
+      }
+    }
+
+    function addMarkerForCurrentLocation(location) {
+      var marker = new google.maps.Marker({
+        "position": new google.maps.LatLng(location.k, location.B),
+        "map": map
+      });
+
+      return marker;
+    }
+
+    function addMarkerForHospital(hospital) {
+      var marker = new google.maps.Marker({
+        "icon": "#{image_url('mobile/hospital_marker.png')}",
+        "position": new google.maps.LatLng(hospital.latitude, hospital.longitude),
+        "map": map
+      });
+
+      marker.hospitalID = hospital.id;
+      google.maps.event.addDomListener(marker, 'click', function(event) {
+        markerClicked(marker);
+      });
+
+      return marker;
+    }
+
+    function markerClicked(marker) {
+      var selectedHospital = findSelectedHospital(allHospitals);
+      var hospital = allHospitals[marker.hospitalID];
+      if (selectedHospital && (hospital.id == selectedHospital.id)) {
+        return;
+      }
+
+      var $cell = $('#hospital-' + hospital.id);
+      $cell[0].scrollIntoView(true);
+      setMarkerSelected(marker, true);
+      hospital.isSelected = true;
+
+      $searchResults.addClass('selected');
+
+      if (selectedHospital) {
+        selectedHospital.isSelected = false;
+        var marker = allMarkers[selectedHospital.id];
+        setMarkerSelected(marker, false);
+      }
+    }
+
+    $('#search-field').keydown(function(event) {
+      if (event.which == 13) { // Enter
+        $('#search').click();
+      }
+    });
+
+
+    $('#search').click(function() {
+      doSearch('distance');
+    });
+
+    function doSearch(type) {
+      var q = $('#search-field').val();
+      var googleLocation = null;
+      if (typeof(currentLocation)!='undefined') {
+        googleLocation = currentLocation.toUrlValue();
+      }
+      $.get("#{search_mobile_hospitals_path}", { "q": q, "google_location": googleLocation, "type": type })
+      .done(function(hospitals) {
+        if (hospitals.length == 0) {
+          $('#notification').show().delay(1000).fadeOut(250);
+        }
+
+        setHospitals(hospitals);
+        $(".search-type-tab").removeClass('hidden');
+        if(type){
+          $("a[href=#" + type + "]").addClass("active");
+          $("a[href=#" + type + "]").siblings().removeClass("active");
+        }
+        $searchResults.removeClass('hidden').removeClass('condensed').scrollTop(0);
+      });
+    }
+
+    $searchResults.on('click', '.list-placeholder', function() {
+      $(".search-type-tab").addClass('hidden');
+      $searchResults.addClass('condensed');
+    });
+
+    /**     Map View Disabled for the Moment     **/
+    /*.on('click', '.hospital-list-cell', function(event) {
+      var id = parseInt($(this).prop('id').match(/hospital-(\d+)/)[1]);
+      var hospital = allHospitals[id];
+      if (hospital) {
+        if (!$searchResults.hasClass('condensed')) {
+          disableNextMapIdle = true;
+          map.setCenter(new google.maps.LatLng(hospital.latitude, hospital.longitude));
+          $searchResults.addClass('condensed').addClass('selected');
+          var cell = this;
+          setTimeout(function() {
+            cell.scrollIntoView();
+          }, 250);
+
+          hospital.isSelected = true;
+          setMarkerSelected(allMarkers[id], true);
+          event.preventDefault();
+        } else {
+          // Do nothing here, just let it follow the link
+        }
+      } else {
+        event.preventDefault();
+        // console.warn('something wrong here, hospital with id ' + id + ' is not in the list');
+      }
+    });*/
+
+    // CSS 100% height is not working for mobile safari at least. Use this
+    // as a fix.
+    var $map = $('#map-canvas');
+    function setMapHeight() {
+      $map.css({ 'height': $map.parent().height() });
+    }
+
+    setMapHeight();
+    $(window).on('resize', setMapHeight);
+
+  });

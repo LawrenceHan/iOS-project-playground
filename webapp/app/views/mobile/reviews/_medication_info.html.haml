@@ -1,0 +1,12 @@
+.info.dark_bg.medication_review{class: linked_to_network_class}
+  .avatar.inline= image_tag('mobile/reviews/medication_avatar.png')
+  .details.inline
+    .attr.hospital_name #{@review.reviewable_name}
+    .attr #{@review.medication.company}
+    #avg_rating.rating-large{data: {rating: @review.avg_rating}}
+
+  = link_to @review.is_anonymous ? 'javascript:' : [:mobile, @review.user] do
+    .user
+      .user_avatar= image_tag @review.is_anonymous ? @review.profile.avatar.small.default_url : @review.small_avatar
+      .username= @review.username
+

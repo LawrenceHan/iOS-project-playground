@@ -1,0 +1,23 @@
+%p 亲爱的康语用户，
+%p
+  康语团队非常感谢您下载并使用我们的App！在您发布评价之后，只要您邀请至少两位朋友注册并让他们在康语中也发表评价，您和您的朋友都将获得由康语送出的10元手机充值卡！
+  = link_to '邀请您的朋友注册吧', api_invitation_url(email: @email)
+%br
+%br
+%p 再次感谢您的支持！
+%p 康语团队
+%p 如果您对改进康语有任何的想法，请使用下面这个简单的调查告诉我们：
+= link_to 'https://fr.surveymonkey.com/s/kangyuusers', 'https://fr.surveymonkey.com/s/kangyuusers'
+%p= link_to(image_tag("#{ApplicationHelper.host}#{asset_path('weibo.png')}"), 'http://weibo.com/kangyu2013')
+%hr
+%p Dear KangYu pioneers,
+%p
+  The Kangyu team would like to thank you for signing up with our App. After publishing your reviews, you can invite at least two friends to register and publish their reviews on Kangyu as well. We will reward each one of you with 10 RMB mobile card recharge for free!
+  = link_to 'Invite my friends now', api_invitation_url(email: @email)
+%br
+%br
+%p Thanks for your support.
+%p Your dedicated Kangyu team
+%p If you wish to share your thoughts and contribution with us, you can tell us with the following short survey:
+= link_to 'https://fr.surveymonkey.com/s/kangyuusers', 'https://fr.surveymonkey.com/s/kangyuusers'
+%p= link_to(image_tag("#{ApplicationHelper.host}#{asset_path('weibo.png')}"), 'http://weibo.com/kangyu2013')

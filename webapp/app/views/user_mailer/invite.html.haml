@@ -1,0 +1,10 @@
+%p 您好！
+%p 您的朋友#{@from}正在使用免费的 康语App 评价医院，医生和药品，他/她觉得这个App对您也会有用，可以帮助你们俩找到更合适的医疗服务，来试试吧！
+%p
+  苹果手机的下载地址：
+  = link_to api_invited_app_address_url(from: @from, to: @to), api_invited_app_address_url(from: @from, to: @to)
+%p 安卓版本正在紧张开发中 。
+%p 就医优选，源自康语！
+%br
+%br
+%p 康语团队

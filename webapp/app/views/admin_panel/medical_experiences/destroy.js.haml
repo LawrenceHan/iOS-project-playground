@@ -1,0 +1,4 @@
+- if @medical_experience.destroyed?
+  $('#medical_experience_table tbody tr#medical_experience_#{@medical_experience.id}').remove();
+- else
+  alert('Something wrong, delete failed.');

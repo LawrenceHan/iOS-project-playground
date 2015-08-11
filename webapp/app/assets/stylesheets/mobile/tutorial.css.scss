@@ -1,0 +1,118 @@
+.tutorial-controller {
+
+  .intro-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+
+    .intro-logo {
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      padding: 0 15px;
+
+      img {
+        width: 100%;
+      }
+
+      &.step-one {
+        top: 18%;
+      }
+      &.step-two {
+        top: 45%;
+      }
+    }
+
+    .intro-logo-cn {
+      img {
+        width: 85%;
+      }
+      &.step-one {
+        top: 20%;
+      }
+      &.step-two {
+        top: 20%;
+      }
+    }
+
+    .intro-text {
+      position: relative;
+      padding: 0 30px;
+      color: #666;
+      font-size: 1.2em;
+
+      &.step-one {
+        top: 35%;
+      }
+      &.step-two {
+        top: 0;
+      }
+    }
+
+    .intro-text-cn {
+      &.step-one {
+        top: 15%;
+      }
+      &.step-two {
+        top: 15%;
+      }
+    }
+
+    #actions-section {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      @include box-sizing(border-box);
+    }
+
+  }
+
+  .welcome-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    .bg {
+      width: 100%;
+    }
+
+    .wrapper {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      filter: alpha(opacity=90);
+      opacity: 0.9;
+      background-color: #006b81;
+    }
+
+    .desc {
+      @include box-sizing(border-box);
+      width: 100%;
+      font-size: 1em;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .step-markers {
+      text-align: center;
+      width: 100%;
+
+      img {
+        display: inline-block;
+        margin: 0 5px;
+        width: 0.4em;
+      }
+    }
+  }
+
+  #actions-section {
+    padding: 10px;
+    .link-to-button {
+      width: 100%;
+      display: block;
+    }
+  }
+}
