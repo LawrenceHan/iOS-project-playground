@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    CGFloat h = hypot(0, 20);
+    NSLog(@"%g", h);
     return YES;
 }
 

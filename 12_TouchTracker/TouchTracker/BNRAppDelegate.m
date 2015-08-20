@@ -2,29 +2,26 @@
 //  BNRAppDelegate.m
 //  TouchTracker
 //
-//  Created by John Gallagher on 1/9/14.
-//  Copyright (c) 2014 Big Nerd Ranch. All rights reserved.
+//  Created by Hanguang on 14-6-5.
+//  Copyright (c) 2014年 Big Nerd Ranch. All rights reserved.
 //
 
 #import "BNRAppDelegate.h"
 #import "BNRDrawViewController.h"
-
 @implementation BNRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-
+    
     BNRDrawViewController *dvc = [[BNRDrawViewController alloc] init];
     self.window.rootViewController = dvc;
-
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-#ifdef VIEW_DEBUG
-    NSLog(@"View Debug: %@", [self.window performSelector:@selector(recursiveDescription)]);
-#endif
+    
     return YES;
 }
 
