@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="BNRCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ubm-xC-2ob" userLabel="thumbnail view">
+                        <rect key="frame" x="0.0" y="2" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="256-nf-XSP"/>
+                            <constraint firstAttribute="width" constant="40" id="oSj-60-KZi"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWb-xt-hxw" userLabel="nameLabel">
+                        <rect key="frame" x="48" y="0.0" width="220" height="19.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3of-hg-Xrn" userLabel="serialNumberLabel">
+                        <rect key="frame" x="48" y="27" width="220" height="17"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-Lk-wBR" userLabel="valueLabel">
+                        <rect key="frame" x="276" y="13" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="3of-hg-Xrn" secondAttribute="trailing" constant="44" id="4XH-TW-kIJ"/>
+                    <constraint firstItem="ZWb-xt-hxw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="GfC-E0-x7m"/>
+                    <constraint firstItem="Rh2-Lk-wBR" firstAttribute="leading" secondItem="ZWb-xt-hxw" secondAttribute="trailing" constant="8" id="I2D-2Z-g1p"/>
+                    <constraint firstAttribute="centerY" secondItem="Ubm-xC-2ob" secondAttribute="centerY" id="Jdy-Lh-e9B"/>
+                    <constraint firstAttribute="centerY" secondItem="Rh2-Lk-wBR" secondAttribute="centerY" id="MeS-WT-3BE"/>
+                    <constraint firstItem="3of-hg-Xrn" firstAttribute="top" secondItem="ZWb-xt-hxw" secondAttribute="bottom" constant="7.5" id="SIq-eJ-F6o"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Rh2-Lk-wBR" secondAttribute="trailing" constant="0.5" id="TJh-gi-U4x"/>
+                    <constraint firstItem="3of-hg-Xrn" firstAttribute="leading" secondItem="Ubm-xC-2ob" secondAttribute="trailing" constant="8" id="aDu-2i-Ogn"/>
+                    <constraint firstItem="Ubm-xC-2ob" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="fQg-cm-5Dh"/>
+                    <constraint firstItem="ZWb-xt-hxw" firstAttribute="leading" secondItem="Ubm-xC-2ob" secondAttribute="trailing" constant="8" id="od5-JW-Ow9"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="3of-hg-Xrn" secondAttribute="bottom" constant="-8.5" id="ofS-Dk-ceG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="ZWb-xt-hxw" id="elk-aN-QMa"/>
+                <outlet property="serialNumberLabel" destination="3of-hg-Xrn" id="dmU-z4-TSq"/>
+                <outlet property="thumbnailView" destination="Ubm-xC-2ob" id="usl-0V-VTv"/>
+                <outlet property="valueLabel" destination="Rh2-Lk-wBR" id="xVt-MO-cTY"/>
+            </connections>
+            <point key="canvasLocation" x="202" y="287"/>
+        </tableViewCell>
+    </objects>
+</document>

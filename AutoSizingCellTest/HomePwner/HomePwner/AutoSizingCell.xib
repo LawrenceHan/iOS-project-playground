@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="KGk-i7-Jjw" customClass="AutoSizingCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJC-fK-9lK" userLabel="title label">
+                        <rect key="frame" x="15" y="8" width="290" height="20.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="8Se-7s-0KP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PS3-8F-RgT" userLabel="quote label">
+                        <rect key="frame" x="15" y="40" width="290" height="17.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="fiT-Of-DNf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PS3-8F-RgT" firstAttribute="top" secondItem="LJC-fK-9lK" secondAttribute="bottom" constant="11.5" id="6dv-Zz-5Wr"/>
+                    <constraint firstItem="LJC-fK-9lK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="Akl-rG-mEs"/>
+                    <constraint firstItem="LJC-fK-9lK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="DGR-2b-xtN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LJC-fK-9lK" secondAttribute="trailing" constant="7" id="Qvn-lf-63P"/>
+                    <constraint firstItem="PS3-8F-RgT" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="ZYY-dx-nst"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="PS3-8F-RgT" secondAttribute="trailing" constant="7" id="aEd-je-5R9"/>
+                    <constraint firstItem="PS3-8F-RgT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="z74-yl-u6J"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="quoteLabel" destination="PS3-8F-RgT" id="8tn-KZ-qXS"/>
+                <outlet property="titleLabel" destination="LJC-fK-9lK" id="Yti-9D-oLq"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="247"/>
+        </tableViewCell>
+    </objects>
+</document>
