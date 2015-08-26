@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 
@@ -241,30 +241,32 @@
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *oldKey = self.item.itemKey;
-
+    
     // Did the item already have an image?
     if (oldKey) {
         // Delete the old image
         [[BNRImageStore sharedStore] deleteImageForKey:oldKey];
     }
-
+    
     // Get picked image from info dictionary
     UIImage *image = info[UIImagePickerControllerOriginalImage];
-
+    
+    [self.item setThumbnailFromImage:image];
+    
     // Store the image in the BNRImageStore for this key
     [[BNRImageStore sharedStore] setImage:image forKey:self.item.itemKey];
-
+    
     // Put that image onto the screen in our image view
     self.imageView.image = image;
-
+    
     // Do I have a popover?
     if (self.imagePickerPopover) {
-
+        
         // Dismiss it
         [self.imagePickerPopover dismissPopoverAnimated:YES];
         self.imagePickerPopover = nil;
     } else {
-
+        
         // Dismiss the modal image picker
         [self dismissViewControllerAnimated:YES completion:NULL];
     }

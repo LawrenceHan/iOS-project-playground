@@ -20,7 +20,7 @@
 @interface BNRItemsViewController ()
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) AutoSizingCell *prototypeCell;
+@property (nonatomic, strong) BNRCell *prototypeCell;
 
 - (void)populateDataSource;
 
@@ -46,11 +46,22 @@
 
         // Set this bar button item as the right item in the navigationItem
         navItem.rightBarButtonItem = bbi;
-
         navItem.leftBarButtonItem = self.editButtonItem;
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self
+               selector:@selector(updateTableViewForDynamicTypeSize)
+                   name:UIContentSizeCategoryDidChangeNotification
+                 object:nil];
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc removeObserver:self];
 }
 
 - (instancetype)initWithStyle:(UITableViewStyle)style
@@ -62,9 +73,9 @@
 {
     [super viewDidLoad];
 
-//    UINib *nib = [UINib nibWithNibName:@"BNRCell" bundle:nil];
-//    [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"AutoSizingCell" bundle:nil] forCellReuseIdentifier:@"AutoSizingCell"];
+    UINib *nib = [UINib nibWithNibName:@"BNRCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRCell"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"AutoSizingCell" bundle:nil] forCellReuseIdentifier:@"AutoSizingCell"];
     
     [self populateDataSource];
     self.offscreenCells = [NSMutableDictionary dictionary];
@@ -77,9 +88,14 @@
     [self.tableView reloadData];
 }
 
-- (AutoSizingCell *)prototypeCell {
+- (void)updateTableViewForDynamicTypeSize
+{
+    [self.tableView reloadData];
+}
+
+- (BNRCell *)prototypeCell {
     if (!_prototypeCell) {
-        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AutoSizingCell class])];
+        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BNRCell class])];
     }
     
     return _prototypeCell;
@@ -87,15 +103,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataSource count];//[[[BNRItemStore sharedStore] allItems] count];
+    return [[[BNRItemStore sharedStore] allItems] count];//[self.dataSource count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Get a new or recycled cell
-    //BNRCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BNRCell" forIndexPath:indexPath];
-    AutoSizingCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                            NSStringFromClass([AutoSizingCell class])];
+    BNRCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BNRCell" forIndexPath:indexPath];
+//    AutoSizingCell *cell = [tableView dequeueReusableCellWithIdentifier:
+//                            NSStringFromClass([AutoSizingCell class])];
 
     // Set the text on the cell with the description of the item
     // that is at the nth index of items, where n = row this cell
@@ -106,15 +122,18 @@
     return cell;
 }
 
-- (void)configureCell:(AutoSizingCell *)cell
+- (void)configureCell:(BNRCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSArray *items = [[BNRItemStore sharedStore] allItems];
-//    BNRItem *item = items[indexPath.row];
-    NSDictionary *dataSourceItem = [self.dataSource objectAtIndex:indexPath.row];
-    cell.titleLabel.text = [dataSourceItem valueForKey:@"title"];//item.itemName;
-    cell.quoteLabel.text = [dataSourceItem valueForKey:@"body"];//item.serialNumber;
-    //cell.valueLabel.text = @"$11";//[NSString stringWithFormat:@"$%d", item.valueInDollars];
+    NSArray *items = [[BNRItemStore sharedStore] allItems];
+    BNRItem *item = items[indexPath.row];
+//    NSDictionary *dataSourceItem = [self.dataSource objectAtIndex:indexPath.row];
+//    [dataSourceItem valueForKey:@"title"];
+//    [dataSourceItem valueForKey:@"body"];
+    cell.nameLabel.text = item.itemName;
+    cell.serialNumberLabel.text = item.serialNumber;
+    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+    cell.thumbnailView.image = item.thumbnail;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
