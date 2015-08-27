@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6C861B8C64020081775A /* AutoSizingCell.m */; };
 		02AF6C891B8C64020081775A /* AutoSizingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6C871B8C64020081775A /* AutoSizingCell.xib */; };
+		02AF6CFF1B8EC4DB0081775A /* PureLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6CFE1B8EC4DB0081775A /* PureLayoutCell.m */; };
 		02B49E101B8B0BA8005467C7 /* BNRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B49E0E1B8B0BA8005467C7 /* BNRCell.m */; };
 		02B49E111B8B0BA8005467C7 /* BNRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B49E0F1B8B0BA8005467C7 /* BNRCell.xib */; };
 		067AF2B9636694FF8C80A9A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB2194252F66DABB69A064 /* libPods.a */; };
@@ -47,6 +48,8 @@
 		02AF6C851B8C64020081775A /* AutoSizingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSizingCell.h; sourceTree = "<group>"; };
 		02AF6C861B8C64020081775A /* AutoSizingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSizingCell.m; sourceTree = "<group>"; };
 		02AF6C871B8C64020081775A /* AutoSizingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoSizingCell.xib; sourceTree = "<group>"; };
+		02AF6CFD1B8EC4DB0081775A /* PureLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutCell.h; sourceTree = "<group>"; };
+		02AF6CFE1B8EC4DB0081775A /* PureLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PureLayoutCell.m; sourceTree = "<group>"; };
 		02B49E0D1B8B0BA8005467C7 /* BNRCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRCell.h; sourceTree = "<group>"; };
 		02B49E0E1B8B0BA8005467C7 /* BNRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRCell.m; sourceTree = "<group>"; };
 		02B49E0F1B8B0BA8005467C7 /* BNRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRCell.xib; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				02B49E0D1B8B0BA8005467C7 /* BNRCell.h */,
 				02B49E0E1B8B0BA8005467C7 /* BNRCell.m */,
 				02B49E0F1B8B0BA8005467C7 /* BNRCell.xib */,
+				02AF6CFD1B8EC4DB0081775A /* PureLayoutCell.h */,
+				02AF6CFE1B8EC4DB0081775A /* PureLayoutCell.m */,
 				520AA490187C4EC00048F174 /* Images.xcassets */,
 				520AA485187C4EC00048F174 /* Supporting Files */,
 			);
@@ -373,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				520AA4BF187C87C50048F174 /* BNRDetailViewController.m in Sources */,
+				02AF6CFF1B8EC4DB0081775A /* PureLayoutCell.m in Sources */,
 				520AA4B5187C4FC00048F174 /* BNRItemStore.m in Sources */,
 				520AA4C3187CAA690048F174 /* BNRImageStore.m in Sources */,
 				520AA4AF187C4EF00048F174 /* BNRItemsViewController.m in Sources */,

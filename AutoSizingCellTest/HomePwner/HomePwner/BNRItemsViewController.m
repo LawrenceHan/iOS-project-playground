@@ -12,6 +12,7 @@
 #import "BNRItem.h"
 #import "BNRCell.h"
 #import "AutoSizingCell.h"
+#import "PureLayoutCell.h"
 
 #define SYSTEM_VERSION                              ([[UIDevice currentDevice] systemVersion])
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([SYSTEM_VERSION compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -20,7 +21,7 @@
 @interface BNRItemsViewController ()
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) BNRCell *prototypeCell;
+@property (nonatomic, strong) PureLayoutCell *prototypeCell;
 
 - (void)populateDataSource;
 
@@ -73,12 +74,12 @@
 {
     [super viewDidLoad];
 
-    UINib *nib = [UINib nibWithNibName:@"BNRCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRCell"];
+//    UINib *nib = [UINib nibWithNibName:@"BNRCell" bundle:nil];
+//    [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRCell"];
 //    [self.tableView registerNib:[UINib nibWithNibName:@"AutoSizingCell" bundle:nil] forCellReuseIdentifier:@"AutoSizingCell"];
-    
+    [self.tableView registerClass:[PureLayoutCell class] forCellReuseIdentifier:@"PureLayoutCell"];
+    //self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     [self populateDataSource];
-    self.offscreenCells = [NSMutableDictionary dictionary];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,9 +94,9 @@
     [self.tableView reloadData];
 }
 
-- (BNRCell *)prototypeCell {
+- (PureLayoutCell *)prototypeCell {
     if (!_prototypeCell) {
-        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BNRCell class])];
+        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PureLayoutCell class])];
     }
     
     return _prototypeCell;
@@ -109,20 +110,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Get a new or recycled cell
-    BNRCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BNRCell" forIndexPath:indexPath];
+//    BNRCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BNRCell" forIndexPath:indexPath];
 //    AutoSizingCell *cell = [tableView dequeueReusableCellWithIdentifier:
 //                            NSStringFromClass([AutoSizingCell class])];
 
     // Set the text on the cell with the description of the item
     // that is at the nth index of items, where n = row this cell
     // will appear in on the tableview
+    PureLayoutCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PureLayoutCell" forIndexPath:indexPath];
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
 
     return cell;
 }
 
-- (void)configureCell:(BNRCell *)cell
+- (void)configureCell:(PureLayoutCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *items = [[BNRItemStore sharedStore] allItems];
@@ -130,10 +132,18 @@
 //    NSDictionary *dataSourceItem = [self.dataSource objectAtIndex:indexPath.row];
 //    [dataSourceItem valueForKey:@"title"];
 //    [dataSourceItem valueForKey:@"body"];
-    cell.nameLabel.text = item.itemName;
-    cell.serialNumberLabel.text = item.serialNumber;
-    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
-    cell.thumbnailView.image = item.thumbnail;
+//    cell.nameLabel.text = item.itemName;
+//    cell.serialNumberLabel.text = item.serialNumber;
+//    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+//    cell.thumbnailView.image = item.thumbnail;
+    cell.titleLabel.text = item.itemName;
+    cell.bodyLabel.text = item.serialNumber;
+    
+    // Make sure the constraints have been added to this cell, since it may have just been created from scratch
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -187,9 +197,6 @@
     //self.prototypeCell.bounds = CGRectMake(0, 0, CGRectGetWidth(self.tableView.bounds), CGRectGetHeight(self.prototypeCell.bounds));
     
     [self configureCell:self.prototypeCell forRowAtIndexPath:indexPath];
-
-    [self.prototypeCell updateConstraintsIfNeeded];
-    [self.prototypeCell layoutIfNeeded];
    
     // Get the actual height required for the cell
     CGFloat height = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
