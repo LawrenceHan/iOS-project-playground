@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @class BNRItem;
+@import CoreData;
 
 @interface BNRItemStore : NSObject
 
 @property (nonatomic, readonly) NSArray *allItems;
+@property (nonatomic, strong) NSMutableArray *allAssetTypes;
+@property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) NSManagedObjectModel *model;
 
 // Notice that this is a class method and prefixed with a + instead of a -
 + (instancetype)sharedStore;
