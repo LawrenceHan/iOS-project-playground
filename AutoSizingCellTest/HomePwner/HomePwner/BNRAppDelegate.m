@@ -12,22 +12,30 @@
 
 @implementation BNRAppDelegate
 
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    return YES;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    if (!self.window.rootViewController) {
+        // Create a BNRItemsViewController
+        BNRItemsViewController *itemsViewController = [[BNRItemsViewController alloc] init];
+        
+        // Create an instance of a UINavigationController
+        // its stack contains only itemsViewController
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:itemsViewController];
+        
+        navController.restorationIdentifier = NSStringFromClass([navController class]);
+        
+        
+        // Place navigation controller's view in the window hierarchy
+        self.window.rootViewController = navController;
+    }
 
-    // Create a BNRItemsViewController
-    BNRItemsViewController *itemsViewController = [[BNRItemsViewController alloc] init];
-
-    // Create an instance of a UINavigationController
-    // its stack contains only itemsViewController
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:itemsViewController];
-
-    // Place navigation controller's view in the window hierarchy
-    self.window.rootViewController = navController;
-
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -61,6 +69,26 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder {
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
+    return YES;
+}
+
+- (UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
+{
+    UIViewController *vc = [[UINavigationController alloc] init];
+    vc.restorationIdentifier = [identifierComponents lastObject];
+    
+    if (identifierComponents.count == 1) {
+        self.window.rootViewController = vc;
+    }
+    
+    return vc;
 }
 
 @end

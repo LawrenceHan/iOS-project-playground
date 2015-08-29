@@ -18,7 +18,8 @@
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([SYSTEM_VERSION compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define IS_IOS8_OR_ABOVE                            (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
 
-@interface BNRItemsViewController ()
+@interface BNRItemsViewController () <UIViewControllerRestoration, UIDataSourceModelAssociation>
+
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) PureLayoutCell *prototypeCell;
@@ -31,6 +32,50 @@
 
 @implementation BNRItemsViewController
 
++ (UIViewController *) viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder {
+    return [[self alloc] init];
+}
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [coder encodeBool:self.editing forKey:@"TableViewIsEditing"];
+    
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder {
+    self.editing = [coder decodeBoolForKey:@"TableViewIsEditing"];
+    
+    [super decodeRestorableStateWithCoder:coder];
+}
+
+- (NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view {
+    NSString *identifier = nil;
+    
+    if (idx && view) {
+        BNRItem *item = [[BNRItemStore sharedStore] allItems][idx.row];
+        identifier = item.itemKey;
+    }
+    
+    return identifier;
+}
+
+- (NSIndexPath *)indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view {
+    NSIndexPath *indexPath = nil;
+    
+    if (identifier && view) {
+        NSArray *items = [[BNRItemStore sharedStore] allItems];
+        for (BNRItem *item in items) {
+            if ([identifier isEqualToString:item.itemKey]) {
+                NSInteger row = [items indexOfObjectIdenticalTo:item];
+                indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+                break;
+            }
+        }
+    }
+    
+    return indexPath;
+}
+
 - (instancetype)init
 {
     // Call the superclass's designated initializer
@@ -38,6 +83,9 @@
     if (self) {
         UINavigationItem *navItem = self.navigationItem;
         navItem.title = @"Homepwner";
+        
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
 
         // Create a new bar button item that will send
         // addNewItem: to BNRItemsViewController
@@ -78,6 +126,7 @@
 //    [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRCell"];
 //    [self.tableView registerNib:[UINib nibWithNibName:@"AutoSizingCell" bundle:nil] forCellReuseIdentifier:@"AutoSizingCell"];
     [self.tableView registerClass:[PureLayoutCell class] forCellReuseIdentifier:@"PureLayoutCell"];
+    self.tableView.restorationIdentifier = @"BNRItemsViewControllerTableView";
     //self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     [self populateDataSource];
 }
@@ -220,6 +269,7 @@
 
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
 
+    navController.restorationIdentifier = NSStringFromClass([navController class]);
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self presentViewController:navController animated:YES completion:NULL];

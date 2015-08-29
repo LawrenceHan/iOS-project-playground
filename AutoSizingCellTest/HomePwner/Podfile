@@ -2,6 +2,7 @@
 platform :ios, '7.0'
 
 pod 'PureLayout'
+pod 'MagicalRecord'
 
 link_with ‘HomePwner’, ‘HomePwnerTests’
 
