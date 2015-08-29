@@ -28,7 +28,10 @@
 
 @end
 
-@implementation BNRDetailViewController
+@implementation BNRDetailViewController {
+    CALayer *blurLayer;
+    BOOL shouldIgnoreSnapshot;
+}
 
 + (UIViewController *) viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder {
     BOOL isNew = NO;
@@ -99,6 +102,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Register notification
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(applicationResigningActive:)
+               name:UIApplicationWillResignActiveNotification object:nil];
+    [nc addObserver:self selector:@selector(applicationBecameActive:)
+               name:UIApplicationDidBecomeActiveNotification object:nil];
 
     UIImageView *iv = [[UIImageView alloc] initWithImage:nil];
 
@@ -135,6 +145,10 @@
 
     [self.view addConstraints:horizontalConstraints];
     [self.view addConstraints:verticalConstraints];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -320,5 +334,27 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [textField resignFirstResponder];
     return YES;
 }
+
+- (void)applicationResigningActive:(NSNotification *)note {
+    // Add blur effect
+    if (!blurLayer) {
+        blurLayer = [[CALayer alloc] init];
+    }
+    blurLayer.frame = self.view.bounds;
+    blurLayer.backgroundColor = [UIColor yellowColor].CGColor;
+    [self.view.layer addSublayer:blurLayer];
+    shouldIgnoreSnapshot = NO;
+    if (shouldIgnoreSnapshot) {
+        [[UIApplication sharedApplication] ignoreSnapshotOnNextApplicationLaunch];
+    }
+}
+
+- (void)applicationBecameActive:(NSNotification *)note {
+    // Remove blur effect if there's any
+    if (blurLayer.superlayer == self.view.layer) {
+        [blurLayer removeFromSuperlayer];
+    }
+}
+
 
 @end
