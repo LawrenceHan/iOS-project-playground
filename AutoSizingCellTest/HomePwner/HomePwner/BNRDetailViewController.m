@@ -198,9 +198,16 @@
 
     // "Save" changes to item
     BNRItem *item = self.item;
-    item.itemName = self.nameField.text;
+    item.itemName = [self pinyinWithString:self.nameField.text];
     item.serialNumber = self.serialNumberField.text;
     item.valueInDollars = [self.valueField.text intValue];
+}
+
+- (NSString *)pinyinWithString:(NSString *)string {
+    NSMutableString *mutableString = [NSMutableString stringWithString:string];
+    CFMutableStringRef stringRef = (__bridge CFMutableStringRef)(mutableString);
+    CFStringTransform(stringRef, NULL, kCFStringTransformToLatin, NO);
+    return mutableString;
 }
 
 - (void)prepareViewsForOrientation:(UIInterfaceOrientation)orientation
@@ -359,6 +366,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         image = [UIImageEffects imageByApplyingLightEffectToImage:image];
         
         blurLayer.contents = (__bridge id)(image.CGImage);
+        CFRelease(imageRef);
     }
     
     

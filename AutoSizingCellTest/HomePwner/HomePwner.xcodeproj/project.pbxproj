@@ -13,7 +13,11 @@
 		02AF6D021B9009630081775A /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6D001B9009630081775A /* Homepwner.xcdatamodeld */; };
 		02AF6D051B9018660081775A /* BNRImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6D041B9018660081775A /* BNRImageTransformer.m */; };
 		02AF6D0E1B90385D0081775A /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6D0D1B90385D0081775A /* BNRItem.m */; };
-		02AF6DB81B943C0F0081775A /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DB71B943C0F0081775A /* UIImageEffects.m */; };
+		02AF6DC71B9454A80081775A /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DC61B9454A80081775A /* UIImageEffects.m */; };
+		02AF6DCE1B9454B30081775A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6DC91B9454B30081775A /* .gitignore */; };
+		02AF6DCF1B9454B30081775A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6DCA1B9454B30081775A /* LICENSE */; };
+		02AF6DD01B9454B30081775A /* NSString+Pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DCC1B9454B30081775A /* NSString+Pinyin.m */; };
+		02AF6DD11B9454B30081775A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DCD1B9454B30081775A /* README.md */; };
 		02B49E101B8B0BA8005467C7 /* BNRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B49E0E1B8B0BA8005467C7 /* BNRCell.m */; };
 		02B49E111B8B0BA8005467C7 /* BNRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B49E0F1B8B0BA8005467C7 /* BNRCell.xib */; };
 		067AF2B9636694FF8C80A9A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB2194252F66DABB69A064 /* libPods.a */; };
@@ -58,8 +62,15 @@
 		02AF6D041B9018660081775A /* BNRImageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageTransformer.m; sourceTree = "<group>"; };
 		02AF6D0C1B90385D0081775A /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
 		02AF6D0D1B90385D0081775A /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
-		02AF6DB61B943C0F0081775A /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
-		02AF6DB71B943C0F0081775A /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		02AF6DC51B9454A80081775A /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
+		02AF6DC61B9454A80081775A /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		02AF6DC91B9454B30081775A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		02AF6DCA1B9454B30081775A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		02AF6DCB1B9454B30081775A /* NSString+Pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Pinyin.h"; sourceTree = "<group>"; };
+		02AF6DCC1B9454B30081775A /* NSString+Pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Pinyin.m"; sourceTree = "<group>"; };
+		02AF6DCD1B9454B30081775A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		02AF6DD21B9460900081775A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		02AF6DD31B9460900081775A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		02B49E0D1B8B0BA8005467C7 /* BNRCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRCell.h; sourceTree = "<group>"; };
 		02B49E0E1B8B0BA8005467C7 /* BNRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRCell.m; sourceTree = "<group>"; };
 		02B49E0F1B8B0BA8005467C7 /* BNRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRCell.xib; sourceTree = "<group>"; };
@@ -119,20 +130,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02AF6DB51B943C050081775A /* UIImageEffects */ = {
+		02AF6DC31B9454A80081775A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				02AF6DB61B943C0F0081775A /* UIImageEffects.h */,
-				02AF6DB71B943C0F0081775A /* UIImageEffects.m */,
+				02AF6DC81B9454B30081775A /* NSString-Pinyin-master */,
+				02AF6DC41B9454A80081775A /* UIImageEffects */,
 			);
-			name = UIImageEffects;
-			path = HomePwner/Vendor/UIImageEffects;
+			name = Vendor;
+			path = HomePwner/Vendor;
+			sourceTree = "<group>";
+		};
+		02AF6DC41B9454A80081775A /* UIImageEffects */ = {
+			isa = PBXGroup;
+			children = (
+				02AF6DC51B9454A80081775A /* UIImageEffects.h */,
+				02AF6DC61B9454A80081775A /* UIImageEffects.m */,
+			);
+			path = UIImageEffects;
+			sourceTree = "<group>";
+		};
+		02AF6DC81B9454B30081775A /* NSString-Pinyin-master */ = {
+			isa = PBXGroup;
+			children = (
+				02AF6DC91B9454B30081775A /* .gitignore */,
+				02AF6DCA1B9454B30081775A /* LICENSE */,
+				02AF6DCB1B9454B30081775A /* NSString+Pinyin.h */,
+				02AF6DCC1B9454B30081775A /* NSString+Pinyin.m */,
+				02AF6DCD1B9454B30081775A /* README.md */,
+			);
+			path = "NSString-Pinyin-master";
 			sourceTree = "<group>";
 		};
 		520AA472187C4EC00048F174 = {
 			isa = PBXGroup;
 			children = (
-				02AF6DB51B943C050081775A /* UIImageEffects */,
+				02AF6DC31B9454A80081775A /* Vendor */,
 				520AA484187C4EC00048F174 /* HomePwner */,
 				520AA49D187C4EC00048F174 /* HomePwnerTests */,
 				520AA47D187C4EC00048F174 /* Frameworks */,
@@ -296,6 +328,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 520AA472187C4EC00048F174;
 			productRefGroup = 520AA47C187C4EC00048F174 /* Products */;
@@ -316,7 +349,9 @@
 				02AF6C891B8C64020081775A /* AutoSizingCell.xib in Resources */,
 				520AA4C0187C87C50048F174 /* BNRDetailViewController.xib in Resources */,
 				520AA489187C4EC00048F174 /* InfoPlist.strings in Resources */,
+				02AF6DCF1B9454B30081775A /* LICENSE in Resources */,
 				02B49E111B8B0BA8005467C7 /* BNRCell.xib in Resources */,
+				02AF6DCE1B9454B30081775A /* .gitignore in Resources */,
 				520AA491187C4EC00048F174 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,12 +439,14 @@
 				02AF6CFF1B8EC4DB0081775A /* PureLayoutCell.m in Sources */,
 				520AA4B5187C4FC00048F174 /* BNRItemStore.m in Sources */,
 				520AA4C3187CAA690048F174 /* BNRImageStore.m in Sources */,
-				02AF6DB81B943C0F0081775A /* UIImageEffects.m in Sources */,
+				02AF6DC71B9454A80081775A /* UIImageEffects.m in Sources */,
 				02AF6D051B9018660081775A /* BNRImageTransformer.m in Sources */,
 				520AA4AF187C4EF00048F174 /* BNRItemsViewController.m in Sources */,
+				02AF6DD01B9454B30081775A /* NSString+Pinyin.m in Sources */,
 				02AF6D021B9009630081775A /* Homepwner.xcdatamodeld in Sources */,
 				520AA48B187C4EC00048F174 /* main.m in Sources */,
 				02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */,
+				02AF6DD11B9454B30081775A /* README.md in Sources */,
 				02B49E101B8B0BA8005467C7 /* BNRCell.m in Sources */,
 				520AA48F187C4EC00048F174 /* BNRAppDelegate.m in Sources */,
 			);
@@ -438,6 +475,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				520AA488187C4EC00048F174 /* en */,
+				02AF6DD21B9460900081775A /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -446,6 +484,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				520AA4A1187C4EC00048F174 /* en */,
+				02AF6DD31B9460900081775A /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
