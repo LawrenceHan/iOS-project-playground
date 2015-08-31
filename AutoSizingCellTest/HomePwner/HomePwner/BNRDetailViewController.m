@@ -10,6 +10,7 @@
 #import "BNRItem.h"
 #import "BNRImageStore.h"
 #import "BNRItemStore.h"
+#import "UIImageEffects.h"
 
 @interface BNRDetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate,
     UITextFieldDelegate, UIPopoverControllerDelegate, UIViewControllerRestoration>
@@ -339,10 +340,28 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // Add blur effect
     if (!blurLayer) {
         blurLayer = [[CALayer alloc] init];
+        blurLayer.frame = self.navigationController.view.bounds;
+        blurLayer.backgroundColor = [UIColor yellowColor].CGColor;
+        [self.navigationController.view.layer addSublayer:blurLayer];
+        
+        float scale = [UIScreen mainScreen].scale;
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, YES, scale);
+        [self.view drawViewHierarchyInRect:self.view.frame afterScreenUpdates:NO];
+        __block UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage,
+                                                           CGRectMake(blurLayer.frame.origin.x * scale,
+                                                                      blurLayer.frame.origin.y * scale,
+                                                                      blurLayer.frame.size.width * scale,
+                                                                      blurLayer.frame.size.height * scale));
+        image = [UIImage imageWithCGImage:imageRef];
+        image = [UIImageEffects imageByApplyingLightEffectToImage:image];
+        
+        blurLayer.contents = (__bridge id)(image.CGImage);
     }
-    blurLayer.frame = self.view.bounds;
-    blurLayer.backgroundColor = [UIColor yellowColor].CGColor;
-    [self.view.layer addSublayer:blurLayer];
+    
+    
     shouldIgnoreSnapshot = NO;
     if (shouldIgnoreSnapshot) {
         [[UIApplication sharedApplication] ignoreSnapshotOnNextApplicationLaunch];
@@ -351,7 +370,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)applicationBecameActive:(NSNotification *)note {
     // Remove blur effect if there's any
-    if (blurLayer.superlayer == self.view.layer) {
+    if (blurLayer.superlayer == self.navigationController.view.layer) {
         [blurLayer removeFromSuperlayer];
     }
 }
