@@ -349,8 +349,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         blurLayer = [[CALayer alloc] init];
         blurLayer.frame = self.navigationController.view.bounds;
         blurLayer.backgroundColor = [UIColor yellowColor].CGColor;
-        [self.navigationController.view.layer addSublayer:blurLayer];
-        
         float scale = [UIScreen mainScreen].scale;
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, YES, scale);
         [self.view drawViewHierarchyInRect:self.view.frame afterScreenUpdates:NO];
@@ -369,7 +367,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         CFRelease(imageRef);
     }
     
-    
+    [self.navigationController.view.layer addSublayer:blurLayer];
     shouldIgnoreSnapshot = NO;
     if (shouldIgnoreSnapshot) {
         [[UIApplication sharedApplication] ignoreSnapshotOnNextApplicationLaunch];
