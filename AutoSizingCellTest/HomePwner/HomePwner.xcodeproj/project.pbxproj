@@ -20,7 +20,7 @@
 		02AF6DD11B9454B30081775A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DCD1B9454B30081775A /* README.md */; };
 		02AF6DD51B94A5330081775A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6DD41B94A5330081775A /* Storyboard.storyboard */; };
 		02AF6DD81B94A57F0081775A /* BNRTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DD71B94A57F0081775A /* BNRTableViewController.m */; };
-		02AF6DDB1B94A6600081775A /* BNRTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DDA1B94A6600081775A /* BNRTestViewController.m */; };
+		02AF6DDB1B94A6600081775A /* BNRDynamicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DDA1B94A6600081775A /* BNRDynamicsViewController.m */; };
 		02AF6DDE1B94A7C10081775A /* BNRSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DDD1B94A7C10081775A /* BNRSegue.m */; };
 		02AF6DE11B94A8650081775A /* SpringAnimationOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DE01B94A8650081775A /* SpringAnimationOC.m */; };
 		02AF6DE41B95500E0081775A /* BNRCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DE31B95500E0081775A /* BNRCollectionViewController.m */; };
@@ -82,8 +82,8 @@
 		02AF6DD41B94A5330081775A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		02AF6DD61B94A57F0081775A /* BNRTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRTableViewController.h; sourceTree = "<group>"; };
 		02AF6DD71B94A57F0081775A /* BNRTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRTableViewController.m; sourceTree = "<group>"; };
-		02AF6DD91B94A6600081775A /* BNRTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRTestViewController.h; sourceTree = "<group>"; };
-		02AF6DDA1B94A6600081775A /* BNRTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRTestViewController.m; sourceTree = "<group>"; };
+		02AF6DD91B94A6600081775A /* BNRDynamicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDynamicsViewController.h; sourceTree = "<group>"; };
+		02AF6DDA1B94A6600081775A /* BNRDynamicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDynamicsViewController.m; sourceTree = "<group>"; };
 		02AF6DDC1B94A7C10081775A /* BNRSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRSegue.h; sourceTree = "<group>"; };
 		02AF6DDD1B94A7C10081775A /* BNRSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRSegue.m; sourceTree = "<group>"; };
 		02AF6DDF1B94A8650081775A /* SpringAnimationOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringAnimationOC.h; sourceTree = "<group>"; };
@@ -222,8 +222,8 @@
 				02AF6DE61B9551F80081775A /* BNRCollectionViewCell.m */,
 				02AF6DEB1B9579A00081775A /* BNRFLowLayout.h */,
 				02AF6DEC1B9579A00081775A /* BNRFLowLayout.m */,
-				02AF6DD91B94A6600081775A /* BNRTestViewController.h */,
-				02AF6DDA1B94A6600081775A /* BNRTestViewController.m */,
+				02AF6DD91B94A6600081775A /* BNRDynamicsViewController.h */,
+				02AF6DDA1B94A6600081775A /* BNRDynamicsViewController.m */,
 			);
 			name = "Collection demo";
 			sourceTree = "<group>";
@@ -511,7 +511,7 @@
 				520AA4AF187C4EF00048F174 /* BNRItemsViewController.m in Sources */,
 				02AF6DD01B9454B30081775A /* NSString+Pinyin.m in Sources */,
 				02AF6D021B9009630081775A /* Homepwner.xcdatamodeld in Sources */,
-				02AF6DDB1B94A6600081775A /* BNRTestViewController.m in Sources */,
+				02AF6DDB1B94A6600081775A /* BNRDynamicsViewController.m in Sources */,
 				02AF6DE41B95500E0081775A /* BNRCollectionViewController.m in Sources */,
 				520AA48B187C4EC00048F174 /* main.m in Sources */,
 				02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */,

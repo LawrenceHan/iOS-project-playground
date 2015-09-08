@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BNRTestViewController : UIViewController
+@interface BNRDynamicsViewController : UIViewController
 
 @end
