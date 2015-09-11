@@ -11,4 +11,6 @@
 @interface BNRCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
+-(void)setImage:(UIImage *)image;
+
 @end

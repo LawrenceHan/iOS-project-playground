@@ -9,12 +9,17 @@
 #import "BNRCollectionViewController.h"
 #import "BNRCollectionViewCell.h"
 #import "BNRFLowLayout.h"
+#import "BNRDynamicFlowLayout.h"
+#import "BNRCollectionLayout.h"
 
 @interface BNRCollectionViewController () <BNRFlowLayoutDelegate>
+@property (nonatomic, assign) NSInteger count;
 
 @end
 
-@implementation BNRCollectionViewController
+@implementation BNRCollectionViewController {
+    BNRDynamicFlowLayout *dynamicFlowLayout;
+}
 
 static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
 
@@ -28,6 +33,17 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
     //[self.collectionView registerClass:[BNRCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+    BNRCollectionLayout *layout = [[BNRCollectionLayout alloc] init];
+    self.collectionView.collectionViewLayout = layout;
+    
+    [self performSelector:@selector(userDidPressAddButton:) withObject:nil afterDelay:3];
+}
+
+- (void)userDidPressAddButton:(id)sender {
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.count inSection:0]]];
+        self.count++;
+    } completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,7 +69,7 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
+    return self.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -61,13 +77,13 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
     
     // Configure the cell
     cell.backgroundColor = [UIColor magentaColor];
-    cell.titleLabel.text = [NSString stringWithFormat:@"Cell No.%ld", indexPath.row];
+    NSString *imageName = [NSString stringWithFormat:@"%ld.jpg", indexPath.row % 5];
+    [cell setImage:[UIImage imageNamed:imageName]];
+    cell.titleLabel.text = [NSString stringWithFormat:@"No.%ld", indexPath.row];
     return cell;
 }
 
 #pragma mark <UICollectionViewDelegate>
-
-
 // Uncomment this method to specify if the specified item should be highlighted during tracking
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
 	return YES;
@@ -78,26 +94,35 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
     return YES;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *supplementaryViewIdentifier = @"supplementaryViewIdentifier";
-    
-    return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                              withReuseIdentifier:supplementaryViewIdentifier
-                                                     forIndexPath:indexPath];
-}
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *supplementaryViewIdentifier = @"supplementaryViewIdentifier";
+//    
+//    return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+//                                              withReuseIdentifier:supplementaryViewIdentifier
+//                                                     forIndexPath:indexPath];
+//}
 
 #pragma mark - Flow layout delegate
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGFloat randomHeight = 100 + (arc4random() % 140);
-    return CGSizeMake(100, randomHeight);
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    CGFloat randomHeight = 100 + (arc4random() % 140);
+//    return CGSizeMake(100, randomHeight);
+//}
 
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(BNRFLowLayout *)layout heightForItemAtIndexPath:(NSIndexPath*)indexPath
 {
     CGFloat randomHeight = 100 + (arc4random() % 140);
     return randomHeight;
+}
+
+#pragma mark - Button methods
+- (IBAction)changeLayout:(UIButton *)sender {
+    if (!dynamicFlowLayout) {
+        dynamicFlowLayout = [[BNRDynamicFlowLayout alloc] init];
+    }
+    BNRFLowLayout *layout = [[BNRFLowLayout alloc] init];
+    self.collectionView.collectionViewLayout = dynamicFlowLayout;
 }
 
 /*

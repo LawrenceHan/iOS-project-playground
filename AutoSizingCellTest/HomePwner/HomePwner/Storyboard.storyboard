@@ -186,6 +186,21 @@
                                     <action selector="reset:" destination="90C-ZQ-Wtf" eventType="touchUpInside" id="AQT-IG-x96"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hys-KF-lgi">
+                                <rect key="frame" x="69" y="58" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="Rdb-1Y-Y9a"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="Xa1-hQ-JLR"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="eCZ-wh-VIX"/>
+                                    <constraint firstAttribute="height" constant="30" id="l6k-KE-Afb"/>
+                                </constraints>
+                                <state key="normal" title="drag">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="drag:" destination="90C-ZQ-Wtf" eventType="touchUpInside" id="cJa-Bf-xb8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -197,22 +212,24 @@
                             <constraint firstItem="IBX-HS-SZm" firstAttribute="leading" secondItem="pUt-l3-GmH" secondAttribute="trailing" constant="8" id="Vhw-46-bVn"/>
                             <constraint firstItem="pUt-l3-GmH" firstAttribute="leading" secondItem="gYf-DT-WCT" secondAttribute="trailing" constant="8" id="b1L-ae-Ev9"/>
                             <constraint firstItem="DMK-l8-ueS" firstAttribute="top" secondItem="GqJ-Kw-xTG" secondAttribute="bottom" id="gQG-iq-aDk"/>
+                            <constraint firstItem="Hys-KF-lgi" firstAttribute="leading" secondItem="go1-eZ-fVS" secondAttribute="trailing" constant="7" id="iXT-9g-ovS"/>
                             <constraint firstItem="DMK-l8-ueS" firstAttribute="leading" secondItem="G0p-ah-cbJ" secondAttribute="trailing" constant="7" id="l2c-jN-Rf0"/>
                             <constraint firstItem="IBX-HS-SZm" firstAttribute="top" secondItem="GqJ-Kw-xTG" secondAttribute="bottom" id="mE1-Ox-RBy"/>
                             <constraint firstItem="go1-eZ-fVS" firstAttribute="top" secondItem="G0p-ah-cbJ" secondAttribute="bottom" constant="8" id="tIy-CK-ptd"/>
                             <constraint firstItem="go1-eZ-fVS" firstAttribute="leading" secondItem="NcK-EO-ebq" secondAttribute="leadingMargin" id="vQn-g0-ksr"/>
                             <constraint firstItem="gYf-DT-WCT" firstAttribute="leading" secondItem="DMK-l8-ueS" secondAttribute="trailing" constant="8" id="yRY-6q-ctC"/>
+                            <constraint firstItem="Hys-KF-lgi" firstAttribute="top" secondItem="DMK-l8-ueS" secondAttribute="bottom" constant="8" id="zes-WB-wGI"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="dfB-Ng-kvd" appends="YES" id="J6S-Hd-xiV"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Nqq-gH-Ps7"/>
+                    <connections>
+                        <outlet property="panGestureRecognizer" destination="dfB-Ng-kvd" id="GcD-qD-cax"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="utK-fN-imJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="dfB-Ng-kvd">
                     <connections>
-                        <action selector="dropPanGesture:" destination="90C-ZQ-Wtf" id="s6H-Js-mCd"/>
+                        <action selector="dropPanGesture:" destination="90C-ZQ-Wtf" id="9ly-oZ-NkR"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
@@ -225,7 +242,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="s15-tb-tXp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NWN-bz-vTp" customClass="BNRFLowLayout">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NWN-bz-vTp">
                             <size key="itemSize" width="87" height="63"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -258,12 +275,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey let's do it" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MG-ph-IzR">
-                                    <rect key="frame" x="161" y="14" width="137" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmw-mR-Tbe">
+                                    <rect key="frame" x="192" y="10" width="113" height="30"/>
+                                    <state key="normal" title="Hey let's do it">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="changeLayout:" destination="7zI-bA-bha" eventType="touchUpInside" id="CqC-oH-mff"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         </collectionReusableView>

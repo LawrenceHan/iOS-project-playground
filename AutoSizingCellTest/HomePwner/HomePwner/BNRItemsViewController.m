@@ -134,7 +134,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
     [self.tableView reloadData];
 }
 
@@ -147,7 +146,6 @@
     if (!_prototypeCell) {
         _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PureLayoutCell class])];
     }
-    
     return _prototypeCell;
 }
 

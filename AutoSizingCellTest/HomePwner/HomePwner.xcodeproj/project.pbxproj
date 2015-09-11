@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026557321BA29FD50008D659 /* BNRDynamicFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 026557311BA29FD50008D659 /* BNRDynamicFlowLayout.m */; };
+		026557351BA3132D0008D659 /* BNRCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 026557341BA3132D0008D659 /* BNRCollectionLayout.m */; };
 		02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6C861B8C64020081775A /* AutoSizingCell.m */; };
 		02AF6C891B8C64020081775A /* AutoSizingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6C871B8C64020081775A /* AutoSizingCell.xib */; };
 		02AF6CFF1B8EC4DB0081775A /* PureLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6CFE1B8EC4DB0081775A /* PureLayoutCell.m */; };
@@ -60,6 +62,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		026557301BA29FD50008D659 /* BNRDynamicFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDynamicFlowLayout.h; sourceTree = "<group>"; };
+		026557311BA29FD50008D659 /* BNRDynamicFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDynamicFlowLayout.m; sourceTree = "<group>"; };
+		026557331BA3132D0008D659 /* BNRCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRCollectionLayout.h; sourceTree = "<group>"; };
+		026557341BA3132D0008D659 /* BNRCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRCollectionLayout.m; sourceTree = "<group>"; };
 		02AF6C851B8C64020081775A /* AutoSizingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSizingCell.h; sourceTree = "<group>"; };
 		02AF6C861B8C64020081775A /* AutoSizingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSizingCell.m; sourceTree = "<group>"; };
 		02AF6C871B8C64020081775A /* AutoSizingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoSizingCell.xib; sourceTree = "<group>"; };
@@ -222,6 +228,10 @@
 				02AF6DE61B9551F80081775A /* BNRCollectionViewCell.m */,
 				02AF6DEB1B9579A00081775A /* BNRFLowLayout.h */,
 				02AF6DEC1B9579A00081775A /* BNRFLowLayout.m */,
+				026557301BA29FD50008D659 /* BNRDynamicFlowLayout.h */,
+				026557311BA29FD50008D659 /* BNRDynamicFlowLayout.m */,
+				026557331BA3132D0008D659 /* BNRCollectionLayout.h */,
+				026557341BA3132D0008D659 /* BNRCollectionLayout.m */,
 				02AF6DD91B94A6600081775A /* BNRDynamicsViewController.h */,
 				02AF6DDA1B94A6600081775A /* BNRDynamicsViewController.m */,
 			);
@@ -509,7 +519,9 @@
 				02AF6D051B9018660081775A /* BNRImageTransformer.m in Sources */,
 				02AF6DE11B94A8650081775A /* SpringAnimationOC.m in Sources */,
 				520AA4AF187C4EF00048F174 /* BNRItemsViewController.m in Sources */,
+				026557351BA3132D0008D659 /* BNRCollectionLayout.m in Sources */,
 				02AF6DD01B9454B30081775A /* NSString+Pinyin.m in Sources */,
+				026557321BA29FD50008D659 /* BNRDynamicFlowLayout.m in Sources */,
 				02AF6D021B9009630081775A /* Homepwner.xcdatamodeld in Sources */,
 				02AF6DDB1B94A6600081775A /* BNRDynamicsViewController.m in Sources */,
 				02AF6DE41B95500E0081775A /* BNRCollectionViewController.m in Sources */,

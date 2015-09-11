@@ -14,15 +14,19 @@ const CGPoint kViewPoint2 = {.x = 200, .y = 50};
 @interface BNRDynamicsViewController ()
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) UIAttachmentBehavior *attachmentBehavior;
+@property (nonatomic, strong) UISnapBehavior *snapBehavior;
 @property (nonatomic, strong) UIView *blueView;
 @property (nonatomic, strong) UIView *redView;
 @property (nonatomic, strong) UIView *yellowView;
 @property (nonatomic, strong) UIView *greenView;
+@property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *panGestureRecognizer;
 
 @property (nonatomic) BOOL didSetupConstraints;
 @end
 
-@implementation BNRDynamicsViewController
+@implementation BNRDynamicsViewController {
+    CGRect _originalFrame;
+}
 
 #pragma mark - Init methods
 - (void)viewDidLoad {
@@ -80,10 +84,6 @@ const CGPoint kViewPoint2 = {.x = 200, .y = 50};
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    UICollisionBehavior *collision = [[UICollisionBehavior alloc] initWithItems:@[self.blueView, self.redView, self.yellowView, self.greenView]];
-    collision.collisionMode = UICollisionBehaviorModeEverything;
-    collision.translatesReferenceBoundsIntoBoundary = YES;
-    [self.animator addBehavior:collision];
 }
 
 #pragma mark - Button methods
@@ -93,6 +93,7 @@ const CGPoint kViewPoint2 = {.x = 200, .y = 50};
     self.redView.transform = CGAffineTransformIdentity;
     self.yellowView.transform = CGAffineTransformIdentity;
     self.greenView.transform = CGAffineTransformIdentity;
+    [self.blueView removeGestureRecognizer:self.panGestureRecognizer];
     [self.view setNeedsUpdateConstraints];
 }
 
@@ -133,6 +134,11 @@ const CGPoint kViewPoint2 = {.x = 200, .y = 50};
 }
 
 - (IBAction)collision:(id)sender {
+    UICollisionBehavior *collision = [[UICollisionBehavior alloc] initWithItems:@[self.blueView, self.redView, self.yellowView, self.greenView]];
+    collision.collisionMode = UICollisionBehaviorModeEverything;
+    collision.translatesReferenceBoundsIntoBoundary = YES;
+    [self.animator addBehavior:collision];
+    
     UIPushBehavior *push1 = [[UIPushBehavior alloc] initWithItems:@[self.blueView] mode:UIPushBehaviorModeInstantaneous];
     UIPushBehavior *push2 = [[UIPushBehavior alloc] initWithItems:@[self.redView] mode:UIPushBehaviorModeInstantaneous];
     UIPushBehavior *push3 = [[UIPushBehavior alloc] initWithItems:@[self.yellowView] mode:UIPushBehaviorModeInstantaneous];
@@ -149,26 +155,50 @@ const CGPoint kViewPoint2 = {.x = 200, .y = 50};
     [self.animator addBehavior:push4];
 }
 
+- (IBAction)drag:(id)sender {
+    [self.animator addBehavior:[[UISnapBehavior alloc]
+                                initWithItem:self.blueView snapToPoint:self.blueView.center]];
+    [self.blueView addGestureRecognizer:self.panGestureRecognizer];
+}
+
 - (IBAction)dropPanGesture:(UIPanGestureRecognizer *)gesture {
+//    if (gesture.state == UIGestureRecognizerStateBegan) {
+//        CGPoint squareCenterPoint = CGPointMake(self.blueView.center.x, self.blueView.center.y);
+//        UIOffset offset = UIOffsetMake(0, 0);
+//        CGPoint touchPoint = [gesture locationInView:self.view];
+//        
+//        if (CGRectContainsPoint(self.blueView.frame, touchPoint)) {
+//            UIAttachmentBehavior *attach = [[UIAttachmentBehavior alloc]
+//                                            initWithItem:self.blueView offsetFromCenter:offset attachedToAnchor:squareCenterPoint];
+//            self.attachmentBehavior = attach;
+//            [self.animator addBehavior:attach];
+//        }
+//    }
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        CGPoint squareCenterPoint = CGPointMake(self.blueView.center.x, self.blueView.center.y);
-        UIOffset offset = UIOffsetMake(0, 0);
-        CGPoint touchPoint = [gesture locationInView:self.view];
-        
-        if (CGRectContainsPoint(self.blueView.frame, touchPoint)) {
-            UIAttachmentBehavior *attach = [[UIAttachmentBehavior alloc]
-                                            initWithItem:self.blueView offsetFromCenter:offset attachedToAnchor:squareCenterPoint];
-            self.attachmentBehavior = attach;
-            [self.animator addBehavior:attach];
-        }
+        _originalFrame = self.blueView.frame;
+        self.blueView.frame = CGRectMake(_originalFrame.origin.x, _originalFrame.origin.y,
+                                         _originalFrame.size.width + 10, _originalFrame.size.height + 10);
     } else if (gesture.state == UIGestureRecognizerStateChanged) {
-        if (self.attachmentBehavior) {
-            [self.attachmentBehavior setAnchorPoint:[gesture locationInView:self.view]];
-        }
-    } else if (gesture.state == UIGestureRecognizerStateEnded) {
-        [self.animator removeBehavior:self.attachmentBehavior];
-        self.attachmentBehavior = nil;
+        [self dragToPoint:[gesture locationInView:self.view]];
+    } else if (gesture.state == UIGestureRecognizerStateEnded ||
+               gesture.state == UIGestureRecognizerStateCancelled) {
+        [self stopDragging];
     }
+}
+
+- (void)dragToPoint:(CGPoint)point {
+    [self.animator removeBehavior:self.snapBehavior];
+    self.snapBehavior = [[UISnapBehavior alloc] initWithItem:self.blueView
+                                                 snapToPoint:point];
+    self.snapBehavior.damping = .25;
+    [self.animator addBehavior:self.snapBehavior];
+}
+
+- (void)stopDragging {
+    [self.animator removeBehavior:self.snapBehavior];
+    self.snapBehavior = nil;
+    self.blueView.transform = CGAffineTransformIdentity;
+    self.blueView.frame = _originalFrame;
 }
 
 
