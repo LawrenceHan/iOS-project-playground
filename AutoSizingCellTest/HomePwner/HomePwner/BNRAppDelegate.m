@@ -13,30 +13,30 @@
 @implementation BNRAppDelegate
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
-    
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    self.window.backgroundColor = [UIColor whiteColor];
+//    
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (!self.window.rootViewController) {
-        // Create a BNRItemsViewController
-        BNRItemsViewController *itemsViewController = [[BNRItemsViewController alloc] init];
-        
-        // Create an instance of a UINavigationController
-        // its stack contains only itemsViewController
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:itemsViewController];
-        
-        navController.restorationIdentifier = NSStringFromClass([navController class]);
-        
-        
-        // Place navigation controller's view in the window hierarchy
-        self.window.rootViewController = navController;
-    }
-
-    [self.window makeKeyAndVisible];
+//    if (!self.window.rootViewController) {
+//        // Create a BNRItemsViewController
+//        BNRItemsViewController *itemsViewController = [[BNRItemsViewController alloc] init];
+//        
+//        // Create an instance of a UINavigationController
+//        // its stack contains only itemsViewController
+//        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:itemsViewController];
+//        
+//        navController.restorationIdentifier = NSStringFromClass([navController class]);
+//        
+//        
+//        // Place navigation controller's view in the window hierarchy
+//        self.window.rootViewController = navController;
+//    }
+//
+//    [self.window makeKeyAndVisible];
     return YES;
 }
 

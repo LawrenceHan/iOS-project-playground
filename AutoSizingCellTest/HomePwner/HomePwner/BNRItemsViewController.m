@@ -13,12 +13,13 @@
 #import "BNRCell.h"
 #import "AutoSizingCell.h"
 #import "PureLayoutCell.h"
+#import "BNRInteractiveAnimator.h"
 
 #define SYSTEM_VERSION                              ([[UIDevice currentDevice] systemVersion])
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([SYSTEM_VERSION compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define IS_IOS8_OR_ABOVE                            (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
 
-@interface BNRItemsViewController () <UIViewControllerRestoration, UIDataSourceModelAssociation>
+@interface BNRItemsViewController () <UIViewControllerRestoration, UIDataSourceModelAssociation, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -104,6 +105,34 @@
                  object:nil];
     }
     
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        UINavigationItem *navItem = self.navigationItem;
+        navItem.title = @"Homepwner";
+        
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
+        
+        // Create a new bar button item that will send
+        // addNewItem: to BNRItemsViewController
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                             target:self
+                                                                             action:@selector(addNewItem:)];
+        
+        // Set this bar button item as the right item in the navigationItem
+        navItem.rightBarButtonItem = bbi;
+        navItem.leftBarButtonItem = self.editButtonItem;
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self
+               selector:@selector(updateTableViewForDynamicTypeSize)
+                   name:UIContentSizeCategoryDidChangeNotification
+                 object:nil];
+    }
     return self;
 }
 
@@ -195,20 +224,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    BNRDetailViewController *detailViewController = [[BNRDetailViewController alloc] initForNewItem:NO];
-//
-//    NSArray *items = [[BNRItemStore sharedStore] allItems];
-//    BNRItem *selectedItem = items[indexPath.row];
-//
-//    // Give detail view controller a pointer to the item object in row
-//    detailViewController.item = selectedItem;
-//
-//    // Push it onto the top of the navigation controller's stack
+    BNRDetailViewController *detailViewController = [[BNRDetailViewController alloc] initForNewItem:NO];
+
+    NSArray *items = [[BNRItemStore sharedStore] allItems];
+    BNRItem *selectedItem = items[indexPath.row];
+    detailViewController.item = selectedItem;
+    detailViewController.transitioningDelegate = self;
+    // Give detail view controller a pointer to the item object in row
+    // Push it onto the top of the navigation controller's stack
 //    [self.navigationController pushViewController:detailViewController
 //                                         animated:YES];
-    UIStoryboard *BNRBoard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    UIViewController *vc = [BNRBoard instantiateInitialViewController];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self.navigationController presentViewController:detailViewController animated:YES completion:nil];
 }
 
 - (void)   tableView:(UITableView *)tableView
@@ -340,5 +366,50 @@
     return [NSString stringWithFormat:@"%@!!!", [lorumIpsumRandom componentsJoinedByString:@" "]];
     
 }
+
+
+#pragma mark - UITransition
+- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
+    
+    return 1.0f;
+}
+
+- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
+    
+    UIViewController *src = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *dest = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    
+    CGRect f = src.view.frame;
+    CGRect originalSourceRect = src.view.frame;
+    f.origin.y = f.size.height;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        src.view.frame = f;
+        
+    } completion:^(BOOL finished){
+        src.view.alpha = 0;
+        dest.view.frame = f;
+        dest.view.alpha = 0.0f;
+        [[src.view superview] addSubview:dest.view];
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            dest.view.frame = originalSourceRect;
+            dest.view.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            src.view.alpha = 1.0f;
+            [transitionContext completeTransition:YES];
+        }];
+    }];
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return self;
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return self;
+}
+
 
 @end

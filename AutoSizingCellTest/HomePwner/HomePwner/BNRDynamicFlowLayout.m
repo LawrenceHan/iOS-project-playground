@@ -60,15 +60,17 @@
     
     // 筛选出不可见的layout attribute
     NSPredicate *predicate1 = [NSPredicate predicateWithBlock:^BOOL(UIAttachmentBehavior *behavior, NSDictionary *bindings) {
-        BOOL currectlyVisible = [itemsIndexPathsInVisibleRectSet member:[[[behavior items] firstObject] indexPath]] != nil;
+        id item = behavior.items.firstObject;
+        BOOL currectlyVisible = [itemsIndexPathsInVisibleRectSet member:[item indexPath]] != nil;
         return !currectlyVisible;
     }];
     NSArray *noLongerVisibleBehaviors = [self.dynamicAnimator.behaviors filteredArrayUsingPredicate:predicate1];
     
     // 从property里移除
     [noLongerVisibleBehaviors enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        id item = [obj items].firstObject;
         [self.dynamicAnimator removeBehavior:obj];
-        [self.visibleIndexPathsSet removeObject:[[[obj items] firstObject] indexPath]];
+        [self.visibleIndexPathsSet removeObject:[item indexPath]];
     }];
     
     // 筛选出目前可见的cell layout attribute

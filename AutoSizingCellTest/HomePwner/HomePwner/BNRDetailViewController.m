@@ -11,6 +11,7 @@
 #import "BNRImageStore.h"
 #import "BNRItemStore.h"
 #import "UIImageEffects.h"
+#import "BNRInteractiveAnimator.h"
 
 @interface BNRDetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate,
     UITextFieldDelegate, UIPopoverControllerDelegate, UIViewControllerRestoration>
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property (strong, nonatomic) BNRInteractiveAnimator *animator;
 
 - (IBAction)takePicture:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
@@ -146,6 +148,12 @@
 
     [self.view addConstraints:horizontalConstraints];
     [self.view addConstraints:verticalConstraints];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = [UIColor blueColor];
+    button.frame = CGRectMake(100, 200, 40, 40);
+    [self.view addSubview:button];
 }
 
 - (void)dealloc {
@@ -381,5 +389,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
 }
 
+#pragma mark - UIViewControllerAnimatedTransitioning delegate
 
 @end

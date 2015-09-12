@@ -33,10 +33,10 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
     //[self.collectionView registerClass:[BNRCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
-    BNRCollectionLayout *layout = [[BNRCollectionLayout alloc] init];
-    self.collectionView.collectionViewLayout = layout;
-    
-    [self performSelector:@selector(userDidPressAddButton:) withObject:nil afterDelay:3];
+//    BNRCollectionLayout *layout = [[BNRCollectionLayout alloc] init];
+//    self.collectionView.collectionViewLayout = layout;
+//    
+//    [self performSelector:@selector(userDidPressAddButton:) withObject:nil afterDelay:3];
 }
 
 - (void)userDidPressAddButton:(id)sender {
@@ -94,14 +94,14 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
     return YES;
 }
 
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *supplementaryViewIdentifier = @"supplementaryViewIdentifier";
-//    
-//    return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-//                                              withReuseIdentifier:supplementaryViewIdentifier
-//                                                     forIndexPath:indexPath];
-//}
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *supplementaryViewIdentifier = @"supplementaryViewIdentifier";
+    
+    return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                              withReuseIdentifier:supplementaryViewIdentifier
+                                                     forIndexPath:indexPath];
+}
 
 #pragma mark - Flow layout delegate
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
