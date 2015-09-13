@@ -10,7 +10,11 @@
 
 @interface BNRInteractiveAnimator : UIPercentDrivenInteractiveTransition
 
-- (instancetype)initWithViewController:(UIViewController*)controller;
-- (void)pinchGestureAction:(UIPinchGestureRecognizer*)gestureRecognizer;
+- (void)wireToViewController:(UIViewController*)viewController;
+
+/**
+ This property indicates whether an interactive transition is in progress.
+ */
+@property (nonatomic, assign) BOOL interactionInProgress;
 
 @end

@@ -8,47 +8,63 @@
 
 #import "BNRInteractiveAnimator.h"
 
-@interface BNRInteractiveAnimator ()
-@property (nonatomic, assign) float startScale;
-@property (weak, nonatomic) UIViewController *controller;
-
-@end
-
-@implementation BNRInteractiveAnimator
-
--(instancetype) initWithViewController:(UIViewController*) controller {
-    
-    if((self = [super init])) {
-        
-        self.controller = controller;
-    }
-    
-    return self;
+@implementation BNRInteractiveAnimator {
+    BOOL _shouldCompleteTransition;
+    UIViewController *_viewController;
+    UIPinchGestureRecognizer *_gesture;
+    CGFloat _startScale;
 }
 
--(void)pinchGestureAction:(UIPinchGestureRecognizer*)gestureRecognizer {
+-(void)dealloc {
+    [_gesture.view removeGestureRecognizer:_gesture];
+}
+
+- (void)wireToViewController:(UIViewController *)viewController {
+    _viewController = viewController;
+    [self prepareGestureRecognizerInView:viewController.view];
+}
+
+- (void)prepareGestureRecognizerInView:(UIView*)view {
+    UIPinchGestureRecognizer *gesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [view addGestureRecognizer:gesture];
+}
+
+- (CGFloat)completionSpeed
+{
+    return 1 - self.percentComplete;
+}
+
+- (void)handleGesture:(UIPinchGestureRecognizer*)gestureRecognizer {
     
-    CGFloat scale = gestureRecognizer.scale;
-    if(gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        self.startScale = scale;
-        [self.controller dismissViewControllerAnimated:YES completion:nil];
-    }
-    if(gestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        
-        CGFloat completePercent = 1.0 - (scale/self.startScale);
-        [self updateInteractiveTransition:completePercent];
-    }
-    if(gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        
-        if(gestureRecognizer.velocity >= 0)
-            [self cancelInteractiveTransition];
-        else
-            [self finishInteractiveTransition];
-    }
-    
-    if(gestureRecognizer.state == UIGestureRecognizerStateCancelled) {
-        
-        [self cancelInteractiveTransition];
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            _startScale = gestureRecognizer.scale;
+            
+            // start an interactive transition!
+            self.interactionInProgress = YES;
+            
+            // perform the required operation
+                [_viewController dismissViewControllerAnimated:YES completion:nil];
+            break;
+        case UIGestureRecognizerStateChanged: {
+            // compute the current pinch fraction
+            CGFloat fraction = 1.0 - gestureRecognizer.scale / _startScale;
+            _shouldCompleteTransition = (fraction > 0.5);
+            [self updateInteractiveTransition:fraction];
+            break;
+        }
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
+            self.interactionInProgress = NO;
+            if (!_shouldCompleteTransition || gestureRecognizer.state == UIGestureRecognizerStateCancelled) {
+                [self cancelInteractiveTransition];
+            }
+            else {
+                [self finishInteractiveTransition];
+            }
+            break;
+        default:
+            break;
     }
 }
 

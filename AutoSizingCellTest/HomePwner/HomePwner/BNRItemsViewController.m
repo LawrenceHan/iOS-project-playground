@@ -13,17 +13,27 @@
 #import "BNRCell.h"
 #import "AutoSizingCell.h"
 #import "PureLayoutCell.h"
+#import "BNRInteractiveViewController.h"
 #import "BNRInteractiveAnimator.h"
 
 #define SYSTEM_VERSION                              ([[UIDevice currentDevice] systemVersion])
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([SYSTEM_VERSION compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define IS_IOS8_OR_ABOVE                            (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
 
-@interface BNRItemsViewController () <UIViewControllerRestoration, UIDataSourceModelAssociation, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+typedef NS_ENUM(NSInteger, CEDirection) {
+    CEDirectionHorizontal,
+    CEDirectionVertical
+};
+
+@interface BNRItemsViewController () <UIViewControllerRestoration, UIDataSourceModelAssociation, UIViewControllerAnimatedTransitioning,
+UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) PureLayoutCell *prototypeCell;
+@property (nonatomic, strong) BNRInteractiveAnimator *animator;
+@property (nonatomic, assign) BOOL reverse;
+@property (nonatomic, assign) CEDirection flipDirection;
 
 - (void)populateDataSource;
 
@@ -224,6 +234,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    /*
     BNRDetailViewController *detailViewController = [[BNRDetailViewController alloc] initForNewItem:NO];
 
     NSArray *items = [[BNRItemStore sharedStore] allItems];
@@ -232,9 +243,12 @@
     detailViewController.transitioningDelegate = self;
     // Give detail view controller a pointer to the item object in row
     // Push it onto the top of the navigation controller's stack
-//    [self.navigationController pushViewController:detailViewController
-//                                         animated:YES];
-    [self.navigationController presentViewController:detailViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:detailViewController
+                                         animated:YES];
+     */
+    BNRInteractiveViewController *bnvc = [BNRInteractiveViewController new];
+    bnvc.transitioningDelegate = self;
+    [self.navigationController presentViewController:bnvc animated:YES completion:nil];
 }
 
 - (void)   tableView:(UITableView *)tableView
@@ -369,47 +383,93 @@
 
 
 #pragma mark - UITransition
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     
+    if (self.animator) {
+        [self.animator wireToViewController:presented];
+    }
+    
+    self.reverse = NO;
+    return self;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.reverse = YES;
+    return self;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
+    return self.animator && self.animator.interactionInProgress ? self.animator : nil;
+}
+
+- (BNRInteractiveAnimator *)animator {
+    if (!_animator) {
+        _animator = [BNRInteractiveAnimator new];
+    }
+    return _animator;
+}
+
+- (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext {
     return 1.0f;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *toView = toVC.view;
+    UIView *fromView = fromVC.view;
     
-    UIViewController *src = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController *dest = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    self.flipDirection = CEDirectionVertical;
     
-    CGRect f = src.view.frame;
-    CGRect originalSourceRect = src.view.frame;
-    f.origin.y = f.size.height;
+    // Add the toView to the container
+    UIView* containerView = [transitionContext containerView];
+    [containerView addSubview:toView];
     
-    [UIView animateWithDuration:0.5 animations:^{
-        src.view.frame = f;
-        
-    } completion:^(BOOL finished){
-        src.view.alpha = 0;
-        dest.view.frame = f;
-        dest.view.alpha = 0.0f;
-        [[src.view superview] addSubview:dest.view];
-        [UIView animateWithDuration:0.5 animations:^{
-            
-            dest.view.frame = originalSourceRect;
-            dest.view.alpha = 1.0f;
-        } completion:^(BOOL finished) {
-            src.view.alpha = 1.0f;
-            [transitionContext completeTransition:YES];
-        }];
-    }];
+    // Add a perspective transform
+    CATransform3D transform = CATransform3DIdentity;
+    transform.m34 = -0.002;
+    [containerView.layer setSublayerTransform:transform];
+    
+    // Give both VCs the same start frame
+    CGRect initialFrame = [transitionContext initialFrameForViewController:fromVC];
+    fromView.frame = initialFrame;
+    toView.frame = initialFrame;
+    
+    // reverse?
+    float factor = self.reverse ? 1.0 : -1.0;
+    
+    // flip the to VC halfway round - hiding it
+    toView.layer.transform = [self rotate:factor * -M_PI_2];
+    
+    // animate
+    NSTimeInterval duration = [self transitionDuration:transitionContext];
+    [UIView animateKeyframesWithDuration:duration
+                                   delay:0.0
+                                 options:0
+                              animations:^{
+                                  [UIView addKeyframeWithRelativeStartTime:0.0
+                                                          relativeDuration:0.5
+                                                                animations:^{
+                                                                    // rotate the from view
+                                                                    fromView.layer.transform = [self rotate:factor * M_PI_2];
+                                                                }];
+                                  [UIView addKeyframeWithRelativeStartTime:0.5
+                                                          relativeDuration:0.5
+                                                                animations:^{
+                                                                    // rotate the to view
+                                                                    toView.layer.transform =  [self rotate:0.0];
+                                                                }];
+                              } completion:^(BOOL finished) {
+                                  [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+                              }];
+    
 }
 
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
-{
-    return self;
+- (CATransform3D)rotate:(CGFloat) angle {
+    if (self.flipDirection == CEDirectionHorizontal)
+        return  CATransform3DMakeRotation(angle, 1.0, 0.0, 0.0);
+    else
+        return  CATransform3DMakeRotation(angle, 0.0, 1.0, 0.0);
 }
-
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    return self;
-}
-
 
 @end

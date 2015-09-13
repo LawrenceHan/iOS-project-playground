@@ -10,6 +10,10 @@
 		0254BCE31BA4606400C5A7D8 /* BNRInteractiveAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */; settings = {ASSET_TAGS = (); }; };
 		026557321BA29FD50008D659 /* BNRDynamicFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 026557311BA29FD50008D659 /* BNRDynamicFlowLayout.m */; };
 		026557351BA3132D0008D659 /* BNRCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 026557341BA3132D0008D659 /* BNRCollectionLayout.m */; };
+		02936D6C1BA5967F00C70608 /* BNRInteractiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02936D6A1BA5967F00C70608 /* BNRInteractiveViewController.m */; settings = {ASSET_TAGS = (); }; };
+		02936D6D1BA5967F00C70608 /* BNRInteractiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02936D6B1BA5967F00C70608 /* BNRInteractiveViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		02936D6F1BA5B26D00C70608 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02936D6E1BA5B26D00C70608 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		02936D721BA5C7A500C70608 /* BNRDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02936D711BA5C7A500C70608 /* BNRDetailCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6C861B8C64020081775A /* AutoSizingCell.m */; };
 		02AF6C891B8C64020081775A /* AutoSizingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6C871B8C64020081775A /* AutoSizingCell.xib */; };
 		02AF6CFF1B8EC4DB0081775A /* PureLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6CFE1B8EC4DB0081775A /* PureLayoutCell.m */; };
@@ -69,6 +73,12 @@
 		026557311BA29FD50008D659 /* BNRDynamicFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDynamicFlowLayout.m; sourceTree = "<group>"; };
 		026557331BA3132D0008D659 /* BNRCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRCollectionLayout.h; sourceTree = "<group>"; };
 		026557341BA3132D0008D659 /* BNRCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRCollectionLayout.m; sourceTree = "<group>"; };
+		02936D691BA5967F00C70608 /* BNRInteractiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRInteractiveViewController.h; sourceTree = "<group>"; };
+		02936D6A1BA5967F00C70608 /* BNRInteractiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRInteractiveViewController.m; sourceTree = "<group>"; };
+		02936D6B1BA5967F00C70608 /* BNRInteractiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRInteractiveViewController.xib; sourceTree = "<group>"; };
+		02936D6E1BA5B26D00C70608 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		02936D701BA5C7A500C70608 /* BNRDetailCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetailCollectionViewController.h; sourceTree = "<group>"; };
+		02936D711BA5C7A500C70608 /* BNRDetailCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDetailCollectionViewController.m; sourceTree = "<group>"; };
 		02AF6C851B8C64020081775A /* AutoSizingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSizingCell.h; sourceTree = "<group>"; };
 		02AF6C861B8C64020081775A /* AutoSizingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSizingCell.m; sourceTree = "<group>"; };
 		02AF6C871B8C64020081775A /* AutoSizingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoSizingCell.xib; sourceTree = "<group>"; };
@@ -232,10 +242,13 @@
 			isa = PBXGroup;
 			children = (
 				02DD25321BA4780300628F8A /* Storyboard.storyboard */,
+				02936D6E1BA5B26D00C70608 /* Launch Screen.storyboard */,
 				02AF6DD61B94A57F0081775A /* BNRTableViewController.h */,
 				02AF6DD71B94A57F0081775A /* BNRTableViewController.m */,
 				02AF6DE21B95500E0081775A /* BNRCollectionViewController.h */,
 				02AF6DE31B95500E0081775A /* BNRCollectionViewController.m */,
+				02936D701BA5C7A500C70608 /* BNRDetailCollectionViewController.h */,
+				02936D711BA5C7A500C70608 /* BNRDetailCollectionViewController.m */,
 				02AF6DE51B9551F80081775A /* BNRCollectionViewCell.h */,
 				02AF6DE61B9551F80081775A /* BNRCollectionViewCell.m */,
 				02AF6DEB1B9579A00081775A /* BNRFLowLayout.h */,
@@ -303,6 +316,9 @@
 				520AA4C2187CAA690048F174 /* BNRImageStore.m */,
 				520AA4AD187C4EF00048F174 /* BNRItemsViewController.h */,
 				520AA4AE187C4EF00048F174 /* BNRItemsViewController.m */,
+				02936D691BA5967F00C70608 /* BNRInteractiveViewController.h */,
+				02936D6A1BA5967F00C70608 /* BNRInteractiveViewController.m */,
+				02936D6B1BA5967F00C70608 /* BNRInteractiveViewController.xib */,
 				520AA4BC187C87C50048F174 /* BNRDetailViewController.h */,
 				520AA4BD187C87C50048F174 /* BNRDetailViewController.m */,
 				520AA4BE187C87C50048F174 /* BNRDetailViewController.xib */,
@@ -435,9 +451,11 @@
 				520AA4C0187C87C50048F174 /* BNRDetailViewController.xib in Resources */,
 				520AA489187C4EC00048F174 /* InfoPlist.strings in Resources */,
 				02AF6DCF1B9454B30081775A /* LICENSE in Resources */,
+				02936D6D1BA5967F00C70608 /* BNRInteractiveViewController.xib in Resources */,
 				02B49E111B8B0BA8005467C7 /* BNRCell.xib in Resources */,
 				02DD25331BA4780300628F8A /* Storyboard.storyboard in Resources */,
 				02AF6DCE1B9454B30081775A /* .gitignore in Resources */,
+				02936D6F1BA5B26D00C70608 /* Launch Screen.storyboard in Resources */,
 				520AA491187C4EC00048F174 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,11 +553,13 @@
 				520AA4AF187C4EF00048F174 /* BNRItemsViewController.m in Sources */,
 				026557351BA3132D0008D659 /* BNRCollectionLayout.m in Sources */,
 				02AF6DD01B9454B30081775A /* NSString+Pinyin.m in Sources */,
+				02936D721BA5C7A500C70608 /* BNRDetailCollectionViewController.m in Sources */,
 				026557321BA29FD50008D659 /* BNRDynamicFlowLayout.m in Sources */,
 				02AF6D021B9009630081775A /* Homepwner.xcdatamodeld in Sources */,
 				02AF6DDB1B94A6600081775A /* BNRDynamicsViewController.m in Sources */,
 				02AF6DE41B95500E0081775A /* BNRCollectionViewController.m in Sources */,
 				520AA48B187C4EC00048F174 /* main.m in Sources */,
+				02936D6C1BA5967F00C70608 /* BNRInteractiveViewController.m in Sources */,
 				02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */,
 				02AF6DD81B94A57F0081775A /* BNRTableViewController.m in Sources */,
 				02AF6DD11B9454B30081775A /* README.md in Sources */,
@@ -593,6 +613,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -632,6 +653,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -664,12 +686,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FFED7AC3883DCA7E48B4D297 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomePwner/HomePwner-Prefix.pch";
 				INFOPLIST_FILE = "HomePwner/HomePwner-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -680,12 +700,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3C02549CBE367D726134A33C /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomePwner/HomePwner-Prefix.pch";
 				INFOPLIST_FILE = "HomePwner/HomePwner-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

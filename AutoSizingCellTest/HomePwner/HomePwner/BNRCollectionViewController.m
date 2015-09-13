@@ -11,6 +11,7 @@
 #import "BNRFLowLayout.h"
 #import "BNRDynamicFlowLayout.h"
 #import "BNRCollectionLayout.h"
+#import "BNRDetailCollectionViewController.h"
 
 @interface BNRCollectionViewController () <BNRFlowLayoutDelegate>
 @property (nonatomic, assign) NSInteger count;
@@ -51,15 +52,19 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"toInteractive"]) {
+        BNRDetailCollectionViewController *cc = segue.destinationViewController;
+        cc.useLayoutToLayoutNavigationTransitions = YES;
+    }
 }
-*/
+
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -69,7 +74,7 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.count;
+    return 100;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -118,11 +123,11 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
 
 #pragma mark - Button methods
 - (IBAction)changeLayout:(UIButton *)sender {
-    if (!dynamicFlowLayout) {
-        dynamicFlowLayout = [[BNRDynamicFlowLayout alloc] init];
-    }
-    BNRFLowLayout *layout = [[BNRFLowLayout alloc] init];
-    self.collectionView.collectionViewLayout = dynamicFlowLayout;
+//    if (!dynamicFlowLayout) {
+//        dynamicFlowLayout = [[BNRDynamicFlowLayout alloc] init];
+//    }
+//    BNRFLowLayout *layout = [[BNRFLowLayout alloc] init];
+//    self.collectionView.collectionViewLayout = dynamicFlowLayout;
 }
 
 /*
