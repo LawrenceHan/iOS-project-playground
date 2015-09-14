@@ -13,16 +13,15 @@
 #import "BNRCollectionLayout.h"
 #import "BNRDetailCollectionViewController.h"
 
-@interface BNRCollectionViewController () <BNRFlowLayoutDelegate>
+@interface BNRCollectionViewController () <UINavigationControllerDelegate>
 @property (nonatomic, assign) NSInteger count;
+@property (nonatomic) NSInteger items;
 
 @end
 
-@implementation BNRCollectionViewController {
-    BNRDynamicFlowLayout *dynamicFlowLayout;
-}
+@implementation BNRCollectionViewController
 
-static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
+static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,14 +37,20 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
 //    self.collectionView.collectionViewLayout = layout;
 //    
 //    [self performSelector:@selector(userDidPressAddButton:) withObject:nil afterDelay:3];
+    self.items = 10;
 }
 
-- (void)userDidPressAddButton:(id)sender {
-    [self.collectionView performBatchUpdates:^{
-        [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.count inSection:0]]];
-        self.count++;
-    } completion:nil];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.delegate = self;
 }
+
+//- (void)userDidPressAddButton:(id)sender {
+//    [self.collectionView performBatchUpdates:^{
+//        [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.count inSection:0]]];
+//        self.count++;
+//    } completion:nil];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -59,9 +64,10 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"toInteractive"]) {
+    if ([segue.identifier isEqualToString:@"toDetail"]) {
         BNRDetailCollectionViewController *cc = segue.destinationViewController;
         cc.useLayoutToLayoutNavigationTransitions = YES;
+        cc.items = self.items;
     }
 }
 
@@ -74,39 +80,39 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 100;
+    return self.items;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    BNRCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
-    cell.backgroundColor = [UIColor magentaColor];
-    NSString *imageName = [NSString stringWithFormat:@"%ld.jpg", indexPath.row % 5];
-    [cell setImage:[UIImage imageNamed:imageName]];
-    cell.titleLabel.text = [NSString stringWithFormat:@"No.%ld", indexPath.row];
+//    cell.backgroundColor = [UIColor magentaColor];
+//    NSString *imageName = [NSString stringWithFormat:@"%ld.jpg", indexPath.row % 5];
+//    [cell setImage:[UIImage imageNamed:imageName]];
+//    cell.titleLabel.text = [NSString stringWithFormat:@"No.%ld", indexPath.row];
     return cell;
 }
 
 #pragma mark <UICollectionViewDelegate>
 // Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
+//- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+//	return YES;
+//}
+//
+//// Uncomment this method to specify if the specified item should be selected
+//- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
 
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *supplementaryViewIdentifier = @"supplementaryViewIdentifier";
-    
-    return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                              withReuseIdentifier:supplementaryViewIdentifier
-                                                     forIndexPath:indexPath];
-}
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *supplementaryViewIdentifier = @"supplementaryViewIdentifier";
+//    
+//    return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+//                                              withReuseIdentifier:supplementaryViewIdentifier
+//                                                     forIndexPath:indexPath];
+//}
 
 #pragma mark - Flow layout delegate
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -114,11 +120,25 @@ static NSString * const reuseIdentifier = @"BNRCollectionViewCell";
 //    CGFloat randomHeight = 100 + (arc4random() % 140);
 //    return CGSizeMake(100, randomHeight);
 //}
+//
+//- (CGFloat)collectionView:(UICollectionView*)collectionView layout:(BNRFLowLayout *)layout heightForItemAtIndexPath:(NSIndexPath*)indexPath
+//{
+//    CGFloat randomHeight = 100 + (arc4random() % 140);
+//    return randomHeight;
+//}
 
-- (CGFloat)collectionView:(UICollectionView*)collectionView layout:(BNRFLowLayout *)layout heightForItemAtIndexPath:(NSIndexPath*)indexPath
+#pragma mark - Navigation delegate
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    CGFloat randomHeight = 100 + (arc4random() % 140);
-    return randomHeight;
+    if ([viewController isKindOfClass:[BNRDetailCollectionViewController class]]) {
+        BNRDetailCollectionViewController *dvc = (BNRDetailCollectionViewController*)viewController;
+        dvc.collectionView.dataSource = dvc;
+        dvc.collectionView.delegate = dvc;
+    }
+    else if (viewController == self){
+        self.collectionView.dataSource = self;
+        self.collectionView.delegate = self;
+    }
 }
 
 #pragma mark - Button methods
