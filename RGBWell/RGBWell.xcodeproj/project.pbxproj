@@ -12,6 +12,8 @@
 		020E0E971BB1813C00CD06E9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020E0E951BB1813C00CD06E9 /* MainMenu.xib */; };
 		020E0EA21BB1813D00CD06E9 /* RGBWellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0EA11BB1813D00CD06E9 /* RGBWellTests.swift */; };
 		020E0EAD1BB1813D00CD06E9 /* RGBWellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0EAC1BB1813D00CD06E9 /* RGBWellUITests.swift */; };
+		020E0EBB1BB181DB00CD06E9 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0EBA1BB181DB00CD06E9 /* MainWindowController.swift */; settings = {ASSET_TAGS = (); }; };
+		020E0EBD1BB1825900CD06E9 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020E0EBC1BB1825900CD06E9 /* MainWindowController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		020E0EA81BB1813D00CD06E9 /* RGBWellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RGBWellUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		020E0EAC1BB1813D00CD06E9 /* RGBWellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBWellUITests.swift; sourceTree = "<group>"; };
 		020E0EAE1BB1813D00CD06E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		020E0EBA1BB181DB00CD06E9 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		020E0EBC1BB1825900CD06E9 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				020E0E911BB1813C00CD06E9 /* AppDelegate.swift */,
+				020E0EBA1BB181DB00CD06E9 /* MainWindowController.swift */,
+				020E0EBC1BB1825900CD06E9 /* MainWindowController.xib */,
 				020E0E931BB1813C00CD06E9 /* Assets.xcassets */,
 				020E0E951BB1813C00CD06E9 /* MainMenu.xib */,
 				020E0E981BB1813C00CD06E9 /* Info.plist */,
@@ -223,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				020E0E941BB1813C00CD06E9 /* Assets.xcassets in Resources */,
+				020E0EBD1BB1825900CD06E9 /* MainWindowController.xib in Resources */,
 				020E0E971BB1813C00CD06E9 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				020E0EBB1BB181DB00CD06E9 /* MainWindowController.swift in Sources */,
 				020E0E921BB1813C00CD06E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
