@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		020E0F041BB3C20C00CD06E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0F031BB3C20C00CD06E9 /* AppDelegate.swift */; };
+		020E0F061BB3C20C00CD06E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020E0F051BB3C20C00CD06E9 /* Assets.xcassets */; };
+		020E0F091BB3C20C00CD06E9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020E0F071BB3C20C00CD06E9 /* MainMenu.xib */; };
+		020E0F141BB3C20C00CD06E9 /* SpeakLineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0F131BB3C20C00CD06E9 /* SpeakLineTests.swift */; };
+		020E0F1F1BB3C20C00CD06E9 /* SpeakLineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0F1E1BB3C20C00CD06E9 /* SpeakLineUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		020E0F101BB3C20C00CD06E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020E0EF81BB3C20C00CD06E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 020E0EFF1BB3C20C00CD06E9;
+			remoteInfo = SpeakLine;
+		};
+		020E0F1B1BB3C20C00CD06E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020E0EF81BB3C20C00CD06E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 020E0EFF1BB3C20C00CD06E9;
+			remoteInfo = SpeakLine;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		020E0F001BB3C20C00CD06E9 /* SpeakLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		020E0F031BB3C20C00CD06E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		020E0F051BB3C20C00CD06E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		020E0F081BB3C20C00CD06E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		020E0F0A1BB3C20C00CD06E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		020E0F0F1BB3C20C00CD06E9 /* SpeakLineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakLineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		020E0F131BB3C20C00CD06E9 /* SpeakLineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakLineTests.swift; sourceTree = "<group>"; };
+		020E0F151BB3C20C00CD06E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		020E0F1A1BB3C20C00CD06E9 /* SpeakLineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakLineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		020E0F1E1BB3C20C00CD06E9 /* SpeakLineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakLineUITests.swift; sourceTree = "<group>"; };
+		020E0F201BB3C20C00CD06E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		020E0EFD1BB3C20C00CD06E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		020E0F0C1BB3C20C00CD06E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		020E0F171BB3C20C00CD06E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		020E0EF71BB3C20C00CD06E9 = {
+			isa = PBXGroup;
+			children = (
+				020E0F021BB3C20C00CD06E9 /* SpeakLine */,
+				020E0F121BB3C20C00CD06E9 /* SpeakLineTests */,
+				020E0F1D1BB3C20C00CD06E9 /* SpeakLineUITests */,
+				020E0F011BB3C20C00CD06E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		020E0F011BB3C20C00CD06E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				020E0F001BB3C20C00CD06E9 /* SpeakLine.app */,
+				020E0F0F1BB3C20C00CD06E9 /* SpeakLineTests.xctest */,
+				020E0F1A1BB3C20C00CD06E9 /* SpeakLineUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		020E0F021BB3C20C00CD06E9 /* SpeakLine */ = {
+			isa = PBXGroup;
+			children = (
+				020E0F031BB3C20C00CD06E9 /* AppDelegate.swift */,
+				020E0F051BB3C20C00CD06E9 /* Assets.xcassets */,
+				020E0F071BB3C20C00CD06E9 /* MainMenu.xib */,
+				020E0F0A1BB3C20C00CD06E9 /* Info.plist */,
+			);
+			path = SpeakLine;
+			sourceTree = "<group>";
+		};
+		020E0F121BB3C20C00CD06E9 /* SpeakLineTests */ = {
+			isa = PBXGroup;
+			children = (
+				020E0F131BB3C20C00CD06E9 /* SpeakLineTests.swift */,
+				020E0F151BB3C20C00CD06E9 /* Info.plist */,
+			);
+			path = SpeakLineTests;
+			sourceTree = "<group>";
+		};
+		020E0F1D1BB3C20C00CD06E9 /* SpeakLineUITests */ = {
+			isa = PBXGroup;
+			children = (
+				020E0F1E1BB3C20C00CD06E9 /* SpeakLineUITests.swift */,
+				020E0F201BB3C20C00CD06E9 /* Info.plist */,
+			);
+			path = SpeakLineUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		020E0EFF1BB3C20C00CD06E9 /* SpeakLine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 020E0F231BB3C20C00CD06E9 /* Build configuration list for PBXNativeTarget "SpeakLine" */;
+			buildPhases = (
+				020E0EFC1BB3C20C00CD06E9 /* Sources */,
+				020E0EFD1BB3C20C00CD06E9 /* Frameworks */,
+				020E0EFE1BB3C20C00CD06E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpeakLine;
+			productName = SpeakLine;
+			productReference = 020E0F001BB3C20C00CD06E9 /* SpeakLine.app */;
+			productType = "com.apple.product-type.application";
+		};
+		020E0F0E1BB3C20C00CD06E9 /* SpeakLineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 020E0F261BB3C20C00CD06E9 /* Build configuration list for PBXNativeTarget "SpeakLineTests" */;
+			buildPhases = (
+				020E0F0B1BB3C20C00CD06E9 /* Sources */,
+				020E0F0C1BB3C20C00CD06E9 /* Frameworks */,
+				020E0F0D1BB3C20C00CD06E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				020E0F111BB3C20C00CD06E9 /* PBXTargetDependency */,
+			);
+			name = SpeakLineTests;
+			productName = SpeakLineTests;
+			productReference = 020E0F0F1BB3C20C00CD06E9 /* SpeakLineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		020E0F191BB3C20C00CD06E9 /* SpeakLineUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 020E0F291BB3C20C00CD06E9 /* Build configuration list for PBXNativeTarget "SpeakLineUITests" */;
+			buildPhases = (
+				020E0F161BB3C20C00CD06E9 /* Sources */,
+				020E0F171BB3C20C00CD06E9 /* Frameworks */,
+				020E0F181BB3C20C00CD06E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				020E0F1C1BB3C20C00CD06E9 /* PBXTargetDependency */,
+			);
+			name = SpeakLineUITests;
+			productName = SpeakLineUITests;
+			productReference = 020E0F1A1BB3C20C00CD06E9 /* SpeakLineUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		020E0EF81BB3C20C00CD06E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Hanguang;
+				TargetAttributes = {
+					020E0EFF1BB3C20C00CD06E9 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					020E0F0E1BB3C20C00CD06E9 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 020E0EFF1BB3C20C00CD06E9;
+					};
+					020E0F191BB3C20C00CD06E9 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 020E0EFF1BB3C20C00CD06E9;
+					};
+				};
+			};
+			buildConfigurationList = 020E0EFB1BB3C20C00CD06E9 /* Build configuration list for PBXProject "SpeakLine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 020E0EF71BB3C20C00CD06E9;
+			productRefGroup = 020E0F011BB3C20C00CD06E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				020E0EFF1BB3C20C00CD06E9 /* SpeakLine */,
+				020E0F0E1BB3C20C00CD06E9 /* SpeakLineTests */,
+				020E0F191BB3C20C00CD06E9 /* SpeakLineUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		020E0EFE1BB3C20C00CD06E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020E0F061BB3C20C00CD06E9 /* Assets.xcassets in Resources */,
+				020E0F091BB3C20C00CD06E9 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		020E0F0D1BB3C20C00CD06E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		020E0F181BB3C20C00CD06E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		020E0EFC1BB3C20C00CD06E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020E0F041BB3C20C00CD06E9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		020E0F0B1BB3C20C00CD06E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020E0F141BB3C20C00CD06E9 /* SpeakLineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		020E0F161BB3C20C00CD06E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020E0F1F1BB3C20C00CD06E9 /* SpeakLineUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		020E0F111BB3C20C00CD06E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 020E0EFF1BB3C20C00CD06E9 /* SpeakLine */;
+			targetProxy = 020E0F101BB3C20C00CD06E9 /* PBXContainerItemProxy */;
+		};
+		020E0F1C1BB3C20C00CD06E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 020E0EFF1BB3C20C00CD06E9 /* SpeakLine */;
+			targetProxy = 020E0F1B1BB3C20C00CD06E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		020E0F071BB3C20C00CD06E9 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				020E0F081BB3C20C00CD06E9 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		020E0F211BB3C20C00CD06E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		020E0F221BB3C20C00CD06E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		020E0F241BB3C20C00CD06E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SpeakLine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.SpeakLine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		020E0F251BB3C20C00CD06E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SpeakLine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.SpeakLine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		020E0F271BB3C20C00CD06E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SpeakLineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.SpeakLineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakLine.app/Contents/MacOS/SpeakLine";
+			};
+			name = Debug;
+		};
+		020E0F281BB3C20C00CD06E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SpeakLineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.SpeakLineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakLine.app/Contents/MacOS/SpeakLine";
+			};
+			name = Release;
+		};
+		020E0F2A1BB3C20C00CD06E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SpeakLineUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.SpeakLineUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SpeakLine;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		020E0F2B1BB3C20C00CD06E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SpeakLineUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.SpeakLineUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SpeakLine;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		020E0EFB1BB3C20C00CD06E9 /* Build configuration list for PBXProject "SpeakLine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020E0F211BB3C20C00CD06E9 /* Debug */,
+				020E0F221BB3C20C00CD06E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		020E0F231BB3C20C00CD06E9 /* Build configuration list for PBXNativeTarget "SpeakLine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020E0F241BB3C20C00CD06E9 /* Debug */,
+				020E0F251BB3C20C00CD06E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		020E0F261BB3C20C00CD06E9 /* Build configuration list for PBXNativeTarget "SpeakLineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020E0F271BB3C20C00CD06E9 /* Debug */,
+				020E0F281BB3C20C00CD06E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		020E0F291BB3C20C00CD06E9 /* Build configuration list for PBXNativeTarget "SpeakLineUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020E0F2A1BB3C20C00CD06E9 /* Debug */,
+				020E0F2B1BB3C20C00CD06E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 020E0EF81BB3C20C00CD06E9 /* Project object */;
+}
