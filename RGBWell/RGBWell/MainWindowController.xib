@@ -7,11 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="RGBWell" customModuleProvider="target">
             <connections>
-                <outlet property="bSlider" destination="lJ3-j1-zzA" id="uXA-CT-4E8"/>
-                <outlet property="colorWell" destination="lfh-5n-eX2" id="a85-Dp-XKh"/>
-                <outlet property="gSlider" destination="vGG-Ks-r0F" id="XFk-T3-ilL"/>
-                <outlet property="rSlider" destination="vQR-bQ-EH7" id="ct2-aY-xFz"/>
-                <outlet property="window" destination="MEw-mS-jTb" id="f5t-EZ-iqR"/>
+                <outlet property="window" destination="MEw-mS-jTb" id="AvH-R8-yCL"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -30,7 +26,7 @@
                         <animations/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="vfu-dm-Zmg"/>
                         <connections>
-                            <action selector="adjustRed:" target="-2" id="LeJ-Nq-bER"/>
+                            <binding destination="-2" name="value" keyPath="r" id="Ku0-ec-fQj"/>
                         </connections>
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBW-Su-CZx" userLabel="R label">
@@ -47,7 +43,7 @@
                         <animations/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="kYp-Kp-D7k"/>
                         <connections>
-                            <action selector="adjustGreen:" target="-2" id="4cu-nP-C6S"/>
+                            <binding destination="-2" name="value" keyPath="g" id="YUo-cJ-Ko4"/>
                         </connections>
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GlA-mP-z8W" userLabel="G label">
@@ -64,7 +60,7 @@
                         <animations/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="etq-ib-FJN"/>
                         <connections>
-                            <action selector="adjustBlue:" target="-2" id="CCS-Gt-x7d"/>
+                            <binding destination="-2" name="value" keyPath="b" id="ZoL-jZ-61y"/>
                         </connections>
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OIc-qF-Zk8" userLabel="B label">
@@ -80,11 +76,15 @@
                         <rect key="frame" x="52" y="73" width="217" height="151"/>
                         <animations/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="wellColor" id="NFI-0K-zc3"/>
+                        </connections>
                     </colorWell>
                 </subviews>
                 <animations/>
             </view>
             <point key="canvasLocation" x="511" y="323"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="9fH-d2-U4l"/>
     </objects>
 </document>
