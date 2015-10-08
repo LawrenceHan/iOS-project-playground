@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02387AB31BC659B00023E825 /* BNRPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB21BC659B00023E825 /* BNRPageControl.m */; settings = {ASSET_TAGS = (); }; };
+		02387AC51BC65D3A0023E825 /* GooeyCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB81BC65D3A0023E825 /* GooeyCircle.m */; settings = {ASSET_TAGS = (); }; };
+		02387AC61BC65D3A0023E825 /* Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABA1BC65D3A0023E825 /* Indicator.m */; settings = {ASSET_TAGS = (); }; };
+		02387AC71BC65D3A0023E825 /* KYAnimatedPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABC1BC65D3A0023E825 /* KYAnimatedPageControl.m */; settings = {ASSET_TAGS = (); }; };
+		02387AC81BC65D3A0023E825 /* KYSpringLayerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABE1BC65D3A0023E825 /* KYSpringLayerAnimation.m */; settings = {ASSET_TAGS = (); }; };
+		02387AC91BC65D3A0023E825 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC01BC65D3A0023E825 /* Line.m */; settings = {ASSET_TAGS = (); }; };
+		02387ACA1BC65D3A0023E825 /* RotateRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC21BC65D3A0023E825 /* RotateRect.m */; settings = {ASSET_TAGS = (); }; };
+		02387ACB1BC65D3A0023E825 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 02387AC31BC65D3A0023E825 /* LICENSE */; settings = {ASSET_TAGS = (); }; };
+		02387ACC1BC65D3A0023E825 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC41BC65D3A0023E825 /* README.md */; settings = {ASSET_TAGS = (); }; };
 		0254BCE31BA4606400C5A7D8 /* BNRInteractiveAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */; settings = {ASSET_TAGS = (); }; };
 		026557321BA29FD50008D659 /* BNRDynamicFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 026557311BA29FD50008D659 /* BNRDynamicFlowLayout.m */; };
 		026557351BA3132D0008D659 /* BNRCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 026557341BA3132D0008D659 /* BNRCollectionLayout.m */; };
@@ -67,6 +76,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02387AB11BC659B00023E825 /* BNRPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRPageControl.h; sourceTree = "<group>"; };
+		02387AB21BC659B00023E825 /* BNRPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRPageControl.m; sourceTree = "<group>"; };
+		02387AB71BC65D3A0023E825 /* GooeyCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooeyCircle.h; sourceTree = "<group>"; };
+		02387AB81BC65D3A0023E825 /* GooeyCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooeyCircle.m; sourceTree = "<group>"; };
+		02387AB91BC65D3A0023E825 /* Indicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Indicator.h; sourceTree = "<group>"; };
+		02387ABA1BC65D3A0023E825 /* Indicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Indicator.m; sourceTree = "<group>"; };
+		02387ABB1BC65D3A0023E825 /* KYAnimatedPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYAnimatedPageControl.h; sourceTree = "<group>"; };
+		02387ABC1BC65D3A0023E825 /* KYAnimatedPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYAnimatedPageControl.m; sourceTree = "<group>"; };
+		02387ABD1BC65D3A0023E825 /* KYSpringLayerAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYSpringLayerAnimation.h; sourceTree = "<group>"; };
+		02387ABE1BC65D3A0023E825 /* KYSpringLayerAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYSpringLayerAnimation.m; sourceTree = "<group>"; };
+		02387ABF1BC65D3A0023E825 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		02387AC01BC65D3A0023E825 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		02387AC11BC65D3A0023E825 /* RotateRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotateRect.h; sourceTree = "<group>"; };
+		02387AC21BC65D3A0023E825 /* RotateRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotateRect.m; sourceTree = "<group>"; };
+		02387AC31BC65D3A0023E825 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		02387AC41BC65D3A0023E825 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0254BCE11BA4606400C5A7D8 /* BNRInteractiveAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRInteractiveAnimator.h; sourceTree = "<group>"; };
 		0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRInteractiveAnimator.m; sourceTree = "<group>"; };
 		026557301BA29FD50008D659 /* BNRDynamicFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDynamicFlowLayout.h; sourceTree = "<group>"; };
@@ -172,6 +197,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02387AB41BC65D3A0023E825 /* KYAnimatedPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				02387AB51BC65D3A0023E825 /* KYAnimatedPageControl-Demo */,
+				02387AC31BC65D3A0023E825 /* LICENSE */,
+				02387AC41BC65D3A0023E825 /* README.md */,
+			);
+			path = KYAnimatedPageControl;
+			sourceTree = "<group>";
+		};
+		02387AB51BC65D3A0023E825 /* KYAnimatedPageControl-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				02387AB61BC65D3A0023E825 /* Classes */,
+			);
+			path = "KYAnimatedPageControl-Demo";
+			sourceTree = "<group>";
+		};
+		02387AB61BC65D3A0023E825 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				02387AB71BC65D3A0023E825 /* GooeyCircle.h */,
+				02387AB81BC65D3A0023E825 /* GooeyCircle.m */,
+				02387AB91BC65D3A0023E825 /* Indicator.h */,
+				02387ABA1BC65D3A0023E825 /* Indicator.m */,
+				02387ABB1BC65D3A0023E825 /* KYAnimatedPageControl.h */,
+				02387ABC1BC65D3A0023E825 /* KYAnimatedPageControl.m */,
+				02387ABD1BC65D3A0023E825 /* KYSpringLayerAnimation.h */,
+				02387ABE1BC65D3A0023E825 /* KYSpringLayerAnimation.m */,
+				02387ABF1BC65D3A0023E825 /* Line.h */,
+				02387AC01BC65D3A0023E825 /* Line.m */,
+				02387AC11BC65D3A0023E825 /* RotateRect.h */,
+				02387AC21BC65D3A0023E825 /* RotateRect.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		0254BCE01BA45FEF00C5A7D8 /* Animator */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +246,7 @@
 		02AF6DC31B9454A80081775A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				02387AB41BC65D3A0023E825 /* KYAnimatedPageControl */,
 				02AF6DDF1B94A8650081775A /* SpringAnimationOC.h */,
 				02AF6DE01B94A8650081775A /* SpringAnimationOC.m */,
 				02AF6DC81B9454B30081775A /* NSString-Pinyin-master */,
@@ -259,6 +322,8 @@
 				026557341BA3132D0008D659 /* BNRCollectionLayout.m */,
 				02AF6DD91B94A6600081775A /* BNRDynamicsViewController.h */,
 				02AF6DDA1B94A6600081775A /* BNRDynamicsViewController.m */,
+				02387AB11BC659B00023E825 /* BNRPageControl.h */,
+				02387AB21BC659B00023E825 /* BNRPageControl.m */,
 			);
 			name = "Collection demo";
 			sourceTree = "<group>";
@@ -452,6 +517,7 @@
 				520AA489187C4EC00048F174 /* InfoPlist.strings in Resources */,
 				02AF6DCF1B9454B30081775A /* LICENSE in Resources */,
 				02936D6D1BA5967F00C70608 /* BNRInteractiveViewController.xib in Resources */,
+				02387ACB1BC65D3A0023E825 /* LICENSE in Resources */,
 				02B49E111B8B0BA8005467C7 /* BNRCell.xib in Resources */,
 				02DD25331BA4780300628F8A /* Storyboard.storyboard in Resources */,
 				02AF6DCE1B9454B30081775A /* .gitignore in Resources */,
@@ -545,22 +611,30 @@
 				02AF6D0E1B90385D0081775A /* BNRItem.m in Sources */,
 				02AF6CFF1B8EC4DB0081775A /* PureLayoutCell.m in Sources */,
 				520AA4B5187C4FC00048F174 /* BNRItemStore.m in Sources */,
+				02387AC91BC65D3A0023E825 /* Line.m in Sources */,
+				02387AC81BC65D3A0023E825 /* KYSpringLayerAnimation.m in Sources */,
+				02387AC51BC65D3A0023E825 /* GooeyCircle.m in Sources */,
 				520AA4C3187CAA690048F174 /* BNRImageStore.m in Sources */,
 				02AF6DE71B9551F80081775A /* BNRCollectionViewCell.m in Sources */,
 				02AF6DC71B9454A80081775A /* UIImageEffects.m in Sources */,
 				02AF6D051B9018660081775A /* BNRImageTransformer.m in Sources */,
+				02387ACA1BC65D3A0023E825 /* RotateRect.m in Sources */,
 				02AF6DE11B94A8650081775A /* SpringAnimationOC.m in Sources */,
 				520AA4AF187C4EF00048F174 /* BNRItemsViewController.m in Sources */,
+				02387ACC1BC65D3A0023E825 /* README.md in Sources */,
 				026557351BA3132D0008D659 /* BNRCollectionLayout.m in Sources */,
 				02AF6DD01B9454B30081775A /* NSString+Pinyin.m in Sources */,
 				02936D721BA5C7A500C70608 /* BNRDetailCollectionViewController.m in Sources */,
+				02387AC61BC65D3A0023E825 /* Indicator.m in Sources */,
 				026557321BA29FD50008D659 /* BNRDynamicFlowLayout.m in Sources */,
 				02AF6D021B9009630081775A /* Homepwner.xcdatamodeld in Sources */,
 				02AF6DDB1B94A6600081775A /* BNRDynamicsViewController.m in Sources */,
+				02387AC71BC65D3A0023E825 /* KYAnimatedPageControl.m in Sources */,
 				02AF6DE41B95500E0081775A /* BNRCollectionViewController.m in Sources */,
 				520AA48B187C4EC00048F174 /* main.m in Sources */,
 				02936D6C1BA5967F00C70608 /* BNRInteractiveViewController.m in Sources */,
 				02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */,
+				02387AB31BC659B00023E825 /* BNRPageControl.m in Sources */,
 				02AF6DD81B94A57F0081775A /* BNRTableViewController.m in Sources */,
 				02AF6DD11B9454B30081775A /* README.md in Sources */,
 				02B49E101B8B0BA8005467C7 /* BNRCell.m in Sources */,

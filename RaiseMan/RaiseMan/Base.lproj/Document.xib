@@ -7,6 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Document" customModule="RaiseMan" customModuleProvider="target">
             <connections>
+                <outlet property="arrayController" destination="uTJ-V5-6r1" id="9oz-U1-8z8"/>
+                <outlet property="tableView" destination="8Ou-PH-uCL" id="FWa-P3-zYP"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
         </customObject>
@@ -45,7 +47,7 @@ CA
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="add:" target="uTJ-V5-6r1" id="5mH-zs-oHw"/>
+                            <action selector="addEmployee:" target="-2" id="dbM-AY-lzB"/>
                         </connections>
                     </button>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZC-kG-2kN">
