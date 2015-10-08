@@ -27,7 +27,6 @@
     self.pageControl.indicatorStyle = IndicatorStyleGooeyCircle;
     self.pageControl.indicatorSize = 20;
     self.pageControl.swipeEnable = NO;
-    self.pageControl.referencedFrame = self.view.bounds;
     self.pageControl.disableBindedScrollView = YES;
     [self.view addSubview:self.pageControl];
     

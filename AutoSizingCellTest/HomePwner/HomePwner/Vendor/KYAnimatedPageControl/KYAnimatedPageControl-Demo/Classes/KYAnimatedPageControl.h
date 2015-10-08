@@ -39,8 +39,7 @@ typedef enum : NSUInteger {
 @property(nonatomic,strong)UIScrollView *bindScrollView;
 
 // 新增，在addSubview之前加
-@property (nonatomic, assign) BOOL disableBindedScrollView; // defalue is NO, if YES, you must pass a referenced frame, eg: self.view
-@property (nonatomic) CGRect referencedFrame;
+@property (nonatomic, assign) BOOL disableBindedScrollView; // defalue is NO
 
 //Possible to swipe (Pan gesture recognize)
 @property(nonatomic,assign)BOOL swipeEnable;

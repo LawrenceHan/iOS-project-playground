@@ -49,10 +49,10 @@
 #pragma mark - Helper
 - (void)setDisableBindedScrollView:(BOOL)disableBindedScrollView {
     if (disableBindedScrollView) {
+        CGRect frame = [UIScreen mainScreen].bounds;
         self.bindScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,
-                                                                             self.referencedFrame.size.width,
-                                                                             self.referencedFrame.size.height)];
-        self.bindScrollView.contentSize = CGSizeMake(self.referencedFrame.size.width * self.pageCount, self.referencedFrame.size.height);
+                                                                             frame.size.width,
+                                                                             frame.size.height)];
         self.bindScrollView.delegate = self;
     }
     _disableBindedScrollView = disableBindedScrollView;
