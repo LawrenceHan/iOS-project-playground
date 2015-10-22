@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023E64211BD4CDF3009ADDA2 /* txt.icns in Resources */ = {isa = PBXBuildFile; fileRef = 023E64201BD4CDF3009ADDA2 /* txt.icns */; settings = {ASSET_TAGS = (); }; };
 		02A86DA81BB90D0C0046165C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A86DA71BB90D0C0046165C /* AppDelegate.swift */; };
 		02A86DAA1BB90D0C0046165C /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A86DA91BB90D0C0046165C /* Document.swift */; };
 		02A86DAD1BB90D0C0046165C /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A86DAB1BB90D0C0046165C /* Document.xib */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		023E64201BD4CDF3009ADDA2 /* txt.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = txt.icns; sourceTree = "<group>"; };
 		02A86DA41BB90D0C0046165C /* RaiseMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaiseMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A86DA71BB90D0C0046165C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A86DA91BB90D0C0046165C /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -101,11 +103,12 @@
 			children = (
 				02A86DA71BB90D0C0046165C /* AppDelegate.swift */,
 				02A86DA91BB90D0C0046165C /* Document.swift */,
+				02A86DD51BB90E2E0046165C /* Employee.swift */,
 				02A86DAB1BB90D0C0046165C /* Document.xib */,
 				02A86DAE1BB90D0C0046165C /* Assets.xcassets */,
 				02A86DB01BB90D0C0046165C /* MainMenu.xib */,
 				02A86DB31BB90D0C0046165C /* Info.plist */,
-				02A86DD51BB90E2E0046165C /* Employee.swift */,
+				023E64201BD4CDF3009ADDA2 /* txt.icns */,
 			);
 			path = RaiseMan;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				02A86DAF1BB90D0C0046165C /* Assets.xcassets in Resources */,
 				02A86DAD1BB90D0C0046165C /* Document.xib in Resources */,
 				02A86DB21BB90D0C0046165C /* MainMenu.xib in Resources */,
+				023E64211BD4CDF3009ADDA2 /* txt.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +494,7 @@
 				02A86DCE1BB90D0C0046165C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02A86DCF1BB90D0C0046165C /* Build configuration list for PBXNativeTarget "RaiseManTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +503,7 @@
 				02A86DD11BB90D0C0046165C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02A86DD21BB90D0C0046165C /* Build configuration list for PBXNativeTarget "RaiseManUITests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +512,7 @@
 				02A86DD41BB90D0C0046165C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
