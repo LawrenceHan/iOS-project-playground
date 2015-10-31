@@ -49,6 +49,25 @@ NSArray *BNRMethodsForClass(Class cls) {
     return methodArray;
 }
 
+NSArray *BNRIvarsForClass(Class cls) {
+    unsigned int ivarCount = 0;
+    
+    Ivar *ivarList = class_copyIvarList(cls, &ivarCount);
+    
+    NSMutableArray *ivarArray = [NSMutableArray array];
+    for (int i = 0; i < ivarCount; i++) {
+        // Get the current Ivar
+        Ivar ivar = ivarList[i];
+        // Get name C string
+        const char *ivarNameCString = ivar_getName(ivar);
+        NSString *ivarName = [NSString stringWithCString:ivarNameCString encoding:NSUTF8StringEncoding];
+        // Add it to array
+        [ivarArray addObject:ivarName];
+    }
+    
+    return ivarArray;
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // We don't have any objects to do the observing, but send
@@ -81,9 +100,13 @@ int main(int argc, const char * argv[]) {
             
             NSArray *methods = BNRMethodsForClass(currentClass);
             
+            NSArray *ivars = BNRIvarsForClass(currentClass);
+            
             NSDictionary *classInfoDict = @{@"classname" : className,
                                             @"hierarchy" : hierarchy,
-                                            @"methods" : methods};
+                                            @"methods" : methods,
+                                            @"ivars" : ivars};
+            
             [runtimeClassesInfo addObject:classInfoDict];
         }
         
