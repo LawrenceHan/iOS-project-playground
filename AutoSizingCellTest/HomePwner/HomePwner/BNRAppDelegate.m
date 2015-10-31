@@ -9,6 +9,7 @@
 #import "BNRAppDelegate.h"
 #import "BNRItemsViewController.h"
 #import "BNRItemStore.h"
+#import <objc/message.h>
 
 @implementation BNRAppDelegate
 
@@ -37,6 +38,11 @@
 //    }
 //
 //    [self.window makeKeyAndVisible];
+#pragma mark - Runtime test
+    NSString *nameString = @"Mikey Ward";
+    NSString *capsName = objc_msgSend(nameString, @selector(uppercaseString));
+    NSLog(@"%@ -> %@", nameString, capsName);
+    
     return YES;
 }
 
