@@ -32,13 +32,13 @@ const CGPoint kViewPoint2 = {.x = 200, .y = 50};
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.blueView = [UIView newAutoLayoutView];
+    self.blueView = [UIView new];
     self.blueView.backgroundColor = [UIColor blueColor];
-    self.redView = [UIView newAutoLayoutView];
+    self.redView = [UIView new];
     self.redView.backgroundColor = [UIColor redColor];
-    self.yellowView = [UIView newAutoLayoutView];
+    self.yellowView = [UIView new];
     self.yellowView.backgroundColor = [UIColor yellowColor];
-    self.greenView = [UIView newAutoLayoutView];
+    self.greenView = [UIView new];
     self.greenView.backgroundColor = [UIColor greenColor];
     
     [self.view addSubview:self.blueView];
@@ -52,29 +52,43 @@ const CGPoint kViewPoint2 = {.x = 200, .y = 50};
 
 - (void)updateViewConstraints {
     if (!self.didSetupConstraints) {
-        // Blue view is centered on screen, with size {50 pt, 50 pt}
-        [self.blueView autoCenterInSuperview];
-        [self.blueView autoSetDimensionsToSize:CGSizeMake(50.0, 50.0)];
+        UIView *superView = self.view;
         
-        // Red view is positioned at the bottom right corner of the blue view, with the same width, and a height of 40 pt
-        [self.redView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.blueView];
-        [self.redView autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:self.blueView];
-        [self.redView autoMatchDimension:ALDimensionWidth toDimension:ALDimensionWidth ofView:self.blueView];
-        [self.redView autoSetDimension:ALDimensionHeight toSize:40.0];
+        [self.blueView mas_makeConstraints:^(MASConstraintMaker *make){
+            make.center.equalTo(superView);
+            make.size.mas_equalTo(CGSizeMake(50.0, 50.0));
+        }];
         
-        // Yellow view is positioned 10 pt below the red view, extending across the screen with 20 pt insets from the edges,
-        // and with a fixed height of 25 pt
-        [self.yellowView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.redView withOffset:10.0];
-        [self.yellowView autoSetDimension:ALDimensionHeight toSize:25.0];
-        [self.yellowView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:20.0];
-        [self.yellowView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:20.0];
+        [self.redView mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(self.blueView.mas_bottom);
+            make.right.equalTo(self.blueView.mas_left);
+            make.width.equalTo(@100.0);
+            make.height.equalTo(self.blueView.mas_height);
+        }];
         
-        // Green view is positioned 10 pt below the yellow view, aligned to the vertical axis of its superview,
-        // with its height twice the height of the yellow view and its width fixed to 150 pt
-        [self.greenView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.yellowView withOffset:10.0];
-        [self.greenView autoAlignAxisToSuperviewAxis:ALAxisVertical];
-        [self.greenView autoMatchDimension:ALDimensionHeight toDimension:ALDimensionHeight ofView:self.yellowView withMultiplier:2.0];
-        [self.greenView autoSetDimension:ALDimensionWidth toSize:150.0];
+        [self.yellowView mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(self.redView.mas_bottom).offset(10.0);
+            make.height.equalTo(@20.0);
+            make.left.equalTo(superView.mas_left).offset(20);
+            make.right.equalTo(superView.mas_right).offset(-20);
+        }];
+
+        
+        
+//        // Green view is positioned 10 pt below the yellow view, aligned to the vertical axis of its superview,
+//        // with its height twice the height of the yellow view and its width fixed to 150 pt
+//        [self.greenView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.yellowView withOffset:10.0];
+//        [self.greenView autoAlignAxisToSuperviewAxis:ALAxisVertical];
+//        [self.greenView autoMatchDimension:ALDimensionHeight toDimension:ALDimensionHeight ofView:self.yellowView withMultiplier:2.0];
+//        [self.greenView autoSetDimension:ALDimensionWidth toSize:150.0];
+        
+        [self.greenView mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(self.yellowView.mas_bottom).offset(10.0);
+            make.centerX.equalTo(superView.mas_centerX);
+            make.height.equalTo(self.yellowView.mas_height).multipliedBy(2.0);
+            make.width.equalTo(@150.0);
+        }];
+
         
         self.didSetupConstraints = YES;
     }
