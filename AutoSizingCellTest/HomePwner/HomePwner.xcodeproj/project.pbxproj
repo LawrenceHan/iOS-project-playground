@@ -7,22 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02387AB31BC659B00023E825 /* BNRPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB21BC659B00023E825 /* BNRPageControl.m */; settings = {ASSET_TAGS = (); }; };
-		02387AC51BC65D3A0023E825 /* GooeyCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB81BC65D3A0023E825 /* GooeyCircle.m */; settings = {ASSET_TAGS = (); }; };
-		02387AC61BC65D3A0023E825 /* Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABA1BC65D3A0023E825 /* Indicator.m */; settings = {ASSET_TAGS = (); }; };
-		02387AC71BC65D3A0023E825 /* KYAnimatedPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABC1BC65D3A0023E825 /* KYAnimatedPageControl.m */; settings = {ASSET_TAGS = (); }; };
-		02387AC81BC65D3A0023E825 /* KYSpringLayerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABE1BC65D3A0023E825 /* KYSpringLayerAnimation.m */; settings = {ASSET_TAGS = (); }; };
-		02387AC91BC65D3A0023E825 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC01BC65D3A0023E825 /* Line.m */; settings = {ASSET_TAGS = (); }; };
-		02387ACA1BC65D3A0023E825 /* RotateRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC21BC65D3A0023E825 /* RotateRect.m */; settings = {ASSET_TAGS = (); }; };
-		02387ACB1BC65D3A0023E825 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 02387AC31BC65D3A0023E825 /* LICENSE */; settings = {ASSET_TAGS = (); }; };
-		02387ACC1BC65D3A0023E825 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC41BC65D3A0023E825 /* README.md */; settings = {ASSET_TAGS = (); }; };
-		0254BCE31BA4606400C5A7D8 /* BNRInteractiveAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */; settings = {ASSET_TAGS = (); }; };
+		020C20561BE757CA00BFFA73 /* NSString+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C20551BE757CA00BFFA73 /* NSString+Runtime.m */; };
+		02387AB31BC659B00023E825 /* BNRPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB21BC659B00023E825 /* BNRPageControl.m */; };
+		02387AC51BC65D3A0023E825 /* GooeyCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB81BC65D3A0023E825 /* GooeyCircle.m */; };
+		02387AC61BC65D3A0023E825 /* Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABA1BC65D3A0023E825 /* Indicator.m */; };
+		02387AC71BC65D3A0023E825 /* KYAnimatedPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABC1BC65D3A0023E825 /* KYAnimatedPageControl.m */; };
+		02387AC81BC65D3A0023E825 /* KYSpringLayerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABE1BC65D3A0023E825 /* KYSpringLayerAnimation.m */; };
+		02387AC91BC65D3A0023E825 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC01BC65D3A0023E825 /* Line.m */; };
+		02387ACA1BC65D3A0023E825 /* RotateRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC21BC65D3A0023E825 /* RotateRect.m */; };
+		02387ACB1BC65D3A0023E825 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 02387AC31BC65D3A0023E825 /* LICENSE */; };
+		02387ACC1BC65D3A0023E825 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC41BC65D3A0023E825 /* README.md */; };
+		0254BCE31BA4606400C5A7D8 /* BNRInteractiveAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */; };
 		026557321BA29FD50008D659 /* BNRDynamicFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 026557311BA29FD50008D659 /* BNRDynamicFlowLayout.m */; };
 		026557351BA3132D0008D659 /* BNRCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 026557341BA3132D0008D659 /* BNRCollectionLayout.m */; };
-		02936D6C1BA5967F00C70608 /* BNRInteractiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02936D6A1BA5967F00C70608 /* BNRInteractiveViewController.m */; settings = {ASSET_TAGS = (); }; };
-		02936D6D1BA5967F00C70608 /* BNRInteractiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02936D6B1BA5967F00C70608 /* BNRInteractiveViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		02936D6F1BA5B26D00C70608 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02936D6E1BA5B26D00C70608 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		02936D721BA5C7A500C70608 /* BNRDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02936D711BA5C7A500C70608 /* BNRDetailCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		02936D6C1BA5967F00C70608 /* BNRInteractiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02936D6A1BA5967F00C70608 /* BNRInteractiveViewController.m */; };
+		02936D6D1BA5967F00C70608 /* BNRInteractiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02936D6B1BA5967F00C70608 /* BNRInteractiveViewController.xib */; };
+		02936D6F1BA5B26D00C70608 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02936D6E1BA5B26D00C70608 /* Launch Screen.storyboard */; };
+		02936D721BA5C7A500C70608 /* BNRDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02936D711BA5C7A500C70608 /* BNRDetailCollectionViewController.m */; };
 		02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6C861B8C64020081775A /* AutoSizingCell.m */; };
 		02AF6C891B8C64020081775A /* AutoSizingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6C871B8C64020081775A /* AutoSizingCell.xib */; };
 		02AF6CFF1B8EC4DB0081775A /* PureLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6CFE1B8EC4DB0081775A /* PureLayoutCell.m */; };
@@ -43,7 +44,7 @@
 		02AF6DED1B9579A00081775A /* BNRFLowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6DEC1B9579A00081775A /* BNRFLowLayout.m */; };
 		02B49E101B8B0BA8005467C7 /* BNRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B49E0E1B8B0BA8005467C7 /* BNRCell.m */; };
 		02B49E111B8B0BA8005467C7 /* BNRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B49E0F1B8B0BA8005467C7 /* BNRCell.xib */; };
-		02DD25331BA4780300628F8A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DD25321BA4780300628F8A /* Storyboard.storyboard */; settings = {ASSET_TAGS = (); }; };
+		02DD25331BA4780300628F8A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DD25321BA4780300628F8A /* Storyboard.storyboard */; };
 		067AF2B9636694FF8C80A9A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB2194252F66DABB69A064 /* libPods.a */; };
 		1EFA248A9FB373B2C6D80E81 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB2194252F66DABB69A064 /* libPods.a */; };
 		520AA47F187C4EC00048F174 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520AA47E187C4EC00048F174 /* Foundation.framework */; };
@@ -76,6 +77,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020C20541BE757CA00BFFA73 /* NSString+Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Runtime.h"; sourceTree = "<group>"; };
+		020C20551BE757CA00BFFA73 /* NSString+Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Runtime.m"; sourceTree = "<group>"; };
 		02387AB11BC659B00023E825 /* BNRPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRPageControl.h; sourceTree = "<group>"; };
 		02387AB21BC659B00023E825 /* BNRPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRPageControl.m; sourceTree = "<group>"; };
 		02387AB71BC65D3A0023E825 /* GooeyCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooeyCircle.h; sourceTree = "<group>"; };
@@ -197,6 +200,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		022A29561BE751000077191E /* Runtime Class */ = {
+			isa = PBXGroup;
+			children = (
+				020C20541BE757CA00BFFA73 /* NSString+Runtime.h */,
+				020C20551BE757CA00BFFA73 /* NSString+Runtime.m */,
+			);
+			name = "Runtime Class";
+			sourceTree = "<group>";
+		};
 		02387AB41BC65D3A0023E825 /* KYAnimatedPageControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +376,7 @@
 		520AA484187C4EC00048F174 /* HomePwner */ = {
 			isa = PBXGroup;
 			children = (
+				022A29561BE751000077191E /* Runtime Class */,
 				0254BCE01BA45FEF00C5A7D8 /* Animator */,
 				02AF6DEA1B9578DB0081775A /* Collection demo */,
 				02AF6DE91B9578CA0081775A /* Custom Segue */,
@@ -664,6 +677,7 @@
 				02387AC71BC65D3A0023E825 /* KYAnimatedPageControl.m in Sources */,
 				02AF6DE41B95500E0081775A /* BNRCollectionViewController.m in Sources */,
 				520AA48B187C4EC00048F174 /* main.m in Sources */,
+				020C20561BE757CA00BFFA73 /* NSString+Runtime.m in Sources */,
 				02936D6C1BA5967F00C70608 /* BNRInteractiveViewController.m in Sources */,
 				02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */,
 				02387AB31BC659B00023E825 /* BNRPageControl.m in Sources */,

@@ -215,7 +215,6 @@ const CGPoint kViewPoint2 = {.x = 200, .y = 50};
     self.blueView.frame = _originalFrame;
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

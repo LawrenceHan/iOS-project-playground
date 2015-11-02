@@ -43,6 +43,12 @@
     NSString *capsName = objc_msgSend(nameString, @selector(uppercaseString));
     NSLog(@"%@ -> %@", nameString, capsName);
     
+    NSString *string1 = @"abcd";
+    NSString *string2 = @"abcde";
+    NSString *string3 = @"abcd";
+    BOOL equal = [string1 isEqualToString:string2];
+    equal = [string1 isEqualToString:string3];
+    
     return YES;
 }
 
@@ -98,3 +104,4 @@
 }
 
 @end
+
