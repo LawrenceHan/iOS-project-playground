@@ -48,7 +48,6 @@
     NSString *string3 = @"abcd";
     BOOL equal = [string1 isEqualToString:string2];
     equal = [string1 isEqualToString:string3];
-    
     return YES;
 }
 

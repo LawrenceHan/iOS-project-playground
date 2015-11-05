@@ -63,4 +63,13 @@
     return isEqual;
 }
 
+#pragma mark - Setter & Getter
+- (void)setStringArray:(NSArray *)stringArray {
+    objc_setAssociatedObject(self, @selector(stringArray), stringArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSArray *)stringArray {
+    return objc_getAssociatedObject(self, @selector(stringArray));
+}
+
 @end

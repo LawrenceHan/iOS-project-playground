@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (Runtime)
+@property (nonatomic, strong) NSArray *stringArray;
 
 @end
