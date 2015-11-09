@@ -45,6 +45,7 @@
 		02B49E101B8B0BA8005467C7 /* BNRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B49E0E1B8B0BA8005467C7 /* BNRCell.m */; };
 		02B49E111B8B0BA8005467C7 /* BNRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B49E0F1B8B0BA8005467C7 /* BNRCell.xib */; };
 		02DD25331BA4780300628F8A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DD25321BA4780300628F8A /* Storyboard.storyboard */; };
+		02E3F4B01BEF6CDB0072CB00 /* CalculateMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E3F4AF1BEF6CDB0072CB00 /* CalculateMaker.m */; };
 		067AF2B9636694FF8C80A9A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB2194252F66DABB69A064 /* libPods.a */; };
 		1EFA248A9FB373B2C6D80E81 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB2194252F66DABB69A064 /* libPods.a */; };
 		520AA47F187C4EC00048F174 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520AA47E187C4EC00048F174 /* Foundation.framework */; };
@@ -144,6 +145,8 @@
 		02B49E0E1B8B0BA8005467C7 /* BNRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRCell.m; sourceTree = "<group>"; };
 		02B49E0F1B8B0BA8005467C7 /* BNRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRCell.xib; sourceTree = "<group>"; };
 		02DD25321BA4780300628F8A /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		02E3F4AE1BEF6CDB0072CB00 /* CalculateMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateMaker.h; sourceTree = "<group>"; };
+		02E3F4AF1BEF6CDB0072CB00 /* CalculateMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateMaker.m; sourceTree = "<group>"; };
 		3C02549CBE367D726134A33C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		520AA47B187C4EC00048F174 /* HomePwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		520AA47E187C4EC00048F174 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -381,6 +384,8 @@
 				02AF6DEA1B9578DB0081775A /* Collection demo */,
 				02AF6DE91B9578CA0081775A /* Custom Segue */,
 				02AF6DE81B95787C0081775A /* Autosizing */,
+				02E3F4AE1BEF6CDB0072CB00 /* CalculateMaker.h */,
+				02E3F4AF1BEF6CDB0072CB00 /* CalculateMaker.m */,
 				02AF6D031B9018660081775A /* BNRImageTransformer.h */,
 				02AF6D041B9018660081775A /* BNRImageTransformer.m */,
 				02AF6D001B9009630081775A /* Homepwner.xcdatamodeld */,
@@ -660,6 +665,7 @@
 				02387AC81BC65D3A0023E825 /* KYSpringLayerAnimation.m in Sources */,
 				02387AC51BC65D3A0023E825 /* GooeyCircle.m in Sources */,
 				520AA4C3187CAA690048F174 /* BNRImageStore.m in Sources */,
+				02E3F4B01BEF6CDB0072CB00 /* CalculateMaker.m in Sources */,
 				02AF6DE71B9551F80081775A /* BNRCollectionViewCell.m in Sources */,
 				02AF6DC71B9454A80081775A /* UIImageEffects.m in Sources */,
 				02AF6D051B9018660081775A /* BNRImageTransformer.m in Sources */,

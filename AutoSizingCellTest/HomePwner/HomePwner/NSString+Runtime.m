@@ -11,7 +11,7 @@
 
 @implementation NSString (Runtime)
 
-// - (BOOL)isEqualToString:(NSString *)aString;
+/* TEST
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -42,14 +42,8 @@
             method_exchangeImplementations(originalMethod, swizzledMethod);
         }
     });
-    
-//    Method run_isEqualToString = class_getClassMethod(self, @selector(run_isEqualToString:));
-//    
-//    Method isEqualToString = class_getClassMethod([self superclass], @selector(isEqualToString:));
-//    
-//    method_exchangeImplementations(run_isEqualToString, isEqualToString);
-    
 }
+*/
 
 #pragma mark - Method Swizzling
 - (BOOL)run_isEqualToString:(NSString *)aString {

@@ -10,6 +10,7 @@
 #import "BNRItemsViewController.h"
 #import "BNRItemStore.h"
 #import <objc/message.h>
+#import "CalculateMaker.h"
 
 @implementation BNRAppDelegate
 
@@ -48,8 +49,21 @@
     NSString *string3 = @"abcd";
     BOOL equal = [string1 isEqualToString:string2];
     equal = [string1 isEqualToString:string3];
+    
+#pragma mark - Chaining method
+    int result1 = [CalculateMaker cal_calculateMaker:^(CalculateMaker *maker) {
+        maker.add(10).sub(5).multi(4).divide(2);
+    }];
+    
+    int result2 = [CalculateMaker cal_calculateMaker:^(CalculateMaker *maker) {
+        maker.add(30).sub(22).multi(6).divide(4);
+    }];
+    
+    NSLog(@"result1: %i, result2: %i", result1, result2);
+    
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
