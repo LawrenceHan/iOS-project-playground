@@ -1,9 +1,10 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, '7.0'
+platform :ios, '8.0'
+use_frameworks!
 
 pod 'PureLayout'
 pod 'Masonry'
 pod 'MagicalRecord'
-
-link_with ‘HomePwner’, ‘HomePwnerTests’
+pod 'ReactiveCocoa', '4.0.4-alpha-1'
+pod 'AFNetworking', '~> 3.0.0-beta.1'
 
