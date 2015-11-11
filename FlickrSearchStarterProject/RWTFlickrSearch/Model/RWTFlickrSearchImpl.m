@@ -60,7 +60,7 @@
 
 - (RACSignal *)signalFromAPIMethod:(NSString *)method arguments:(NSDictionary *)args
                          transform:(id (^)(NSDictionary *response))block {
-    // 1. Create a signal for thid request
+    // 1. Create a signal for this request
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         // 2. Create a Flickr request object
         OFFlickrAPIRequest *flickrRequest = [[OFFlickrAPIRequest alloc] initWithAPIContext:self.flickrContext];
