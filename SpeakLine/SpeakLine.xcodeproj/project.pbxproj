@@ -12,8 +12,9 @@
 		020E0F091BB3C20C00CD06E9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020E0F071BB3C20C00CD06E9 /* MainMenu.xib */; };
 		020E0F141BB3C20C00CD06E9 /* SpeakLineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0F131BB3C20C00CD06E9 /* SpeakLineTests.swift */; };
 		020E0F1F1BB3C20C00CD06E9 /* SpeakLineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0F1E1BB3C20C00CD06E9 /* SpeakLineUITests.swift */; };
-		020E0F2E1BB3CAE800CD06E9 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0F2C1BB3CAE800CD06E9 /* MainWindowController.swift */; settings = {ASSET_TAGS = (); }; };
-		020E0F2F1BB3CAE800CD06E9 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020E0F2D1BB3CAE800CD06E9 /* MainWindowController.xib */; settings = {ASSET_TAGS = (); }; };
+		020E0F2E1BB3CAE800CD06E9 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E0F2C1BB3CAE800CD06E9 /* MainWindowController.swift */; };
+		020E0F2F1BB3CAE800CD06E9 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020E0F2D1BB3CAE800CD06E9 /* MainWindowController.xib */; };
+		026123B01C02093B007A912A /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026123AF1C02093B007A912A /* PreferenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		020E0F2C1BB3CAE800CD06E9 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		020E0F2D1BB3CAE800CD06E9 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		0251D8681BB6D75B00F81DA5 /* KVC.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KVC.playground; sourceTree = "<group>"; };
+		026123AF1C02093B007A912A /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				020E0F051BB3C20C00CD06E9 /* Assets.xcassets */,
 				020E0F071BB3C20C00CD06E9 /* MainMenu.xib */,
 				020E0F0A1BB3C20C00CD06E9 /* Info.plist */,
+				026123AF1C02093B007A912A /* PreferenceManager.swift */,
 			);
 			path = SpeakLine;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				020E0F2E1BB3CAE800CD06E9 /* MainWindowController.swift in Sources */,
+				026123B01C02093B007A912A /* PreferenceManager.swift in Sources */,
 				020E0F041BB3C20C00CD06E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
