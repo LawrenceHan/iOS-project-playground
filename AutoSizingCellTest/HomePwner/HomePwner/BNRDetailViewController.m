@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Big Nerd Ranch. All rights reserved.
 //
 
+@import CoreImage;
+
 #import "BNRDetailViewController.h"
 #import "BNRItem.h"
 #import "BNRImageStore.h"
@@ -23,6 +25,7 @@
 @property (weak, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property (nonatomic) CGAffineTransform transformToUIKit;
 
 - (IBAction)takePicture:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
@@ -154,6 +157,14 @@
     button.frame = CGRectMake(100, 200, 40, 40);
     [self.view addSubview:button];
      */
+    
+    [[self.nameField.rac_textSignal
+      map:^id(NSString *text) {
+        UIColor *color = text.length > 3 ? [UIColor whiteColor] : [UIColor yellowColor];
+        return color;
+      }] subscribeNext:^(UIColor *color) {
+          self.nameField.backgroundColor = color;
+    }];
 }
 
 - (void)dealloc {
@@ -274,7 +285,7 @@
     // If the device ahs a camera, take a picture, otherwise,
     // just pick from the photo library
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     } else {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
@@ -318,13 +329,89 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // Get picked image from info dictionary
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     
-    [self.item setThumbnailFromImage:image];
+//    NSDictionary *options = @{CIDetectorAccuracy: CIDetectorAccuracyHigh};
+//    CIDetector *faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace
+//                                                  context:nil
+//                                                  options:options];
+//    
+//    CGRect bounds = CGRectZero;
+//    NSArray *features =
+//    [faceDetector featuresInImage:[CIImage imageWithCGImage:[image CGImage]] options:nil];
+//    
+//    UIImage *face;
+//    for (CIFaceFeature *feature in features) {
+//        CGRect faceRect = CGRectUnion(bounds, feature.bounds);
+//        CGImageRef faceRef = CGImageCreateWithImageInRect(image.CGImage, faceRect);
+//        face = [UIImage imageWithCGImage:faceRef];
+//        CGImageRelease(faceRef);
+//    }
+    
+    
+    //this is the translation from the CIImage coordinates to the UIKit coordinates
+    CGAffineTransform transform = CGAffineTransformMakeScale(1, -1);
+    self.transformToUIKit = CGAffineTransformTranslate(transform, 0, -image.size.height);
+    
+    
+    //a context and our image to get started!
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage * coreImage = 	[[CIImage alloc] initWithImage:image];
+    
+    
+    //TODO: 14 create a NSDictionary with the key CIDetectorAccuracy set to CIDetectorAccuracyHigh
+    NSDictionary * detectorOptions = @{CIDetectorAccuracy:CIDetectorAccuracyHigh};
+    
+    
+    //TODO: 15 create a CIDetector of type CIDetectorTypeFace
+    //HINT: use the context from the top and the detectorOptions you just created
+    CIDetector * detector =	[CIDetector detectorOfType:CIDetectorTypeFace context:context options:detectorOptions];
+    
+    
+    //TODO: 16 get all CIFaceFeatures the detector can find in the coreImage
+    //HINT: use -featuresInImage:
+    NSArray * foundFaces = [detector featuresInImage:coreImage];
+    
+    
+    
+    //TODO: 17 loop over the CIFaceFeatures and mark each face you found with the -addRectangleFromCGRect:toView:withColor: method
+    //HINT: the position of the face can be found in the bounds-property
+    
+    //TODO: 18 Now mark the left and right eye as well as the mouth. (also in the loop)
+    //HINT: use leftEyePosition, rightEyePosition, mouthPosition as well as -addCircleAroundPoint:toView:withColor:andWidth:
+    
+    for (CIFaceFeature * feature in foundFaces) {
+//        CGRect bounds = CGRectZero;
+//        CGRect faceRect = CGRectUnion(bounds, feature.bounds);
+        CGRect translatedRect = CGRectApplyAffineTransform(feature.bounds, self.transformToUIKit);
+        CGImageRef faceRef = CGImageCreateWithImageInRect(image.CGImage, translatedRect);
+        image = [UIImage imageWithCGImage:faceRef];
+        CGImageRelease(faceRef);
+//        CGRect translatedRect = CGRectApplyAffineTransform(feature.bounds, transformToUIKit);
+//        
+//        UIView * newView = [[UIView alloc] initWithFrame:translatedRect];
+//        newView.layer.cornerRadius = 10;
+//        newView.alpha = 0.3;
+//        newView.backgroundColor = [UIColor redColor];
+//        [self.view addSubview:newView];
+        
+//        [self addRectangleFromCGRect:feature.bounds toView:view withColor:[UIColor redColor]];
+        
+//        [self addCircleAroundPoint:feature.leftEyePosition toView:view withColor:[UIColor greenColor] andWidth:20];
+//        
+//        [self addCircleAroundPoint:feature.rightEyePosition toView:view withColor:[UIColor greenColor] andWidth:20];
+//        
+//        [self addCircleAroundPoint:feature.mouthPosition toView:view withColor:[UIColor blueColor] andWidth:40];
+    }
+    
+    
+    
+    
+    [self.item setThumbnailFromImage:image];//image];
     
     // Store the image in the BNRImageStore for this key
-    [[BNRImageStore sharedStore] setImage:image forKey:self.item.itemKey];
+    [[BNRImageStore sharedStore] setImage:image /*mage*/ forKey:self.item.itemKey];
     
     // Put that image onto the screen in our image view
-    self.imageView.image = image;
+     self.imageView.image = image;//image;
     
     // Do I have a popover?
     if (self.imagePickerPopover) {
@@ -388,5 +475,45 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [blurLayer removeFromSuperlayer];
     }
 }
+
+
+/**
+ *  Adds a rectangle-view to the passed view
+ *
+ *  @param rect  the dimensions and position of the new rectangle
+ *  @param view  the parent-view
+ *  @param color the color of the rectangle (will have an alpha-value of 0.3)
+ */
+- (void) addRectangleFromCGRect:(CGRect)rect toView:(UIView *) view withColor:(UIColor *) color
+{
+    CGRect translatedRect = CGRectApplyAffineTransform(rect, self.transformToUIKit);
+    
+    UIView * newView = [[UIView alloc] initWithFrame:translatedRect];
+    newView.layer.cornerRadius = 10;
+    newView.alpha = 0.3;
+    newView.backgroundColor = color;
+    [view addSubview:newView];
+}
+
+/**
+ *  adds a circle-view to the passed view
+ *
+ *  @param point the center of the circle
+ *  @param view  the parent-view
+ *  @param color the color of the circle (will have an alpha-value of 0.3)
+ *  @param width the diameter of the circle
+ */
+- (void) addCircleAroundPoint:(CGPoint) point toView:(UIView *) view withColor:(UIColor *) color andWidth:(NSInteger) width
+{
+    CGPoint translatedPoint = CGPointApplyAffineTransform(point, self.transformToUIKit);
+    CGRect circleRect = CGRectMake(translatedPoint.x-width/2, translatedPoint.y-width/2, width, width);
+    
+    UIView * circleView = [[UIView alloc] initWithFrame:circleRect];
+    circleView.layer.cornerRadius = width/2;
+    circleView.alpha = 0.7;
+    circleView.backgroundColor = color;
+    [view addSubview:circleView];
+}
+
 
 @end

@@ -234,7 +234,7 @@ UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
+    
     BNRDetailViewController *detailViewController = [[BNRDetailViewController alloc] initForNewItem:NO];
 
     NSArray *items = [[BNRItemStore sharedStore] allItems];
@@ -245,10 +245,10 @@ UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
     // Push it onto the top of the navigation controller's stack
     [self.navigationController pushViewController:detailViewController
                                          animated:YES];
-     */
-    BNRInteractiveViewController *bnvc = [BNRInteractiveViewController new];
-    bnvc.transitioningDelegate = self;
-    [self.navigationController presentViewController:bnvc animated:YES completion:nil];
+     
+//    BNRInteractiveViewController *bnvc = [BNRInteractiveViewController new];
+//    bnvc.transitioningDelegate = self;
+//    [self.navigationController presentViewController:bnvc animated:YES completion:nil];
 }
 
 - (void)   tableView:(UITableView *)tableView

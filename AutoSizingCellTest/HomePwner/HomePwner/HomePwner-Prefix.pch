@@ -16,4 +16,5 @@
     #import "PureLayout.h"
     #import "Masonry.h"
     #import <MagicalRecord/MagicalRecord.h>
+    #import "ReactiveCocoa.h"
 #endif
