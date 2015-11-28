@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BNRAppDelegate : UIResponder <UIApplicationDelegate>
+#import <Chartboost/Chartboost.h>
+
+@interface BNRAppDelegate : UIResponder <UIApplicationDelegate, ChartboostDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

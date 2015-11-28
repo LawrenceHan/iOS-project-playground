@@ -15,6 +15,10 @@
 #import "PureLayoutCell.h"
 #import "BNRInteractiveViewController.h"
 #import "BNRInteractiveAnimator.h"
+#import "MPAdView.h"
+#import "MPInterstitialAdController.h"
+#import "MoPub.h"
+#import "MPRewardedVideo.h"
 
 #define SYSTEM_VERSION                              ([[UIDevice currentDevice] systemVersion])
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([SYSTEM_VERSION compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -26,7 +30,8 @@ typedef NS_ENUM(NSInteger, CEDirection) {
 };
 
 @interface BNRItemsViewController () <UIViewControllerRestoration, UIDataSourceModelAssociation, UIViewControllerAnimatedTransitioning,
-UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
+UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate, MPAdViewDelegate, MPInterstitialAdControllerDelegate,
+MPRewardedVideoDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -34,6 +39,8 @@ UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) BNRInteractiveAnimator *animator;
 @property (nonatomic, assign) BOOL reverse;
 @property (nonatomic, assign) CEDirection flipDirection;
+@property (nonatomic, strong) MPAdView *adView;
+@property (nonatomic, strong) MPInterstitialAdController *interstitial;
 
 - (void)populateDataSource;
 
@@ -166,8 +173,52 @@ UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
 //    [self.tableView registerNib:[UINib nibWithNibName:@"AutoSizingCell" bundle:nil] forCellReuseIdentifier:@"AutoSizingCell"];
     [self.tableView registerClass:[PureLayoutCell class] forCellReuseIdentifier:@"PureLayoutCell"];
     self.tableView.restorationIdentifier = @"BNRItemsViewControllerTableView";
+    
     //self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     [self populateDataSource];
+    
+    RACSignal *tableDidSelectSignal = [self rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:)
+                                               fromProtocol:@protocol(UITableViewDelegate)];
+    [tableDidSelectSignal subscribeNext:^(RACTuple *tuple) {
+        NSLog(@"is a %@", [tuple.first class]);
+        NSLog(@"is a %@", [tuple.second class]);
+        
+        NSIndexPath *indexPath = tuple.second;
+        BNRDetailViewController *detailViewController = [[BNRDetailViewController alloc] initForNewItem:NO];
+        NSArray *items = [[BNRItemStore sharedStore] allItems];
+        BNRItem *selectedItem = items[indexPath.row];
+        detailViewController.item = selectedItem;
+        detailViewController.transitioningDelegate = self;
+        [self.navigationController pushViewController:detailViewController
+                                             animated:YES];
+    }];
+    self.tableView.delegate = nil;
+    self.tableView.delegate = self;
+    
+//    self.adView = [[MPAdView alloc] initWithAdUnitId:kTestBannerKey size:MOPUB_BANNER_SIZE];
+//    self.adView.delegate = self;
+//    self.adView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+//    
+//    CGRect frame = self.adView.frame;
+//    CGSize size = [self.adView adContentViewSize];
+//    frame.origin.y = self.view.frame.size.height - size.height;
+//    self.adView.frame = frame;
+//    [self.view addSubview:self.adView];
+//    [self.adView loadAd];
+    
+    /*
+    self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:@"b6b53432897f4ceaa1cedf4cbdb4e93e"];
+    self.interstitial.delegate = self;
+    [self.interstitial loadAd];
+     */
+    
+    [[MoPub sharedInstance] initializeRewardedVideoWithGlobalMediationSettings:nil delegate:self];
+    [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:kVideoTestKey withMediationSettings:nil];
+    [self performSelector:@selector(showVideo) withObject:nil afterDelay:30];
+}
+
+- (void)showVideo {
+    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:kVideoTestKey fromViewController:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -207,6 +258,18 @@ UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
 
+    RAC(cell.titleLabel, backgroundColor) = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        UIColor *color;
+        if (cell.titleLabel.text.length > 3) {
+            color = [UIColor yellowColor];
+        } else {
+            color = [UIColor purpleColor];
+        }
+        [subscriber sendNext:color];
+        [subscriber sendCompleted];
+        
+        return nil;
+    }] takeUntil:cell.rac_prepareForReuseSignal];
     return cell;
 }
 
@@ -232,24 +295,24 @@ UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
     [cell layoutIfNeeded];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//    BNRDetailViewController *detailViewController = [[BNRDetailViewController alloc] initForNewItem:NO];
+//
+//    NSArray *items = [[BNRItemStore sharedStore] allItems];
+//    BNRItem *selectedItem = items[indexPath.row];
+//    detailViewController.item = selectedItem;
+//    detailViewController.transitioningDelegate = self;
+//    // Give detail view controller a pointer to the item object in row
+//    // Push it onto the top of the navigation controller's stack
+//    [self.navigationController pushViewController:detailViewController
+//                                         animated:YES];
     
-    BNRDetailViewController *detailViewController = [[BNRDetailViewController alloc] initForNewItem:NO];
-
-    NSArray *items = [[BNRItemStore sharedStore] allItems];
-    BNRItem *selectedItem = items[indexPath.row];
-    detailViewController.item = selectedItem;
-    detailViewController.transitioningDelegate = self;
-    // Give detail view controller a pointer to the item object in row
-    // Push it onto the top of the navigation controller's stack
-    [self.navigationController pushViewController:detailViewController
-                                         animated:YES];
-     
 //    BNRInteractiveViewController *bnvc = [BNRInteractiveViewController new];
 //    bnvc.transitioningDelegate = self;
 //    [self.navigationController presentViewController:bnvc animated:YES completion:nil];
-}
+//}
 
 - (void)   tableView:(UITableView *)tableView
   commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
@@ -470,6 +533,24 @@ UIViewControllerInteractiveTransitioning, UIViewControllerTransitioningDelegate>
         return  CATransform3DMakeRotation(angle, 1.0, 0.0, 0.0);
     else
         return  CATransform3DMakeRotation(angle, 0.0, 1.0, 0.0);
+}
+
+#pragma mark - MPAdView delegate
+- (UIViewController *)viewControllerForPresentingModalView {
+    return self;
+}
+
+- (void)adViewDidLoadAd:(MPAdView *)view
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect frame = self.adView.frame;
+        frame.origin.y = 400;
+        self.adView.frame = frame;
+    }];
+}
+
+- (void)interstitialDidLoadAd:(MPInterstitialAdController *)interstitial {
+    [interstitial showFromViewController:self];
 }
 
 @end

@@ -379,9 +379,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     //HINT: use leftEyePosition, rightEyePosition, mouthPosition as well as -addCircleAroundPoint:toView:withColor:andWidth:
     
     for (CIFaceFeature * feature in foundFaces) {
-//        CGRect bounds = CGRectZero;
-//        CGRect faceRect = CGRectUnion(bounds, feature.bounds);
         CGRect translatedRect = CGRectApplyAffineTransform(feature.bounds, self.transformToUIKit);
+        CGRect bounds = CGRectZero;
+        CGRect faceRect = CGRectUnion(bounds, translatedRect);
         CGImageRef faceRef = CGImageCreateWithImageInRect(image.CGImage, translatedRect);
         image = [UIImage imageWithCGImage:faceRef];
         CGImageRelease(faceRef);
