@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022C40681C0D558C00D0F782 /* ChartboostInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C400C1C0D558C00D0F782 /* ChartboostInterstitialCustomEvent.m */; };
+		022C40691C0D558C00D0F782 /* ChartboostRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C400E1C0D558C00D0F782 /* ChartboostRewardedVideoCustomEvent.m */; };
+		022C406A1C0D558C00D0F782 /* MPChartboostRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C40101C0D558C00D0F782 /* MPChartboostRouter.m */; };
+		022C406B1C0D558C00D0F782 /* MPInstanceProvider+Chartboost.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C40121C0D558C00D0F782 /* MPInstanceProvider+Chartboost.m */; };
+		022C406C1C0D558C00D0F782 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 022C40141C0D558C00D0F782 /* README.md */; };
+		022C408F1C0D562F00D0F782 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022C408E1C0D562F00D0F782 /* Chartboost.framework */; };
 		4604B7BC1A002F0A002234E9 /* MoPubSampleApp with CEs-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4604B7BB1A002F0A002234E9 /* MoPubSampleApp with CEs-Info.plist */; };
 		462E156F17F0F5D100408E17 /* MPMRectBannerAdDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462E156E17F0F5D100408E17 /* MPMRectBannerAdDetailViewController.m */; };
 		467343F017FE3D6900D68BB6 /* MPAdPersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 467343EF17FE3D6900D68BB6 /* MPAdPersistenceManager.m */; };
@@ -658,6 +664,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		022C400B1C0D558C00D0F782 /* ChartboostInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartboostInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		022C400C1C0D558C00D0F782 /* ChartboostInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartboostInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		022C400D1C0D558C00D0F782 /* ChartboostRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartboostRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
+		022C400E1C0D558C00D0F782 /* ChartboostRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartboostRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
+		022C400F1C0D558C00D0F782 /* MPChartboostRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPChartboostRouter.h; sourceTree = "<group>"; };
+		022C40101C0D558C00D0F782 /* MPChartboostRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPChartboostRouter.m; sourceTree = "<group>"; };
+		022C40111C0D558C00D0F782 /* MPInstanceProvider+Chartboost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPInstanceProvider+Chartboost.h"; sourceTree = "<group>"; };
+		022C40121C0D558C00D0F782 /* MPInstanceProvider+Chartboost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPInstanceProvider+Chartboost.m"; sourceTree = "<group>"; };
+		022C40141C0D558C00D0F782 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		022C408E1C0D562F00D0F782 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 		4604B7BB1A002F0A002234E9 /* MoPubSampleApp with CEs-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MoPubSampleApp with CEs-Info.plist"; path = "MoPubSampleApp/MoPubSampleApp with CEs-Info.plist"; sourceTree = "<group>"; };
 		4614B3F417E8D01D00812D2C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		462E156D17F0F5D100408E17 /* MPMRectBannerAdDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMRectBannerAdDetailViewController.h; sourceTree = "<group>"; };
@@ -1319,6 +1335,7 @@
 				46B9E8B217E0D80400B78D11 /* MessageUI.framework in Frameworks */,
 				46B9E8B017E0D7F600B78D11 /* AVFoundation.framework in Frameworks */,
 				46B9E8AE17E0D7EE00B78D11 /* AudioToolbox.framework in Frameworks */,
+				022C408F1C0D562F00D0F782 /* Chartboost.framework in Frameworks */,
 				46B9E8AC17E0D7D800B78D11 /* libz.dylib in Frameworks */,
 				46B9E8AB17E0D7D100B78D11 /* libsqlite3.dylib in Frameworks */,
 				AED7D8E4177CEB2900CC0CEF /* MediaPlayer.framework in Frameworks */,
@@ -1339,6 +1356,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		022C3FF81C0D558C00D0F782 /* AdNetworkSupport */ = {
+			isa = PBXGroup;
+			children = (
+				022C400A1C0D558C00D0F782 /* Chartboost */,
+			);
+			path = AdNetworkSupport;
+			sourceTree = "<group>";
+		};
+		022C400A1C0D558C00D0F782 /* Chartboost */ = {
+			isa = PBXGroup;
+			children = (
+				022C400B1C0D558C00D0F782 /* ChartboostInterstitialCustomEvent.h */,
+				022C400C1C0D558C00D0F782 /* ChartboostInterstitialCustomEvent.m */,
+				022C400D1C0D558C00D0F782 /* ChartboostRewardedVideoCustomEvent.h */,
+				022C400E1C0D558C00D0F782 /* ChartboostRewardedVideoCustomEvent.m */,
+				022C400F1C0D558C00D0F782 /* MPChartboostRouter.h */,
+				022C40101C0D558C00D0F782 /* MPChartboostRouter.m */,
+				022C40111C0D558C00D0F782 /* MPInstanceProvider+Chartboost.h */,
+				022C40121C0D558C00D0F782 /* MPInstanceProvider+Chartboost.m */,
+				022C40131C0D558C00D0F782 /* SDK */,
+			);
+			path = Chartboost;
+			sourceTree = "<group>";
+		};
+		022C40131C0D558C00D0F782 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				022C408E1C0D562F00D0F782 /* Chartboost.framework */,
+				022C40141C0D558C00D0F782 /* README.md */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
 		46B3345119F076E60078078A /* MoPubSampleApp with CEs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1410,6 +1460,7 @@
 		572408B81A688C05009271B8 /* MoPubSDK */ = {
 			isa = PBXGroup;
 			children = (
+				022C3FF81C0D558C00D0F782 /* AdNetworkSupport */,
 				B26283E11B83B96F00960F74 /* NativeVideo */,
 				5755D6171AA8F62900DC32EA /* RewardedVideo */,
 				572408B91A688C05009271B8 /* Internal */,
@@ -3017,12 +3068,14 @@
 				57AC6A041BB221130053C556 /* MOPUBActivityIndicatorView.m in Sources */,
 				A714FE751B699B1B000EAEC4 /* MPVASTStringUtilities.m in Sources */,
 				5755D62C1AA8F62900DC32EA /* MPRewardedVideo.m in Sources */,
+				022C406B1C0D558C00D0F782 /* MPInstanceProvider+Chartboost.m in Sources */,
 				5755D6261AA8F62900DC32EA /* MPRewardedVideoAdapter.m in Sources */,
 				57240AB11A688C05009271B8 /* MPNativeAdRequest.m in Sources */,
 				57240A0C1A688C05009271B8 /* MRCalendarManager.m in Sources */,
 				57240A091A688C05009271B8 /* MRBundleManager.m in Sources */,
 				57AC6A0A1BB221130053C556 /* MOPUBFullscreenPlayerViewController.m in Sources */,
 				57240ABA1A688C05009271B8 /* MPNativeCustomEvent.m in Sources */,
+				022C406C1C0D558C00D0F782 /* README.md in Sources */,
 				A7A021F11B3C8DEE0022F8F1 /* MPEnhancedDeeplinkRequest.m in Sources */,
 				AE0021E61704C46400A220F0 /* MPManualAdViewController.m in Sources */,
 				57AC6A061BB221130053C556 /* MOPUBAVPlayer.m in Sources */,
@@ -3038,6 +3091,7 @@
 				57240A661A688C05009271B8 /* MPAdConversionTracker.m in Sources */,
 				572409B21A688C05009271B8 /* MPAdBrowserController.m in Sources */,
 				572409C71A688C05009271B8 /* MPFacebookKeywordProvider.m in Sources */,
+				022C40681C0D558C00D0F782 /* ChartboostInterstitialCustomEvent.m in Sources */,
 				57240A8D1A688C05009271B8 /* MPNativeAdUtils.m in Sources */,
 				A7A422811B5F224400024A3A /* MPVASTCreative.m in Sources */,
 				57240AA21A688C05009271B8 /* MPCollectionViewAdPlacer.m in Sources */,
@@ -3046,6 +3100,7 @@
 				57F403921BA09B62002E2601 /* MPStaticNativeAdImpressionTimer.m in Sources */,
 				A7220FDB1B6C2D660099DCF6 /* MPVASTResource.m in Sources */,
 				87CF216E1B0D39100080E6BB /* MPActivityViewControllerHelper.m in Sources */,
+				022C40691C0D558C00D0F782 /* ChartboostRewardedVideoCustomEvent.m in Sources */,
 				467343F017FE3D6900D68BB6 /* MPAdPersistenceManager.m in Sources */,
 				572409A61A688C05009271B8 /* MPBaseBannerAdapter.m in Sources */,
 				572409F41A688C05009271B8 /* MPCoreInstanceProvider.m in Sources */,
@@ -3068,6 +3123,7 @@
 				A7A422831B5F224400024A3A /* MPVASTLinearAd.m in Sources */,
 				57240A7B1A688C05009271B8 /* MPAdPlacerInvocation.m in Sources */,
 				57C784D61BCC4C6C00E4BB7D /* MPNativeVideoTableViewAdPlacerView.m in Sources */,
+				022C406A1C0D558C00D0F782 /* MPChartboostRouter.m in Sources */,
 				57FFAB86199C110D00F655CF /* MPCollectionViewAdPlacerView.m in Sources */,
 				57240A241A688C05009271B8 /* MRPictureManager.m in Sources */,
 				5731A7981BBDFAE600579ACE /* MPNativeAdRenderingImageLoader.m in Sources */,
@@ -3304,6 +3360,7 @@
 					"$(PROJECT_DIR)/AdNetworkSupport/Chartboost/SDK",
 					"$(PROJECT_DIR)/AdNetworkSupport/Facebook/SDK",
 					"$(PROJECT_DIR)/AdNetworkSupport/Millennial/SDK",
+					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/Chartboost/SDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MoPubSampleApp/MoPubSampleApp-Prefix.pch";
@@ -3336,6 +3393,7 @@
 					"$(PROJECT_DIR)/AdNetworkSupport/Chartboost/SDK",
 					"$(PROJECT_DIR)/AdNetworkSupport/Facebook/SDK",
 					"$(PROJECT_DIR)/AdNetworkSupport/Millennial/SDK",
+					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/Chartboost/SDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MoPubSampleApp/MoPubSampleApp-Prefix.pch";
