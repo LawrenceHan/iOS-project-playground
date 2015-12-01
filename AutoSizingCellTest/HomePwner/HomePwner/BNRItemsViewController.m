@@ -214,7 +214,7 @@ MPRewardedVideoDelegate>
     
     [[MoPub sharedInstance] initializeRewardedVideoWithGlobalMediationSettings:nil delegate:self];
     [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:kVideoTestKey withMediationSettings:nil];
-    [self performSelector:@selector(showVideo) withObject:nil afterDelay:30];
+    [self performSelector:@selector(showVideo) withObject:nil afterDelay:20];
 }
 
 - (void)showVideo {
