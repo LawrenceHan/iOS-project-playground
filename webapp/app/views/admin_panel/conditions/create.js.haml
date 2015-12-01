@@ -1,5 +1,0 @@
-- if @condition.errors.empty?
-  $('#condition_table tbody').append("#{j(render('condition', condition: @condition))}");
-  $.fancybox.close();
-- else
-  alert("#{@condition.errors.full_messages.join('\n')}");

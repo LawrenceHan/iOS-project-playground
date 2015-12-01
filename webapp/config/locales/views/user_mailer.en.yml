@@ -1,9 +1,0 @@
----
-en:
-  user_mailer:
-    reset_password:
-      subject: "[Carevoice] Reset your password"
-    to_new_user:
-      subject: Welcome to The CareVoice as our Esteemed Pioneer, now win gifts
-      link: http://mp.weixin.qq.com/s?__biz=MzAxMzA5MjQwMA==&mid=203016612&idx=1&sn=9a4daf0a600d4d5ae85341a48a07ed9a#rd
-      image: events/new_user.png

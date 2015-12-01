@@ -1,5 +1,0 @@
-- if @speciality.errors.empty?
-  $('tr#speciality_#{@speciality.id}').replaceWith("#{j(render('speciality', speciality: @speciality))}");
-  $.fancybox.close();
-- else
-  alert("#{@speciality.errors.full_messages.join('\n')}");

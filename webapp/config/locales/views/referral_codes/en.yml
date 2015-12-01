@@ -1,9 +1,0 @@
----
-en:
-  admin_panel:
-    referral_codes:
-      index:
-        generate_form:
-          generate_label: Generate
-          submit: " Do it ! "
-          unit_label: codes

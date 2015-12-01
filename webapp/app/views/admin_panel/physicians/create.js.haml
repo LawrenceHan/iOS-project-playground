@@ -1,5 +1,0 @@
-- if @physician.errors.empty?
-  $('#physician_table tbody').append("#{j(render('physician', physician: @physician))}");
-  $.fancybox.close();
-- else
-  alert("#{@physician.errors.full_messages.join('\n')}");

@@ -1,7 +1,0 @@
-%tr{id: "symptom_#{symptom.id}"}
-  %td= symptom.name
-  %td= symptom.category
-  %td= symptom.created_at
-  %td
-    = link_to t('button.edit'), edit_admin_panel_symptom_path(symptom), class: 'btn btn-primary btn-xs various fancybox.ajax'
-    = link_to t('button.destroy'), admin_panel_symptom_path(symptom), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

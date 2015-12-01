@@ -1,9 +1,0 @@
-{
-  "query": {
-    "text": "微创手术",
-    "type": "Hospital"
-  },
-  "sort": {
-    "ranking": "true"
-  }
-}

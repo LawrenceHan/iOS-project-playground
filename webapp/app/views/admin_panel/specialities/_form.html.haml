@@ -1,8 +1,0 @@
-= simple_form_for([:admin_panel, @speciality], remote: true, html: {class: 'form-horizontal', role: 'form' }, defaults: { input_html: { class: 'form-control'}, label_html: { class: 'col-lg-2' } }) do |f|
-  = f.error_notification
-  = f.input :vendor_id, hint: 'note: to handle with good care. ID is a unique identifier, it should not conflict database'
-  = f.input :name
-
-  .form-group
-    .col-lg-offset-2
-      = f.button :submit, class: 'btn btn-primary'

@@ -1,7 +1,0 @@
-%h2= I18n.t('api.recover.title')
-= simple_form_for(@user, url: api_update_password_url(only_path: true, locale: I18n.locale), html: { method: :put }) do |f|
-  = f.input :reset_password_token, as: 'hidden'
-  = f.input :email, as: 'hidden'
-  = f.input :password, as: 'password'
-  = f.input :password_confirmation
-  = f.submit I18n.t('api.recover.form.submit')

@@ -1,8 +1,0 @@
-= simple_form_for([:admin_panel, @question], remote: true, html: {class: 'form-horizontal', role: 'form' }, defaults: { input_html: { class: 'form-control'}, label_html: { class: 'col-lg-2' } }) do |f|
-  = f.error_notification
-  = f.input :category, collection: Question::CATEGORIES, selected: Question::DEFAULT_CATEGORY
-  = f.input :content, as: :text
-
-  .form-group
-    .col-lg-offset-2
-      = f.button :submit, class: 'btn btn-primary'

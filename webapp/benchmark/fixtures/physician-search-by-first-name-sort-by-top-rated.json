@@ -1,9 +1,0 @@
-{
-  "query": {
-    "text": "蓉",
-    "type": "Physician"
-  },
-  "sort": {
-    "ranking": "true"
-  }
-}

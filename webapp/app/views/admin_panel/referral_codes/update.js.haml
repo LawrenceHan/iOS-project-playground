@@ -1,7 +1,0 @@
-- if @referral_code.errors.empty?
-  $('tr#referral_code_#{@referral_code.id}').replaceWith("#{j(render('referral_code', referral_code: @referral_code))}");
-  $.fancybox.close();
-- else
-  alert("#{@referral_code.errors.full_messages.join('\n')}");
-
-$('#referral_code_table tbody tr').removeClass('success');

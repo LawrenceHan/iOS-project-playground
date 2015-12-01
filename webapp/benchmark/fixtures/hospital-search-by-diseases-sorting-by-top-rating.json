@@ -1,9 +1,0 @@
-{
-  "query": {
-    "text": "蛀牙",
-    "type": "Hospital"
-  },
-  "sort": {
-    "ranking": "true"
-  }
-}

@@ -1,8 +1,0 @@
----
-en:
-  admin_panel:
-    users:
-      index:
-        export_excel: Export
-      profile:
-        no_profile: This user did not fill any profile information.

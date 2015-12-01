@@ -1,5 +1,0 @@
-- if @admin.errors.empty?
-  $('#admin_table tbody').append("#{j(render('admin', admin: @admin))}");
-  $.fancybox.close();
-- else
-  alert("#{@admin.errors.full_messages.join('\n')}");

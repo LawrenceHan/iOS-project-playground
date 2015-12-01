@@ -1,5 +1,0 @@
-- if @department.errors.empty?
-  $('tr#department_#{@department.id}').replaceWith("#{j(render('department', department: @department))}");
-  $.fancybox.close();
-- else
-  alert("#{@department.errors.full_messages.join('\n')}");

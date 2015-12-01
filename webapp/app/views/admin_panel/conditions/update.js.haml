@@ -1,5 +1,0 @@
-- if @condition.errors.empty?
-  $('tr#condition_#{@condition.id}').replaceWith("#{j(render('condition', condition: @condition))}");
-  $.fancybox.close();
-- else
-  alert("#{@condition.errors.full_messages.join('\n')}");

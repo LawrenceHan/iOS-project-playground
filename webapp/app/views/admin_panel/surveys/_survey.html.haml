@@ -1,7 +1,0 @@
-%tr{id: "survey_#{survey.id}", class: new_tr_color}
-  %td= survey.title
-  %td= survey.type.split(':').last
-  %td= link_to survey_url(survey, id: survey.uuid, format: nil, locale: nil), survey_url(survey, id: survey.uuid, format: nil, locale: nil), target: '_blank'
-  %td
-    = link_to t('button.edit'), edit_admin_panel_survey_path(survey), class: 'btn btn-primary btn-xs'
-    = link_to t('button.destroy'), admin_panel_survey_path(survey), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

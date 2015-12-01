@@ -1,5 +1,0 @@
-- if @blacklist.errors.empty?
-  $('#blacklist_table tbody').append("#{j(render('blacklist', blacklist: @blacklist))}");
-  $.fancybox.close();
-- else
-  alert("#{@blacklist.errors.full_messages.join('\n')}");

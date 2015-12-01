@@ -179,7 +179,7 @@
 				ORGANIZATIONNAME = chartboost;
 				TargetAttributes = {
 					DA93B6AC182B31BC00C21472 = {
-						DevelopmentTeam = F38H382JLK;
+						DevelopmentTeam = 9SUHG892S5;
 					};
 				};
 			};
@@ -372,6 +372,7 @@
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Chartboost-gwkcdlljfwewxofkouszbnxcxbqz/Build/Products/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = lab.ideawise.flirten.ADSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -402,6 +403,7 @@
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Chartboost-gwkcdlljfwewxofkouszbnxcxbqz/Build/Products/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = lab.ideawise.flirten.ADSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

@@ -1,5 +1,0 @@
-- if @comment.errors.empty?
-  $('tr#comment_#{@comment.id}').replaceWith("#{j(render('comment', comment: @comment))}");
-  $.fancybox.close();
-- else
-  alert("#{@comment.errors.full_messages.join('\n')}");

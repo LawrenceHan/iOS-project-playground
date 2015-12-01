@@ -1,8 +1,0 @@
-%tr{id: "comment_#{comment.id}"}
-  %td= comment.user_email
-  %td= comment.writer_email
-  %td= comment.human_status
-  %td= comment.created_at
-  %td
-    = comment_audit_link_button(comment)
-    = link_to t('button.destroy'), admin_panel_comment_path(comment), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-sm btn-xs'

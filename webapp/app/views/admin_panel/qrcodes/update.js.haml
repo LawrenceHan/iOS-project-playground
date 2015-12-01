@@ -1,5 +1,0 @@
-- if @qrcode.errors.empty?
-  $('tr#qrcode_#{@qrcode.id}').replaceWith("#{j(render('qrcode', qrcode: @qrcode))}");
-  $.fancybox.close();
-- else
-  alert("#{@qrcode.errors.full_messages.join('\n')}");

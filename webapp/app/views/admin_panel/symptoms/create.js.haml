@@ -1,5 +1,0 @@
-- if @symptom.errors.empty?
-  $('#symptom_table tbody').append("#{j(render('symptom', symptom: @symptom))}");
-  $.fancybox.close();
-- else
-  alert("#{@symptom.errors.full_messages.join('\n')}");

@@ -1,5 +1,0 @@
-- if @medical_experience.errors.empty?
-  $('#medical_experience_table tbody').append("#{j(render('medical_experience', medical_experience: @medical_experience))}");
-  $.fancybox.close();
-- else
-  alert("#{@medical_experience.errors.full_messages.join('\n')}");

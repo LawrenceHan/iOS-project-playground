@@ -1,7 +1,0 @@
-%tr{id: "report_#{report.id}"}
-  %td= report.user_email
-  %td= report.reportable.try(:human_type)
-  %td= report.content.truncate(30)
-  %td
-    = link_to t('button.show'), admin_panel_report_path(report), class: 'btn btn-default btn-xs various fancybox.ajax'
-    = link_to t('button.destroy'), admin_panel_report_path(report), method: :delete, data: { remote: true, confirm: t('button.confirm')  }, class: 'btn btn-danger btn-xs'

@@ -1,9 +1,0 @@
----
-zh-CN:
-  user_mailer:
-    reset_password:
-      subject: "【康语】重新设置你的密码"
-    to_new_user:
-      subject: "邀请您的朋友注册康语，免费获手机充值卡！Get free mobile recharge by inviting your friends to join Kangyu!"
-      link: http://mp.weixin.qq.com/s?__biz=MzAxMzA5MjQwMA==&mid=203289316&idx=1&sn=8f7e62540d3cbbb60f0e80d339e25d71#rd
-      image: events/zh_new_user.png

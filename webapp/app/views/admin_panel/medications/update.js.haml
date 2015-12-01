@@ -1,5 +1,0 @@
-- if @medication.errors.empty?
-  $('tr#medication_#{@medication.id}').replaceWith("#{j(render('medication', medication: @medication))}");
-  $.fancybox.close();
-- else
-  alert("#{@medication.errors.full_messages.join('\n')}");

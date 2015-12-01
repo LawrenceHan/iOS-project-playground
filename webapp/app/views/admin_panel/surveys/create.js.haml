@@ -1,5 +1,0 @@
-- if @survey.errors.empty?
-  $('#survey_table tbody').prepend("#{j(render('survey', survey: @survey))}");
-  $.fancybox.close();
-- else
-  alert("#{@survey.errors.full_messages.join('\n')}");

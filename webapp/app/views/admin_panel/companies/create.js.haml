@@ -1,5 +1,0 @@
-- if @company.errors.empty?
-  $('#company_table tbody').append("#{j(render('company', company: @company))}");
-  $.fancybox.close();
-- else
-  alert("#{@company.errors.full_messages.join('\n')}");

@@ -1,5 +1,0 @@
-- if @blacklist.errors.empty?
-  $('tr#blacklist_#{@blacklist.id}').replaceWith("#{j(render('blacklist', blacklist: @blacklist))}");
-  $.fancybox.close();
-- else
-  alert("#{@blacklist.errors.full_messages.join('\n')}");
