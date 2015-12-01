@@ -3377,6 +3377,7 @@
 					"$(PROJECT_DIR)/AdNetworkSupport/InMobi/SDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = lab.ideawise.flirten.MoPubSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -3410,6 +3411,7 @@
 					"$(PROJECT_DIR)/AdNetworkSupport/InMobi/SDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = lab.ideawise.flirten.MoPubSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
