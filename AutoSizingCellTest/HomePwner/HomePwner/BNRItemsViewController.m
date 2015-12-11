@@ -195,7 +195,7 @@ MPRewardedVideoDelegate>
     self.tableView.delegate = nil;
     self.tableView.delegate = self;
     
-//    self.adView = [[MPAdView alloc] initWithAdUnitId:kTestBannerKey size:MOPUB_BANNER_SIZE];
+//    self.adView = [[MPAdView alloc] initWithAdUnitId:kiADAdUnit size:MOPUB_BANNER_SIZE];
 //    self.adView.delegate = self;
 //    self.adView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 //    
@@ -206,19 +206,19 @@ MPRewardedVideoDelegate>
 //    [self.view addSubview:self.adView];
 //    [self.adView loadAd];
     
-    /*
-    self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:@"b6b53432897f4ceaa1cedf4cbdb4e93e"];
+    
+    self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:kiADIntertitial];
     self.interstitial.delegate = self;
     [self.interstitial loadAd];
-     */
     
-    [[MoPub sharedInstance] initializeRewardedVideoWithGlobalMediationSettings:nil delegate:self];
-    [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:kVideoTestKey withMediationSettings:nil];
-    [self performSelector:@selector(showVideo) withObject:nil afterDelay:20];
+    
+//    [[MoPub sharedInstance] initializeRewardedVideoWithGlobalMediationSettings:nil delegate:self];
+//    [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:kVungleAdUnit withMediationSettings:nil];
+//    [self performSelector:@selector(showVideo) withObject:nil afterDelay:20];
 }
 
 - (void)showVideo {
-    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:kVideoTestKey fromViewController:self];
+    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:kVungleAdUnit fromViewController:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated

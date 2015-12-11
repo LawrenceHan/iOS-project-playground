@@ -22,7 +22,11 @@
 #define kTestBannerKey @"23ce21a5a73b4952823b014cf8ca9aae"
 #define kIntertitialKey @"4f117153f5c24fa6a3a92b818a5eb630"
 #define kVideoTestKey @"1c27f60c85104b6489213a82149d833a"
-#define kVungleKey @"Test_iOS"
+#define kVungleKey @"565fe3cc349c8f6d7200000d"
+#define kCharboostAdUnit @"41456281d6814a68ae4eaa5f02c69cd5"
+#define kVungleAdUnit @"6928639f3dbb40a4b378c9367dcee6f8"
+#define kiADAdUnit @"c170a1b1f2034a5894314800f99bad9d"
+#define kiADIntertitial @"46f498fa705b4765acc723bd1c8312cd"
 
 #define kChartBoostAppKey @"56582194f789827bfa2b821d"
 #define kChartBoostSecret @"b1497ab84906c3bb4ee524c26f94a0000a289b65"

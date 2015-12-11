@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		020C20561BE757CA00BFFA73 /* NSString+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C20551BE757CA00BFFA73 /* NSString+Runtime.m */; };
+		022E52DC1C101FDD006D02D5 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022E52DB1C101FDD006D02D5 /* WebKit.framework */; };
 		02387AB31BC659B00023E825 /* BNRPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB21BC659B00023E825 /* BNRPageControl.m */; };
 		02387AC51BC65D3A0023E825 /* GooeyCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB81BC65D3A0023E825 /* GooeyCircle.m */; };
 		02387AC61BC65D3A0023E825 /* Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABA1BC65D3A0023E825 /* Indicator.m */; };
@@ -289,6 +290,7 @@
 /* Begin PBXFileReference section */
 		020C20541BE757CA00BFFA73 /* NSString+Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Runtime.h"; sourceTree = "<group>"; };
 		020C20551BE757CA00BFFA73 /* NSString+Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Runtime.m"; sourceTree = "<group>"; };
+		022E52DB1C101FDD006D02D5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		02387AB11BC659B00023E825 /* BNRPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRPageControl.h; sourceTree = "<group>"; };
 		02387AB21BC659B00023E825 /* BNRPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRPageControl.m; sourceTree = "<group>"; };
 		02387AB71BC65D3A0023E825 /* GooeyCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooeyCircle.h; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				022E52DC1C101FDD006D02D5 /* WebKit.framework in Frameworks */,
 				025A65711C07080A00443AB1 /* CoreBluetooth.framework in Frameworks */,
 				025A656F1C0707C100443AB1 /* Social.framework in Frameworks */,
 				02E8AF2C1C08538E00495328 /* VungleSDK.framework in Frameworks */,
@@ -1675,6 +1678,7 @@
 		520AA47D187C4EC00048F174 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				022E52DB1C101FDD006D02D5 /* WebKit.framework */,
 				025A65701C07080A00443AB1 /* CoreBluetooth.framework */,
 				025A656E1C0707C100443AB1 /* Social.framework */,
 				025A656C1C0707BB00443AB1 /* PassKit.framework */,

@@ -89,6 +89,41 @@ class Document: NSDocument, NSWindowDelegate {
         tableView.editColumn(0, row: row, withEvent: nil, select: true)
     }
 
+    @IBAction func removeEmployees(sender: NSButton) {
+        let selectedPeople: [Employee] = arrayController.selectedObjects as! [Employee]
+        let alert = NSAlert()
+        
+        alert.addButtonWithTitle("Remove")
+        alert.addButtonWithTitle("Cancel")
+        
+        if selectedPeople.count > 1 {
+            alert.informativeText = "\(selectedPeople.count) people will be removed."
+            alert.messageText = "Do you really want to remove these people?"
+            alert.addButtonWithTitle("Keep, but no raise")
+        } else {
+            alert.informativeText = "\(selectedPeople.first!.name!) will be removed."
+            alert.messageText = "Do you really want to remove this person?"
+        }
+        
+        let window = sender.window!
+        alert.beginSheetModalForWindow(window) { (response) -> Void in
+            // If the user chose "Remove", tell the array controller to delete the people
+            switch response {
+            case NSAlertFirstButtonReturn:
+                // The array controller will delete the selected objects
+                // The argument to remove() is ignored
+                self.arrayController.remove(nil)
+            case NSAlertThirdButtonReturn:
+                // clear all selected employee raise to zero
+                for (_, employee) in selectedPeople.enumerate() {
+                    employee.raise = 0.0
+                }
+                self.arrayController.rearrangeObjects()
+            default:break
+            }
+        }
+    }
+    
     // MARK: - Accessors
     func insertObject(employee: Employee, inEmployeesAtIndex index: Int) {
         print("adding \(employee) to the employees array")

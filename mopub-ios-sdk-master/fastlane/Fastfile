@@ -36,25 +36,31 @@ platform :ios do
     produce(
     username: 'yangfei6565@163.com',
     app_identifier: 'lab.ideawise.flirten.MoPubSample',
-    app_name: 'MoPubSample',
+    app_name: 'CocoaADDemo',
     language: 'English',
     app_version: '1.0',
-    sku: 'de.ideawise.flirten.lab.1002',
-    team_name: 'Ideawise Ltd.' # only necessary when in multiple teams
+    sku: 'de.ideawise.flirten.lab.1003',
+    #team_name: 'Ideawise Ltd.' # only necessary when in multiple teams
+    team_id: '9SUHG892S5'
+
   )
   end
 
   desc "Runs all the tests"
   lane :test do
     # snapshot
+    scan
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
+    cert
     sigh
     gym # Build your app - more options available
-    pilot
+    pilot(
+      skip_submission: true
+    )
 
     # sh "your_script.sh"
     # You can also use other beta testing services here
