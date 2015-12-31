@@ -236,6 +236,10 @@
 		02936D6D1BA5967F00C70608 /* BNRInteractiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02936D6B1BA5967F00C70608 /* BNRInteractiveViewController.xib */; };
 		02936D6F1BA5B26D00C70608 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02936D6E1BA5B26D00C70608 /* Launch Screen.storyboard */; };
 		02936D721BA5C7A500C70608 /* BNRDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02936D711BA5C7A500C70608 /* BNRDetailCollectionViewController.m */; };
+		02A253571C32712700C82D02 /* BNRRACTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A253551C32712700C82D02 /* BNRRACTestViewController.m */; };
+		02A253581C32712700C82D02 /* BNRRACTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A253561C32712700C82D02 /* BNRRACTestViewController.xib */; };
+		02A253721C3424B100C82D02 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A253701C3424B000C82D02 /* ReactiveCocoa.framework */; };
+		02A2537C1C34C12600C82D02 /* HomePwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A2537B1C34C12600C82D02 /* HomePwnerTests.m */; };
 		02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6C861B8C64020081775A /* AutoSizingCell.m */; };
 		02AF6C891B8C64020081775A /* AutoSizingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6C871B8C64020081775A /* AutoSizingCell.xib */; };
 		02AF6CFF1B8EC4DB0081775A /* PureLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6CFE1B8EC4DB0081775A /* PureLayoutCell.m */; };
@@ -286,6 +290,28 @@
 		520AA4C3187CAA690048F174 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AA4C2187CAA690048F174 /* BNRImageStore.m */; };
 		DC4FE01C29122FCB1FB7AAAB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D563BD7D58A0DB27DFDA058 /* Pods.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		02A2537E1C34C12600C82D02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 520AA473187C4EC00048F174 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 520AA47A187C4EC00048F174;
+			remoteInfo = HomePwner;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		02A253741C3428A500C82D02 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		020C20541BE757CA00BFFA73 /* NSString+Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Runtime.h"; sourceTree = "<group>"; };
@@ -718,6 +744,13 @@
 		02936D6E1BA5B26D00C70608 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		02936D701BA5C7A500C70608 /* BNRDetailCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetailCollectionViewController.h; sourceTree = "<group>"; };
 		02936D711BA5C7A500C70608 /* BNRDetailCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDetailCollectionViewController.m; sourceTree = "<group>"; };
+		02A253541C32712700C82D02 /* BNRRACTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRRACTestViewController.h; sourceTree = "<group>"; };
+		02A253551C32712700C82D02 /* BNRRACTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRRACTestViewController.m; sourceTree = "<group>"; };
+		02A253561C32712700C82D02 /* BNRRACTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRRACTestViewController.xib; sourceTree = "<group>"; };
+		02A253701C3424B000C82D02 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		02A253791C34C12600C82D02 /* HomePwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomePwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		02A2537B1C34C12600C82D02 /* HomePwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePwnerTests.m; sourceTree = "<group>"; };
+		02A2537D1C34C12600C82D02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02AF6C851B8C64020081775A /* AutoSizingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSizingCell.h; sourceTree = "<group>"; };
 		02AF6C861B8C64020081775A /* AutoSizingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSizingCell.m; sourceTree = "<group>"; };
 		02AF6C871B8C64020081775A /* AutoSizingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoSizingCell.xib; sourceTree = "<group>"; };
@@ -807,6 +840,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		02A253761C34C12600C82D02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		520AA478187C4EC00048F174 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -834,6 +874,7 @@
 				025A65531C07071800443AB1 /* MediaPlayer.framework in Frameworks */,
 				520AA481187C4EC00048F174 /* CoreGraphics.framework in Frameworks */,
 				025A65511C0706F500443AB1 /* AdSupport.framework in Frameworks */,
+				02A253721C3424B100C82D02 /* ReactiveCocoa.framework in Frameworks */,
 				520AA483187C4EC00048F174 /* UIKit.framework in Frameworks */,
 				520AA47F187C4EC00048F174 /* Foundation.framework in Frameworks */,
 				DC4FE01C29122FCB1FB7AAAB /* Pods.framework in Frameworks */,
@@ -1512,6 +1553,25 @@
 			path = SDK;
 			sourceTree = "<group>";
 		};
+		02A2534F1C3270E600C82D02 /* ReactiveCocoa */ = {
+			isa = PBXGroup;
+			children = (
+				02A253541C32712700C82D02 /* BNRRACTestViewController.h */,
+				02A253551C32712700C82D02 /* BNRRACTestViewController.m */,
+				02A253561C32712700C82D02 /* BNRRACTestViewController.xib */,
+			);
+			name = ReactiveCocoa;
+			sourceTree = "<group>";
+		};
+		02A2537A1C34C12600C82D02 /* HomePwnerTests */ = {
+			isa = PBXGroup;
+			children = (
+				02A2537B1C34C12600C82D02 /* HomePwnerTests.m */,
+				02A2537D1C34C12600C82D02 /* Info.plist */,
+			);
+			path = HomePwnerTests;
+			sourceTree = "<group>";
+		};
 		02AF6DC31B9454A80081775A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1661,6 +1721,7 @@
 				02AF6DC31B9454A80081775A /* Vendor */,
 				520AA484187C4EC00048F174 /* HomePwner */,
 				520AA49D187C4EC00048F174 /* HomePwnerTests */,
+				02A2537A1C34C12600C82D02 /* HomePwnerTests */,
 				520AA47D187C4EC00048F174 /* Frameworks */,
 				520AA47C187C4EC00048F174 /* Products */,
 				F0C08BF81F9B881476F830B2 /* Pods */,
@@ -1671,6 +1732,7 @@
 			isa = PBXGroup;
 			children = (
 				520AA47B187C4EC00048F174 /* HomePwner.app */,
+				02A253791C34C12600C82D02 /* HomePwnerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1678,6 +1740,7 @@
 		520AA47D187C4EC00048F174 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02A253701C3424B000C82D02 /* ReactiveCocoa.framework */,
 				022E52DB1C101FDD006D02D5 /* WebKit.framework */,
 				025A65701C07080A00443AB1 /* CoreBluetooth.framework */,
 				025A656E1C0707C100443AB1 /* Social.framework */,
@@ -1708,6 +1771,7 @@
 		520AA484187C4EC00048F174 /* HomePwner */ = {
 			isa = PBXGroup;
 			children = (
+				02A2534F1C3270E600C82D02 /* ReactiveCocoa */,
 				025A65781C08387D00443AB1 /* AD */,
 				02C5D6931BF200B500BD2505 /* Swift */,
 				022A29561BE751000077191E /* Runtime Class */,
@@ -1783,6 +1847,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		02A253781C34C12600C82D02 /* HomePwnerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02A253801C34C12600C82D02 /* Build configuration list for PBXNativeTarget "HomePwnerTests" */;
+			buildPhases = (
+				02A253751C34C12600C82D02 /* Sources */,
+				02A253761C34C12600C82D02 /* Frameworks */,
+				02A253771C34C12600C82D02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				02A2537F1C34C12600C82D02 /* PBXTargetDependency */,
+			);
+			name = HomePwnerTests;
+			productName = HomePwnerTests;
+			productReference = 02A253791C34C12600C82D02 /* HomePwnerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		520AA47A187C4EC00048F174 /* HomePwner */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 520AA4A7187C4EC00048F174 /* Build configuration list for PBXNativeTarget "HomePwner" */;
@@ -1793,6 +1875,8 @@
 				520AA479187C4EC00048F174 /* Resources */,
 				C47F2FCAEF02340F9B8B6B46 /* Copy Pods Resources */,
 				4A51AAC626968E605C2FAF61 /* Embed Pods Frameworks */,
+				02A253731C34254300C82D02 /* ShellScript */,
+				02A253741C3428A500C82D02 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1814,6 +1898,10 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Big Nerd Ranch";
 				TargetAttributes = {
+					02A253781C34C12600C82D02 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 520AA47A187C4EC00048F174;
+					};
 					520AA47A187C4EC00048F174 = {
 						DevelopmentTeam = 2L4985KKX7;
 					};
@@ -1834,11 +1922,19 @@
 			projectRoot = "";
 			targets = (
 				520AA47A187C4EC00048F174 /* HomePwner */,
+				02A253781C34C12600C82D02 /* HomePwnerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		02A253771C34C12600C82D02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		520AA479187C4EC00048F174 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1854,6 +1950,7 @@
 				027BCF631C0843E800AD1789 /* MPCloseBtn@2x.png in Resources */,
 				027BCF721C0843E800AD1789 /* MPUnmutedBtn@2x.png in Resources */,
 				02E8AF2A1C08538E00495328 /* vg_mute_on.png in Resources */,
+				02A253581C32712700C82D02 /* BNRRACTestViewController.xib in Resources */,
 				02E8AF2B1C08538E00495328 /* vg_privacy.png in Resources */,
 				02E8AF271C08538E00495328 /* vg_close.png in Resources */,
 				027BCF6E1C0843E800AD1789 /* MPPlayBtn.png in Resources */,
@@ -1887,6 +1984,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		02A253731C34254300C82D02 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		4A51AAC626968E605C2FAF61 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1935,6 +2046,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		02A253751C34C12600C82D02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02A2537C1C34C12600C82D02 /* HomePwnerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		520AA477187C4EC00048F174 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2130,6 +2249,7 @@
 				520AA48B187C4EC00048F174 /* main.m in Sources */,
 				020C20561BE757CA00BFFA73 /* NSString+Runtime.m in Sources */,
 				025A657B1C08389900443AB1 /* ADTestEvent.m in Sources */,
+				02A253571C32712700C82D02 /* BNRRACTestViewController.m in Sources */,
 				027BCF3E1C0843E800AD1789 /* MPStaticNativeAdImpressionTimer.m in Sources */,
 				02936D6C1BA5967F00C70608 /* BNRInteractiveViewController.m in Sources */,
 				027BCF601C0843E800AD1789 /* MOPUBNativeVideoAdRenderer.m in Sources */,
@@ -2158,6 +2278,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		02A2537F1C34C12600C82D02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 520AA47A187C4EC00048F174 /* HomePwner */;
+			targetProxy = 02A2537E1C34C12600C82D02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		520AA487187C4EC00048F174 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -2180,6 +2308,45 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		02A253811C34C12600C82D02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = HomePwnerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.HomePwnerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomePwner.app/HomePwner";
+			};
+			name = Debug;
+		};
+		02A253821C34C12600C82D02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = HomePwnerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.HomePwnerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomePwner.app/HomePwner";
+			};
+			name = Release;
+		};
 		520AA4A5187C4EC00048F174 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2270,6 +2437,7 @@
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Vungle/SDK",
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Vungle/SDK/VungleSDK.embeddedframework",
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Chartboost/SDK",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomePwner/HomePwner-Prefix.pch";
@@ -2304,6 +2472,7 @@
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Vungle/SDK",
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Vungle/SDK/VungleSDK.embeddedframework",
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Chartboost/SDK",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomePwner/HomePwner-Prefix.pch";
@@ -2323,6 +2492,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		02A253801C34C12600C82D02 /* Build configuration list for PBXNativeTarget "HomePwnerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02A253811C34C12600C82D02 /* Debug */,
+				02A253821C34C12600C82D02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		520AA476187C4EC00048F174 /* Build configuration list for PBXProject "HomePwner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

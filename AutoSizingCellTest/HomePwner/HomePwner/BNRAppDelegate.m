@@ -11,6 +11,11 @@
 #import "BNRItemStore.h"
 #import <objc/message.h>
 #import "CalculateMaker.h"
+#import "BNRRACTestViewController.h"
+
+@interface BNRAppDelegate ()
+@property (nonatomic, strong) BNRRACTestViewController *rac_TestViewController;
+@end
 
 @implementation BNRAppDelegate
 
@@ -60,7 +65,11 @@
     }];
     
     NSLog(@"result1: %i, result2: %i", result1, result2);
-
+    
+    
+#pragma mark - RAC test
+    self.rac_TestViewController = [BNRRACTestViewController new];
+    
     return YES;
 }
 

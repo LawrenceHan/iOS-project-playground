@@ -83,9 +83,29 @@ NSTableViewDataSource, NSTableViewDelegate, NSTextFieldDelegate {
         }
     }
     
+    func updateTextField() {
+        if speechSynth.speaking {
+            textField.enabled = false
+        } else {
+            textField.enabled = true
+        }
+    }
+    
+    
     func speechSynthesizer(sender: NSSpeechSynthesizer, didFinishSpeaking finishedSpeaking: Bool) {
         isStarted = false
+        updateTextField()
         print("finishedSpeaking=\(finishedSpeaking)")
+    }
+    
+    func speechSynthesizer(sender: NSSpeechSynthesizer,
+        willSpeakWord characterRange: NSRange,
+        ofString string: String) {
+            let range = characterRange
+            let attributedString = NSMutableAttributedString(string: string)
+            attributedString.addAttributes([NSForegroundColorAttributeName: NSColor.greenColor()], range: range)
+            textField.attributedStringValue = attributedString
+            updateTextField()
     }
     
     func voiceNameForIdentifier(identifier: String) -> String? {

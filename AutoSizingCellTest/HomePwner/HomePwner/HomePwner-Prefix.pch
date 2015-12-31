@@ -16,7 +16,7 @@
     #import "PureLayout.h"
     #import "Masonry.h"
     #import <MagicalRecord/MagicalRecord.h>
-    #import "ReactiveCocoa.h"
+    #import <ReactiveCocoa/ReactiveCocoa.h>
 #endif
 
 #define kTestBannerKey @"23ce21a5a73b4952823b014cf8ca9aae"

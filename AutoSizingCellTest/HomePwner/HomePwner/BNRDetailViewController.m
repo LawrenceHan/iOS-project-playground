@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 @property (nonatomic) CGAffineTransform transformToUIKit;
+@property (nonatomic) NSInteger latestCount;
 
 - (IBAction)takePicture:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
@@ -164,6 +165,23 @@
         return color;
       }] subscribeNext:^(UIColor *color) {
           self.nameField.backgroundColor = color;
+    }];
+    
+    _latestCount = 0;
+    RAC(self.valueField, text) = [[self.nameField.rac_textSignal map:^id(id value) {
+        return [[self latestSignal] doNext:^(id x) {
+            NSLog(@"这里会执行一次");
+        }];
+    }] switchToLatest];
+}
+
+- (RACSignal *)latestSignal {
+    NSString *latestCount = [NSString stringWithFormat:@"latest signal %ld", (long)_latestCount++];
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [subscriber sendNext:latestCount];
+        [subscriber sendCompleted];
+        
+        return nil;
     }];
 }
 
