@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "BNRRACTestViewController.h"
 
 @interface HomePwnerTests : XCTestCase

@@ -240,6 +240,9 @@
 		02A253581C32712700C82D02 /* BNRRACTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A253561C32712700C82D02 /* BNRRACTestViewController.xib */; };
 		02A253721C3424B100C82D02 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A253701C3424B000C82D02 /* ReactiveCocoa.framework */; };
 		02A2537C1C34C12600C82D02 /* HomePwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A2537B1C34C12600C82D02 /* HomePwnerTests.m */; };
+		02A253921C34CE8600C82D02 /* BNRRACTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A253911C34CE8600C82D02 /* BNRRACTestViewModel.m */; };
+		02A253941C34D10D00C82D02 /* ReactiveViewModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A253931C34D10D00C82D02 /* ReactiveViewModel.framework */; };
+		02A253961C34D1FE00C82D02 /* ReactiveViewModel.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02A253951C34D1FE00C82D02 /* ReactiveViewModel.framework.dSYM */; };
 		02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6C861B8C64020081775A /* AutoSizingCell.m */; };
 		02AF6C891B8C64020081775A /* AutoSizingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6C871B8C64020081775A /* AutoSizingCell.xib */; };
 		02AF6CFF1B8EC4DB0081775A /* PureLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6CFE1B8EC4DB0081775A /* PureLayoutCell.m */; };
@@ -308,6 +311,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				02A253961C34D1FE00C82D02 /* ReactiveViewModel.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +755,10 @@
 		02A253791C34C12600C82D02 /* HomePwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomePwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A2537B1C34C12600C82D02 /* HomePwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePwnerTests.m; sourceTree = "<group>"; };
 		02A2537D1C34C12600C82D02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02A253901C34CE8600C82D02 /* BNRRACTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRRACTestViewModel.h; sourceTree = "<group>"; };
+		02A253911C34CE8600C82D02 /* BNRRACTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRRACTestViewModel.m; sourceTree = "<group>"; };
+		02A253931C34D10D00C82D02 /* ReactiveViewModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveViewModel.framework; path = HomePwner/ReactiveViewModel.framework; sourceTree = "<group>"; };
+		02A253951C34D1FE00C82D02 /* ReactiveViewModel.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReactiveViewModel.framework.dSYM; path = HomePwner/ReactiveViewModel.framework.dSYM; sourceTree = "<group>"; };
 		02AF6C851B8C64020081775A /* AutoSizingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSizingCell.h; sourceTree = "<group>"; };
 		02AF6C861B8C64020081775A /* AutoSizingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSizingCell.m; sourceTree = "<group>"; };
 		02AF6C871B8C64020081775A /* AutoSizingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoSizingCell.xib; sourceTree = "<group>"; };
@@ -851,6 +859,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A253941C34D10D00C82D02 /* ReactiveViewModel.framework in Frameworks */,
 				022E52DC1C101FDD006D02D5 /* WebKit.framework in Frameworks */,
 				025A65711C07080A00443AB1 /* CoreBluetooth.framework in Frameworks */,
 				025A656F1C0707C100443AB1 /* Social.framework in Frameworks */,
@@ -1556,6 +1565,7 @@
 		02A2534F1C3270E600C82D02 /* ReactiveCocoa */ = {
 			isa = PBXGroup;
 			children = (
+				02A253851C34CA6E00C82D02 /* ViewModel */,
 				02A253541C32712700C82D02 /* BNRRACTestViewController.h */,
 				02A253551C32712700C82D02 /* BNRRACTestViewController.m */,
 				02A253561C32712700C82D02 /* BNRRACTestViewController.xib */,
@@ -1570,6 +1580,15 @@
 				02A2537D1C34C12600C82D02 /* Info.plist */,
 			);
 			path = HomePwnerTests;
+			sourceTree = "<group>";
+		};
+		02A253851C34CA6E00C82D02 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02A253901C34CE8600C82D02 /* BNRRACTestViewModel.h */,
+				02A253911C34CE8600C82D02 /* BNRRACTestViewModel.m */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		02AF6DC31B9454A80081775A /* Vendor */ = {
@@ -1740,6 +1759,8 @@
 		520AA47D187C4EC00048F174 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02A253951C34D1FE00C82D02 /* ReactiveViewModel.framework.dSYM */,
+				02A253931C34D10D00C82D02 /* ReactiveViewModel.framework */,
 				02A253701C3424B000C82D02 /* ReactiveCocoa.framework */,
 				022E52DB1C101FDD006D02D5 /* WebKit.framework */,
 				025A65701C07080A00443AB1 /* CoreBluetooth.framework */,
@@ -1991,6 +2012,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/HomePwner/ReactiveViewModel.framework",
 			);
 			outputPaths = (
 			);
@@ -2086,6 +2108,7 @@
 				027BCF551C0843E800AD1789 /* MOPUBAVPlayer.m in Sources */,
 				520AA4BF187C87C50048F174 /* BNRDetailViewController.m in Sources */,
 				027BCEF81C0843E800AD1789 /* MRBridge.m in Sources */,
+				02A253921C34CE8600C82D02 /* BNRRACTestViewModel.m in Sources */,
 				02AF6D0E1B90385D0081775A /* BNRItem.m in Sources */,
 				027BCF481C0843E800AD1789 /* MPNativeAdRendererConfiguration.m in Sources */,
 				027BCF391C0843E800AD1789 /* MPNativeAdUtils.m in Sources */,
@@ -2438,6 +2461,7 @@
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Vungle/SDK/VungleSDK.embeddedframework",
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Chartboost/SDK",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/HomePwner",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomePwner/HomePwner-Prefix.pch";
@@ -2473,6 +2497,7 @@
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Vungle/SDK/VungleSDK.embeddedframework",
 					"$(PROJECT_DIR)/HomePwner/Vendor/MoPubSDK/AdNetworkSupport/Chartboost/SDK",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/HomePwner",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomePwner/HomePwner-Prefix.pch";
@@ -2499,6 +2524,7 @@
 				02A253821C34C12600C82D02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		520AA476187C4EC00048F174 /* Build configuration list for PBXProject "HomePwner" */ = {
 			isa = XCConfigurationList;

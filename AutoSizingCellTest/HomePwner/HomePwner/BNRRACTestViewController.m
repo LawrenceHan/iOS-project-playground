@@ -7,8 +7,10 @@
 //
 
 #import "BNRRACTestViewController.h"
+#import "BNRRACTestViewModel.h"
 
 @interface BNRRACTestViewController ()
+@property (nonatomic, strong) BNRRACTestViewModel *viewModel;
 
 @end
 
