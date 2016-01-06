@@ -29,18 +29,20 @@ class MainWindowController: NSWindowController {
             let windowController = ConfigurationWindowController()
             windowController.configuration = DieConfiguration(color: dieView.color, rolls: dieView.numberOfTimesToRoll)
             
-            window.beginSheet(windowController.window!, completionHandler: { (response) -> Void in
-                // The sheet has finished. Did the user click 'OK'?
-                if response == NSModalResponseOK {
-                    let configuration = self.configurationWindowController!.configuration
-                    
+            windowController.presentAsSheetOnWindow(window, completionHandler: { (configuration) -> (Void) in
+                if let configuration = configuration{
                     dieView.color = configuration.color
                     dieView.numberOfTimesToRoll = configuration.rolls
                 }
-                // All done with window controller.
-                self.configurationWindowController = nil
             })
             configurationWindowController = windowController
         }
+    }
+    
+    override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
+        if menuItem.action == Selector("showDieConfiguration:") {
+            return window?.firstResponder is DieView
+        }
+        return super.validateMenuItem(menuItem)
     }
 }

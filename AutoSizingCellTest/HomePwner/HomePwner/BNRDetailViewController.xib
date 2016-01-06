@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15C27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BNRDetailViewController">
@@ -23,7 +23,6 @@
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcM-Ta-Pno">
                     <rect key="frame" x="20" y="88" width="46" height="21"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="9tP-AA-ieK"/>
                         <constraint firstAttribute="width" constant="46" id="P0e-nX-5YN"/>
@@ -34,7 +33,6 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serial" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyW-WC-s8a">
                     <rect key="frame" x="20" y="126" width="43" height="21"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="43" id="5nQ-UO-EXG"/>
                         <constraint firstAttribute="height" constant="21" id="weZ-O4-fkQ"/>
@@ -45,7 +43,6 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-jx-IXE">
                     <rect key="frame" x="20" y="164" width="42" height="21"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="dD9-QM-biL"/>
                         <constraint firstAttribute="width" constant="42" id="kmY-xa-pxW"/>
@@ -56,7 +53,6 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyh-9V-hKs">
                     <rect key="frame" x="20" y="198" width="280" height="21"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="9YO-0j-zCV"/>
                     </constraints>
@@ -66,7 +62,6 @@
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAy-yn-Tdw">
                     <rect key="frame" x="74" y="85" width="226" height="30"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -75,7 +70,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wd6-Cs-4VP">
                     <rect key="frame" x="74" y="122" width="226" height="30"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -84,7 +78,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OL5-8y-X9o">
                     <rect key="frame" x="74" y="160" width="226" height="30"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -93,7 +86,6 @@
                 </textField>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90u-3n-WF2">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="fW7-dP-18f"/>
                     </constraints>
@@ -106,7 +98,6 @@
                     </items>
                 </toolbar>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Qyh-9V-hKs" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="15g-Hh-bPt"/>

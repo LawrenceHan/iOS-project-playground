@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D9c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ImageViewController" customModule="ViewCOntrol" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O4f-NX-bUt">
+                    <rect key="frame" x="20" y="20" width="440" height="232"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="MOL-Le-Jvx"/>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="image" id="iwf-se-AMF"/>
+                    </connections>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="O4f-NX-bUt" secondAttribute="trailing" constant="20" symbolic="YES" id="8hN-5K-s3Z"/>
+                <constraint firstAttribute="bottom" secondItem="O4f-NX-bUt" secondAttribute="bottom" constant="20" symbolic="YES" id="BMN-9X-Kjd"/>
+                <constraint firstItem="O4f-NX-bUt" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="LDJ-mS-4Zm"/>
+                <constraint firstItem="O4f-NX-bUt" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="r8Z-kc-td9"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>

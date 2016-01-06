@@ -93,16 +93,19 @@ class Document: NSDocument, NSWindowDelegate {
         let selectedPeople: [Employee] = arrayController.selectedObjects as! [Employee]
         let alert = NSAlert()
         
-        alert.addButtonWithTitle("Remove")
-        alert.addButtonWithTitle("Cancel")
+        let removeButtonTitle = NSLocalizedString("REMOE_DO", comment: "The remove alert's remove button")
+        let removeCancelTitle = NSLocalizedString("REMOVE_CANCEL", comment: "The remove alert's cancel button")
+        
+        alert.addButtonWithTitle(removeButtonTitle)
+        alert.addButtonWithTitle(removeCancelTitle)
         
         if selectedPeople.count > 1 {
-            alert.informativeText = "\(selectedPeople.count) people will be removed."
-            alert.messageText = "Do you really want to remove these people?"
-            alert.addButtonWithTitle("Keep, but no raise")
+            alert.informativeText = NSLocalizedString("REMOVE_INFORMATIVE %d", comment: "The remove alert's informativeText")
+            let keepButtonTitle = NSLocalizedString("REMOVE_KEEP", comment: "The remove alert's keep button")
+            alert.addButtonWithTitle(keepButtonTitle)
         } else {
-            alert.informativeText = "\(selectedPeople.first!.name!) will be removed."
-            alert.messageText = "Do you really want to remove this person?"
+            alert.informativeText = NSLocalizedString("REMOVE_INFORMATIVE_PEOPLE %@", comment: "The remove alert's informativeText")
+            alert.messageText = NSLocalizedString("REMOVE_MESSAGE_SINGLE", comment: "The remove alert's messageText")
         }
         
         let window = sender.window!
@@ -204,7 +207,13 @@ class Document: NSDocument, NSWindowDelegate {
         employees = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Employee]
     }
 
-    
+    // MARK: - Printing
+    override func printOperationWithSettings(printSettings: [String : AnyObject]) throws -> NSPrintOperation {
+        let employeesPrintingView = EmployeesPrintingView(employees: employees)
+        let printInfo: NSPrintInfo = self.printInfo
+        let printOperation = NSPrintOperation(view: employeesPrintingView, printInfo: printInfo)
+        return printOperation
+    }
 
 }
 

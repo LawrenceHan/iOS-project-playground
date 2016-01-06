@@ -6,6 +6,7 @@
 //  Copyright © 2015 Hanguang. All rights reserved.
 //
 
+
 import Cocoa
 
 struct DieConfiguration {
@@ -16,6 +17,11 @@ struct DieConfiguration {
         self.color = color
         self.rolls = max(rolls, 1)
     }
+}
+
+enum SheetResult: Int {
+    case Accept
+    case Cancel
 }
 
 class ConfigurationWindowController: NSWindowController {
@@ -37,15 +43,23 @@ class ConfigurationWindowController: NSWindowController {
         return "ConfigurationWindowController"
     }
     
+    func presentAsSheetOnWindow(presentingWindow: NSWindow, completionHandler:(DieConfiguration?) -> (Void)) {
+        presentingWindow.beginSheet(window!) { (response) -> Void in
+            if response == SheetResult.Accept.rawValue {
+                completionHandler(self.configuration)
+            }
+        }
+    }
+    
     @IBAction func okayButtonClicked(button: NSButton) {
         print("OK clicked")
         window?.endEditingFor(nil)
-        dismissWithModalResponse(NSModalResponseOK)
+        dismissWithModalResponse(SheetResult.Accept.rawValue)
     }
     
     @IBAction func cancelButtonClicked(button: NSButton) {
         print("Cancel clicked")
-        dismissWithModalResponse(NSModalResponseCancel)
+        dismissWithModalResponse(SheetResult.Cancel.rawValue)
     }
     
     func dismissWithModalResponse(response: NSModalResponse) {
