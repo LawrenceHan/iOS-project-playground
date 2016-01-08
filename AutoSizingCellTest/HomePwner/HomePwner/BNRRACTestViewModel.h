@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BNRRACTestViewModel : RVMViewModel
+@interface BNRRACTestViewModel : NSObject
 
 @end
