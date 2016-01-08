@@ -1292,8 +1292,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     _gridController.browser = self;
     _gridController.selectionMode = _displaySelectionButtons;
     _gridController.view.frame = self.view.bounds;
-    //_gridController.view.frame = CGRectOffset(_gridController.view.frame, 0, (self.startOnGrid ? -1 : 1) * self.view.bounds.size.height);
-
+   
     // Stop specific layout being triggered
     _skipNextPagingScrollViewPositioning = YES;
     
