@@ -222,34 +222,6 @@
     //    browser.customImageSelectedSmallIconName = @"ImageSelectedSmall.png";
     
     [self.navigationController pushViewController:browser animated:YES];
-
-    
-    
-    // Test reloading of data after delay
-    double delayInSeconds = 3;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-        //        // Test removing an object
-        //        [_photos removeLastObject];
-        //        [browser reloadData];
-        //
-        //        // Test all new
-        //        [_photos removeAllObjects];
-        //        [_photos addObject:[MWPhoto photoWithFilePath:[[NSBundle mainBundle] pathForResource:@"photo3" ofType:@"jpg"]]];
-        //        [browser reloadData];
-        //
-        //        // Test changing photo index
-        //        [browser setCurrentPhotoIndex:9];
-        
-        //        // Test updating selections
-        //        _selections = [NSMutableArray new];
-        //        for (int i = 0; i < [self numberOfPhotosInPhotoBrowser:browser]; i++) {
-        //            [_selections addObject:[NSNumber numberWithBool:YES]];
-        //        }
-        //        [browser reloadData];
-        
-    });
 }
 
 #pragma mark - MWPhotoBrowserDelegate

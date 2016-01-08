@@ -1378,8 +1378,8 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     
     // Animate, hide grid and show paging scroll view
     // Add transition view
-    MWPhoto *currentPhoto = [self photoAtIndex:_currentPageIndex];
-    UIImageView *transitionView = [[UIImageView alloc] initWithImage:currentPhoto.underlyingImage];
+    UIImage *image = [tmpGridController cellImageView].image;
+    UIImageView *transitionView = [[UIImageView alloc] initWithImage:image];
     transitionView.contentMode = UIViewContentModeScaleAspectFill;
     transitionView.clipsToBounds = YES;
     
@@ -1394,23 +1394,19 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     tmpGridController.view.alpha = 0;
     _pagingScrollView.alpha = 0;
     
+    NSLog(@"Image: %@", image);
     // Animate
-    [UIView animateWithDuration:0.5
-                          delay:0
-         usingSpringWithDamping:0.7
-          initialSpringVelocity:0.7
-                        options:0
-                     animations:^{
-                         _gridController.view.alpha = 0.0;
-                         transitionView.frame = toFrame;
-                     } completion:^(BOOL finished) {
-                         [transitionView removeFromSuperview];
-                         _pagingScrollView.alpha = 1;
-                         [tmpGridController willMoveToParentViewController:nil];
-                         [tmpGridController.view removeFromSuperview];
-                         [tmpGridController removeFromParentViewController];
-                         [self setControlsHidden:NO animated:YES permanent:NO];
-                     }];
+    [UIView animateWithDuration:0.3 animations:^{
+        _gridController.view.alpha = 0.0;
+        transitionView.frame = toFrame;
+    } completion:^(BOOL finished) {
+        [transitionView removeFromSuperview];
+        _pagingScrollView.alpha = 1;
+        [tmpGridController willMoveToParentViewController:nil];
+        [tmpGridController.view removeFromSuperview];
+        [tmpGridController removeFromParentViewController];
+        [self setControlsHidden:NO animated:YES permanent:NO];
+    }];
 }
 
 #pragma mark - Control Hiding / Showing
