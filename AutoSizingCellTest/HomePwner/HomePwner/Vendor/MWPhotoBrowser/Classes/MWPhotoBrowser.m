@@ -1393,7 +1393,6 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     tmpGridController.view.alpha = 0;
     _pagingScrollView.alpha = 0;
     
-    NSLog(@"Image: %@", image);
     // Animate
     [UIView animateWithDuration:0.3 animations:^{
         _gridController.view.alpha = 0.0;
