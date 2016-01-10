@@ -155,9 +155,8 @@
     return CGSizeMake(value, value);
 }
 
-- (UIImageView *)cellImageView {
-    NSIndexPath *currentPhotoIndexPath = [NSIndexPath indexPathForItem:_browser.currentIndex inSection:0];
-    MWGridCell *cell = (MWGridCell *)[self.collectionView cellForItemAtIndexPath:currentPhotoIndexPath];
+- (UIImageView *)cellImageViewAtIndexPath:(NSIndexPath *)indexPath {
+    MWGridCell *cell = (MWGridCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
     return [cell photoImageView];
 }
 

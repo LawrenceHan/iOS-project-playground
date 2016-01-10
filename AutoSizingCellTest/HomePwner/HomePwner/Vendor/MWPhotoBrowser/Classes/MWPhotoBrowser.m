@@ -22,7 +22,7 @@
 static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 
 @implementation MWPhotoBrowser {
-    NSInteger _selectedCount;
+    NSMutableArray *_selectedPhotos;
 }
 
 #pragma mark - Init
@@ -84,6 +84,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     _recycledPages = [[NSMutableSet alloc] init];
     _photos = [[NSMutableArray alloc] init];
     _thumbPhotos = [[NSMutableArray alloc] init];
+    _selectedPhotos = [NSMutableArray new];
     _currentGridContentOffset = CGPointMake(0, CGFLOAT_MAX);
     _didSavePreviousStateOfNavBar = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -281,7 +282,9 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
                                                         style:UIBarButtonItemStylePlain
                                                        target:self
                                                        action:@selector(showGridAnimated)];
-    self.navigationItem.rightBarButtonItem = _allMediaButton;
+    if (!_gridController) {
+        self.navigationItem.rightBarButtonItem = _allMediaButton;
+    }
     
     /* Original code
      // Left button - Grid
@@ -739,12 +742,11 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 - (void)setPhotoSelected:(BOOL)selected atIndex:(NSUInteger)index {
     // Set selected count
     if (selected) {
-        _selectedCount++;
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [_selectedPhotos addObject:indexPath];
     } else {
-        _selectedCount--;
-        if (_selectedCount < 0) {
-            _selectedCount = 0;
-        }
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [_selectedPhotos removeObject:indexPath];
     }
     
     if ([self.delegate respondsToSelector:@selector(photoBrowser:photoAtIndex:selectedChanged:)]) {
@@ -1130,7 +1132,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     if (_gridController) {
         if (_gridController.selectionMode) {
             // TODO: change localized string
-            NSString *text = [NSString stringWithFormat:@"Selected: %ld", _selectedCount];
+            NSString *text = [NSString stringWithFormat:@"Selected: %ld", _selectedPhotos.count];
             self.title = text;
             //[NSString stringWithFormat:@"ls_message_integers_header_counter_pic", _selectedCount];
         } else {
@@ -1147,9 +1149,11 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 	}
 	
 	// Buttons
-	_previousButton.enabled = (_currentPageIndex > 0);
-	_nextButton.enabled = (_currentPageIndex < numberOfPhotos - 1);
-    
+    if (!_gridController.selectionMode) {
+        _previousButton.enabled = (_currentPageIndex > 0);
+        _nextButton.enabled = (_currentPageIndex < numberOfPhotos - 1);
+    }
+	
     // Disable action button if there is no image or it's a video
     MWPhoto *photo = [self photoAtIndex:_currentPageIndex];
     if ([photo underlyingImage] == nil || ([photo respondsToSelector:@selector(isVideo)] && photo.isVideo)) {
@@ -1331,7 +1335,6 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 }
 
 - (void)showGrid:(BOOL)animated {
-
     if (_gridController) return;
     
     // Init grid controller
@@ -1367,7 +1370,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     
     // Update
     [self updateNavigation];
-    [self setControlsHidden:NO animated:YES permanent:YES];
+    [self setControlsHidden:YES animated:YES permanent:YES];
     
     // Animate grid in and photo scroller out
     [_gridController willMoveToParentViewController:self];
@@ -1379,7 +1382,8 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     fromFrame = [self.view convertRect:fromFrame fromView:referencedView];
     
     // Get to frame
-    UIImageView *toImageView = [_gridController cellImageView];
+    UIImageView *toImageView = [_gridController cellImageViewAtIndexPath:
+                                [NSIndexPath indexPathForRow:_currentPageIndex inSection:0]];
     CGRect toFrame = [self.view convertRect:toImageView.bounds fromView:toImageView];
     
     // Add transition view
@@ -1435,12 +1439,14 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     
     // Animate, hide grid and show paging scroll view
     // Add transition view
-    UIImage *image = [tmpGridController cellImageView].image;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_currentPageIndex inSection:0];
+    UIImageView *fromImageView = [tmpGridController cellImageViewAtIndexPath:indexPath];
+    UIImage *image = fromImageView.image;
     UIImageView *transitionView = [[UIImageView alloc] initWithImage:image];
     transitionView.contentMode = UIViewContentModeScaleAspectFill;
     transitionView.clipsToBounds = YES;
     
-    UIImageView *fromImageView = [tmpGridController cellImageView];
+    
     transitionView.frame = [self.view convertRect:fromImageView.bounds fromView:fromImageView];
     [self.view addSubview:transitionView];
     
@@ -1470,6 +1476,17 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 // If permanent then we don't set timers to hide again
 // Fades all controls on iOS 5 & 6, and iOS 7 controls slide and fade
 - (void)setControlsHidden:(BOOL)hidden animated:(BOOL)animated permanent:(BOOL)permanent {
+    // Show toolbar for delete
+    if (_gridController) {
+        if (_gridController.selectionMode) {
+            [self.view bringSubviewToFront:_toolbar];
+        } else {
+            [self.view insertSubview:_toolbar belowSubview:_gridController.view];
+        }
+    }
+    
+    _previousButton.enabled = !_gridController.selectionMode;
+    _nextButton.enabled = !_gridController.selectionMode;
     
     // Force visible
     if (![self numberOfPhotos] || _gridController || _alwaysShowControls)
@@ -1693,10 +1710,6 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
             [self presentViewController:self.activityViewController animated:YES completion:nil];
 
         }
-        
-        // Keep controls hidden
-        [self setControlsHidden:NO animated:YES permanent:YES];
-
     }
     
 }
@@ -1708,10 +1721,10 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         // Show confirm alert
         [self showDeleteConfirm];
     }
-
 }
 
 - (void)showDeleteConfirm {
+    @weakify(self)
     [[RACSignal defer:^RACSignal *{
         UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:nil
                                                             delegate:self
@@ -1724,60 +1737,94 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
             return index.integerValue == action.destructiveButtonIndex;
         }];
     }] subscribeNext:^(NSNumber *index) {
-        NSLog(@"clicked indexL %@", index);
+        @strongify(self)
         // If they have defined a delegate method then just message them
-        if ([self.delegate respondsToSelector:@selector(photoBrowser:deletePhotoAtIndex:)]) {
+        if ([self.delegate respondsToSelector:@selector(photoBrowser:deletePhotosAtIndexPaths:)]) {
             
             // Let delegate handle things
-            [self.delegate photoBrowser:self deletePhotoAtIndex:_currentPageIndex];
+            NSMutableArray *indexes = [NSMutableArray new];
+            if (_gridController) {
+                for (NSIndexPath *indexPath in _selectedPhotos) {
+                    [indexes addObject:indexPath];
+                }
+            } else {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_currentPageIndex inSection:0];
+                [indexes addObject:indexPath];
+            }
+            
+            [self.delegate photoBrowser:self deletePhotosAtIndexPaths:indexes];
         }
-        
-        // Keep controls hidden
-        [self setControlsHidden:NO animated:YES permanent:YES];
     }];
 }
 
 - (void)deletePhotosWithAnimationAtIndexPaths:(NSArray <NSIndexPath *> *)indexes {
-    if (indexes.count == 1) {
-        if (!_gridController) {
+    NSMutableArray *viewsToAnimate = [NSMutableArray new];
+    
+    if (indexes.count) {
+        if (_gridController) {
+            for (NSIndexPath *indexPath in indexes) {
+                UIView *cell = [_gridController.collectionView cellForItemAtIndexPath:indexPath];
+                [viewsToAnimate addObject:cell];
+            }
+        } else {
             // Get image view
             NSUInteger index = [indexes firstObject].row;
-            MWZoomingScrollView *currentPage = [self pageDisplayedAtIndex:index];
-            
-            // Set initial value
-            CGAffineTransform toTransform = CGAffineTransformMakeScale(0.2, 0.2);
-            CGFloat toAlpha = 0.0;
-            
-            // Animate
-            [UIView animateWithDuration:0.5 animations:^{
-                currentPage.transform = toTransform;
-                currentPage.alpha = toAlpha;
-            } completion:^(BOOL finished) {
-                if (finished) {
-                    [self reloadData];
-                }
-            }];
+            UIView *currentPage = [self pageDisplayedAtIndex:index];
+            [viewsToAnimate addObject:currentPage];
         }
     }
+    
+    POPSpringAnimation *springAnimation;
+    NSInteger count = 0;
+    
+    for (UIView *view in viewsToAnimate) {
+        springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+        springAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.2, 0.2)];
+        
+        POPBasicAnimation *alphaAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+        alphaAnimation.toValue = @0.0;
+        
+        [view pop_addAnimation:springAnimation forKey:[NSString stringWithFormat:@"springAnimation%ld", count++]];
+        [view pop_addAnimation:alphaAnimation forKey:[NSString stringWithFormat:@"alphaAnimation%ld", count++]];
+    }
+    
+    [springAnimation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
+        if (finished) {
+            [self reloadData];
+            if (_gridController) {
+                [self showSelection];
+            }
+        }
+    }];
 }
 
 #pragma mark - Selection
 - (void)showSelection {
     if (_gridController) {
-        _selectedCount = 0;
+        // Re-create scrollview
+        [self tilePages];
+        
+        // reload collection view data
+        [_selectedPhotos removeAllObjects];
         _gridController.selectionMode = !_gridController.selectionMode;
+        
         [_gridController.collectionView reloadData];
         
-        [self title];
         // Change title
         self.navigationItem.rightBarButtonItem.title = _gridController.selectionMode ?
         NSLocalizedString(@"ls_generic_cancel", nil) :
         NSLocalizedString(@"ls_message_button_select", nil);
         
+        [self setControlsHidden:_gridController.selectionMode animated:YES permanent:YES];
+        
         // Update title
         [self updateNavigation];
     }
     
+}
+
+- (NSMutableArray *)selectedPhotos {
+    return _selectedPhotos;
 }
 
 #pragma mark - Action Progress

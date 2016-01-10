@@ -11,6 +11,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "MWGridViewController.h"
 #import "MWZoomingScrollView.h"
+#import "pop.h"
 
 // Declare private methods of browser
 @interface MWPhotoBrowser () {

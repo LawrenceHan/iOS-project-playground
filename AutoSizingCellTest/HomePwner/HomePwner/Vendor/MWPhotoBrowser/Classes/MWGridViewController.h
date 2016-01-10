@@ -16,6 +16,6 @@
 @property (nonatomic) CGPoint initialContentOffset;
 
 - (void)adjustOffsetsAsRequired;
-- (UIImageView *)cellImageView;
+- (UIImageView *)cellImageViewAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

@@ -85,11 +85,11 @@
                        photoWithURL:[NSURL URLWithString:@"http://images.99pet.com/InfoImages/wm600_450/5b3aa91249cc4f529726a739ab0df6e4.jpg"]]];
     
     photo = [MWPhoto
-             photoWithURL:[NSURL URLWithString:@"http://images.99pet.com/InfoImages/wm600_450/5b3aa91249cc4f529726a739ab0df6e4.jpg"]];
+             photoWithURL:[NSURL URLWithString:@"http://img1.ali213.net/picfile/News/2014/04/18/pm/xs55.gif"]];
     //photo.caption = @"Mannequin Side Light";
     [photos addObject:photo];
     [thumbs addObject:[MWPhoto
-                       photoWithURL:[NSURL URLWithString:@"http://images.99pet.com/InfoImages/wm600_450/5b3aa91249cc4f529726a739ab0df6e4.jpg"]]];
+                       photoWithURL:[NSURL URLWithString:@"http://img1.ali213.net/picfile/News/2014/04/18/pm/xs55.gif"]]];
 
     self.photos = photos;
     self.thumbs = thumbs;
@@ -252,12 +252,22 @@
 //    NSLog(@"ACTION!");
 //}
 
-- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser deletePhotoAtIndex:(NSUInteger)index {
-    id photo = self.photos[index];
-    if (photo) {
-        [self.photos removeObject:photo];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        [photoBrowser deletePhotosWithAnimationAtIndexPaths:@[indexPath]];
+- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser deletePhotosAtIndexPaths:(NSArray<NSIndexPath *> *)indexes {
+    if (indexes.count) {
+        NSMutableArray *photosToBeDeleted = [NSMutableArray new];
+        NSMutableArray *thumbsToBeDeleted = [NSMutableArray new];
+        for (NSIndexPath *indexPath in indexes) {
+            MWPhoto *photo = self.photos[indexPath.row];
+            MWPhoto *thumbPhoto = self.thumbs[indexPath.row];
+            
+            [photosToBeDeleted addObject:photo];
+            [thumbsToBeDeleted addObject:thumbPhoto];
+        }
+        
+        [self.photos removeObjectsInArray:photosToBeDeleted];
+        [self.thumbs removeObjectsInArray:thumbsToBeDeleted];
+        
+        [photoBrowser deletePhotosWithAnimationAtIndexPaths:indexes];
     }
 }
 
