@@ -186,6 +186,12 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
                                                                       action:@selector(deleteButtonPreseed:)];
     }
     
+    // Navigation item
+    _selectButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ls_message_button_select", nil)
+                                                     style:UIBarButtonItemStylePlain
+                                                    target:self
+                                                    action:@selector(showSelection)];
+    
     // Update
     [self reloadData];
     
@@ -222,11 +228,11 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         [_doneButton setBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsLandscapePhone];
         [_doneButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateNormal];
         [_doneButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateHighlighted];
-        self.navigationItem.rightBarButtonItem = _doneButton;
+        self.navigationItem.leftBarButtonItem = _doneButton;
     } else {
         // We're not first so show back button
         UIViewController *previousViewController = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
-        NSString *backButtonTitle = previousViewController.navigationItem.backBarButtonItem ? previousViewController.navigationItem.backBarButtonItem.title : previousViewController.title;
+        NSString *backButtonTitle = @"";//previousViewController.navigationItem.backBarButtonItem ? previousViewController.navigationItem.backBarButtonItem.title : previousViewController.title;
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:backButtonTitle style:UIBarButtonItemStylePlain target:nil action:nil];
         // Appearance
         [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
@@ -267,6 +273,13 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     if (_deleteButton) {
         [items addObject:_deleteButton];
     }
+    
+    // Navigation right bar item
+    _allMediaButton = [[UIBarButtonItem alloc] initWithTitle:@"All media"
+                                                        style:UIBarButtonItemStylePlain
+                                                       target:self
+                                                       action:@selector(showGridAnimated)];
+    self.navigationItem.rightBarButtonItem = _allMediaButton;
     
     /* Original code
      // Left button - Grid
@@ -1318,6 +1331,9 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     _gridController.browser = self;
     _gridController.selectionMode = _displaySelectionButtons;
     _gridController.view.frame = self.view.bounds;
+    
+    // Set right bar item
+    self.navigationItem.rightBarButtonItem = _selectButton;
    
     // Stop specific layout being triggered
     _skipNextPagingScrollViewPositioning = YES;
@@ -1330,6 +1346,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     [_gridController.view layoutIfNeeded];
     [_gridController adjustOffsetsAsRequired];
     
+    /* Original code
     // Hide action button on nav bar if it exists
     if (self.navigationItem.rightBarButtonItem == _actionButton) {
         _gridPreviousRightNavItem = _actionButton;
@@ -1337,6 +1354,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     } else {
         _gridPreviousRightNavItem = nil;
     }
+     */
     
     // Update
     [self updateNavigation];
@@ -1385,10 +1403,15 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     // Remember previous content offset
     _currentGridContentOffset = _gridController.collectionView.contentOffset;
     
+    /* Original code
     // Restore action button if it was removed
     if (_gridPreviousRightNavItem == _actionButton && _actionButton) {
         [self.navigationItem setRightBarButtonItem:_gridPreviousRightNavItem animated:YES];
     }
+     */
+    
+    // Set right bar item
+    self.navigationItem.rightBarButtonItem = _allMediaButton;
     
     // Position prior to hide animation
     _pagingScrollView.hidden = NO;
@@ -1727,6 +1750,21 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
             }];
         }
     }
+}
+
+#pragma mark - Selection
+- (void)showSelection {
+    if (_gridController) {
+        _gridController.selectionMode = !_gridController.selectionMode;
+        [_gridController.collectionView reloadData];
+        
+        [self title];
+        // Change title
+        self.navigationItem.rightBarButtonItem.title = _gridController.selectionMode ?
+        NSLocalizedString(@"ls_generic_cancel", nil) :
+        NSLocalizedString(@"ls_message_button_select", nil);
+    }
+    
 }
 
 #pragma mark - Action Progress

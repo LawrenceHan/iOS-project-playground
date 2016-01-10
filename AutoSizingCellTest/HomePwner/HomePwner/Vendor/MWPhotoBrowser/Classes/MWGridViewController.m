@@ -5,6 +5,8 @@
 //  Created by Michael Waterfall on 08/10/2013.
 //
 //
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 #import "MWGridViewController.h"
 #import "MWGridCell.h"
@@ -186,8 +188,14 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [_browser setCurrentPhotoIndex:indexPath.row];
-    [_browser hideGrid];
+    if (_selectionMode) {
+        MWGridCell *cell = (MWGridCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        cell.isSelected = !cell.isSelected;
+        [self.browser setPhotoSelected:cell.isSelected atIndex:indexPath.row];
+    } else {
+        [_browser setCurrentPhotoIndex:indexPath.row];
+        [_browser hideGrid];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -212,3 +220,4 @@
 }
 
 @end
+#pragma clang diagnostic pop
