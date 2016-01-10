@@ -6,6 +6,9 @@
 //  Copyright 2010 d3i. All rights reserved.
 //
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 #import <QuartzCore/QuartzCore.h>
 #import "MWCommon.h"
 #import "MWPhotoBrowser.h"
@@ -178,6 +181,9 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     }
     if (self.displayActionButton) {
         _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
+        _deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                      target:self
+                                                                      action:@selector(deleteButtonPreseed:)];
     }
     
     // Update
@@ -240,12 +246,9 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     NSMutableArray *items = [[NSMutableArray alloc] init];
 
-    // Left button - Grid
-    if (_enableGrid) {
-        hasItems = YES;
-        [items addObject:[[UIBarButtonItem alloc] initWithImage:[UIImage imageForResourcePath:@"UIBarButtonItemGrid" ofType:@"png" inBundle:[NSBundle bundleForClass:[self class]]] style:UIBarButtonItemStylePlain target:self action:@selector(showGridAnimated)]];
-    } else {
-        [items addObject:fixedSpace];
+    // Left - share
+    if (_actionButton) {
+        [items addObject:_actionButton];
     }
 
     // Middle - Nav
@@ -259,16 +262,30 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     } else {
         [items addObject:flexSpace];
     }
-
-    // Right - Action
-    if (_actionButton && !(!hasItems && !self.navigationItem.rightBarButtonItem)) {
-        [items addObject:_actionButton];
-    } else {
-        // We're not showing the toolbar so try and show in top right
-        if (_actionButton)
-            self.navigationItem.rightBarButtonItem = _actionButton;
-        [items addObject:fixedSpace];
+    
+    // Right - Delete
+    if (_deleteButton) {
+        [items addObject:_deleteButton];
     }
+    
+    /* Original code
+     // Left button - Grid
+     if (_enableGrid) {
+     hasItems = YES;
+     [items addObject:[[UIBarButtonItem alloc] initWithImage:[UIImage imageForResourcePath:@"UIBarButtonItemGrid" ofType:@"png" inBundle:[NSBundle bundleForClass:[self class]]] style:UIBarButtonItemStylePlain target:self action:@selector(showGridAnimated)]];
+     } else {
+     [items addObject:fixedSpace];
+     }
+     
+     if (_actionButton && !(!hasItems && !self.navigationItem.rightBarButtonItem)) {
+     [items addObject:_actionButton];
+     } else {
+     // We're not showing the toolbar so try and show in top right
+     if (_actionButton)
+     self.navigationItem.rightBarButtonItem = _actionButton;
+     [items addObject:fixedSpace];
+     }
+     */
 
     // Toolbar visibility
     [_toolbar setItems:items];
@@ -601,6 +618,15 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     
     // Get data
     NSUInteger numberOfPhotos = [self numberOfPhotos];
+    
+    // Dismiss if there's no photo
+    if (!numberOfPhotos) {
+        if (self.presentingViewController)
+            [self dismissViewControllerAnimated:YES completion:nil];
+        else
+            [self.navigationController popViewControllerAnimated:YES];
+    }
+    
     [self releaseAllUnderlyingPhotos:YES];
     [_photos removeAllObjects];
     [_thumbPhotos removeAllObjects];
@@ -1643,6 +1669,66 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     
 }
 
+- (void)deleteButtonPreseed:(id)sender {
+    // Only react when image has loaded
+    id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
+    if ([self numberOfPhotos] > 0 && [photo underlyingImage]) {
+        // Show confirm alert
+        [self showDeleteConfirm];
+    }
+
+}
+
+- (void)showDeleteConfirm {
+    [[RACSignal defer:^RACSignal *{
+        UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:nil
+                                                            delegate:self
+                                                   cancelButtonTitle:NSLocalizedString(@"ls_generic_cancel", nil)
+                                              destructiveButtonTitle:NSLocalizedString(@"ls_message_button_delete_pic", nil)
+                                                   otherButtonTitles:nil, nil];
+        [action showInView:self.view];
+        
+        return [action.rac_buttonClickedSignal filter:^BOOL(NSNumber *index) {
+            return index.integerValue == action.destructiveButtonIndex;
+        }];
+    }] subscribeNext:^(NSNumber *index) {
+        NSLog(@"clicked indexL %@", index);
+        // If they have defined a delegate method then just message them
+        if ([self.delegate respondsToSelector:@selector(photoBrowser:deletePhotoAtIndex:)]) {
+            
+            // Let delegate handle things
+            [self.delegate photoBrowser:self deletePhotoAtIndex:_currentPageIndex];
+        }
+        
+        // Keep controls hidden
+        [self setControlsHidden:NO animated:YES permanent:YES];
+    }];
+}
+
+- (void)deletePhotosWithAnimationAtIndexPaths:(NSArray <NSIndexPath *> *)indexes {
+    if (indexes.count == 1) {
+        if (!_gridController) {
+            // Get image view
+            NSUInteger index = [indexes firstObject].row;
+            MWZoomingScrollView *currentPage = [self pageDisplayedAtIndex:index];
+            
+            // Set initial value
+            CGAffineTransform toTransform = CGAffineTransformMakeScale(0.2, 0.2);
+            CGFloat toAlpha = 0.0;
+            
+            // Animate
+            [UIView animateWithDuration:0.5 animations:^{
+                currentPage.transform = toTransform;
+                currentPage.alpha = toAlpha;
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    [self reloadData];
+                }
+            }];
+        }
+    }
+}
+
 #pragma mark - Action Progress
 
 - (MBProgressHUD *)progressHUD {
@@ -1680,3 +1766,5 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 }
 
 @end
+
+#pragma clang diagnostic pop

@@ -252,6 +252,15 @@
 //    NSLog(@"ACTION!");
 //}
 
+- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser deletePhotoAtIndex:(NSUInteger)index {
+    id photo = self.photos[index];
+    if (photo) {
+        [self.photos removeObject:photo];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [photoBrowser deletePhotosWithAnimationAtIndexPaths:@[indexPath]];
+    }
+}
+
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index {
     NSLog(@"Did start viewing photo at index %lu", (unsigned long)index);
 }

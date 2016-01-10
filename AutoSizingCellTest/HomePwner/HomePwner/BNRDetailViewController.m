@@ -169,18 +169,18 @@
     
     _latestCount = 0;
     RAC(self.valueField, text) = [[self.nameField.rac_textSignal map:^id(id value) {
-        return [[self latestSignal] doNext:^(id x) {
-            NSLog(@"这里会执行一次");
-        }];
+        return [self latestSignal];
     }] switchToLatest];
 }
 
 - (RACSignal *)latestSignal {
     NSString *latestCount = [NSString stringWithFormat:@"latest signal %ld", (long)_latestCount++];
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [subscriber sendNext:latestCount];
-        [subscriber sendCompleted];
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [subscriber sendNext:latestCount];
+            [subscriber sendCompleted];
+        });
+
         return nil;
     }];
 }
