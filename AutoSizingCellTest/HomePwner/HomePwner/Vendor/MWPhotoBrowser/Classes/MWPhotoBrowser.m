@@ -1669,8 +1669,31 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 - (void)actionButtonPressed:(id)sender {
 
     // Only react when image has loaded
-    id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
-    if ([self numberOfPhotos] > 0 && [photo underlyingImage]) {
+    NSMutableArray *items = [NSMutableArray new];
+    if (_gridController) {
+        for (NSIndexPath *indexPath in _selectedPhotos) {
+            id <MWPhoto> photo = [self photoAtIndex:indexPath.row];
+            [photo loadUnderlyingImageAndNotify];
+            if (![photo underlyingImage]) {
+                return;
+            }
+            [items addObject:[photo underlyingImage]];
+            if (photo.caption) {
+                [items addObject:photo.caption];
+            }
+        }
+    } else {
+        id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
+        if (![photo underlyingImage]) {
+            return;
+        }
+        [items addObject:[photo underlyingImage]];
+        if (photo.caption) {
+            [items addObject:photo.caption];
+        }
+    }
+    
+    if ([self numberOfPhotos] > 0 && items.count) {
         
         // If they have defined a delegate method then just message them
         if ([self.delegate respondsToSelector:@selector(photoBrowser:actionButtonPressedForPhotoAtIndex:)]) {
@@ -1681,10 +1704,6 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         } else {
             
             // Show activity view controller
-            NSMutableArray *items = [NSMutableArray arrayWithObject:[photo underlyingImage]];
-            if (photo.caption) {
-                [items addObject:photo.caption];
-            }
             self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
             
             // Show loading spinner after a couple of seconds
@@ -1700,8 +1719,9 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
             typeof(self) __weak weakSelf = self;
             [self.activityViewController setCompletionHandler:^(NSString *activityType, BOOL completed) {
                 weakSelf.activityViewController = nil;
-                [weakSelf hideControlsAfterDelay];
+                [weakSelf showSelection];
                 [weakSelf hideProgressHUD:YES];
+                
             }];
             // iOS 8 - Set the Anchor Point for the popover
             if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8")) {
