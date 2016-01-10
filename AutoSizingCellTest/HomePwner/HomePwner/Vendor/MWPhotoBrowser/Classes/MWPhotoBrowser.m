@@ -21,7 +21,9 @@
 
 static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 
-@implementation MWPhotoBrowser
+@implementation MWPhotoBrowser {
+    NSInteger _selectedCount;
+}
 
 #pragma mark - Init
 
@@ -735,11 +737,21 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 }
 
 - (void)setPhotoSelected:(BOOL)selected atIndex:(NSUInteger)index {
-    if (_displaySelectionButtons) {
-        if ([self.delegate respondsToSelector:@selector(photoBrowser:photoAtIndex:selectedChanged:)]) {
-            [self.delegate photoBrowser:self photoAtIndex:index selectedChanged:selected];
+    // Set selected count
+    if (selected) {
+        _selectedCount++;
+    } else {
+        _selectedCount--;
+        if (_selectedCount < 0) {
+            _selectedCount = 0;
         }
     }
+    
+    if ([self.delegate respondsToSelector:@selector(photoBrowser:photoAtIndex:selectedChanged:)]) {
+        [self.delegate photoBrowser:self photoAtIndex:index selectedChanged:selected];
+    }
+    // Update title
+    [self updateNavigation];
 }
 
 - (UIImage *)imageForPhoto:(id<MWPhoto>)photo {
@@ -1117,15 +1129,12 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     NSUInteger numberOfPhotos = [self numberOfPhotos];
     if (_gridController) {
         if (_gridController.selectionMode) {
-            self.title = NSLocalizedString(@"Select Photos", nil);
+            // TODO: change localized string
+            NSString *text = [NSString stringWithFormat:@"Selected: %ld", _selectedCount];
+            self.title = text;
+            //[NSString stringWithFormat:@"ls_message_integers_header_counter_pic", _selectedCount];
         } else {
-            NSString *photosText;
-            if (numberOfPhotos == 1) {
-                photosText = NSLocalizedString(@"photo", @"Used in the context: '1 photo'");
-            } else {
-                photosText = NSLocalizedString(@"photos", @"Used in the context: '3 photos'");
-            }
-            self.title = [NSString stringWithFormat:@"%lu %@", (unsigned long)numberOfPhotos, photosText];
+            self.title = @"All Media";
         }
     } else if (numberOfPhotos > 1) {
         if ([_delegate respondsToSelector:@selector(photoBrowser:titleForPhotoAtIndex:)]) {
@@ -1755,6 +1764,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 #pragma mark - Selection
 - (void)showSelection {
     if (_gridController) {
+        _selectedCount = 0;
         _gridController.selectionMode = !_gridController.selectionMode;
         [_gridController.collectionView reloadData];
         
@@ -1763,6 +1773,9 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         self.navigationItem.rightBarButtonItem.title = _gridController.selectionMode ?
         NSLocalizedString(@"ls_generic_cancel", nil) :
         NSLocalizedString(@"ls_message_button_select", nil);
+        
+        // Update title
+        [self updateNavigation];
     }
     
 }
