@@ -212,7 +212,8 @@
     [browser setCurrentPhotoIndex:_currentIndex];
     
     if (modally) {
-        [controller presentViewController:browser animated:YES completion:nil];
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+        [controller presentViewController:nc animated:YES completion:nil];
     } else {
         [controller.navigationController pushViewController:browser animated:YES];
     }
