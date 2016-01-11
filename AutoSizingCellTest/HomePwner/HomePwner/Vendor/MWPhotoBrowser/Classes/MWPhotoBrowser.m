@@ -1687,15 +1687,14 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
             }
         }
     } else {
-//        id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
-//        if (![photo underlyingImage]) {
-//            return;
-//        }
-//        [items addObject:[photo underlyingImage]];
-//        if (photo.caption) {
-//            [items addObject:photo.caption];
-//        }
-        NSData *gif = [UIImage ]
+        id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
+        if (![photo underlyingImage]) {
+            return;
+        }
+        [items addObject:[photo underlyingImage]];
+        if (photo.caption) {
+            [items addObject:photo.caption];
+        }
     }
     
     if ([self numberOfPhotos] > 0 && items.count) {
