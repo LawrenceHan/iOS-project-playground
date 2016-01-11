@@ -174,11 +174,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 3) {
 //        [self showPhotoBrowser];
-        [[IWPhotoBrowserManager sharedInstance] showPhotoBrowserInViewController:self modally:YES];
+        [[IWPhotoBrowserManager sharedInstance] showPhotoBrowserInViewController:self modally:NO];
         
     } else if (indexPath.row == 4) {
         [IWPhotoBrowserManager sharedInstance].showAssets = YES;
-        [[IWPhotoBrowserManager sharedInstance] showPhotoBrowserInViewController:self modally:NO];
+        [[IWPhotoBrowserManager sharedInstance] showPhotoBrowserInViewController:self modally:YES];
         
 //        @synchronized(_assets) {
 //            NSMutableArray *copy = [_assets copy];
