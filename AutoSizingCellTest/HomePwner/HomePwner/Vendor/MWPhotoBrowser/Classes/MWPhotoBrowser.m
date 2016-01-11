@@ -643,6 +643,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
             [self dismissViewControllerAnimated:YES completion:nil];
         else
             [self.navigationController popViewControllerAnimated:YES];
+        return;
     }
     
     [self releaseAllUnderlyingPhotos:YES];
@@ -1142,7 +1143,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         if ([_delegate respondsToSelector:@selector(photoBrowser:titleForPhotoAtIndex:)]) {
             self.title = [_delegate photoBrowser:self titleForPhotoAtIndex:_currentPageIndex];
         } else {
-            self.title = [NSString stringWithFormat:@"%lu %@ %lu", (unsigned long)(_currentPageIndex+1), NSLocalizedString(@"of", @"Used in the context: 'Showing 1 of 3 items'"), (unsigned long)numberOfPhotos];
+            self.title = [NSString stringWithFormat:@"%lu/%lu", (unsigned long)(_currentPageIndex+1), (unsigned long)numberOfPhotos];
         }
 	} else {
 		self.title = nil;
@@ -1808,12 +1809,17 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         [view pop_addAnimation:alphaAnimation forKey:[NSString stringWithFormat:@"alphaAnimation%ld", count++]];
     }
     
+    @weakify(self)
     [springAnimation setCompletionBlock:^(POPAnimation *animation, BOOL finished) {
+        @strongify(self)
         if (finished) {
-            [self reloadData];
-            if (_gridController) {
-                [self showSelection];
-            }
+            // Wait a few moment for animation finish
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self reloadData];
+                if (_gridController) {
+                    [self showSelection];
+                }
+            });
         }
     }];
 }
