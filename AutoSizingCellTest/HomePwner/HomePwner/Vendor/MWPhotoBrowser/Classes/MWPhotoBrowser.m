@@ -733,8 +733,11 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 - (BOOL)photoIsSelectedAtIndex:(NSUInteger)index {
     BOOL value = NO;
     if (_displaySelectionButtons) {
-        if ([self.delegate respondsToSelector:@selector(photoBrowser:isPhotoSelectedAtIndex:)]) {
-            value = [self.delegate photoBrowser:self isPhotoSelectedAtIndex:index];
+        for (NSIndexPath *indexPath in _selectedPhotos) {
+            if (indexPath.row == index) {
+                value = YES;
+                break;
+            }
         }
     }
     return value;
@@ -1684,14 +1687,15 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
             }
         }
     } else {
-        id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
-        if (![photo underlyingImage]) {
-            return;
-        }
-        [items addObject:[photo underlyingImage]];
-        if (photo.caption) {
-            [items addObject:photo.caption];
-        }
+//        id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
+//        if (![photo underlyingImage]) {
+//            return;
+//        }
+//        [items addObject:[photo underlyingImage]];
+//        if (photo.caption) {
+//            [items addObject:photo.caption];
+//        }
+        NSData *gif = [UIImage ]
     }
     
     if ([self numberOfPhotos] > 0 && items.count) {
@@ -1814,7 +1818,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         @strongify(self)
         if (finished) {
             // Wait a few moment for animation finish
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self reloadData];
                 if (_gridController) {
                     [self showSelection];
@@ -1849,7 +1853,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     
 }
 
-- (NSMutableArray *)selectedPhotos {
+- (NSArray *)selectedPhotos {
     return _selectedPhotos;
 }
 

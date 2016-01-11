@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		020C20561BE757CA00BFFA73 /* NSString+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C20551BE757CA00BFFA73 /* NSString+Runtime.m */; };
 		0218FA4A1C3FA29B00445F39 /* UIImage+AspectFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0218FA491C3FA29B00445F39 /* UIImage+AspectFit.m */; };
+		02190D591C436D4900A4D164 /* IWPhotoBrowserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02190D581C436D4900A4D164 /* IWPhotoBrowserManager.m */; };
 		022E52DC1C101FDD006D02D5 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022E52DB1C101FDD006D02D5 /* WebKit.framework */; };
 		02387AB31BC659B00023E825 /* BNRPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB21BC659B00023E825 /* BNRPageControl.m */; };
 		02387AC51BC65D3A0023E825 /* GooeyCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB81BC65D3A0023E825 /* GooeyCircle.m */; };
@@ -382,6 +383,8 @@
 		020C20551BE757CA00BFFA73 /* NSString+Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Runtime.m"; sourceTree = "<group>"; };
 		0218FA481C3FA29B00445F39 /* UIImage+AspectFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AspectFit.h"; sourceTree = "<group>"; };
 		0218FA491C3FA29B00445F39 /* UIImage+AspectFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AspectFit.m"; sourceTree = "<group>"; };
+		02190D571C436D4900A4D164 /* IWPhotoBrowserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWPhotoBrowserManager.h; sourceTree = "<group>"; };
+		02190D581C436D4900A4D164 /* IWPhotoBrowserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWPhotoBrowserManager.m; sourceTree = "<group>"; };
 		022E52DB1C101FDD006D02D5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		02387AB11BC659B00023E825 /* BNRPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRPageControl.h; sourceTree = "<group>"; };
 		02387AB21BC659B00023E825 /* BNRPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRPageControl.m; sourceTree = "<group>"; };
@@ -1150,6 +1153,8 @@
 				023ABDF61C3E3D26002513A7 /* MWZoomingScrollView.m */,
 				023ABDF71C3E3D26002513A7 /* UIImage+MWPhotoBrowser.h */,
 				023ABDF81C3E3D26002513A7 /* UIImage+MWPhotoBrowser.m */,
+				02190D571C436D4900A4D164 /* IWPhotoBrowserManager.h */,
+				02190D581C436D4900A4D164 /* IWPhotoBrowserManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2553,6 +2558,7 @@
 				027BCF461C0843E800AD1789 /* MPNativeAdData.m in Sources */,
 				027BCEE41C0843E800AD1789 /* MPLogEventRecorder.m in Sources */,
 				027BCF761C0843E800AD1789 /* MPRewardedVideoAdManager.m in Sources */,
+				02190D591C436D4900A4D164 /* IWPhotoBrowserManager.m in Sources */,
 				02AF6D021B9009630081775A /* Homepwner.xcdatamodeld in Sources */,
 				02AF6DDB1B94A6600081775A /* BNRDynamicsViewController.m in Sources */,
 				027BCF131C0843E800AD1789 /* MPLogProvider.m in Sources */,

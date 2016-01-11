@@ -91,7 +91,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Masonry.framework"
   install_framework "Pods/PureLayout.framework"
   install_framework "Pods/SDWebImage.framework"
-  install_framework "Pods/YYCache.framework"
+  install_framework "Pods/YYKit.framework"
   install_framework "Pods/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -102,6 +102,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Masonry.framework"
   install_framework "Pods/PureLayout.framework"
   install_framework "Pods/SDWebImage.framework"
-  install_framework "Pods/YYCache.framework"
+  install_framework "Pods/YYKit.framework"
   install_framework "Pods/pop.framework"
 fi

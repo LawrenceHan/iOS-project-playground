@@ -161,7 +161,7 @@ THE SOFTWARE.
 
 
 
-## YYCache
+## YYKit
 
 The MIT License (MIT)
 

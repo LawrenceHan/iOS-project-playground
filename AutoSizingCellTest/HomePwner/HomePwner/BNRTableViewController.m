@@ -10,6 +10,7 @@
 #import "BNRCollectionViewController.h"
 #import "MWPhotoBrowser.h"
 #import "SDImageCache.h"
+#import "IWPhotoBrowserManager.h"
 
 @interface BNRTableViewController () <MWPhotoBrowserDelegate>
 @property (nonatomic, strong) NSMutableArray *photos;
@@ -29,8 +30,8 @@
     [[SDImageCache sharedImageCache] clearDisk];
     [[SDImageCache sharedImageCache] clearMemory];
     
-    [self loadPhotos];
-    [self loadAssets];
+//    [self loadPhotos];
+//    [self loadAssets];
 }
 
 - (void)loadPhotos {
@@ -172,25 +173,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 3) {
-        [self showPhotoBrowser];
+//        [self showPhotoBrowser];
+        [[IWPhotoBrowserManager sharedInstance] showPhotoBrowserInViewController:self modally:NO];
+        
     } else if (indexPath.row == 4) {
-        @synchronized(_assets) {
-            NSMutableArray *copy = [_assets copy];
-            if (NSClassFromString(@"PHAsset")) {
-                // Photos library
-                UIScreen *screen = [UIScreen mainScreen];
-                CGFloat scale = screen.scale;
-                // Sizing is very rough... more thought required in a real implementation
-                CGFloat imageSize = MAX(screen.bounds.size.width, screen.bounds.size.height) * 1.5;
-                CGSize imageTargetSize = CGSizeMake(imageSize * scale, imageSize * scale);
-                CGSize thumbTargetSize = CGSizeMake(imageSize / 3.0 * scale, imageSize / 3.0 * scale);
-                for (PHAsset *asset in copy) {
-                    [self.photos addObject:[MWPhoto photoWithAsset:asset targetSize:imageTargetSize]];
-                    [self.thumbs addObject:[MWPhoto photoWithAsset:asset targetSize:thumbTargetSize]];
-                }
-            }
-            [self showPhotoBrowser];
-        }
+        [IWPhotoBrowserManager sharedInstance].showAssets = YES;
+        [[IWPhotoBrowserManager sharedInstance] showPhotoBrowserInViewController:self modally:NO];
+        
+//        @synchronized(_assets) {
+//            NSMutableArray *copy = [_assets copy];
+//            if (NSClassFromString(@"PHAsset")) {
+//                // Photos library
+//                UIScreen *screen = [UIScreen mainScreen];
+//                CGFloat scale = screen.scale;
+//                // Sizing is very rough... more thought required in a real implementation
+//                CGFloat imageSize = MAX(screen.bounds.size.width, screen.bounds.size.height) * 1.5;
+//                CGSize imageTargetSize = CGSizeMake(imageSize * scale, imageSize * scale);
+//                CGSize thumbTargetSize = CGSizeMake(imageSize / 3.0 * scale, imageSize / 3.0 * scale);
+//                for (PHAsset *asset in copy) {
+//                    [self.photos addObject:[MWPhoto photoWithAsset:asset targetSize:imageTargetSize]];
+//                    [self.thumbs addObject:[MWPhoto photoWithAsset:asset targetSize:thumbTargetSize]];
+//                }
+//            }
+//            [self showPhotoBrowser];
+//        }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

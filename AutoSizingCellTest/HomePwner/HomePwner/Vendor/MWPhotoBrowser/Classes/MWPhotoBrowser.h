@@ -33,7 +33,6 @@
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index;
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser actionButtonPressedForPhotoAtIndex:(NSUInteger)index;
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser deletePhotosAtIndexPaths:(NSArray <NSIndexPath *> *)indexes;
-- (BOOL)photoBrowser:(MWPhotoBrowser *)photoBrowser isPhotoSelectedAtIndex:(NSUInteger)index;
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index selectedChanged:(BOOL)selected;
 - (void)photoBrowserDidFinishModalPresentation:(MWPhotoBrowser *)photoBrowser;
 
@@ -58,6 +57,7 @@
 // Icon should be located in the app's main bundle
 @property (nonatomic, strong) NSString *customImageSelectedIconName;
 @property (nonatomic, strong) NSString *customImageSelectedSmallIconName;
+@property (nonatomic, copy) void (^dismissBlock)();
 
 // Init
 - (id)initWithPhotos:(NSArray *)photosArray;
@@ -68,7 +68,7 @@
 
 // Set page that photo browser starts on
 - (void)setCurrentPhotoIndex:(NSUInteger)index;
-- (NSMutableArray *)selectedPhotos;
+- (NSArray *)selectedPhotos;
 
 // Navigation
 - (void)showNextPhotoAnimated:(BOOL)animated;
