@@ -1,0 +1,3 @@
+[submodule "AutoSizingCellTest/HomePwner/submodules/LHPhotoBrowser"]
+	path = AutoSizingCellTest/HomePwner/submodules/LHPhotoBrowser
+	url = https://github.com/LawrenceHan/LHPhotoBrowser.git
