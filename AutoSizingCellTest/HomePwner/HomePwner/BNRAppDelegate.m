@@ -70,6 +70,38 @@
 #pragma mark - RAC test
     self.rac_TestViewController = [BNRRACTestViewController new];
     
+    NSArray *numbers = @[@"1", @"2", @"3", @"4"];
+    void (^enumerateBlock)(id obj, NSUInteger idx, BOOL *stop) = ^(id obj, NSUInteger idx, BOOL *stop) {
+        NSLog(@"obj %@ at index: %ld", obj, idx);
+    };
+    
+    [numbers enumerateObjectsUsingBlock:enumerateBlock];
+    
+    NSArray *json = @[@{@"arrayA":@{
+                           @"access_token": @"4422ea7f05750e93a101cb77ff76dffd3d65d46ebf6ed5b94d211e5d9b3b80bc",
+                           @"token_type": @"bearer",
+                           @"scope": @"user",
+                           @"created_at": @1428040414
+                           }},
+                          @{@"arrayB":@{
+                           @"access_token": @"4422ea7f05750e93a101cb77ff76dffd3d65d46ebf6ed5b94d211e5d9b3b80bc",
+                           @"token_type": @"bearer",
+                           @"scope": @"user",
+                           @"created_at": @1428040414
+                           }}];
+    NSLog(@"access_token: %@", json[1][@"arrayB"][@"access_token"]);
+    
+    int i = 20;
+    int j = 25;
+    int k = ( i > j ) ? 10 : 5;
+    if ( 5 < j - k ) { // first expression
+        NSLog(@"The first expression is true.");
+    } else if ( j > i ) { // second expression
+        NSLog(@"The second expression is true.");
+    } else {
+        NSLog(@"Neither expression is true.");
+    }
+
     return YES;
 }
 
