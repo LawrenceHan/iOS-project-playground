@@ -1,0 +1,6 @@
+framework module Pods_OAuth2Demo {
+  umbrella header "Pods-OAuth2Demo-umbrella.h"
+
+  export *
+  module * { export * }
+}

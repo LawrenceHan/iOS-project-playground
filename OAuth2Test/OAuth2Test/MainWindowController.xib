@@ -7,6 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="OAuth2Test" customModuleProvider="target">
             <connections>
+                <outlet property="outputTextView" destination="yQb-WU-vb7" id="wah-ge-APU"/>
+                <outlet property="requestButton" destination="noH-D8-ls6" id="pcV-hG-zgb"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -21,21 +23,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqd-5l-QsL">
-                        <rect key="frame" x="20" y="20" width="340" height="230"/>
-                        <clipView key="contentView" ambiguous="YES" id="50j-0u-KVU">
-                            <rect key="frame" x="1" y="1" width="338" height="228"/>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqd-5l-QsL">
+                        <rect key="frame" x="20" y="20" width="354" height="230"/>
+                        <clipView key="contentView" id="50j-0u-KVU">
+                            <rect key="frame" x="1" y="1" width="352" height="228"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="yQb-WU-vb7">
-                                    <rect key="frame" x="0.0" y="0.0" width="338" height="228"/>
+                                <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="yQb-WU-vb7">
+                                    <rect key="frame" x="0.0" y="0.0" width="352" height="228"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="338" height="228"/>
+                                    <size key="minSize" width="352" height="228"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="338" height="228"/>
+                                    <size key="minSize" width="352" height="228"/>
                                     <size key="maxSize" width="463" height="10000000"/>
+                                    <connections>
+                                        <binding destination="-2" name="data" keyPath="self.networkLog" id="GGw-bY-bX4"/>
+                                    </connections>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,19 +49,30 @@
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="c8q-FE-maa">
-                            <rect key="frame" x="323" y="1" width="16" height="228"/>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="c8q-FE-maa">
+                            <rect key="frame" x="337" y="1" width="16" height="228"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noH-D8-ls6">
-                        <rect key="frame" x="362" y="222" width="104" height="32"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="noH-D8-ls6">
+                        <rect key="frame" x="376" y="222" width="90" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="0uo-8d-Jc4"/>
+                        </constraints>
                         <buttonCell key="cell" type="push" title="Request" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S0u-je-oh5">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="tqd-5l-QsL" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="7CI-qn-Nff"/>
+                    <constraint firstItem="noH-D8-ls6" firstAttribute="leading" secondItem="tqd-5l-QsL" secondAttribute="trailing" constant="8" id="QhW-ek-pnA"/>
+                    <constraint firstAttribute="bottom" secondItem="tqd-5l-QsL" secondAttribute="bottom" constant="20" symbolic="YES" id="T0C-xi-LU5"/>
+                    <constraint firstAttribute="trailing" secondItem="noH-D8-ls6" secondAttribute="trailing" constant="20" symbolic="YES" id="e38-Eh-fI8"/>
+                    <constraint firstItem="noH-D8-ls6" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="gtc-BK-y9j"/>
+                    <constraint firstItem="tqd-5l-QsL" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="uKE-KQ-yzN"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>

@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import AFNetworkActivityLogger
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -24,6 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Set the property to point to the window controller
         self.mainWindowController = mainWindowController
+        
+        AFNetworkActivityLogger.sharedLogger().startLogging()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
