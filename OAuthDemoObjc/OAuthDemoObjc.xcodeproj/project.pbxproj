@@ -21,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		020E84511C4D47DD00F01108 /* OAuthDemoObjc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OAuthDemoObjc-Bridging-Header.h"; sourceTree = "<group>"; };
 		0246272B1C4A501D0003069F /* OAuthDemoObjc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuthDemoObjc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0246272E1C4A501D0003069F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0246272F1C4A501D0003069F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 			children = (
 				024627321C4A501D0003069F /* main.m */,
 				0246274F1C4A560F0003069F /* OAuthDemoObjc.pch */,
+				020E84511C4D47DD00F01108 /* OAuthDemoObjc-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -175,6 +177,7 @@
 				TargetAttributes = {
 					0246272A1C4A501D0003069F = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 2L4985KKX7;
 					};
 				};
 			};
@@ -370,12 +373,16 @@
 			baseConfigurationReference = 996896DDA32A7AE1CEADB0F0 /* Pods-OAuthDemoObjc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = OAuthDemoObjc/OAuthDemoObjc.pch;
 				INFOPLIST_FILE = OAuthDemoObjc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.OAuthDemoObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OAuthDemoObjc/OAuthDemoObjc-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -384,12 +391,15 @@
 			baseConfigurationReference = 501AAA3F7E8496356E3106C5 /* Pods-OAuthDemoObjc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = OAuthDemoObjc/OAuthDemoObjc.pch;
 				INFOPLIST_FILE = OAuthDemoObjc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.OAuthDemoObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OAuthDemoObjc/OAuthDemoObjc-Bridging-Header.h";
 			};
 			name = Release;
 		};

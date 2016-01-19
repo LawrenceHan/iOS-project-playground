@@ -9,13 +9,14 @@
 #import "AuthenticationManager.h"
 
 
-NSString * const baseURL = @"http://red.tianwen.flirten.lab/api_dev.php/";//@"http://integration.flirten.de/api_integration.php/";
-NSString * const oauthURL = @"v2/auth/access_token";
+NSString * const baseURL = @"http://integration.flirten.de/api_integration.php/v2/";
+//@"http://red.tianwen.flirten.lab/api_dev.php/v2/";
+NSString * const oauthURL = @"auth/access_token";
 NSString * const clientID = @"flirten";
 NSString * const secret = @"secret";
 NSString * const scope = @"";
 NSString * const serviceProviderIdentifier = @"com.ideawise.koko";
-NSString * const myProfileURL = @"v2/account/me";
+NSString * const myProfileURL = @"account/me";
 
 @interface AuthenticationManager ()
 @property (nonatomic, strong) AFOAuth2Manager *oauthManager;
