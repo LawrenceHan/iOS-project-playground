@@ -2,7 +2,7 @@
 
 Hi, this is my playgroud for learning new stuffs, if you like it, please feel free to fork it :D
 
-P.S:I'm currently working @ [The carevoice](http://www.thecarevoice.com) which is a startup company.
+P.S:I'm currently working @ [The Netcircle](http://thenetcircle.com) which is a startup company.
 
 
 # Some of the test project/app is created by below iOS masters:
