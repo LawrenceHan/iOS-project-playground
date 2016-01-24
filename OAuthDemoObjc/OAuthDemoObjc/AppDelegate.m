@@ -17,11 +17,12 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
 
     [[AFNetworkActivityLogger sharedLogger] startLogging];
+    
     MainWindowController *main = [MainWindowController new];
     [main showWindow:self];
+    
     self.mainWindowController = main;
 }
 
