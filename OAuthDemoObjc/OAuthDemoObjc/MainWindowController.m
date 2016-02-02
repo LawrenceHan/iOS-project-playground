@@ -16,6 +16,10 @@
 @property (weak) IBOutlet NSButton *signinButton;
 @property (weak) IBOutlet NSButton *myProfileButton;
 @property (weak) IBOutlet NSButton *cleanButton;
+@property (weak) IBOutlet NSButton *sendMessageButton;
+@property (weak) IBOutlet NSButton *sendPhotoButton;
+@property (weak) IBOutlet NSButton *sendBothButton;
+@property (weak) IBOutlet NSTextField *messageTextField;
 @property (nonatomic, strong) AuthenticationManager *manager;
 
 @end
@@ -71,6 +75,27 @@
     
     self.myProfileButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [self.manager getMyProfile];
+    }];
+    
+    self.sendMessageButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [[self.manager sendMessageWithContent:self.messageTextField.stringValue andPhoto:NO]
+                doNext:^(id x) {
+                    self.messageTextField.stringValue = @"";
+                }];
+    }];
+    
+    self.sendPhotoButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [[self.manager sendMessageWithContent:nil andPhoto:YES]
+                doNext:^(id x) {
+                    self.messageTextField.stringValue = @"";
+                }];
+    }];
+    
+    self.sendBothButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [[self.manager sendMessageWithContent:self.messageTextField.stringValue andPhoto:YES]
+                doNext:^(id x) {
+                    self.messageTextField.stringValue = @"";
+                }];;
     }];
     
     // Observing text field enable property, when sigh in signal is ongoing, returns NO

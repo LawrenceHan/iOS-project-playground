@@ -106,6 +106,25 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="sPe-0j-fo3">
+                                        <rect key="frame" x="0.0" y="284" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sPe-0j-fo3" id="gbb-4x-6dO">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chat View Controller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLf-Bq-QQ3">
+                                                    <rect key="frame" x="8" y="11" width="304" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="eVJ-mg-cCu" kind="push" id="RkB-zD-7MI"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -196,7 +215,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AAh-UC-yBH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="testCell" id="AAh-UC-yBH">
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AAh-UC-yBH" id="FPo-7H-3pH">
@@ -440,6 +459,62 @@
             </objects>
             <point key="canvasLocation" x="1530" y="312"/>
         </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="ACh-8R-Z8X">
+            <objects>
+                <viewController id="eVJ-mg-cCu" customClass="ChatViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xT9-OQ-MSm"/>
+                        <viewControllerLayoutGuide type="bottom" id="62V-xD-VXO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WeA-IJ-GIK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FKG-nf-Wb9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" id="DfO-du-Hhm" customClass="ChatCell">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DfO-du-Hhm" id="4qD-Xt-iod">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="fyq-V0-8y9">
+                                                    <rect key="frame" x="8" y="2" width="40" height="40"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="fyq-V0-8y9" id="dY1-7E-AT0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eVJ-mg-cCu" id="sgC-Qr-Sr6"/>
+                                    <outlet property="delegate" destination="eVJ-mg-cCu" id="81u-w8-lbv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="FKG-nf-Wb9" firstAttribute="top" secondItem="WeA-IJ-GIK" secondAttribute="top" id="2yi-hO-TPo"/>
+                            <constraint firstItem="FKG-nf-Wb9" firstAttribute="leading" secondItem="WeA-IJ-GIK" secondAttribute="leading" id="5p0-Wy-Rdg"/>
+                            <constraint firstAttribute="trailing" secondItem="FKG-nf-Wb9" secondAttribute="trailing" id="Z2X-dM-3Af"/>
+                            <constraint firstItem="62V-xD-VXO" firstAttribute="top" secondItem="FKG-nf-Wb9" secondAttribute="bottom" id="nES-0L-GQf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lbK-AA-yDN"/>
+                    <connections>
+                        <outlet property="tableView" destination="FKG-nf-Wb9" id="bfO-9K-kbG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="793-vX-Ujy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="372" y="-315"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="AiG-W1-ZL0">
             <objects>
@@ -457,4 +532,7 @@
             <point key="canvasLocation" x="-64.533333333333331" y="316.18666666666667"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="3" width="1280" height="1170"/>
+    </resources>
 </document>

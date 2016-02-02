@@ -9,14 +9,15 @@
 #import "AuthenticationManager.h"
 
 
-NSString * const baseURL = @"YOUR_BASE_URL";
-NSString * const oauthURL = @"YOUR_AUTH_URL"; // e.g: auth/access_token
-NSString * const clientID = @"YOUR_CLIENT_ID";
-NSString * const secret = @"YOUR_SECRET";
-NSString * const scope = @"YOUR_SCOPE";
-NSString * const serviceProviderIdentifier = @"YOUR_SERVICE_PROVIDER";
+NSString * const baseURL = @"http://integration.flirten.de/api_integration.php/v2/";
+NSString * const oauthURL = @"auth/access_token"; // e.g: auth/access_token
+NSString * const clientID = @"flirten";
+NSString * const secret = @"secret";
+NSString * const scope = @"";
+NSString * const serviceProviderIdentifier = @"com.flirten.koko";
 
-NSString * const YOUR_API_PATH = @"YOUR_API_PATH";// e.g: account/me
+NSString * const getMyProfileURL = @"account/me";// e.g: account/me
+NSString * const sendNewMessage = @"message/new.json";
 
 @interface AuthenticationManager ()
 @property (nonatomic, strong) AFOAuth2Manager *oauthManager;
@@ -201,11 +202,55 @@ NSString * const YOUR_API_PATH = @"YOUR_API_PATH";// e.g: account/me
 
 - (RACSignal *)getMyProfile {
     RACSignal *requestSignal =
-    [[self getSignalWithPath:YOUR_API_PATH parameters:nil]
+    [[self getSignalWithPath:getMyProfileURL parameters:nil]
      map:^id(NSDictionary *responseObject) {
          [self logWithString:[NSString stringWithFormat:@"%@", responseObject]];
          return responseObject;
      }];
+    
+    return [self refreshTokenIfNeededWithSignal:requestSignal];
+}
+
+- (RACSignal *)sendMessageWithContent:(NSString *)content andPhoto:(BOOL)photo {
+    NSUUID *photoID = [NSUUID UUID];
+    NSMutableDictionary *params = [@{@"user_id" : @(100666)} mutableCopy];
+    if (content) {
+        params[@"content"] = content;
+    }
+    
+    NSData *imageData = nil;
+    if (photo) {
+        NSImage *image = [NSImage imageNamed:@"111.jpg"];
+        
+        [image lockFocus];
+        NSBitmapImageRep *bitmapRep =
+        [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, image.size.width, image.size.height)];
+        [image unlockFocus];
+        imageData = [bitmapRep representationUsingType:NSJPEGFileType properties:@{}];
+    }
+
+    RACSignal *requestSignal =
+    [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        AFHTTPRequestOperation *op =
+        [self.requestManager POST:sendNewMessage parameters:params
+        constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            if (imageData) {
+                [formData appendPartWithFileData:imageData name:@"attachment"
+                                        fileName:[photoID UUIDString] mimeType:@"image/jpeg"];
+            }
+        } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+            [self logWithString:[NSString stringWithFormat:@"Response object: %@", responseObject]];
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+            [self logWithString:[NSString stringWithFormat:@"Error: %@", error]];
+            [subscriber sendError:error];
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [op cancel];
+        }];
+    }];
     
     return [self refreshTokenIfNeededWithSignal:requestSignal];
 }

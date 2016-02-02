@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022C1EC71C5E2D1B002A3178 /* 111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 022C1EC61C5E2D1B002A3178 /* 111.jpg */; };
 		024627301C4A501D0003069F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0246272F1C4A501D0003069F /* AppDelegate.m */; };
 		024627331C4A501D0003069F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 024627321C4A501D0003069F /* main.m */; };
 		024627351C4A501D0003069F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 024627341C4A501D0003069F /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		020E84511C4D47DD00F01108 /* OAuthDemoObjc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OAuthDemoObjc-Bridging-Header.h"; sourceTree = "<group>"; };
+		022C1EC61C5E2D1B002A3178 /* 111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111.jpg; sourceTree = "<group>"; };
 		0246272B1C4A501D0003069F /* OAuthDemoObjc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuthDemoObjc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0246272E1C4A501D0003069F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0246272F1C4A501D0003069F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		024627311C4A501D0003069F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				022C1EC61C5E2D1B002A3178 /* 111.jpg */,
 				024627321C4A501D0003069F /* main.m */,
 				0246274F1C4A560F0003069F /* OAuthDemoObjc.pch */,
 				020E84511C4D47DD00F01108 /* OAuthDemoObjc-Bridging-Header.h */,
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				024627351C4A501D0003069F /* Assets.xcassets in Resources */,
+				022C1EC71C5E2D1B002A3178 /* 111.jpg in Resources */,
 				024627431C4A50440003069F /* MainWindowController.xib in Resources */,
 				024627381C4A501D0003069F /* MainMenu.xib in Resources */,
 			);

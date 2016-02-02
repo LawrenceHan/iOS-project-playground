@@ -76,7 +76,14 @@
 		02190F5B1C43B55900A4D164 /* video_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02190F181C43B55900A4D164 /* video_thumb.jpg */; };
 		02190F5C1C43B55900A4D164 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 02190F191C43B55900A4D164 /* LICENSE */; };
 		02190F5D1C43B55900A4D164 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 02190F1A1C43B55900A4D164 /* README.md */; };
+		02227AF71C605CE200DCE1C0 /* EmoticonQQ.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02227AF61C605CE200DCE1C0 /* EmoticonQQ.bundle */; };
+		02227AFA1C6075D500DCE1C0 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 02227AF91C6075D500DCE1C0 /* UIView+Additions.m */; };
+		02227AFD1C6097F000DCE1C0 /* NSBundle+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 02227AFC1C6097F000DCE1C0 /* NSBundle+YYAdd.m */; };
+		02227AFF1C609D4C00DCE1C0 /* pia@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02227AFE1C609D4C00DCE1C0 /* pia@2x.png */; };
 		022E52DC1C101FDD006D02D5 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022E52DB1C101FDD006D02D5 /* WebKit.framework */; };
+		0236499A1C604C2F007FE445 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 023649991C604C2F007FE445 /* ChatViewController.m */; };
+		0236499D1C605291007FE445 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0236499C1C605291007FE445 /* ChatCell.m */; };
+		023649A01C6054AB007FE445 /* MessageLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0236499F1C6054AB007FE445 /* MessageLayout.m */; };
 		02387AB31BC659B00023E825 /* BNRPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB21BC659B00023E825 /* BNRPageControl.m */; };
 		02387AC51BC65D3A0023E825 /* GooeyCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AB81BC65D3A0023E825 /* GooeyCircle.m */; };
 		02387AC61BC65D3A0023E825 /* Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387ABA1BC65D3A0023E825 /* Indicator.m */; };
@@ -351,7 +358,6 @@
 		520AA489187C4EC00048F174 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 520AA487187C4EC00048F174 /* InfoPlist.strings */; };
 		520AA48B187C4EC00048F174 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AA48A187C4EC00048F174 /* main.m */; };
 		520AA48F187C4EC00048F174 /* BNRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AA48E187C4EC00048F174 /* BNRAppDelegate.m */; };
-		520AA491187C4EC00048F174 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520AA490187C4EC00048F174 /* Images.xcassets */; };
 		520AA4AF187C4EF00048F174 /* BNRItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AA4AE187C4EF00048F174 /* BNRItemsViewController.m */; };
 		520AA4B5187C4FC00048F174 /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AA4B4187C4FC00048F174 /* BNRItemStore.m */; };
 		520AA4BF187C87C50048F174 /* BNRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AA4BD187C87C50048F174 /* BNRDetailViewController.m */; };
@@ -467,7 +473,19 @@
 		02190F181C43B55900A4D164 /* video_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = video_thumb.jpg; sourceTree = "<group>"; };
 		02190F191C43B55900A4D164 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		02190F1A1C43B55900A4D164 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		02227AF61C605CE200DCE1C0 /* EmoticonQQ.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmoticonQQ.bundle; sourceTree = "<group>"; };
+		02227AF81C6075D500DCE1C0 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		02227AF91C6075D500DCE1C0 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		02227AFB1C6097F000DCE1C0 /* NSBundle+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+YYAdd.h"; sourceTree = "<group>"; };
+		02227AFC1C6097F000DCE1C0 /* NSBundle+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+YYAdd.m"; sourceTree = "<group>"; };
+		02227AFE1C609D4C00DCE1C0 /* pia@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pia@2x.png"; sourceTree = "<group>"; };
 		022E52DB1C101FDD006D02D5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		023649981C604C2F007FE445 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		023649991C604C2F007FE445 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		0236499B1C605291007FE445 /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		0236499C1C605291007FE445 /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
+		0236499E1C6054AB007FE445 /* MessageLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageLayout.h; sourceTree = "<group>"; };
+		0236499F1C6054AB007FE445 /* MessageLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageLayout.m; sourceTree = "<group>"; };
 		02387AB11BC659B00023E825 /* BNRPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRPageControl.h; sourceTree = "<group>"; };
 		02387AB21BC659B00023E825 /* BNRPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRPageControl.m; sourceTree = "<group>"; };
 		02387AB71BC65D3A0023E825 /* GooeyCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooeyCircle.h; sourceTree = "<group>"; };
@@ -974,7 +992,6 @@
 		520AA48C187C4EC00048F174 /* HomePwner-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomePwner-Prefix.pch"; sourceTree = "<group>"; };
 		520AA48D187C4EC00048F174 /* BNRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNRAppDelegate.h; sourceTree = "<group>"; };
 		520AA48E187C4EC00048F174 /* BNRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNRAppDelegate.m; sourceTree = "<group>"; };
-		520AA490187C4EC00048F174 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		520AA497187C4EC00048F174 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		520AA49F187C4EC00048F174 /* HomePwnerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HomePwnerTests-Info.plist"; sourceTree = "<group>"; };
 		520AA4A1187C4EC00048F174 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1173,6 +1190,25 @@
 				020C20551BE757CA00BFFA73 /* NSString+Runtime.m */,
 			);
 			name = "Runtime Class";
+			sourceTree = "<group>";
+		};
+		023649971C604C16007FE445 /* ChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				02227AF81C6075D500DCE1C0 /* UIView+Additions.h */,
+				02227AF91C6075D500DCE1C0 /* UIView+Additions.m */,
+				023649981C604C2F007FE445 /* ChatViewController.h */,
+				023649991C604C2F007FE445 /* ChatViewController.m */,
+				0236499B1C605291007FE445 /* ChatCell.h */,
+				0236499C1C605291007FE445 /* ChatCell.m */,
+				0236499E1C6054AB007FE445 /* MessageLayout.h */,
+				0236499F1C6054AB007FE445 /* MessageLayout.m */,
+				02227AFB1C6097F000DCE1C0 /* NSBundle+YYAdd.h */,
+				02227AFC1C6097F000DCE1C0 /* NSBundle+YYAdd.m */,
+				02227AFE1C609D4C00DCE1C0 /* pia@2x.png */,
+				02227AF61C605CE200DCE1C0 /* EmoticonQQ.bundle */,
+			);
+			name = ChatViewController;
 			sourceTree = "<group>";
 		};
 		02387AB41BC65D3A0023E825 /* KYAnimatedPageControl */ = {
@@ -2065,6 +2101,7 @@
 		520AA484187C4EC00048F174 /* HomePwner */ = {
 			isa = PBXGroup;
 			children = (
+				023649971C604C16007FE445 /* ChatViewController */,
 				02A2534F1C3270E600C82D02 /* ReactiveCocoa */,
 				025A65781C08387D00443AB1 /* AD */,
 				02C5D6931BF200B500BD2505 /* Swift */,
@@ -2094,7 +2131,6 @@
 				520AA4BC187C87C50048F174 /* BNRDetailViewController.h */,
 				520AA4BD187C87C50048F174 /* BNRDetailViewController.m */,
 				520AA4BE187C87C50048F174 /* BNRDetailViewController.xib */,
-				520AA490187C4EC00048F174 /* Images.xcassets */,
 				520AA485187C4EC00048F174 /* Supporting Files */,
 			);
 			path = HomePwner;
@@ -2233,6 +2269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02227AFF1C609D4C00DCE1C0 /* pia@2x.png in Resources */,
 				027BCF651C0843E800AD1789 /* MPCloseButtonX.png in Resources */,
 				02190F581C43B55900A4D164 /* photo8.jpg in Resources */,
 				027BCF741C0843E800AD1789 /* MRAID.bundle in Resources */,
@@ -2251,6 +2288,7 @@
 				027BCF6D1C0843E800AD1789 /* MPMutedBtn@3x.png in Resources */,
 				02190F201C43B55900A4D164 /* ImageSelectedOff.png in Resources */,
 				027BCF631C0843E800AD1789 /* MPCloseBtn@2x.png in Resources */,
+				02227AF71C605CE200DCE1C0 /* EmoticonQQ.bundle in Resources */,
 				02190F4C1C43B55900A4D164 /* photo2.jpg in Resources */,
 				02190F301C43B55900A4D164 /* PlayButtonOverlayLargeTap@2x.png in Resources */,
 				02190F521C43B55900A4D164 /* photo5.jpg in Resources */,
@@ -2325,7 +2363,6 @@
 				02190F361C43B55900A4D164 /* UIBarButtonItemArrowRight@2x.png in Resources */,
 				02190F3A1C43B55900A4D164 /* UIBarButtonItemGrid@3x.png in Resources */,
 				02190F1C1C43B55900A4D164 /* .gitkeep in Resources */,
-				520AA491187C4EC00048F174 /* Images.xcassets in Resources */,
 				02190F321C43B55900A4D164 /* UIBarButtonItemArrowLeft.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2511,6 +2548,7 @@
 				02190F5D1C43B55900A4D164 /* README.md in Sources */,
 				027BCEFD1C0843E800AD1789 /* MRController.m in Sources */,
 				027BCF241C0843E800AD1789 /* MPVASTResource.m in Sources */,
+				02227AFA1C6075D500DCE1C0 /* UIView+Additions.m in Sources */,
 				027BCEE91C0843E800AD1789 /* MPAdWebViewAgent.m in Sources */,
 				027BCF2D1C0843E800AD1789 /* MPConstants.m in Sources */,
 				027BCF451C0843E800AD1789 /* MPNativeAdConstants.m in Sources */,
@@ -2520,6 +2558,7 @@
 				027BCF321C0843E800AD1789 /* MPDiskLRUCache.m in Sources */,
 				027BCF381C0843E800AD1789 /* MPNativeAdSourceQueue.m in Sources */,
 				027BCEF01C0843E800AD1789 /* MPInterstitialViewController.m in Sources */,
+				0236499D1C605291007FE445 /* ChatCell.m in Sources */,
 				027BCF591C0843E800AD1789 /* MOPUBNativeVideoAdConfigValues.m in Sources */,
 				027BCF8F1C0846ED00AD1789 /* VungleRewardedVideoCustomEvent.m in Sources */,
 				027BCEEB1C0843E800AD1789 /* MPHTMLInterstitialCustomEvent.m in Sources */,
@@ -2543,6 +2582,7 @@
 				520AA4AF187C4EF00048F174 /* BNRItemsViewController.m in Sources */,
 				02190F401C43B55900A4D164 /* MWCaptionView.m in Sources */,
 				02E8AF5A1C085A2400495328 /* ChartboostRewardedVideoCustomEvent.m in Sources */,
+				0236499A1C604C2F007FE445 /* ChatViewController.m in Sources */,
 				02387ACC1BC65D3A0023E825 /* README.md in Sources */,
 				027BCF751C0843E800AD1789 /* MPRewardedVideoAdapter.m in Sources */,
 				027BCEE11C0843E800AD1789 /* MPLogEvent+NativeVideo.m in Sources */,
@@ -2550,6 +2590,7 @@
 				026557351BA3132D0008D659 /* BNRCollectionLayout.m in Sources */,
 				027BCF1E1C0843E800AD1789 /* MPVASTInline.m in Sources */,
 				027BCF8B1C0846ED00AD1789 /* MPVungleRouter.m in Sources */,
+				02227AFD1C6097F000DCE1C0 /* NSBundle+YYAdd.m in Sources */,
 				027BCEE01C0843E800AD1789 /* MPXMLParser.m in Sources */,
 				027BCF261C0843E800AD1789 /* MPVASTStringUtilities.m in Sources */,
 				02AF6DD01B9454B30081775A /* NSString+Pinyin.m in Sources */,
@@ -2615,6 +2656,7 @@
 				02190F451C43B55900A4D164 /* MWTapDetectingImageView.m in Sources */,
 				027BCF781C0843E800AD1789 /* MPRewardedVideoCustomEvent.m in Sources */,
 				02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */,
+				023649A01C6054AB007FE445 /* MessageLayout.m in Sources */,
 				027BCF431C0843E800AD1789 /* MPCollectionViewAdPlacer.m in Sources */,
 				02387AB31BC659B00023E825 /* BNRPageControl.m in Sources */,
 				027BCF001C0843E800AD1789 /* MRImageDownloader.m in Sources */,
