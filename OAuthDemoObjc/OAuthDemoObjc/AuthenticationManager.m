@@ -211,9 +211,9 @@ NSString * const sendNewMessage = @"message/new.json";
     return [self refreshTokenIfNeededWithSignal:requestSignal];
 }
 
-- (RACSignal *)sendMessageWithContent:(NSString *)content andPhoto:(BOOL)photo {
+- (RACSignal *)sendMessageWithUserID:(NSInteger)userID content:(NSString *)content andPhoto:(BOOL)photo {
     NSUUID *photoID = [NSUUID UUID];
-    NSMutableDictionary *params = [@{@"user_id" : @(100666)} mutableCopy];
+    NSMutableDictionary *params = [@{@"user_id" : @(userID)} mutableCopy];
     if (content) {
         params[@"content"] = content;
     }

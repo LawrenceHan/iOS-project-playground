@@ -20,6 +20,7 @@
 @property (weak) IBOutlet NSButton *sendPhotoButton;
 @property (weak) IBOutlet NSButton *sendBothButton;
 @property (weak) IBOutlet NSTextField *messageTextField;
+@property (weak) IBOutlet NSTextField *receiverIdTextField;
 @property (nonatomic, strong) AuthenticationManager *manager;
 
 @end
@@ -78,29 +79,40 @@
     }];
     
     self.sendMessageButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [[self.manager sendMessageWithContent:self.messageTextField.stringValue andPhoto:NO]
+        return [[self.manager sendMessageWithUserID:self.receiverIdTextField.integerValue
+                                            content:self.messageTextField.stringValue andPhoto:NO]
                 doNext:^(id x) {
                     self.messageTextField.stringValue = @"";
                 }];
     }];
     
     self.sendPhotoButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [[self.manager sendMessageWithContent:nil andPhoto:YES]
+        return [[self.manager sendMessageWithUserID:self.receiverIdTextField.integerValue
+                                            content:nil andPhoto:YES]
                 doNext:^(id x) {
                     self.messageTextField.stringValue = @"";
                 }];
     }];
     
     self.sendBothButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [[self.manager sendMessageWithContent:self.messageTextField.stringValue andPhoto:YES]
+        return [[self.manager sendMessageWithUserID:self.receiverIdTextField.integerValue
+                                            content:self.messageTextField.stringValue andPhoto:YES]
                 doNext:^(id x) {
                     self.messageTextField.stringValue = @"";
                 }];;
     }];
     
+    RACSignal *sendingSignal = [RACSignal combineLatest:@[self.sendMessageButton.rac_command.executing.not,
+                                                          self.sendPhotoButton.rac_command.executing.not,
+                                                          self.sendBothButton.rac_command.executing.not]
+                                                 reduce:^id (NSNumber *value1, NSNumber *value2, NSNumber *value3){
+                                                     return @(value1.boolValue && value2.boolValue && value3.boolValue);
+                                                 }];
+    
     // Observing text field enable property, when sigh in signal is ongoing, returns NO
     RAC(self.usernameTextField, enabled) = [self.signinButton.rac_command.executing not];
     RAC(self.passwordTextField, enabled) = [self.signinButton.rac_command.executing not];
+    RAC(self.receiverIdTextField, enabled) = sendingSignal;
     
 }
 

@@ -13,6 +13,6 @@
 - (RACSignal *)requestForAccessToken;
 - (RACSignal *)requestForOAuthWithUsername:(NSString *)username password:(NSString *)password;
 - (RACSignal *)getMyProfile;
-- (RACSignal *)sendMessageWithContent:(NSString *)content andPhoto:(BOOL)photo;
+- (RACSignal *)sendMessageWithUserID:(NSInteger)userID content:(NSString *)content andPhoto:(BOOL)photo;
 
 @end

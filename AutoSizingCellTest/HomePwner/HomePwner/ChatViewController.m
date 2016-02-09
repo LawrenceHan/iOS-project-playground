@@ -114,10 +114,9 @@
         NSString *title = @"Hi, this is a test.";
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:title attributes:nil]];
         
-        UIImage *image = [UIImage imageNamed:@"photo8t.jpg"];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        
-        NSMutableAttributedString *attachText = [NSMutableAttributedString attachmentStringWithContent:imageView contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:font alignment:YYTextVerticalAlignmentBottom];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 140, 140)];
+        [imageView setImageURL:[NSURL URLWithString:@"http://ww1.sinaimg.cn/mw600/bce7ca57gw1e4rg0coeqqj20dw099myu.jpg"]];
+        NSMutableAttributedString *attachText = [NSMutableAttributedString attachmentStringWithContent:imageView contentMode:UIViewContentModeScaleAspectFit attachmentSize:CGSizeMake(140, 140) alignToFont:font alignment:YYTextVerticalAlignmentBottom];
         [text appendAttributedString:attachText];
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];
     }
