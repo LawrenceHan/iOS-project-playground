@@ -164,4 +164,68 @@ default:
     print("Case not covered.")
 }
 
+// MARK: - Charpter 6 Loops
+
+var myFirstInt: Int = 0
+for _ in 1...5 {
+    ++myFirstInt
+    print(myFirstInt)
+}
+
+myFirstInt = 0
+for case let i in 1...100 where i % 3 == 0 {
+    print(i)
+}
+
+
+myFirstInt = 0
+var i = 1
+while i < 6 {
+    ++myFirstInt
+    print(myFirstInt)
+    ++i
+}
+
+//var shields = 5
+//var blastersOverheating = false
+//var blasterFireCount = 0
+//var spaceDemonsDestroyed = 0
+//while shields > 0 {
+//    
+//    if spaceDemonsDestroyed == 500 {
+//        print("You beat the game!")
+//        break
+//    }
+//    
+//    if blastersOverheating {
+//        print("Blasters are overheated! Cooldown initiated.")
+//        sleep(5)
+//        print("Blasters ready to fire")
+//        sleep(1)
+//        blastersOverheating = false
+//        blasterFireCount = 0
+//    }
+//    
+//    if blasterFireCount > 100 {
+//        blastersOverheating = true
+//        continue
+//    }
+//    
+//    // FIre blasters!
+//    print("Fire blasters!")
+//    
+//    ++blasterFireCount
+//    ++spaceDemonsDestroyed
+//}
+
+var firstLoopCount = 0
+for _ in 1...5 {
+    while firstLoopCount < 2 {
+        for case let i in 0...100 where i % 2 == 0 {
+            print(i)
+        }
+        ++firstLoopCount
+    }
+}
+
 
