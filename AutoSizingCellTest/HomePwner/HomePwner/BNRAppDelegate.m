@@ -12,6 +12,7 @@
 #import <objc/message.h>
 #import "CalculateMaker.h"
 #import "BNRRACTestViewController.h"
+#import "IOS7ViewController.h"
 
 @interface BNRAppDelegate ()
 @property (nonatomic, strong) BNRRACTestViewController *rac_TestViewController;
@@ -102,6 +103,11 @@
         NSLog(@"Neither expression is true.");
     }
 
+#pragma mark - iOS 7 test
+    IOS7ViewController *vc = [IOS7ViewController new];
+    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
+    [nav pushViewController:vc animated:YES];
+    
     return YES;
 }
 
