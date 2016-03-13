@@ -21,4 +21,8 @@ let b = (aAcute == aAcutePrecomposed) // true
 print("aAcute: \(aAcute.characters.count); aAcuteDecomposed: \(aAcutePrecomposed.characters.count)")
 
 let fromStart = playground.startIndex
-let toPosition = 4 // Th
+let toPosition = 4 // The first position is 0
+let end = fromStart.advancedBy(toPosition)
+let fifthCharacter = playground[end] // 'o'
+let range = fromStart...end
+let firstFive = playground[range]

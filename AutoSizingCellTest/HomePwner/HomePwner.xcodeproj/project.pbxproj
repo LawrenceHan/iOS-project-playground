@@ -93,7 +93,12 @@
 		02387ACA1BC65D3A0023E825 /* RotateRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC21BC65D3A0023E825 /* RotateRect.m */; };
 		02387ACB1BC65D3A0023E825 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 02387AC31BC65D3A0023E825 /* LICENSE */; };
 		02387ACC1BC65D3A0023E825 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 02387AC41BC65D3A0023E825 /* README.md */; };
+		023954FC1C7A134B001090E7 /* HomePwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 023954FA1C7A134B001090E7 /* HomePwnerTests.m */; };
+		023954FD1C7A134B001090E7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 023954FB1C7A134B001090E7 /* Info.plist */; };
+		023955011C7A1416001090E7 /* NSHipsterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 023955001C7A1416001090E7 /* NSHipsterViewController.m */; };
 		0254BCE31BA4606400C5A7D8 /* BNRInteractiveAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */; };
+		025938A21C85925A001496B7 /* IOS7ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 025938A01C85925A001496B7 /* IOS7ViewController.m */; };
+		025938A31C85925A001496B7 /* IOS7ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 025938A11C85925A001496B7 /* IOS7ViewController.xib */; };
 		025A65511C0706F500443AB1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65501C0706F500443AB1 /* AdSupport.framework */; };
 		025A65531C07071800443AB1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65521C07071800443AB1 /* MediaPlayer.framework */; };
 		025A65551C07072100443AB1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65541C07072100443AB1 /* CoreLocation.framework */; };
@@ -314,7 +319,6 @@
 		02A253571C32712700C82D02 /* BNRRACTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A253551C32712700C82D02 /* BNRRACTestViewController.m */; };
 		02A253581C32712700C82D02 /* BNRRACTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A253561C32712700C82D02 /* BNRRACTestViewController.xib */; };
 		02A253721C3424B100C82D02 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A253701C3424B000C82D02 /* ReactiveCocoa.framework */; };
-		02A2537C1C34C12600C82D02 /* HomePwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A2537B1C34C12600C82D02 /* HomePwnerTests.m */; };
 		02A253921C34CE8600C82D02 /* BNRRACTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A253911C34CE8600C82D02 /* BNRRACTestViewModel.m */; };
 		02AF6C881B8C64020081775A /* AutoSizingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AF6C861B8C64020081775A /* AutoSizingCell.m */; };
 		02AF6C891B8C64020081775A /* AutoSizingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02AF6C871B8C64020081775A /* AutoSizingCell.xib */; };
@@ -502,8 +506,15 @@
 		02387AC21BC65D3A0023E825 /* RotateRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotateRect.m; sourceTree = "<group>"; };
 		02387AC31BC65D3A0023E825 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		02387AC41BC65D3A0023E825 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		023954FA1C7A134B001090E7 /* HomePwnerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePwnerTests.m; sourceTree = "<group>"; };
+		023954FB1C7A134B001090E7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		023954FF1C7A1416001090E7 /* NSHipsterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSHipsterViewController.h; sourceTree = "<group>"; };
+		023955001C7A1416001090E7 /* NSHipsterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHipsterViewController.m; sourceTree = "<group>"; };
 		0254BCE11BA4606400C5A7D8 /* BNRInteractiveAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRInteractiveAnimator.h; sourceTree = "<group>"; };
 		0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRInteractiveAnimator.m; sourceTree = "<group>"; };
+		0259389F1C85925A001496B7 /* IOS7ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS7ViewController.h; sourceTree = "<group>"; };
+		025938A01C85925A001496B7 /* IOS7ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOS7ViewController.m; sourceTree = "<group>"; };
+		025938A11C85925A001496B7 /* IOS7ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IOS7ViewController.xib; sourceTree = "<group>"; };
 		025A65501C0706F500443AB1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		025A65521C07071800443AB1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		025A65541C07072100443AB1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -918,8 +929,6 @@
 		02A253561C32712700C82D02 /* BNRRACTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRRACTestViewController.xib; sourceTree = "<group>"; };
 		02A253701C3424B000C82D02 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		02A253791C34C12600C82D02 /* HomePwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomePwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		02A2537B1C34C12600C82D02 /* HomePwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePwnerTests.m; sourceTree = "<group>"; };
-		02A2537D1C34C12600C82D02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02A253901C34CE8600C82D02 /* BNRRACTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRRACTestViewModel.h; sourceTree = "<group>"; };
 		02A253911C34CE8600C82D02 /* BNRRACTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRRACTestViewModel.m; sourceTree = "<group>"; };
 		02AF6C851B8C64020081775A /* AutoSizingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSizingCell.h; sourceTree = "<group>"; };
@@ -995,7 +1004,6 @@
 		520AA497187C4EC00048F174 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		520AA49F187C4EC00048F174 /* HomePwnerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HomePwnerTests-Info.plist"; sourceTree = "<group>"; };
 		520AA4A1187C4EC00048F174 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		520AA4A3187C4EC00048F174 /* HomePwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePwnerTests.m; sourceTree = "<group>"; };
 		520AA4AD187C4EF00048F174 /* BNRItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemsViewController.h; sourceTree = "<group>"; };
 		520AA4AE187C4EF00048F174 /* BNRItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemsViewController.m; sourceTree = "<group>"; };
 		520AA4B3187C4FC00048F174 /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
@@ -1248,6 +1256,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		023954FE1C7A13FA001090E7 /* NSHipster */ = {
+			isa = PBXGroup;
+			children = (
+				023954FF1C7A1416001090E7 /* NSHipsterViewController.h */,
+				023955001C7A1416001090E7 /* NSHipsterViewController.m */,
+			);
+			name = NSHipster;
+			sourceTree = "<group>";
+		};
 		0254BCE01BA45FEF00C5A7D8 /* Animator */ = {
 			isa = PBXGroup;
 			children = (
@@ -1255,6 +1272,30 @@
 				0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */,
 			);
 			name = Animator;
+			sourceTree = "<group>";
+		};
+		0259389C1C859219001496B7 /* iOS7 */ = {
+			isa = PBXGroup;
+			children = (
+				0259389F1C85925A001496B7 /* IOS7ViewController.h */,
+				025938A01C85925A001496B7 /* IOS7ViewController.m */,
+				025938A11C85925A001496B7 /* IOS7ViewController.xib */,
+			);
+			name = iOS7;
+			sourceTree = "<group>";
+		};
+		0259389D1C859228001496B7 /* iOS8 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iOS8;
+			sourceTree = "<group>";
+		};
+		0259389E1C859231001496B7 /* iOS9 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iOS9;
 			sourceTree = "<group>";
 		};
 		025A65781C08387D00443AB1 /* AD */ = {
@@ -1882,15 +1923,6 @@
 			name = ReactiveCocoa;
 			sourceTree = "<group>";
 		};
-		02A2537A1C34C12600C82D02 /* HomePwnerTests */ = {
-			isa = PBXGroup;
-			children = (
-				02A2537B1C34C12600C82D02 /* HomePwnerTests.m */,
-				02A2537D1C34C12600C82D02 /* Info.plist */,
-			);
-			path = HomePwnerTests;
-			sourceTree = "<group>";
-		};
 		02A253851C34CA6E00C82D02 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2050,7 +2082,6 @@
 				02AF6DC31B9454A80081775A /* Vendor */,
 				520AA484187C4EC00048F174 /* HomePwner */,
 				520AA49D187C4EC00048F174 /* HomePwnerTests */,
-				02A2537A1C34C12600C82D02 /* HomePwnerTests */,
 				520AA47D187C4EC00048F174 /* Frameworks */,
 				520AA47C187C4EC00048F174 /* Products */,
 				F0C08BF81F9B881476F830B2 /* Pods */,
@@ -2101,6 +2132,10 @@
 		520AA484187C4EC00048F174 /* HomePwner */ = {
 			isa = PBXGroup;
 			children = (
+				0259389E1C859231001496B7 /* iOS9 */,
+				0259389D1C859228001496B7 /* iOS8 */,
+				0259389C1C859219001496B7 /* iOS7 */,
+				023954FE1C7A13FA001090E7 /* NSHipster */,
 				023649971C604C16007FE445 /* ChatViewController */,
 				02A2534F1C3270E600C82D02 /* ReactiveCocoa */,
 				025A65781C08387D00443AB1 /* AD */,
@@ -2150,7 +2185,8 @@
 		520AA49D187C4EC00048F174 /* HomePwnerTests */ = {
 			isa = PBXGroup;
 			children = (
-				520AA4A3187C4EC00048F174 /* HomePwnerTests.m */,
+				023954FA1C7A134B001090E7 /* HomePwnerTests.m */,
+				023954FB1C7A134B001090E7 /* Info.plist */,
 				520AA49E187C4EC00048F174 /* Supporting Files */,
 			);
 			path = HomePwnerTests;
@@ -2262,6 +2298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				023954FD1C7A134B001090E7 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2341,6 +2378,7 @@
 				02190F1F1C43B55900A4D164 /* ImageError@3x.png in Resources */,
 				027BCF701C0843E800AD1789 /* MPPlayBtn@3x.png in Resources */,
 				02190F3D1C43B55900A4D164 /* VideoOverlay@3x.png in Resources */,
+				025938A31C85925A001496B7 /* IOS7ViewController.xib in Resources */,
 				02190F1D1C43B55900A4D164 /* ImageError.png in Resources */,
 				02190F291C43B55900A4D164 /* ImageSelectedSmallOn.png in Resources */,
 				02190F5C1C43B55900A4D164 /* LICENSE in Resources */,
@@ -2436,7 +2474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02A2537C1C34C12600C82D02 /* HomePwnerTests.m in Sources */,
+				023954FC1C7A134B001090E7 /* HomePwnerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2469,6 +2507,7 @@
 				02190F421C43B55900A4D164 /* MWGridViewController.m in Sources */,
 				027BCF5F1C0843E800AD1789 /* MOPUBReplayView.m in Sources */,
 				027BCF8E1C0846ED00AD1789 /* VungleInterstitialCustomEvent.m in Sources */,
+				025938A21C85925A001496B7 /* IOS7ViewController.m in Sources */,
 				027BCF0A1C0843E800AD1789 /* UIView+MPAdditions.m in Sources */,
 				027BCEF71C0843E800AD1789 /* MPMRAIDInterstitialViewController.m in Sources */,
 				027BCEE61C0843E800AD1789 /* MPQRunLoopOperation.m in Sources */,
@@ -2665,6 +2704,7 @@
 				027BCF411C0843E800AD1789 /* MPAdPositioning.m in Sources */,
 				027BCEF61C0843E800AD1789 /* MPMRAIDInterstitialCustomEvent.m in Sources */,
 				027BCF1D1C0843E800AD1789 /* MPVASTIndustryIcon.m in Sources */,
+				023955011C7A1416001090E7 /* NSHipsterViewController.m in Sources */,
 				027BCF0C1C0843E800AD1789 /* MPAnalyticsTracker.m in Sources */,
 				027BCEF11C0843E800AD1789 /* MPCoreInstanceProvider.m in Sources */,
 				02AF6DD81B94A57F0081775A /* BNRTableViewController.m in Sources */,
