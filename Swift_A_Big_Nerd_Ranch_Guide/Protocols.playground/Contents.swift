@@ -60,7 +60,8 @@ func printTable(dataSource: protocol<TabularDataSource, CustomStringConvertible>
         for j in 0 ..< dataSource.numberOfColumns {
             let item = dataSource.itemForRow(i, column: j)
             let itemString = " \(item) |"
-            let paddingAmount = columnWidths[j] - itemString.characters.count
+            let paddingAmount = columnWidths[j] > itemString.characters.count ?
+                columnWidths[j] - itemString.characters.count : itemString.characters.count - columnWidths[j]
             out += padding(paddingAmount) + itemString
         }
         
@@ -123,7 +124,7 @@ struct Department: TabularDataSource, CustomStringConvertible {
 }
 
 var department = Department(name: "Engineering")
-department.addPerson(Person(name: "Joe", age: 30, yearsOfExperience: 6))
+department.addPerson(Person(name: "Joe", age: 3000, yearsOfExperience: 6))
 department.addPerson(Person(name: "Karen", age: 40, yearsOfExperience: 18))
 department.addPerson(Person(name: "Fred", age: 50, yearsOfExperience: 20))
 
