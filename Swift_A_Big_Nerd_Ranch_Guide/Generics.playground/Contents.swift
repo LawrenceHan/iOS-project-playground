@@ -34,6 +34,16 @@ struct Stack<Element>: SequenceType {
         return Stack<U>(items: mappedItems)
     }
     
+    func filter(f: Element -> Bool) -> Stack<Element> {
+        var filteredItems = [Element]()
+        for item in items {
+            if f(item) {
+                filteredItems.append(item)
+            }
+        }
+        return Stack<Element>(items: filteredItems)
+    }
+    
     func generate() -> StackGenerator<Element> {
         return StackGenerator(stack: self)
     }
@@ -120,5 +130,25 @@ pushItemsOntoStack(&myStack, fromSequence: myOtherStack)
 for value in myStack {
     print("after pushing items onto stack, got \(value)")
 }
+
+let filteredStack = myStack.filter { $0 > 10 }
+print(filteredStack)
+
+func findAll<T: Equatable>(array: [T], element: T) -> [Int] {
+    var indices = [Int]()
+    var index = 0
+    for item in array {
+        if item == element {
+            indices.append(index)
+        }
+        index++
+    }
+    return indices
+}
+
+let numbers = [5, 3, 7, 3, 9]
+findAll(numbers, element: 3)
+
+
 
 
