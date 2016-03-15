@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		027475001C97E9E30077388A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027474FF1C97E9E30077388A /* AppDelegate.swift */; };
+		027475021C97E9E30077388A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027475011C97E9E30077388A /* ViewController.swift */; };
+		027475051C97E9E30077388A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027475031C97E9E30077388A /* Main.storyboard */; };
+		027475071C97E9E30077388A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027475061C97E9E30077388A /* Assets.xcassets */; };
+		0274750A1C97E9E30077388A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027475081C97E9E30077388A /* LaunchScreen.storyboard */; };
+		027475151C97E9E30077388A /* LHChatMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027475141C97E9E30077388A /* LHChatMessageTests.swift */; };
+		F77B571284AFF229624D5B3E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84B74BDCD301326574ADF38 /* Pods.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		027475111C97E9E30077388A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 027474F41C97E9E30077388A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 027474FB1C97E9E30077388A;
+			remoteInfo = LHChatMessage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		027474FC1C97E9E30077388A /* LHChatMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LHChatMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		027474FF1C97E9E30077388A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		027475011C97E9E30077388A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		027475041C97E9E30077388A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		027475061C97E9E30077388A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		027475091C97E9E30077388A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0274750B1C97E9E30077388A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		027475101C97E9E30077388A /* LHChatMessageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LHChatMessageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		027475141C97E9E30077388A /* LHChatMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHChatMessageTests.swift; sourceTree = "<group>"; };
+		027475161C97E9E30077388A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39EE4DC6FA54653D44930B01 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CFE9D421EA9DB618D881C92C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F84B74BDCD301326574ADF38 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		027474F91C97E9E30077388A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77B571284AFF229624D5B3E /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0274750D1C97E9E30077388A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		027474F31C97E9E30077388A = {
+			isa = PBXGroup;
+			children = (
+				027474FE1C97E9E30077388A /* LHChatMessage */,
+				027475131C97E9E30077388A /* LHChatMessageTests */,
+				027474FD1C97E9E30077388A /* Products */,
+				0ECE4DD204CD7F2B3A4C9EE5 /* Pods */,
+				3CD72E003BDDBB3858204428 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		027474FD1C97E9E30077388A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				027474FC1C97E9E30077388A /* LHChatMessage.app */,
+				027475101C97E9E30077388A /* LHChatMessageTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		027474FE1C97E9E30077388A /* LHChatMessage */ = {
+			isa = PBXGroup;
+			children = (
+				027474FF1C97E9E30077388A /* AppDelegate.swift */,
+				027475011C97E9E30077388A /* ViewController.swift */,
+				027475031C97E9E30077388A /* Main.storyboard */,
+				027475061C97E9E30077388A /* Assets.xcassets */,
+				027475081C97E9E30077388A /* LaunchScreen.storyboard */,
+				0274750B1C97E9E30077388A /* Info.plist */,
+			);
+			path = LHChatMessage;
+			sourceTree = "<group>";
+		};
+		027475131C97E9E30077388A /* LHChatMessageTests */ = {
+			isa = PBXGroup;
+			children = (
+				027475141C97E9E30077388A /* LHChatMessageTests.swift */,
+				027475161C97E9E30077388A /* Info.plist */,
+			);
+			path = LHChatMessageTests;
+			sourceTree = "<group>";
+		};
+		0ECE4DD204CD7F2B3A4C9EE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CFE9D421EA9DB618D881C92C /* Pods.debug.xcconfig */,
+				39EE4DC6FA54653D44930B01 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3CD72E003BDDBB3858204428 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F84B74BDCD301326574ADF38 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		027474FB1C97E9E30077388A /* LHChatMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 027475191C97E9E30077388A /* Build configuration list for PBXNativeTarget "LHChatMessage" */;
+			buildPhases = (
+				2A4E64630079BEFA798E0EAD /* Check Pods Manifest.lock */,
+				027474F81C97E9E30077388A /* Sources */,
+				027474F91C97E9E30077388A /* Frameworks */,
+				027474FA1C97E9E30077388A /* Resources */,
+				2518E60C3CB0B2AF3EC64CE8 /* Embed Pods Frameworks */,
+				A9CA7E600260188C4B751C01 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LHChatMessage;
+			productName = LHChatMessage;
+			productReference = 027474FC1C97E9E30077388A /* LHChatMessage.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0274750F1C97E9E30077388A /* LHChatMessageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0274751C1C97E9E30077388A /* Build configuration list for PBXNativeTarget "LHChatMessageTests" */;
+			buildPhases = (
+				0274750C1C97E9E30077388A /* Sources */,
+				0274750D1C97E9E30077388A /* Frameworks */,
+				0274750E1C97E9E30077388A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				027475121C97E9E30077388A /* PBXTargetDependency */,
+			);
+			name = LHChatMessageTests;
+			productName = LHChatMessageTests;
+			productReference = 027475101C97E9E30077388A /* LHChatMessageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		027474F41C97E9E30077388A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Hanguang;
+				TargetAttributes = {
+					027474FB1C97E9E30077388A = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					0274750F1C97E9E30077388A = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 027474FB1C97E9E30077388A;
+					};
+				};
+			};
+			buildConfigurationList = 027474F71C97E9E30077388A /* Build configuration list for PBXProject "LHChatMessage" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 027474F31C97E9E30077388A;
+			productRefGroup = 027474FD1C97E9E30077388A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				027474FB1C97E9E30077388A /* LHChatMessage */,
+				0274750F1C97E9E30077388A /* LHChatMessageTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		027474FA1C97E9E30077388A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0274750A1C97E9E30077388A /* LaunchScreen.storyboard in Resources */,
+				027475071C97E9E30077388A /* Assets.xcassets in Resources */,
+				027475051C97E9E30077388A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0274750E1C97E9E30077388A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2518E60C3CB0B2AF3EC64CE8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A4E64630079BEFA798E0EAD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A9CA7E600260188C4B751C01 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		027474F81C97E9E30077388A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				027475021C97E9E30077388A /* ViewController.swift in Sources */,
+				027475001C97E9E30077388A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0274750C1C97E9E30077388A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				027475151C97E9E30077388A /* LHChatMessageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		027475121C97E9E30077388A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 027474FB1C97E9E30077388A /* LHChatMessage */;
+			targetProxy = 027475111C97E9E30077388A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		027475031C97E9E30077388A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				027475041C97E9E30077388A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		027475081C97E9E30077388A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				027475091C97E9E30077388A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		027475171C97E9E30077388A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		027475181C97E9E30077388A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0274751A1C97E9E30077388A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFE9D421EA9DB618D881C92C /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LHChatMessage/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.LHChatMessage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0274751B1C97E9E30077388A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39EE4DC6FA54653D44930B01 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LHChatMessage/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.LHChatMessage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0274751D1C97E9E30077388A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LHChatMessageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.LHChatMessageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LHChatMessage.app/LHChatMessage";
+			};
+			name = Debug;
+		};
+		0274751E1C97E9E30077388A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LHChatMessageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.LHChatMessageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LHChatMessage.app/LHChatMessage";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		027474F71C97E9E30077388A /* Build configuration list for PBXProject "LHChatMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				027475171C97E9E30077388A /* Debug */,
+				027475181C97E9E30077388A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		027475191C97E9E30077388A /* Build configuration list for PBXNativeTarget "LHChatMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0274751A1C97E9E30077388A /* Debug */,
+				0274751B1C97E9E30077388A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0274751C1C97E9E30077388A /* Build configuration list for PBXNativeTarget "LHChatMessageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0274751D1C97E9E30077388A /* Debug */,
+				0274751E1C97E9E30077388A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 027474F41C97E9E30077388A /* Project object */;
+}
