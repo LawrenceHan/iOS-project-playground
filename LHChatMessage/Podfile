@@ -5,3 +5,5 @@ use_frameworks!
 
 pod 'ReactiveCocoa'
 pod 'RealmSwift'
+pod 'XMPPFramework'
+pod 'AFNetworking'

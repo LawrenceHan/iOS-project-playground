@@ -84,14 +84,22 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods/AFNetworking.framework"
+  install_framework "Pods/CocoaAsyncSocket.framework"
+  install_framework "Pods/CocoaLumberjack.framework"
   install_framework "Pods/ReactiveCocoa.framework"
   install_framework "Pods/Realm.framework"
   install_framework "Pods/RealmSwift.framework"
   install_framework "Pods/Result.framework"
+  install_framework "Pods/XMPPFramework.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods/AFNetworking.framework"
+  install_framework "Pods/CocoaAsyncSocket.framework"
+  install_framework "Pods/CocoaLumberjack.framework"
   install_framework "Pods/ReactiveCocoa.framework"
   install_framework "Pods/Realm.framework"
   install_framework "Pods/RealmSwift.framework"
   install_framework "Pods/Result.framework"
+  install_framework "Pods/XMPPFramework.framework"
 fi

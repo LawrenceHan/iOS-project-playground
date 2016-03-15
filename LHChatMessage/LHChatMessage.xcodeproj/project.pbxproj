@@ -13,6 +13,8 @@
 		027475071C97E9E30077388A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027475061C97E9E30077388A /* Assets.xcassets */; };
 		0274750A1C97E9E30077388A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027475081C97E9E30077388A /* LaunchScreen.storyboard */; };
 		027475151C97E9E30077388A /* LHChatMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027475141C97E9E30077388A /* LHChatMessageTests.swift */; };
+		027475261C980D3F0077388A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027475251C980D3F0077388A /* LoginViewController.swift */; };
+		027475281C980E3C0077388A /* RosterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027475271C980E3C0077388A /* RosterTableViewController.swift */; };
 		F77B571284AFF229624D5B3E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84B74BDCD301326574ADF38 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,9 @@
 		027475101C97E9E30077388A /* LHChatMessageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LHChatMessageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		027475141C97E9E30077388A /* LHChatMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHChatMessageTests.swift; sourceTree = "<group>"; };
 		027475161C97E9E30077388A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0274751F1C97F6CA0077388A /* LHChatMessage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LHChatMessage-Bridging-Header.h"; sourceTree = "<group>"; };
+		027475251C980D3F0077388A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		027475271C980E3C0077388A /* RosterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTableViewController.swift; sourceTree = "<group>"; };
 		39EE4DC6FA54653D44930B01 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CFE9D421EA9DB618D881C92C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F84B74BDCD301326574ADF38 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,11 +90,14 @@
 			isa = PBXGroup;
 			children = (
 				027474FF1C97E9E30077388A /* AppDelegate.swift */,
+				027475251C980D3F0077388A /* LoginViewController.swift */,
+				027475271C980E3C0077388A /* RosterTableViewController.swift */,
 				027475011C97E9E30077388A /* ViewController.swift */,
 				027475031C97E9E30077388A /* Main.storyboard */,
 				027475061C97E9E30077388A /* Assets.xcassets */,
 				027475081C97E9E30077388A /* LaunchScreen.storyboard */,
 				0274750B1C97E9E30077388A /* Info.plist */,
+				0274751F1C97F6CA0077388A /* LHChatMessage-Bridging-Header.h */,
 			);
 			path = LHChatMessage;
 			sourceTree = "<group>";
@@ -272,6 +280,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				027475281C980E3C0077388A /* RosterTableViewController.swift in Sources */,
+				027475261C980D3F0077388A /* LoginViewController.swift in Sources */,
 				027475021C97E9E30077388A /* ViewController.swift in Sources */,
 				027475001C97E9E30077388A /* AppDelegate.swift in Sources */,
 			);
@@ -401,10 +411,13 @@
 			baseConfigurationReference = CFE9D421EA9DB618D881C92C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LHChatMessage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.LHChatMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LHChatMessage/LHChatMessage-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -413,10 +426,12 @@
 			baseConfigurationReference = 39EE4DC6FA54653D44930B01 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LHChatMessage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.LHChatMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LHChatMessage/LHChatMessage-Bridging-Header.h";
 			};
 			name = Release;
 		};
