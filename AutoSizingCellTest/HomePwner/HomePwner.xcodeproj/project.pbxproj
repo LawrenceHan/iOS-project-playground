@@ -76,6 +76,8 @@
 		02190F5B1C43B55900A4D164 /* video_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02190F181C43B55900A4D164 /* video_thumb.jpg */; };
 		02190F5C1C43B55900A4D164 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 02190F191C43B55900A4D164 /* LICENSE */; };
 		02190F5D1C43B55900A4D164 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 02190F1A1C43B55900A4D164 /* README.md */; };
+		02196AF51C98F6D30078A2B1 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02196AF31C98F6D30078A2B1 /* StackViewController.swift */; };
+		02196AF61C98F6D30078A2B1 /* StackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02196AF41C98F6D30078A2B1 /* StackViewController.xib */; };
 		02227AF71C605CE200DCE1C0 /* EmoticonQQ.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02227AF61C605CE200DCE1C0 /* EmoticonQQ.bundle */; };
 		02227AFA1C6075D500DCE1C0 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 02227AF91C6075D500DCE1C0 /* UIView+Additions.m */; };
 		02227AFD1C6097F000DCE1C0 /* NSBundle+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 02227AFC1C6097F000DCE1C0 /* NSBundle+YYAdd.m */; };
@@ -477,6 +479,8 @@
 		02190F181C43B55900A4D164 /* video_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = video_thumb.jpg; sourceTree = "<group>"; };
 		02190F191C43B55900A4D164 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		02190F1A1C43B55900A4D164 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		02196AF31C98F6D30078A2B1 /* StackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
+		02196AF41C98F6D30078A2B1 /* StackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StackViewController.xib; sourceTree = "<group>"; };
 		02227AF61C605CE200DCE1C0 /* EmoticonQQ.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmoticonQQ.bundle; sourceTree = "<group>"; };
 		02227AF81C6075D500DCE1C0 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		02227AF91C6075D500DCE1C0 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
@@ -2166,6 +2170,8 @@
 				520AA4BC187C87C50048F174 /* BNRDetailViewController.h */,
 				520AA4BD187C87C50048F174 /* BNRDetailViewController.m */,
 				520AA4BE187C87C50048F174 /* BNRDetailViewController.xib */,
+				02196AF31C98F6D30078A2B1 /* StackViewController.swift */,
+				02196AF41C98F6D30078A2B1 /* StackViewController.xib */,
 				520AA485187C4EC00048F174 /* Supporting Files */,
 			);
 			path = HomePwner;
@@ -2333,6 +2339,7 @@
 				02190F3E1C43B55900A4D164 /* .gitkeep in Resources */,
 				02190F331C43B55900A4D164 /* UIBarButtonItemArrowLeft@2x.png in Resources */,
 				02190F501C43B55900A4D164 /* photo4.jpg in Resources */,
+				02196AF61C98F6D30078A2B1 /* StackViewController.xib in Resources */,
 				027BCF721C0843E800AD1789 /* MPUnmutedBtn@2x.png in Resources */,
 				02E8AF2A1C08538E00495328 /* vg_mute_on.png in Resources */,
 				02190F371C43B55900A4D164 /* UIBarButtonItemArrowRight@3x.png in Resources */,
@@ -2595,6 +2602,7 @@
 				027BCF5E1C0843E800AD1789 /* MOPUBPlayerViewController.m in Sources */,
 				027BCF401C0843E800AD1789 /* MPTableViewCellImpressionTracker.m in Sources */,
 				027BCF321C0843E800AD1789 /* MPDiskLRUCache.m in Sources */,
+				02196AF51C98F6D30078A2B1 /* StackViewController.swift in Sources */,
 				027BCF381C0843E800AD1789 /* MPNativeAdSourceQueue.m in Sources */,
 				027BCEF01C0843E800AD1789 /* MPInterstitialViewController.m in Sources */,
 				0236499D1C605291007FE445 /* ChatCell.m in Sources */,
