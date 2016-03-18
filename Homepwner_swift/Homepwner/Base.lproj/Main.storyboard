@@ -18,7 +18,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cq0-lc-WMe" id="f9M-rx-b9D">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="64.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1G-Ok-7y4">
@@ -33,7 +33,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-Gq-mdR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-Gq-mdR">
                                             <rect key="frame" x="552" y="23" width="40" height="20"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,25 +101,17 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
-                                                        <variation key="heightClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="0.0" width="276" height="21"/>
-                                                        </variation>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YVF-QU-lDs">
                                                         <rect key="frame" x="53" y="0.0" width="507" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
-                                                        <variation key="heightClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="29" width="276" height="30"/>
-                                                        </variation>
                                                         <connections>
                                                             <outlet property="delegate" destination="xdc-Bh-leC" id="AcZ-GU-Qjw"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
-                                                <variation key="heightClass=compact" axis="vertical" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="0.0" width="276" height="59"/>
-                                                </variation>
+                                                <variation key="heightClass=compact" axis="vertical"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jYE-s2-w0i">
                                                 <rect key="frame" x="0.0" y="38" width="560" height="30"/>
@@ -129,25 +121,17 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
-                                                        <variation key="heightClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="0.0" width="276" height="21"/>
-                                                        </variation>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bJs-PY-usd">
                                                         <rect key="frame" x="53" y="0.0" width="507" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
-                                                        <variation key="heightClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="29" width="276" height="30"/>
-                                                        </variation>
                                                         <connections>
                                                             <outlet property="delegate" destination="xdc-Bh-leC" id="B02-cc-3Ss"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
-                                                <variation key="heightClass=compact" axis="vertical" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="67" width="276" height="59"/>
-                                                </variation>
+                                                <variation key="heightClass=compact" axis="vertical"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3u2-Gq-a2c">
                                                 <rect key="frame" x="0.0" y="76" width="560" height="30"/>
@@ -157,24 +141,18 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
-                                                        <variation key="heightClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="0.0" width="276" height="21"/>
-                                                        </variation>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3Y-Of-OZV">
                                                         <rect key="frame" x="53" y="0.0" width="507" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
-                                                        <variation key="heightClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="29" width="276" height="30"/>
-                                                        </variation>
                                                         <connections>
                                                             <outlet property="delegate" destination="xdc-Bh-leC" id="UUd-MR-jWc"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
                                                 <variation key="heightClass=compact" axis="vertical" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="133" width="276" height="59"/>
+                                                    <rect key="frame" x="0.0" y="134" width="276" height="59"/>
                                                 </variation>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LX7-pV-1D4">
@@ -183,7 +161,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="200" width="276" height="77"/>
+                                                    <rect key="frame" x="0.0" y="201" width="276" height="75"/>
                                                 </variation>
                                             </label>
                                         </subviews>
@@ -191,9 +169,15 @@
                                             <constraint firstItem="bJs-PY-usd" firstAttribute="leading" secondItem="YVF-QU-lDs" secondAttribute="leading" id="UTv-Zj-ZmP"/>
                                             <constraint firstItem="H3Y-Of-OZV" firstAttribute="leading" secondItem="bJs-PY-usd" secondAttribute="leading" id="Y0G-LZ-l2J"/>
                                         </constraints>
+                                        <variation key="heightClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="276" height="276"/>
+                                        </variation>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="75q-Jh-q7u">
                                         <rect key="frame" x="0.0" y="143" width="560" height="333"/>
+                                        <variation key="heightClass=compact" misplaced="YES">
+                                            <rect key="frame" x="284" y="0.0" width="276" height="276"/>
+                                        </variation>
                                     </imageView>
                                 </subviews>
                                 <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually"/>

@@ -26,7 +26,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="332"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="332"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,10 +41,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="334" height="228"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="334" height="228"/>
+                                    <size key="minSize" width="319" height="228"/>
                                     <size key="maxSize" width="494" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="334" height="228"/>
+                                    <size key="minSize" width="319" height="228"/>
                                     <size key="maxSize" width="494" height="10000000"/>
                                 </textView>
                             </subviews>
@@ -55,7 +55,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Zis-Iz-PYI">
-                            <rect key="frame" x="319" y="1" width="16" height="228"/>
+                            <rect key="frame" x="320" y="1" width="15" height="228"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>

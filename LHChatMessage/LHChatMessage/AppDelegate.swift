@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
     func connect() -> Bool {
         if !xmppStream.isConnected() {
             let jabberID = NSUserDefaults.standardUserDefaults().stringForKey("userID")
-            let myPassword = NSUserDefaults.standardUserDefaults().stringForKey("userPassword")
+            var myPassword = NSUserDefaults.standardUserDefaults().stringForKey("userPassword")
             
             if !xmppStream.isDisconnected() {
                 return true
@@ -100,7 +100,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
                 return false
             }
             
-            xmppStream.myJID = XMPPJID.jidWithString(jabberID)
+            xmppStream.hostName = "xmpp.flirten.lab"
+            xmppStream.hostPort = 5222
+            
+            myPassword = "7988146fc5f58527a2580cd724f9a1685f448dba"
+            xmppStream.myJID = XMPPJID.jidWithString("195677@xmpp.flirten.lab")
+//            xmppStream.myJID = XMPPJID.jidWithString(jabberID)
             
             do {
                 try xmppStream.connectWithTimeout(XMPPStreamTimeoutNone)
@@ -167,3 +172,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
     
 }
 
+/*
+func connect() -> Bool {
+if !xmppStream.isConnected() {
+let jabberID = NSUserDefaults.standardUserDefaults().stringForKey("userID")
+var myPassword = NSUserDefaults.standardUserDefaults().stringForKey("userPassword")
+
+if !xmppStream.isDisconnected() {
+return true
+}
+if jabberID == nil && myPassword == nil {
+return false
+}
+
+let baseURL = "http://integration.flirten.de/api_integration.php"
+let manager = AFHTTPSessionManager(baseURL: NSURL(string: baseURL))
+let paramerter = ["grant_type": "client_credentials", "scope": ""]
+
+var connected = false
+
+[manager .POST("v2/auth/access_token", parameters: paramerter,
+success: { (dataTask: NSURLSessionDataTask, object: AnyObject?) -> Void in
+
+
+self.xmppStream.hostName = "xmpp.flirten.lab"
+self.xmppStream.hostPort = 5222
+
+myPassword = "b8ff369bf32fb046d20604238486b57fa84f8860"
+self.xmppStream.myJID = XMPPJID.jidWithString("195677@xmpp.flirten.lab")
+//            xmppStream.myJID = XMPPJID.jidWithString(jabberID)
+
+do {
+try self.xmppStream.connectWithTimeout(XMPPStreamTimeoutNone)
+print("Connection success")
+connected = true
+} catch {
+print("Something went wrong!")
+connected = false
+}
+
+}, failure: { (dataTask: NSURLSessionDataTask?, error: NSError) -> Void in
+print("dataTask: \(dataTask), error: \(error)")
+})]
+return connected
+} else {
+return true
+}
+}
+*/
