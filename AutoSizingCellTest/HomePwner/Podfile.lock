@@ -30,7 +30,7 @@ PODS:
   - YYKit/no-arc (0.9.11)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.0.0-beta.1)
+  - AFNetworking
   - DACircularProgress
   - MagicalRecord
   - Masonry

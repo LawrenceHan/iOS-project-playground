@@ -13,6 +13,8 @@
 #import "BNRImageStore.h"
 #import "BNRItemStore.h"
 #import "UIImageEffects.h"
+#import "VBFDownloadButton.h"
+#import "UIColor+FlatColors.h"
 
 @interface BNRDetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate,
     UITextFieldDelegate, UIPopoverControllerDelegate, UIViewControllerRestoration>
@@ -108,6 +110,8 @@
 {
     [super viewDidLoad];
     
+    [self addDownloadButton];
+    
     // Register notification
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(applicationResigningActive:)
@@ -171,6 +175,17 @@
     RAC(self.valueField, text) = [[self.nameField.rac_textSignal map:^id(id value) {
         return [self latestSignal];
     }] switchToLatest];
+}
+
+- (void)addDownloadButton {
+    VBFDownloadButton *downloadButton = [[VBFDownloadButton alloc]initWithButtonDiameter:60
+                                                                                  center:self.view.center
+                                                                                   color:[UIColor flatSunFlowerColor]
+                                                                       progressLineColor:[UIColor flatCloudsColor]
+                                                                            downloadIcon:[UIImage imageNamed:@"downloadCloud"]
+                                                                      progressViewLength:200];
+
+    [self.view addSubview:downloadButton];
 }
 
 - (RACSignal *)latestSignal {

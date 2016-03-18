@@ -98,6 +98,11 @@
 		023954FC1C7A134B001090E7 /* HomePwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 023954FA1C7A134B001090E7 /* HomePwnerTests.m */; };
 		023954FD1C7A134B001090E7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 023954FB1C7A134B001090E7 /* Info.plist */; };
 		023955011C7A1416001090E7 /* NSHipsterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 023955001C7A1416001090E7 /* NSHipsterViewController.m */; };
+		0250D4CF1C9C07FF005DF77E /* VBFDownloadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0250D4CE1C9C07FF005DF77E /* VBFDownloadButton.m */; };
+		0250D4D11C9C085C005DF77E /* downloadCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0250D4D01C9C085C005DF77E /* downloadCloud@2x.png */; };
+		0250D4D31C9C0863005DF77E /* downloadIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0250D4D21C9C0863005DF77E /* downloadIcon@2x.png */; };
+		0250D4D61C9C0916005DF77E /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0250D4D51C9C0916005DF77E /* UIColor+FlatColors.m */; };
+		0250D4D81C9C0C64005DF77E /* Tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0250D4D71C9C0C64005DF77E /* Tick@2x.png */; };
 		0254BCE31BA4606400C5A7D8 /* BNRInteractiveAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */; };
 		025938A21C85925A001496B7 /* IOS7ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 025938A01C85925A001496B7 /* IOS7ViewController.m */; };
 		025938A31C85925A001496B7 /* IOS7ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 025938A11C85925A001496B7 /* IOS7ViewController.xib */; };
@@ -514,6 +519,13 @@
 		023954FB1C7A134B001090E7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		023954FF1C7A1416001090E7 /* NSHipsterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSHipsterViewController.h; sourceTree = "<group>"; };
 		023955001C7A1416001090E7 /* NSHipsterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHipsterViewController.m; sourceTree = "<group>"; };
+		0250D4CD1C9C07FF005DF77E /* VBFDownloadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBFDownloadButton.h; sourceTree = "<group>"; };
+		0250D4CE1C9C07FF005DF77E /* VBFDownloadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFDownloadButton.m; sourceTree = "<group>"; };
+		0250D4D01C9C085C005DF77E /* downloadCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCloud@2x.png"; sourceTree = "<group>"; };
+		0250D4D21C9C0863005DF77E /* downloadIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadIcon@2x.png"; sourceTree = "<group>"; };
+		0250D4D41C9C0916005DF77E /* UIColor+FlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatColors.h"; sourceTree = "<group>"; };
+		0250D4D51C9C0916005DF77E /* UIColor+FlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatColors.m"; sourceTree = "<group>"; };
+		0250D4D71C9C0C64005DF77E /* Tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tick@2x.png"; sourceTree = "<group>"; };
 		0254BCE11BA4606400C5A7D8 /* BNRInteractiveAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRInteractiveAnimator.h; sourceTree = "<group>"; };
 		0254BCE21BA4606400C5A7D8 /* BNRInteractiveAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRInteractiveAnimator.m; sourceTree = "<group>"; };
 		0259389F1C85925A001496B7 /* IOS7ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS7ViewController.h; sourceTree = "<group>"; };
@@ -1939,6 +1951,13 @@
 		02AF6DC31B9454A80081775A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				0250D4D71C9C0C64005DF77E /* Tick@2x.png */,
+				0250D4D01C9C085C005DF77E /* downloadCloud@2x.png */,
+				0250D4D21C9C0863005DF77E /* downloadIcon@2x.png */,
+				0250D4D41C9C0916005DF77E /* UIColor+FlatColors.h */,
+				0250D4D51C9C0916005DF77E /* UIColor+FlatColors.m */,
+				0250D4CD1C9C07FF005DF77E /* VBFDownloadButton.h */,
+				0250D4CE1C9C07FF005DF77E /* VBFDownloadButton.m */,
 				027BCD1A1C0843E700AD1789 /* MoPubSDK */,
 				02387AB41BC65D3A0023E825 /* KYAnimatedPageControl */,
 				02AF6DDF1B94A8650081775A /* SpringAnimationOC.h */,
@@ -2363,6 +2382,7 @@
 				02190F4A1C43B55900A4D164 /* photo1.jpg in Resources */,
 				02190F1B1C43B55900A4D164 /* .gitignore in Resources */,
 				027BCF641C0843E800AD1789 /* MPCloseBtn@3x.png in Resources */,
+				0250D4D81C9C0C64005DF77E /* Tick@2x.png in Resources */,
 				02190F271C43B55900A4D164 /* ImageSelectedSmallOff@2x.png in Resources */,
 				027BCF681C0843E800AD1789 /* MPDAAIcon.png in Resources */,
 				02AF6DCF1B9454B30081775A /* LICENSE in Resources */,
@@ -2393,6 +2413,7 @@
 				02E8AF261C08538E00495328 /* __vungle.db in Resources */,
 				02190F351C43B55900A4D164 /* UIBarButtonItemArrowRight.png in Resources */,
 				02DD25331BA4780300628F8A /* Storyboard.storyboard in Resources */,
+				0250D4D31C9C0863005DF77E /* downloadIcon@2x.png in Resources */,
 				02AF6DCE1B9454B30081775A /* .gitignore in Resources */,
 				02936D6F1BA5B26D00C70608 /* Launch Screen.storyboard in Resources */,
 				02190F2E1C43B55900A4D164 /* PlayButtonOverlayLarge@3x.png in Resources */,
@@ -2406,6 +2427,7 @@
 				02190F231C43B55900A4D164 /* ImageSelectedOn.png in Resources */,
 				02190F541C43B55900A4D164 /* photo6.jpg in Resources */,
 				02190F361C43B55900A4D164 /* UIBarButtonItemArrowRight@2x.png in Resources */,
+				0250D4D11C9C085C005DF77E /* downloadCloud@2x.png in Resources */,
 				02190F3A1C43B55900A4D164 /* UIBarButtonItemGrid@3x.png in Resources */,
 				02190F1C1C43B55900A4D164 /* .gitkeep in Resources */,
 				02190F321C43B55900A4D164 /* UIBarButtonItemArrowLeft.png in Resources */,
@@ -2544,6 +2566,7 @@
 				027BCEEF1C0843E800AD1789 /* MPInterstitialCustomEventAdapter.m in Sources */,
 				02387AC51BC65D3A0023E825 /* GooeyCircle.m in Sources */,
 				027BCF2F1C0843E800AD1789 /* MPInterstitialCustomEvent.m in Sources */,
+				0250D4CF1C9C07FF005DF77E /* VBFDownloadButton.m in Sources */,
 				027BCF1A1C0843E800AD1789 /* MPVASTCompanionAd.m in Sources */,
 				027BCF271C0843E800AD1789 /* MPVASTTrackingEvent.m in Sources */,
 				027BCF3D1C0843E800AD1789 /* MPNativeView.m in Sources */,
@@ -2666,6 +2689,7 @@
 				027BCEC51C0843E800AD1789 /* MPMillennialBannerCustomEvent.m in Sources */,
 				027BCF121C0843E800AD1789 /* MPLogging.m in Sources */,
 				027BCF041C0843E800AD1789 /* MRVideoPlayerManager.m in Sources */,
+				0250D4D61C9C0916005DF77E /* UIColor+FlatColors.m in Sources */,
 				027BCEE21C0843E800AD1789 /* MPLogEvent.m in Sources */,
 				026557321BA29FD50008D659 /* BNRDynamicFlowLayout.m in Sources */,
 				027BCF4D1C0843E800AD1789 /* MPNativeCustomEvent.m in Sources */,
@@ -2895,7 +2919,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomePwner/HomePwner-Prefix.pch";
 				INFOPLIST_FILE = "HomePwner/HomePwner-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.${PRODUCT_NAME:rfc1034identifier}";
@@ -2931,7 +2955,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomePwner/HomePwner-Prefix.pch";
 				INFOPLIST_FILE = "HomePwner/HomePwner-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bignerdranch.${PRODUCT_NAME:rfc1034identifier}";

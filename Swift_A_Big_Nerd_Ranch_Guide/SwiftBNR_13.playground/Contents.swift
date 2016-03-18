@@ -60,3 +60,8 @@ bigProjections
 let totalProjection = projectedPopulations.reduce(0) { $0 + $1 }
 totalProjection
 
+let array = [1, 1234, 4, 12, 66, 11, 123]
+let result = array.reduce(0) { $0 + $1 }
+print(result)
+
+

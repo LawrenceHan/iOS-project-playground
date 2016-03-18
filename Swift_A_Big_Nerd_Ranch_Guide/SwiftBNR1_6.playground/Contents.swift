@@ -227,5 +227,3 @@ for _ in 1...5 {
         ++firstLoopCount
     }
 }
-
-
