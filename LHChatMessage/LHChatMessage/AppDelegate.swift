@@ -8,6 +8,7 @@
 
 import UIKit
 import XMPPFramework
+import AFNetworking
 
 protocol ChatDelegate {
     func buddyWentOnline(name: String)
@@ -18,7 +19,7 @@ protocol ChatDelegate {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPStreamDelegate {
-
+    
     var window: UIWindow?
     
     // XMPP
@@ -26,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
     let xmppStream = XMPPStream()
     let xmppRosterStorage = XMPPRosterCoreDataStorage()
     var xmppRoster: XMPPRoster
-
+    
     override init() {
         xmppRoster = XMPPRoster(rosterStorage: xmppRosterStorage)
     }
@@ -40,31 +41,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
         
         return true
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
         disconnect()
     }
-
+    
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
-
+    
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
-
+    
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         connect()
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
     // MRAK: - Private methods
     private func setupStream() {
         xmppRoster.activate(xmppStream)
@@ -82,16 +83,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
         }
         xmppStream.sendElement(presence)
     }
-
+    
     private func goOffline() {
         let presence = XMPPPresence(type: "unavailable")
         xmppStream.sendElement(presence)
     }
     
-    func connect() -> Bool {
+    func connect() -> (result: Bool) -> Bool {
         if !xmppStream.isConnected() {
+            var connected = false
+            
             let jabberID = NSUserDefaults.standardUserDefaults().stringForKey("userID")
-            var myPassword = NSUserDefaults.standardUserDefaults().stringForKey("userPassword")
+            let myPassword = NSUserDefaults.standardUserDefaults().stringForKey("userPassword")
             
             if !xmppStream.isDisconnected() {
                 return true
@@ -100,24 +103,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
                 return false
             }
             
-            xmppStream.hostName = "xmpp.flirten.lab"
-            xmppStream.hostPort = 5222
+            let baseURL = "http://integration.flirten.de/api_integration.php"
+            let manager = AFHTTPSessionManager(baseURL: NSURL(string: baseURL))
+            let paramerter = ["grant_type": "client_credentials", "scope": ""]
             
-            myPassword = "7988146fc5f58527a2580cd724f9a1685f448dba"
-            xmppStream.myJID = XMPPJID.jidWithString("195677@xmpp.flirten.lab")
-//            xmppStream.myJID = XMPPJID.jidWithString(jabberID)
             
-            do {
-                try xmppStream.connectWithTimeout(XMPPStreamTimeoutNone)
-                print("Connection success")
-                return true
-            } catch {
-                print("Something went wrong!")
-                return false
-            }
+            
+            manager.POST("v2/auth/access_token", parameters: paramerter,
+                success: { (dataTask: NSURLSessionDataTask, responseObject: AnyObject?) -> Void in
+                    
+                    self.xmppStream.hostName = "xmpp.flirten.lab"
+                    self.xmppStream.hostPort = 5222
+                    
+                    let accessToken = responseObject?.valueForKey("access_token")
+                    NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "userPassword")
+                    let jID = jabberID! + "xmpp.integration.flirten.de"
+                    
+                    self.xmppStream.myJID = XMPPJID.jidWithString(jID)
+                    //            xmppStream.myJID = XMPPJID.jidWithString(jabberID)
+                    
+                    do {
+                        try self.xmppStream.connectWithTimeout(XMPPStreamTimeoutNone)
+                        print("Connection success")
+                        return connectWithResult(true)
+                    } catch {
+                        print("Something went wrong!")
+                        return connectWithResult(false)
+                    }
+                    
+                }, failure: { (dataTask: NSURLSessionDataTask?, error: NSError) -> Void in
+                    print("dataTask: \(dataTask), error: \(error)")
+            })
         } else {
-            return true
+            return connectWithResult(true)
         }
+    }
+    
+    func connectWithResult(result: Bool) -> Bool {
+        return result
     }
     
     func disconnect() {
