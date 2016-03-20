@@ -31,8 +31,14 @@ class LoginViewController: UIViewController {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        if appDelegate.connect() {
-            dismissViewControllerAnimated(true, completion: nil)
+        appDelegate.connect { (connected) -> () in
+            if connected {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Error", message: "Login failed", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         }
     }
     

@@ -18,28 +18,47 @@ class RosterTableViewController: UITableViewController, ChatDelegate {
         super.viewDidLoad()
 
         appDelegate.delegate = self
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let rightBarItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("sendYo:"))
+        navigationItem.rightBarButtonItem = rightBarItem
+        
+        let leftBarItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: Selector("logOut:"))
+        navigationItem.leftBarButtonItem = leftBarItem
     }
 
     override func viewDidAppear(animated: Bool) {
         if (NSUserDefaults.standardUserDefaults().objectForKey("userID") != nil) {
-            if appDelegate.connect() {
-                self.title = appDelegate.xmppStream.myJID.bare()
-                appDelegate.xmppRoster.fetchRoster()
-            }
-        } else {
-            performSegueWithIdentifier("Home.To.Login", sender: self)
+            appDelegate.connect({ (connected) -> () in
+                if connected {
+                    self.title = self.appDelegate.xmppStream.myJID.bare()
+                    self.appDelegate.xmppRoster.fetchRoster()
+                } else {
+                    self.performSegueWithIdentifier("Home.To.Login", sender: self)
+                }
+            })
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    
+    // MARK: - Button methods
+    func sendYo() {
+        let message = "Yo!"
+        let senderJID = XMPPJID.jidWithString("100670")
+        let msg = XMPPMessage(type: "chat", to: senderJID)
+        
+        msg.addBody(message)
+        self.appDelegate.xmppStream.sendElement(msg)
+    }
+    
+    func logOut() {
+        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "userID")
+        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "userPassword")
+        self.performSegueWithIdentifier("Home.To.Login", sender: self)
+    }
     
     // MARK: - Chat Delegates
     

@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
     
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        connect()
+        connect { _ in /* Do nothing */ }
     }
     
     func applicationWillTerminate(application: UIApplication) {
@@ -89,18 +89,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
         xmppStream.sendElement(presence)
     }
     
-    func connect() -> (result: Bool) -> Bool {
+    func connect(completion: (Bool) -> ()) {
         if !xmppStream.isConnected() {
-            var connected = false
-            
-            let jabberID = NSUserDefaults.standardUserDefaults().stringForKey("userID")
-            let myPassword = NSUserDefaults.standardUserDefaults().stringForKey("userPassword")
-            
             if !xmppStream.isDisconnected() {
-                return true
+                completion(true)
+                return
             }
-            if jabberID == nil && myPassword == nil {
-                return false
+
+            guard let jabberID = NSUserDefaults.standardUserDefaults().stringForKey("userID"),
+                let _ = NSUserDefaults.standardUserDefaults().stringForKey("userPassword") else {
+                    completion(false)
+                    return
             }
             
             let baseURL = "http://integration.flirten.de/api_integration.php"
@@ -112,12 +111,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
             manager.POST("v2/auth/access_token", parameters: paramerter,
                 success: { (dataTask: NSURLSessionDataTask, responseObject: AnyObject?) -> Void in
                     
-                    self.xmppStream.hostName = "xmpp.flirten.lab"
-                    self.xmppStream.hostPort = 5222
+                    self.xmppStream.hostName = "xmpp.integration.flirten.de"
+                    self.xmppStream.hostPort = 5223
                     
                     let accessToken = responseObject?.valueForKey("access_token")
                     NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "userPassword")
-                    let jID = jabberID! + "xmpp.integration.flirten.de"
+                    let jID = jabberID + "xmpp.integration.flirten.de"
                     
                     self.xmppStream.myJID = XMPPJID.jidWithString(jID)
                     //            xmppStream.myJID = XMPPJID.jidWithString(jabberID)
@@ -125,22 +124,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
                     do {
                         try self.xmppStream.connectWithTimeout(XMPPStreamTimeoutNone)
                         print("Connection success")
-                        return connectWithResult(true)
+                        completion(true)
                     } catch {
                         print("Something went wrong!")
-                        return connectWithResult(false)
+                        completion(false)
                     }
                     
                 }, failure: { (dataTask: NSURLSessionDataTask?, error: NSError) -> Void in
                     print("dataTask: \(dataTask), error: \(error)")
+                    completion(false)
             })
         } else {
-            return connectWithResult(true)
+            completion(true)
         }
-    }
-    
-    func connectWithResult(result: Bool) -> Bool {
-        return result
     }
     
     func disconnect() {
