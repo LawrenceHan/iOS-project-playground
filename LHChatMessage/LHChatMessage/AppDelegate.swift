@@ -104,7 +104,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
             
             let baseURL = "http://integration.flirten.de/api_integration.php"
             let manager = AFHTTPSessionManager(baseURL: NSURL(string: baseURL))
-            let paramerter = ["grant_type": "client_credentials", "scope": ""]
+            let paramerter = ["grant_type": "client_credentials",
+                "client_id"     : "flirten",
+                "client_secret" : "secret",
+                "scope": ""]
             
             
             
@@ -116,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
                     
                     let accessToken = responseObject?.valueForKey("access_token")
                     NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "userPassword")
-                    let jID = jabberID + "xmpp.integration.flirten.de"
+                    let jID = jabberID + "@xmpp.integration.flirten.de"
                     
                     self.xmppStream.myJID = XMPPJID.jidWithString(jID)
                     //            xmppStream.myJID = XMPPJID.jidWithString(jabberID)
