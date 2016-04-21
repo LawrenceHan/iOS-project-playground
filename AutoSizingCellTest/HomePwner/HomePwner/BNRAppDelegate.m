@@ -13,6 +13,8 @@
 #import "CalculateMaker.h"
 #import "BNRRACTestViewController.h"
 #import "IOS7ViewController.h"
+#include "nob_defer.h"
+
 
 @interface BNRAppDelegate ()
 @property (nonatomic, strong) BNRRACTestViewController *rac_TestViewController;
@@ -107,6 +109,12 @@
     IOS7ViewController *vc = [IOS7ViewController new];
     UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
     [nav pushViewController:vc animated:YES];
+    
+#pragma mark - @Defer 
+    NSString *defer = @"I'm defer";
+    nob_defer(^{
+        NSLog(@"defer is: %@", [defer stringByAppendingString:@" to be deleted"]);
+    });
     
     return YES;
 }
