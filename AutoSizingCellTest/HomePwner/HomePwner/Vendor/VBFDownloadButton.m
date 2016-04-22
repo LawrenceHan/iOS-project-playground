@@ -10,6 +10,7 @@
 #import "pop.h"
 #import "UIColor+FlatColors.h"
 #import "AFNetworking.h"
+#import "Godzippa.h"
 
 @interface VBFDownloadButton () <POPAnimationDelegate> {
     CGFloat _progressLength;
@@ -79,9 +80,6 @@
 
 
 - (void) viewTapped:(UITapGestureRecognizer *)tapGesture {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager new];
-    
-    
     NSLog(@"Tapped");
     self.userInteractionEnabled = NO;
     
@@ -167,6 +165,28 @@
     trans.duration = anim.duration;
     trans.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [self.progressBar.layer pop_addAnimation:trans forKey:@"translation"];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:@"http://10.60.1.149:8085/test.json.gz"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDownloadTask *downloadTask =
+    [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        NSLog(@"File downloaded to: %@", filePath);
+        NSData *data = [NSData dataWithContentsOfURL:filePath];
+        NSData *decompressedData = [data dataByGZipDecompressingDataWithError:nil];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:decompressedData options:NSJSONReadingMutableLeaves error:nil];
+        NSLog(@"%@", json);
+    }];
+    
+    [downloadTask resume];
 }
 
 

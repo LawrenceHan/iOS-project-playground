@@ -165,11 +165,12 @@
     
     [[self.nameField.rac_textSignal
       map:^id(NSString *text) {
-        UIColor *color = text.length > 3 ? [UIColor whiteColor] : [UIColor yellowColor];
-        return color;
+          UIColor *color = text.length > 3 ? [UIColor whiteColor] : [UIColor yellowColor];
+          NSLog(@"%@", text);
+          return color;
       }] subscribeNext:^(UIColor *color) {
           self.nameField.backgroundColor = color;
-    }];
+      }];
     
     _latestCount = 0;
     RAC(self.valueField, text) = [[self.nameField.rac_textSignal map:^id(id value) {
