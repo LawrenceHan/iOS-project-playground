@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XMPPFramework
 
 class RosterTableViewController: UITableViewController, ChatDelegate {
 
@@ -35,6 +34,8 @@ class RosterTableViewController: UITableViewController, ChatDelegate {
                     self.performSegueWithIdentifier("Home.To.Login", sender: self)
                 }
             })
+        } else {
+            self.performSegueWithIdentifier("Home.To.Login", sender: self)
         }
     }
     

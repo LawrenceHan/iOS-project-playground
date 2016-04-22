@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class RACSignal;
 @interface AuthenticationManager : NSObject
 
 - (RACSignal *)requestForAccessToken;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0250D4DB1C9FA252005DF77E /* AuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0250D4DA1C9FA252005DF77E /* AuthenticationManager.m */; };
+		0250D4DF1C9FB7E5005DF77E /* AFNetworkActivityLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0250D4DE1C9FB7E5005DF77E /* AFNetworkActivityLogger.m */; };
 		027475001C97E9E30077388A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027474FF1C97E9E30077388A /* AppDelegate.swift */; };
 		027475021C97E9E30077388A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027475011C97E9E30077388A /* ViewController.swift */; };
 		027475051C97E9E30077388A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027475031C97E9E30077388A /* Main.storyboard */; };
@@ -29,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0250D4D91C9FA252005DF77E /* AuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationManager.h; sourceTree = "<group>"; };
+		0250D4DA1C9FA252005DF77E /* AuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationManager.m; sourceTree = "<group>"; };
+		0250D4DD1C9FB7E5005DF77E /* AFNetworkActivityLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityLogger.h; sourceTree = "<group>"; };
+		0250D4DE1C9FB7E5005DF77E /* AFNetworkActivityLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityLogger.m; sourceTree = "<group>"; };
 		027474FC1C97E9E30077388A /* LHChatMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LHChatMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		027474FF1C97E9E30077388A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		027475011C97E9E30077388A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0250D4DC1C9FB7E5005DF77E /* AFNetworkActivityLogger */ = {
+			isa = PBXGroup;
+			children = (
+				0250D4DD1C9FB7E5005DF77E /* AFNetworkActivityLogger.h */,
+				0250D4DE1C9FB7E5005DF77E /* AFNetworkActivityLogger.m */,
+			);
+			path = AFNetworkActivityLogger;
+			sourceTree = "<group>";
+		};
 		027474F31C97E9E30077388A = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +112,9 @@
 				027475061C97E9E30077388A /* Assets.xcassets */,
 				027475081C97E9E30077388A /* LaunchScreen.storyboard */,
 				0274750B1C97E9E30077388A /* Info.plist */,
+				0250D4DC1C9FB7E5005DF77E /* AFNetworkActivityLogger */,
+				0250D4D91C9FA252005DF77E /* AuthenticationManager.h */,
+				0250D4DA1C9FA252005DF77E /* AuthenticationManager.m */,
 				0274751F1C97F6CA0077388A /* LHChatMessage-Bridging-Header.h */,
 			);
 			path = LHChatMessage;
@@ -281,9 +299,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0250D4DB1C9FA252005DF77E /* AuthenticationManager.m in Sources */,
 				027475281C980E3C0077388A /* RosterTableViewController.swift in Sources */,
 				027475261C980D3F0077388A /* LoginViewController.swift in Sources */,
 				027475021C97E9E30077388A /* ViewController.swift in Sources */,
+				0250D4DF1C9FB7E5005DF77E /* AFNetworkActivityLogger.m in Sources */,
 				027475001C97E9E30077388A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +442,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LHChatMessage/LHChatMessage-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
 			name = Debug;
 		};
@@ -439,6 +460,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LHChatMessage/LHChatMessage-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
 			name = Release;
 		};

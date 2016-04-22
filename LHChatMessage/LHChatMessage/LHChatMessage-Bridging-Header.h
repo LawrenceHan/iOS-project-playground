@@ -3,3 +3,4 @@
 //
 
 //#import <Magnet-XMPPFramework\XMPP.h>
+#import <XMPPFramework\XMPP.h>

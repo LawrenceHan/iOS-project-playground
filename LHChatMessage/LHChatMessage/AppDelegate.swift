@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import XMPPFramework
 import AFNetworking
+import AFOAuth2Manager
 
 protocol ChatDelegate {
     func buddyWentOnline(name: String)
@@ -118,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
                     self.xmppStream.hostPort = 5223
                     
                     let accessToken = responseObject?.valueForKey("access_token")
-                    NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "userPassword")
+                    NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "access_token")
                     let jID = jabberID + "@xmpp.integration.flirten.de"
                     
                     self.xmppStream.myJID = XMPPJID.jidWithString(jID)
@@ -150,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPRosterDelegate, XMPPS
     // MARK: XMPP Delegates
     func xmppStreamDidConnect(sender: XMPPStream!) {
         do {
-            try xmppStream.authenticateWithPassword(NSUserDefaults.standardUserDefaults().stringForKey("userPassword"))
+            try xmppStream.authenticateWithPassword(NSUserDefaults.standardUserDefaults().stringForKey("access_token"))
         } catch {
             print("Could not authenticate")
         }

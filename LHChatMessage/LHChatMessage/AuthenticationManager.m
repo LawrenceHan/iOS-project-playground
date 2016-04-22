@@ -7,7 +7,12 @@
 //
 
 #import "AuthenticationManager.h"
-
+#import "LHChatMessage-Swift.h"
+#import "AFOAuth2Manager.h"
+#import "AFHTTPRequestSerializer+OAuth2.h"
+#import "AFNetworkActivityLogger.h"
+@import AFNetworking;
+@import ReactiveCocoa;
 
 NSString * const baseURL = @"http://integration.flirten.de/api_integration.php/v2/";
 NSString * const oauthURL = @"auth/access_token"; // e.g: auth/access_token
@@ -220,13 +225,8 @@ NSString * const sendNewMessage = @"message/new.json";
     
     NSData *imageData = nil;
     if (photo) {
-        NSImage *image = [NSImage imageNamed:@"111.jpg"];
-        
-        [image lockFocus];
-        NSBitmapImageRep *bitmapRep =
-        [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, image.size.width, image.size.height)];
-        [image unlockFocus];
-        imageData = [bitmapRep representationUsingType:NSJPEGFileType properties:@{}];
+        UIImage *image = [UIImage imageNamed:@"111.jpg"];
+        imageData = UIImageJPEGRepresentation(image, 0.8);
     }
 
     RACSignal *requestSignal =

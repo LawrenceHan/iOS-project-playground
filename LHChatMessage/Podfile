@@ -6,4 +6,5 @@ use_frameworks!
 pod 'ReactiveCocoa'
 pod 'RealmSwift'
 pod 'XMPPFramework'
-pod 'AFNetworking'
+pod 'AFNetworking', '~> 2.6'
+pod 'AFOAuth2Manager', :git => 'https://github.com/AFNetworking/AFOAuth2Manager.git'
