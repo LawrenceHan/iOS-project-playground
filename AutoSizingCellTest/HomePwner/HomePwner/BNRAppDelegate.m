@@ -13,6 +13,8 @@
 #import "CalculateMaker.h"
 #import "BNRRACTestViewController.h"
 #import "IOS7ViewController.h"
+#include "nob_defer.h"
+
 
 @interface BNRAppDelegate ()
 @property (nonatomic, strong) BNRRACTestViewController *rac_TestViewController;
@@ -108,27 +110,11 @@
     UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
     [nav pushViewController:vc animated:YES];
     
-    NSNumber *no1 = @199;
-    NSNumber *no2 = @1000;
-    NSNumber *no3 = @999999;
-    NSNumber *no4 = @1009;
-    NSNumber *no5 = @1000009;
-    
-    NSArray *newNumbers = @[no1, no2, no3, no4, no5];
-    
-    NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    
-    for (NSNumber *number in newNumbers) {
-        NSString *string = [numberFormatter stringFromNumber:number];
-        NSArray *stringArray = [string componentsSeparatedByString:numberFormatter.groupingSeparator];
-        if (stringArray.count > 1) {
-            NSInteger no = [stringArray.lastObject integerValue];
-            NSLog(@"%li", no);
-        }
-        NSLog(@"Formatted number: %@ separator: %@", [numberFormatter stringFromNumber:number], numberFormatter.groupingSeparator);
-    }
-    
+#pragma mark - @Defer 
+    NSString *defer = @"I'm defer";
+    nob_defer(^{
+        NSLog(@"defer is: %@", [defer stringByAppendingString:@" to be deleted"]);
+    });
     
     return YES;
 }
