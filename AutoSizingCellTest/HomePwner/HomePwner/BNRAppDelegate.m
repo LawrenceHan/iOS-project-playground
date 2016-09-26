@@ -111,14 +111,34 @@
     [nav pushViewController:vc animated:YES];
     
 #pragma mark - @Defer 
-    NSString *defer = @"I'm defer";
+    __block NSString *defer = @"I'm defer";
     nob_defer(^{
-        NSLog(@"defer is: %@", [defer stringByAppendingString:@" to be deleted"]);
+        defer = [defer stringByAppendingString:@". Defer end"];
+        NSLog(@"%@", defer);
     });
+
+#pragma mark - GCD
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    NSMutableArray *array = [NSMutableArray new];
+    
+//    for (int i = 0; i < 100000; ++i) {
+//        dispatch_async(queue, ^{
+//            [array addObject:@(i)];
+//        });
+//    }
+    dispatch_semaphore_t seamphore = dispatch_semaphore_create(1);
+    
+
+    for (int i = 0; i < 100000; ++i) {
+        dispatch_async(queue, ^{
+            dispatch_semaphore_wait(seamphore, DISPATCH_TIME_FOREVER);
+            [array addObject:@(i)];
+            dispatch_semaphore_signal(seamphore);
+        });
+    }
     
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

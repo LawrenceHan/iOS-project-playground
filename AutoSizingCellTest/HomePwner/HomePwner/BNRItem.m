@@ -69,4 +69,5 @@
     // Cleanup image context resources; we're done
     UIGraphicsEndImageContext();
 }
+
 @end

@@ -212,13 +212,13 @@ MPRewardedVideoDelegate>
     [self.interstitial loadAd];
     
     
-//    [[MoPub sharedInstance] initializeRewardedVideoWithGlobalMediationSettings:nil delegate:self];
-//    [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:kVungleAdUnit withMediationSettings:nil];
-//    [self performSelector:@selector(showVideo) withObject:nil afterDelay:20];
+    [[MoPub sharedInstance] initializeRewardedVideoWithGlobalMediationSettings:nil delegate:self];
+    [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:kCharboostAdUnit withMediationSettings:nil];
+    [self performSelector:@selector(showVideo) withObject:nil afterDelay:5];
 }
 
 - (void)showVideo {
-    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:kVungleAdUnit fromViewController:self];
+    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:kCharboostAdUnit fromViewController:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
