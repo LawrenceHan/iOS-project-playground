@@ -83,6 +83,7 @@
 		02227AFD1C6097F000DCE1C0 /* NSBundle+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 02227AFC1C6097F000DCE1C0 /* NSBundle+YYAdd.m */; };
 		02227AFF1C609D4C00DCE1C0 /* pia@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02227AFE1C609D4C00DCE1C0 /* pia@2x.png */; };
 		022E52DC1C101FDD006D02D5 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022E52DB1C101FDD006D02D5 /* WebKit.framework */; };
+		023528011DA233550040FB1A /* CPPViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 023528001DA233550040FB1A /* CPPViewController.mm */; };
 		0236499A1C604C2F007FE445 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 023649991C604C2F007FE445 /* ChatViewController.m */; };
 		0236499D1C605291007FE445 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0236499C1C605291007FE445 /* ChatCell.m */; };
 		023649A01C6054AB007FE445 /* MessageLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0236499F1C6054AB007FE445 /* MessageLayout.m */; };
@@ -493,6 +494,8 @@
 		02227AFC1C6097F000DCE1C0 /* NSBundle+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+YYAdd.m"; sourceTree = "<group>"; };
 		02227AFE1C609D4C00DCE1C0 /* pia@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pia@2x.png"; sourceTree = "<group>"; };
 		022E52DB1C101FDD006D02D5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		023527FF1DA233550040FB1A /* CPPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPViewController.h; sourceTree = "<group>"; };
+		023528001DA233550040FB1A /* CPPViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CPPViewController.mm; sourceTree = "<group>"; };
 		023649981C604C2F007FE445 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		023649991C604C2F007FE445 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		0236499B1C605291007FE445 /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
@@ -1215,6 +1218,15 @@
 				020C20551BE757CA00BFFA73 /* NSString+Runtime.m */,
 			);
 			name = "Runtime Class";
+			sourceTree = "<group>";
+		};
+		023527FB1DA232FB0040FB1A /* CPP */ = {
+			isa = PBXGroup;
+			children = (
+				023527FF1DA233550040FB1A /* CPPViewController.h */,
+				023528001DA233550040FB1A /* CPPViewController.mm */,
+			);
+			name = CPP;
 			sourceTree = "<group>";
 		};
 		023649971C604C16007FE445 /* ChatViewController */ = {
@@ -2164,6 +2176,7 @@
 		520AA484187C4EC00048F174 /* HomePwner */ = {
 			isa = PBXGroup;
 			children = (
+				023527FB1DA232FB0040FB1A /* CPP */,
 				02CBBA541CC915DA00BAC86B /* Helper */,
 				0259389E1C859231001496B7 /* iOS9 */,
 				0259389D1C859228001496B7 /* iOS8 */,
@@ -2546,6 +2559,7 @@
 				02190F421C43B55900A4D164 /* MWGridViewController.m in Sources */,
 				027BCF5F1C0843E800AD1789 /* MOPUBReplayView.m in Sources */,
 				027BCF8E1C0846ED00AD1789 /* VungleInterstitialCustomEvent.m in Sources */,
+				023528011DA233550040FB1A /* CPPViewController.mm in Sources */,
 				025938A21C85925A001496B7 /* IOS7ViewController.m in Sources */,
 				027BCF0A1C0843E800AD1789 /* UIView+MPAdditions.m in Sources */,
 				027BCEF71C0843E800AD1789 /* MPMRAIDInterstitialViewController.m in Sources */,

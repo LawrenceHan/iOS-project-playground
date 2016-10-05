@@ -13,11 +13,13 @@
 #import "CalculateMaker.h"
 #import "BNRRACTestViewController.h"
 #import "IOS7ViewController.h"
+#import "CPPViewController.h"
 #include "nob_defer.h"
 
 
 @interface BNRAppDelegate ()
 @property (nonatomic, strong) BNRRACTestViewController *rac_TestViewController;
+@property (nonatomic, strong) CPPViewController *cppVC;
 @end
 
 @implementation BNRAppDelegate
@@ -120,15 +122,7 @@
 #pragma mark - GCD
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     NSMutableArray *array = [NSMutableArray new];
-    
-//    for (int i = 0; i < 100000; ++i) {
-//        dispatch_async(queue, ^{
-//            [array addObject:@(i)];
-//        });
-//    }
     dispatch_semaphore_t seamphore = dispatch_semaphore_create(1);
-    
-
     for (int i = 0; i < 100000; ++i) {
         dispatch_async(queue, ^{
             dispatch_semaphore_wait(seamphore, DISPATCH_TIME_FOREVER);
@@ -136,7 +130,12 @@
             dispatch_semaphore_signal(seamphore);
         });
     }
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionConfiguration *config = session.configuration;
+    NSLog(@"%ld", (long)config.HTTPMaximumConnectionsPerHost);
     
+#pragma mark - CPP
+//    self.cppVC = [CPPViewController new];
     return YES;
 }
 
