@@ -43,8 +43,10 @@ print(matchIndex)
 let tree = BinarySearchTree<Int>(array: [7, 2, 5, 10, 9, 1])
 
 print(tree)
-print(tree.search(value: 6))
+print(tree.search(6))
 
 tree.traverseInOrder { value in print(value) }
 let filteredList = tree.filter { $0 < 7 }
 print(filteredList)
+
+print(tree.height())

@@ -74,7 +74,7 @@ public class BinarySearchTree<T: Comparable> {
         insert(value: value, parent: self)
     }
     
-    public func search(value: T) -> BinarySearchTree? {
+    public func search(_ value: T) -> BinarySearchTree? {
         var node: BinarySearchTree? = self
         while case let n? = node {
             if value < n.value {
@@ -169,6 +169,37 @@ public class BinarySearchTree<T: Comparable> {
         return replacement
     }
     
+    public func height() -> Int {
+        if isLeaf {
+            return 0
+        } else {
+            return 1 + max(left?.height() ?? 0, right?.height() ?? 0)
+        }
+    }
+    
+    public func depth() -> Int {
+        var node = self
+        var edges = 0
+        while case let parent? = node.parent {
+            node = parent
+            edges += 1
+        }
+        return edges
+    }
+    
+    public func predecessor() -> BinarySearchTree<T>? {
+        if let left = left {
+            return left.maximum()
+        } else {
+            var node = self
+            while case let parent? = node.parent {
+                if parent.value < value { return parent }
+                node = parent
+            }
+            return nil
+        }
+    }
+    
     //MARK: Private methods
     
     private func insert(value: T, parent: BinarySearchTree) {
@@ -202,7 +233,7 @@ public class BinarySearchTree<T: Comparable> {
 
     private func removeNodeWithTwoChildren(_ left: BinarySearchTree, _ right: BinarySearchTree) -> BinarySearchTree {
         let successor = right.minimum()
-        let _ = successor.remove()
+        _ = successor.remove()
         
         successor.left = left
         left.parent = successor
