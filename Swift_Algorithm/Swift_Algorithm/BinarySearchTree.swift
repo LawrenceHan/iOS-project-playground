@@ -200,6 +200,26 @@ public class BinarySearchTree<T: Comparable> {
         }
     }
     
+    public func successor() -> BinarySearchTree<T>? {
+        if let right = right {
+            return right.minimum()
+        } else {
+            var node = self
+            while case let parent? = node.parent {
+                if parent.value > value { return parent }
+                node = parent
+            }
+            return nil
+        }
+    }
+    
+    public func isBST(minValue: T, maxValue: T) -> Bool {
+        if value < minValue || value > maxValue { return false }
+        let leftBST = left?.isBST(minValue: minValue, maxValue: value) ?? true
+        let rightBST = right?.isBST(minValue: value, maxValue: maxValue) ?? true
+        return leftBST && rightBST
+    }
+    
     //MARK: Private methods
     
     private func insert(value: T, parent: BinarySearchTree) {
@@ -239,6 +259,7 @@ public class BinarySearchTree<T: Comparable> {
         left.parent = successor
         
         if right !== successor {
+            successor.right = right
             right.parent = successor
         } else {
             successor.right = nil

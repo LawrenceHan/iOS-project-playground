@@ -40,7 +40,7 @@ let matchIndex = binarySearch(newList, key: 43)
 print(newList)
 print(matchIndex)
 
-let tree = BinarySearchTree<Int>(array: [7, 2, 5, 10, 9, 1])
+let tree = BinarySearchTree<Int>(array: [7, 2, 5, 3, 10, 9, 1])
 
 print(tree)
 print(tree.search(6))
@@ -48,5 +48,20 @@ print(tree.search(6))
 tree.traverseInOrder { value in print(value) }
 let filteredList = tree.filter { $0 < 7 }
 print(filteredList)
-
 print(tree.height())
+
+
+if let node1 = tree.search(1) {
+    print(tree.isBST(minValue: Int.min, maxValue: Int.max))
+    node1.insert(value: 100)
+    print(tree.search(100))
+    print(tree.isBST(minValue: Int.min, maxValue: Int.max))
+}
+
+var treeEnum = BinarySearchTreeEnum.Leaf(7)
+treeEnum = treeEnum.insert(2)
+treeEnum = treeEnum.insert(5)
+treeEnum = treeEnum.insert(10)
+treeEnum = treeEnum.insert(9)
+treeEnum = treeEnum.insert(1)
+print(treeEnum)
