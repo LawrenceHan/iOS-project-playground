@@ -65,3 +65,8 @@ treeEnum = treeEnum.insert(10)
 treeEnum = treeEnum.insert(9)
 treeEnum = treeEnum.insert(1)
 print(treeEnum)
+
+let result = mergeSortBottomUp([7, 2, 5, 3, 9], <)
+print(result)
+
+
