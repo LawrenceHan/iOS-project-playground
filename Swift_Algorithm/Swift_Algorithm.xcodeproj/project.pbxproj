@@ -14,6 +14,7 @@
 		027D39731DA4AEDA00086C39 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D39721DA4AEDA00086C39 /* Queue.swift */; };
 		027D39751DA4C29000086C39 /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D39741DA4C29000086C39 /* Sort.swift */; };
 		027D39771DA4CE4900086C39 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D39761DA4CE4900086C39 /* Search.swift */; };
+		02BE0CE81DA7F6790028F179 /* BoyerMooreString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE0CE71DA7F6790028F179 /* BoyerMooreString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		027D39721DA4AEDA00086C39 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		027D39741DA4C29000086C39 /* Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 		027D39761DA4CE4900086C39 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		02BE0CE71DA7F6790028F179 /* BoyerMooreString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoyerMooreString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				027D39761DA4CE4900086C39 /* Search.swift */,
 				023120DF1DA4E60E001FDB9D /* BinarySearchTree.swift */,
 				02589C8E1DA60F58001AA405 /* BinarySearchTreeEnum.swift */,
+				02BE0CE71DA7F6790028F179 /* BoyerMooreString.swift */,
 			);
 			path = Swift_Algorithm;
 			sourceTree = "<group>";
@@ -116,7 +119,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 027D39611DA4ACC100086C39 /* Build configuration list for PBXProject "Swift_Algorithm" */;
+			buildConfigurationList = 027D39611DA4ACC100086C39 /* Build configuration list for PBXProject "Swift_algorithm" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -141,6 +144,7 @@
 				02589C8F1DA60F58001AA405 /* BinarySearchTreeEnum.swift in Sources */,
 				027D39711DA4ACCB00086C39 /* Stack.swift in Sources */,
 				027D39751DA4C29000086C39 /* Sort.swift in Sources */,
+				02BE0CE81DA7F6790028F179 /* BoyerMooreString.swift in Sources */,
 				023120E01DA4E60E001FDB9D /* BinarySearchTree.swift in Sources */,
 				027D39771DA4CE4900086C39 /* Search.swift in Sources */,
 				027D39731DA4AEDA00086C39 /* Queue.swift in Sources */,
@@ -258,7 +262,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		027D39611DA4ACC100086C39 /* Build configuration list for PBXProject "Swift_Algorithm" */ = {
+		027D39611DA4ACC100086C39 /* Build configuration list for PBXProject "Swift_algorithm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				027D396B1DA4ACC100086C39 /* Debug */,

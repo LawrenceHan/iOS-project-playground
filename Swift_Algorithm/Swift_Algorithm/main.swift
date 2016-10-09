@@ -69,4 +69,7 @@ print(treeEnum)
 let result = mergeSortBottomUp([7, 2, 5, 3, 9], <)
 print(result)
 
-
+let string = "asdfasd  aodsi  kasdoifao  93294083 0(S)D(F*)DS(F*(F DSJFDSJF Hello,OIDSIOFLKKL90344 Worldd(#*DFOIafadsfj"
+let pattern = "World"
+let index = string.indexOf(pattern)
+print(string.substring(from: index!))
