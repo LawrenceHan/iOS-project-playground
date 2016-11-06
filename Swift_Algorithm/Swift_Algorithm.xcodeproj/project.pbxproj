@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		023120E01DA4E60E001FDB9D /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023120DF1DA4E60E001FDB9D /* BinarySearchTree.swift */; };
 		02589C8F1DA60F58001AA405 /* BinarySearchTreeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02589C8E1DA60F58001AA405 /* BinarySearchTreeEnum.swift */; };
+		025A3B141DB1EFE30087B19F /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A3B131DB1EFE30087B19F /* MathHelper.swift */; };
 		027D396A1DA4ACC100086C39 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D39691DA4ACC100086C39 /* main.swift */; };
 		027D39711DA4ACCB00086C39 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D39701DA4ACCB00086C39 /* Stack.swift */; };
 		027D39731DA4AEDA00086C39 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D39721DA4AEDA00086C39 /* Queue.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		023120DF1DA4E60E001FDB9D /* BinarySearchTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		02589C8E1DA60F58001AA405 /* BinarySearchTreeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeEnum.swift; sourceTree = "<group>"; };
+		025A3B131DB1EFE30087B19F /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		027D39661DA4ACC100086C39 /* Swift_Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Swift_Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		027D39691DA4ACC100086C39 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		027D39701DA4ACCB00086C39 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				023120DF1DA4E60E001FDB9D /* BinarySearchTree.swift */,
 				02589C8E1DA60F58001AA405 /* BinarySearchTreeEnum.swift */,
 				02BE0CE71DA7F6790028F179 /* BoyerMooreString.swift */,
+				025A3B131DB1EFE30087B19F /* MathHelper.swift */,
 			);
 			path = Swift_Algorithm;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02589C8F1DA60F58001AA405 /* BinarySearchTreeEnum.swift in Sources */,
+				025A3B141DB1EFE30087B19F /* MathHelper.swift in Sources */,
 				027D39711DA4ACCB00086C39 /* Stack.swift in Sources */,
 				027D39751DA4C29000086C39 /* Sort.swift in Sources */,
 				02BE0CE81DA7F6790028F179 /* BoyerMooreString.swift in Sources */,

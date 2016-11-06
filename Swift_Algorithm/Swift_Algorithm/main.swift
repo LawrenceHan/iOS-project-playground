@@ -33,7 +33,7 @@ print(queue)
 _ = queue.peek()
 print(queue)
 
-let list = [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67 ]
+let list = [7, 2, 5, 3, 10, 9, 1] //[ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67 ]
 let newList = insertionSort(list) { $0 < $1 }
 let matchIndex = binarySearch(newList, key: 43)
 
@@ -49,7 +49,6 @@ tree.traverseInOrder { value in print(value) }
 let filteredList = tree.filter { $0 < 7 }
 print(filteredList)
 print(tree.height())
-
 
 if let node1 = tree.search(1) {
     print(tree.isBST(minValue: Int.min, maxValue: Int.max))
@@ -73,3 +72,14 @@ let string = "asdfasd  aodsi  kasdoifao  93294083 0(S)D(F*)DS(F*(F DSJFDSJF Hell
 let pattern = "World"
 let index = string.indexOf(pattern)
 print(string.substring(from: index!))
+
+print(quicksort(list))
+
+var testList = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
+//quicksortLomuto(&testList, low: 0, high: testList.count - 1)
+quicksortHoare(&testList, low: 0, high: testList.count - 1)
+print(testList)
+let g = gcd(8, 10)
+print(g)
+let m = lcm(8, 10)
+print(m)
