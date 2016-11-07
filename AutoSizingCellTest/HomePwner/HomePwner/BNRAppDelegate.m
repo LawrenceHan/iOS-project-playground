@@ -134,6 +134,32 @@
     NSURLSessionConfiguration *config = session.configuration;
     NSLog(@"%ld", (long)config.HTTPMaximumConnectionsPerHost);
     
+    dispatch_queue_t concurrentQ = dispatch_queue_create("abcd", DISPATCH_QUEUE_CONCURRENT);
+    //        dispatch_queue_create(oneQueueName, DISPATCH_QUEUE_SERIAL);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSLog(@"concurrent started");
+        dispatch_sync(concurrentQ, ^{
+            for (int i=1; i<5; i++) {
+                NSString *isMain = [[NSThread currentThread] isMainThread]?@"YES":@"NO";
+                NSLog(@"1 ====% 2d  %@ Main:%@",i,[NSThread currentThread],isMain);
+            }
+        });
+        
+        dispatch_sync(concurrentQ, ^{
+            for (int i=1; i<5; i++) {
+                NSString *isMain = [[NSThread currentThread] isMainThread]?@"YES":@"NO";
+                NSLog(@"2 ====% 2d  %@ Main:%@",i,[NSThread currentThread],isMain);
+            }
+        });
+    });
+    
+    
+//    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+//    // Your execution code
+//    CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
+//    NSLog(@"Dispatch took %f s", executionTime);
+    
 #pragma mark - CPP
 //    self.cppVC = [CPPViewController new];
     return YES;
