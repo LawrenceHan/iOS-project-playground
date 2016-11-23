@@ -134,25 +134,25 @@
     NSURLSessionConfiguration *config = session.configuration;
     NSLog(@"%ld", (long)config.HTTPMaximumConnectionsPerHost);
     
-    dispatch_queue_t concurrentQ = dispatch_queue_create("abcd", DISPATCH_QUEUE_CONCURRENT);
-    //        dispatch_queue_create(oneQueueName, DISPATCH_QUEUE_SERIAL);
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSLog(@"concurrent started");
-        dispatch_sync(concurrentQ, ^{
-            for (int i=1; i<5; i++) {
-                NSString *isMain = [[NSThread currentThread] isMainThread]?@"YES":@"NO";
-                NSLog(@"1 ====% 2d  %@ Main:%@",i,[NSThread currentThread],isMain);
-            }
-        });
-        
-        dispatch_sync(concurrentQ, ^{
-            for (int i=1; i<5; i++) {
-                NSString *isMain = [[NSThread currentThread] isMainThread]?@"YES":@"NO";
-                NSLog(@"2 ====% 2d  %@ Main:%@",i,[NSThread currentThread],isMain);
-            }
-        });
-    });
+//    dispatch_queue_t concurrentQ = dispatch_queue_create("abcd", DISPATCH_QUEUE_CONCURRENT);
+//    //        dispatch_queue_create(oneQueueName, DISPATCH_QUEUE_SERIAL);
+//    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        NSLog(@"concurrent started");
+//        dispatch_sync(concurrentQ, ^{
+//            for (int i=1; i<5; i++) {
+//                NSString *isMain = [[NSThread currentThread] isMainThread]?@"YES":@"NO";
+//                NSLog(@"1 ====% 2d  %@ Main:%@",i,[NSThread currentThread],isMain);
+//            }
+//        });
+//        
+//        dispatch_sync(concurrentQ, ^{
+//            for (int i=1; i<5; i++) {
+//                NSString *isMain = [[NSThread currentThread] isMainThread]?@"YES":@"NO";
+//                NSLog(@"2 ====% 2d  %@ Main:%@",i,[NSThread currentThread],isMain);
+//            }
+//        });
+//    });
     
     
 //    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
@@ -160,9 +160,41 @@
 //    CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
 //    NSLog(@"Dispatch took %f s", executionTime);
     
+    dispatch_source_t highSpeedReloadFlushSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_main_queue());
+    __weak typeof(self)weakSelf = self;
+    dispatch_source_set_event_handler(highSpeedReloadFlushSource, ^{
+        NSInteger index = dispatch_source_get_data(highSpeedReloadFlushSource);
+        [weakSelf highSpeedUpdateFlushWithIndex:index];
+    });
+    dispatch_resume(highSpeedReloadFlushSource);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (NSInteger index = 0; index < 10; index++) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (index >= 0 && index < 10) {
+                    dispatch_source_merge_data(highSpeedReloadFlushSource, index);
+                }
+            });
+        }
+    });
+    
 #pragma mark - CPP
 //    self.cppVC = [CPPViewController new];
     return YES;
+}
+
+- (void)highSpeedUpdateFlushWithIndex:(NSInteger)index {
+    static dispatch_once_t onceToken;
+    static NSArray *cells = nil;
+    dispatch_once(&onceToken, ^{
+        cells = @[@"cell1", @"cell2",@"cell3",@"cell4",@"cell5",@"cell6",@"cell7", @"cell8", @"cell9"];
+    });
+    
+    if (index >= 10) {
+        NSLog(@"===== Cell index out of bounds");
+    } else {
+        NSLog(@"%@", cells[index]);
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

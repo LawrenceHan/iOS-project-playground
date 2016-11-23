@@ -14,6 +14,11 @@
 		027D39731DA4AEDA00086C39 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D39721DA4AEDA00086C39 /* Queue.swift */; };
 		027D39751DA4C29000086C39 /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D39741DA4C29000086C39 /* Sort.swift */; };
 		027D39771DA4CE4900086C39 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D39761DA4CE4900086C39 /* Search.swift */; };
+		029A0E7D1DE5894D000E80F3 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A0E7C1DE5894D000E80F3 /* Graph.swift */; };
+		029A0E801DE59059000E80F3 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A0E7F1DE59059000E80F3 /* Edge.swift */; };
+		029A0E821DE59131000E80F3 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A0E811DE59131000E80F3 /* Vertex.swift */; };
+		029A0E841DE59142000E80F3 /* AdjacencyListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A0E831DE59142000E80F3 /* AdjacencyListGraph.swift */; };
+		029A0E861DE5914E000E80F3 /* AdjacencyMatrixGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A0E851DE5914E000E80F3 /* AdjacencyMatrixGraph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +42,11 @@
 		027D39721DA4AEDA00086C39 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		027D39741DA4C29000086C39 /* Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 		027D39761DA4CE4900086C39 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		029A0E7C1DE5894D000E80F3 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		029A0E7F1DE59059000E80F3 /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
+		029A0E811DE59131000E80F3 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		029A0E831DE59142000E80F3 /* AdjacencyListGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjacencyListGraph.swift; sourceTree = "<group>"; };
+		029A0E851DE5914E000E80F3 /* AdjacencyMatrixGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixGraph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +79,7 @@
 		027D39681DA4ACC100086C39 /* Swift_Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				029A0E7E1DE59048000E80F3 /* Graph */,
 				027D39691DA4ACC100086C39 /* main.swift */,
 				027D39701DA4ACCB00086C39 /* Stack.swift */,
 				027D39721DA4AEDA00086C39 /* Queue.swift */,
@@ -78,6 +89,18 @@
 				02589C8E1DA60F58001AA405 /* BinarySearchTreeEnum.swift */,
 			);
 			path = Swift_Algorithm;
+			sourceTree = "<group>";
+		};
+		029A0E7E1DE59048000E80F3 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				029A0E7C1DE5894D000E80F3 /* Graph.swift */,
+				029A0E7F1DE59059000E80F3 /* Edge.swift */,
+				029A0E811DE59131000E80F3 /* Vertex.swift */,
+				029A0E831DE59142000E80F3 /* AdjacencyListGraph.swift */,
+				029A0E851DE5914E000E80F3 /* AdjacencyMatrixGraph.swift */,
+			);
+			name = Graph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,13 +161,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029A0E7D1DE5894D000E80F3 /* Graph.swift in Sources */,
+				029A0E841DE59142000E80F3 /* AdjacencyListGraph.swift in Sources */,
+				029A0E861DE5914E000E80F3 /* AdjacencyMatrixGraph.swift in Sources */,
 				02589C8F1DA60F58001AA405 /* BinarySearchTreeEnum.swift in Sources */,
 				027D39711DA4ACCB00086C39 /* Stack.swift in Sources */,
+				029A0E821DE59131000E80F3 /* Vertex.swift in Sources */,
 				027D39751DA4C29000086C39 /* Sort.swift in Sources */,
 				023120E01DA4E60E001FDB9D /* BinarySearchTree.swift in Sources */,
 				027D39771DA4CE4900086C39 /* Search.swift in Sources */,
 				027D39731DA4AEDA00086C39 /* Queue.swift in Sources */,
 				027D396A1DA4ACC100086C39 /* main.swift in Sources */,
+				029A0E801DE59059000E80F3 /* Edge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
