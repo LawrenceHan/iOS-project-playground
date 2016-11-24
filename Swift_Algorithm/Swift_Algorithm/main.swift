@@ -86,4 +86,4 @@ print(m)
 
 let puzzle = Puzzle()
 puzzle.calcuateShortestWay()
-print(puzzle)
+puzzle.drawTable()

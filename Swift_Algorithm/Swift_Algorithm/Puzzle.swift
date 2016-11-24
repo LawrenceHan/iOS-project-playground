@@ -33,7 +33,6 @@ public final class Puzzle {
         return columnCount * rowCount
     }
     
-    var totalStepCount = 0
     var stepResults = [String]()
     fileprivate var routeList = [Route]()
     var routeCount: Int = 0
@@ -43,7 +42,7 @@ public final class Puzzle {
         if stepResults.count > 0 {
             var results = ""
             for steps in stepResults {
-                results = results.appending("Result: \(steps), total steps count: \(steps.characters.count)\n")
+                results = results.appending("Total routes count: \(routeCount), result: \(steps), total steps count: \(steps.characters.count)\n")
             }
         } else {
             print("No results")
@@ -89,7 +88,7 @@ public final class Puzzle {
                     moveBlock(routeOld: routeOld, nextStep: nextStep, direction: .Leftward, routesNext: &routesNext, routeIndexNext: &routeIndexNext)
                 }
                 
-                nextStep = previousStep + 1 // rightward
+                nextStep = currentStep + 1 // rightward
                 if currentStep % columnCount + 1 < columnCount && nextStep != previousStep {
                     moveBlock(routeOld: routeOld, nextStep: nextStep, direction: .Rightward, routesNext: &routesNext, routeIndexNext: &routeIndexNext)
                 }
