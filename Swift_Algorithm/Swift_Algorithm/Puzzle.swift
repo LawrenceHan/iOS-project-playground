@@ -21,14 +21,17 @@ enum Direction: String {
     case Rightward = "R"
 }
 
-final class Puzzle {
-    let puzzleBegin = "wbrbbrbrrbrbbrbr"
+public final class Puzzle {
+    let puzzleBegin = "wrbbrrbbrrbbrrbb"
     let puzzleEnd = "wbrbbrbrrbrbbrbr"
     
     let stepBegin: Int = 0
     let stepEnd: Int = 0
     let columnCount: Int = 4
     let rowCount: Int = 4
+    var totalBlockCount: Int {
+        return columnCount * rowCount
+    }
     
     var totalStepCount = 0
     var stepResults = [String]()
@@ -37,18 +40,26 @@ final class Puzzle {
     var snapshots = [String : Int]()
     
     public func drawTable() {
-        
+        if stepResults.count > 0 {
+            var results = ""
+            for steps in stepResults {
+                results = results.appending("Result: \(steps), total steps count: \(steps.characters.count)\n")
+            }
+        } else {
+            print("No results")
+        }
     }
     
     public func calcuateShortestWay() {
+        let route = Route(previousStep: stepBegin, nextStep: stepBegin, frame: puzzleBegin)
+        
+        routeList = [Route]()
         stepResults = [String]()
         routeCount = 0
         snapshots = [String : Int]()
         
-        let route = Route(previousStep: stepBegin, nextStep: stepBegin, frame: puzzleBegin)
-        
-        routeList.insert(route, at: 0)
-        routeCount += 1
+        routeList.append(route)
+        routeCount = 1
         snapshots[route.frame] = route.stepsList.characters.count
         
         var found = false
@@ -59,27 +70,54 @@ final class Puzzle {
             
             for index in 0..<routeCount {
                 let routeOld = routeList[index]
+                let currentStep = routeOld.nextStep
                 let previousStep = routeOld.previousStep
                 
-                let nextStep = previousStep - 4 // upward
+                var nextStep = currentStep - 4 // upward
                 if nextStep >= 0 && nextStep != previousStep {
                     moveBlock(routeOld: routeOld, nextStep: nextStep, direction: .Upward,
-                              routesNext: routesNext, routeIndexNext: &routeIndexNext)
+                              routesNext: &routesNext, routeIndexNext: &routeIndexNext)
                 }
                 
+                nextStep = currentStep + 4 // downward
+                if nextStep < totalBlockCount && nextStep != previousStep {
+                    moveBlock(routeOld: routeOld, nextStep: nextStep, direction: .Downward, routesNext: &routesNext, routeIndexNext: &routeIndexNext)
+                }
+                
+                nextStep = currentStep - 1 // leftward
+                if currentStep % columnCount - 1 >= 0 && nextStep != previousStep {
+                    moveBlock(routeOld: routeOld, nextStep: nextStep, direction: .Leftward, routesNext: &routesNext, routeIndexNext: &routeIndexNext)
+                }
+                
+                nextStep = previousStep + 1 // rightward
+                if currentStep % columnCount + 1 < columnCount && nextStep != previousStep {
+                    moveBlock(routeOld: routeOld, nextStep: nextStep, direction: .Rightward, routesNext: &routesNext, routeIndexNext: &routeIndexNext)
+                }
             }
+            
+            if stepResults.count > 0 {
+                for steps in stepResults {
+                    print("Result: \(steps), total steps count: \(steps.characters.count)")
+                }
+                found = true
+            }
+            
+            routeList = routesNext
+            routeCount = routeIndexNext
         }
     }
     
-    private func moveBlock(routeOld: Route, nextStep: Int, direction: Direction, routesNext: [Route], routeIndexNext: inout Int) {
-        var routesNext = routesNext
+    private func moveBlock(routeOld: Route, nextStep: Int, direction: Direction, routesNext: inout [Route], routeIndexNext: inout Int) {
         let routeNew = Route(previousStep: routeOld.nextStep, nextStep: nextStep, frame: "")
         routeNew.stepsList = routeOld.stepsList.appending(direction.rawValue)
-        let frame = routeOld.frame as NSString
-        let previousBlock = frame.character(at: routeNew.previousStep)
-        let nextBlock = frame.character(at: routeNew.nextStep)
-        frame.replacingCharacters(in: NSMakeRange(routeNew.previousStep, 1), with: String(nextBlock))
-        routeNew.frame = frame.replacingCharacters(in: NSMakeRange(routeNew.nextStep, 1), with: String(previousBlock))
+        var frame = routeOld.frame
+        let previousIndex = frame.index(frame.startIndex, offsetBy: routeNew.previousStep)
+        let nextIndex = frame.index(frame.startIndex, offsetBy: routeNew.nextStep)
+        let previousBlock = frame[previousIndex]
+        let nextBlock = frame[nextIndex]
+        frame = frame.replacingCharacters(in: previousIndex..<frame.index(after: previousIndex), with: String(nextBlock))
+        frame = frame.replacingCharacters(in: nextIndex..<frame.index(after: nextIndex), with: String(previousBlock))
+        routeNew.frame = frame
         
         if routeNew.frame.hashValue == puzzleEnd.hashValue {
             stepResults.append(routeNew.stepsList)
@@ -92,12 +130,12 @@ final class Puzzle {
         } else {
             snapshots[routeNew.frame] = routeNew.stepsList.characters.count
         }
-        routesNext[routeIndexNext] = routeNew
+        routesNext.append(routeNew)
         routeIndexNext += 1
     }
 }
 
-private class Route {
+private class Route: CustomStringConvertible {
     
     var previousStep: Int = 0
     var nextStep: Int = 0
@@ -111,9 +149,7 @@ private class Route {
         self.stepsList = ""
     }
     
-    public var description: String {
-        get {
-            return NSString(string: stepsList).capitalized
-        }
+    open var description: String {
+        return "previous step: \(previousStep), current step: \(nextStep), frame: \(frame), steps: \(stepsList)"
     }
 }

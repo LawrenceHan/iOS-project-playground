@@ -83,3 +83,7 @@ let g = gcd(8, 10)
 print(g)
 let m = lcm(8, 10)
 print(m)
+
+let puzzle = Puzzle()
+puzzle.calcuateShortestWay()
+print(puzzle)

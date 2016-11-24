@@ -53,6 +53,7 @@
 		029A0E851DE5914E000E80F3 /* AdjacencyMatrixGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixGraph.swift; sourceTree = "<group>"; };
 		029E19561DE5D11000D8C332 /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		02BE0CE71DA7F6790028F179 /* BoyerMooreString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoyerMooreString.swift; sourceTree = "<group>"; };
+		02F9BC3D1DE690E900268361 /* Test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Test.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				029E19561DE5D11000D8C332 /* Puzzle.swift */,
+				02F9BC3D1DE690E900268361 /* Test.playground */,
 			);
 			name = Puzzle;
 			sourceTree = "<group>";
