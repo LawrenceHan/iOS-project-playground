@@ -15,7 +15,7 @@
 #import "IOS7ViewController.h"
 #import "CPPViewController.h"
 #include "nob_defer.h"
-
+#import "Puzzle.h"
 
 @interface BNRAppDelegate ()
 @property (nonatomic, strong) BNRRACTestViewController *rac_TestViewController;
@@ -160,23 +160,29 @@
 //    CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
 //    NSLog(@"Dispatch took %f s", executionTime);
     
-    dispatch_source_t highSpeedReloadFlushSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_main_queue());
-    __weak typeof(self)weakSelf = self;
-    dispatch_source_set_event_handler(highSpeedReloadFlushSource, ^{
-        NSInteger index = dispatch_source_get_data(highSpeedReloadFlushSource);
-        [weakSelf highSpeedUpdateFlushWithIndex:index];
-    });
-    dispatch_resume(highSpeedReloadFlushSource);
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        for (NSInteger index = 0; index < 10; index++) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (index >= 0 && index < 10) {
-                    dispatch_source_merge_data(highSpeedReloadFlushSource, index);
-                }
-            });
-        }
-    });
+//    dispatch_source_t highSpeedReloadFlushSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_main_queue());
+//    __weak typeof(self)weakSelf = self;
+//    dispatch_source_set_event_handler(highSpeedReloadFlushSource, ^{
+//        NSInteger index = dispatch_source_get_data(highSpeedReloadFlushSource);
+//        [weakSelf highSpeedUpdateFlushWithIndex:index];
+//    });
+//    dispatch_resume(highSpeedReloadFlushSource);
+//    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        for (NSInteger index = 0; index < 10; index++) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                if (index >= 0 && index < 10) {
+//                    dispatch_source_merge_data(highSpeedReloadFlushSource, index);
+//                }
+//            });
+//        }
+//    });
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+    // Your execution code
+    Puzzle *puzzle = [[Puzzle alloc] initWithBeginFrame:@"wrbbrrbbrrbbrrbb" endFrame:@"wbrbbrbrrbrbbrbr" columns:4 row:4];
+    [puzzle calculateSteps];
+    CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
+    NSLog(@"Dispatch took %f s", executionTime);
     
 #pragma mark - CPP
 //    self.cppVC = [CPPViewController new];

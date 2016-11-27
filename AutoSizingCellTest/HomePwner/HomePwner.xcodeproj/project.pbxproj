@@ -78,6 +78,7 @@
 		02190F5D1C43B55900A4D164 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 02190F1A1C43B55900A4D164 /* README.md */; };
 		02196AF51C98F6D30078A2B1 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02196AF31C98F6D30078A2B1 /* StackViewController.swift */; };
 		02196AF61C98F6D30078A2B1 /* StackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02196AF41C98F6D30078A2B1 /* StackViewController.xib */; };
+		021BC1E51DE93FC1002AADCF /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 021BC1E41DE93FC1002AADCF /* Puzzle.m */; };
 		02227AF71C605CE200DCE1C0 /* EmoticonQQ.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02227AF61C605CE200DCE1C0 /* EmoticonQQ.bundle */; };
 		02227AFA1C6075D500DCE1C0 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 02227AF91C6075D500DCE1C0 /* UIView+Additions.m */; };
 		02227AFD1C6097F000DCE1C0 /* NSBundle+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 02227AFC1C6097F000DCE1C0 /* NSBundle+YYAdd.m */; };
@@ -487,6 +488,8 @@
 		02190F1A1C43B55900A4D164 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		02196AF31C98F6D30078A2B1 /* StackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		02196AF41C98F6D30078A2B1 /* StackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StackViewController.xib; sourceTree = "<group>"; };
+		021BC1E31DE93FC1002AADCF /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
+		021BC1E41DE93FC1002AADCF /* Puzzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puzzle.m; sourceTree = "<group>"; };
 		02227AF61C605CE200DCE1C0 /* EmoticonQQ.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmoticonQQ.bundle; sourceTree = "<group>"; };
 		02227AF81C6075D500DCE1C0 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		02227AF91C6075D500DCE1C0 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
@@ -1209,6 +1212,15 @@
 				02190F181C43B55900A4D164 /* video_thumb.jpg */,
 			);
 			path = "Local Media";
+			sourceTree = "<group>";
+		};
+		021BC1E21DE93FA6002AADCF /* Puzzle */ = {
+			isa = PBXGroup;
+			children = (
+				021BC1E31DE93FC1002AADCF /* Puzzle.h */,
+				021BC1E41DE93FC1002AADCF /* Puzzle.m */,
+			);
+			name = Puzzle;
 			sourceTree = "<group>";
 		};
 		022A29561BE751000077191E /* Runtime Class */ = {
@@ -2176,6 +2188,7 @@
 		520AA484187C4EC00048F174 /* HomePwner */ = {
 			isa = PBXGroup;
 			children = (
+				021BC1E21DE93FA6002AADCF /* Puzzle */,
 				023527FB1DA232FB0040FB1A /* CPP */,
 				02CBBA541CC915DA00BAC86B /* Helper */,
 				0259389E1C859231001496B7 /* iOS9 */,
@@ -2772,6 +2785,7 @@
 				027BCF511C0843E800AD1789 /* MPStreamAdPlacementData.m in Sources */,
 				027BCF2B1C0843E800AD1789 /* MPAdView.m in Sources */,
 				02190F461C43B55900A4D164 /* MWTapDetectingView.m in Sources */,
+				021BC1E51DE93FC1002AADCF /* Puzzle.m in Sources */,
 				02B49E101B8B0BA8005467C7 /* BNRCell.m in Sources */,
 				520AA48F187C4EC00048F174 /* BNRAppDelegate.m in Sources */,
 			);
