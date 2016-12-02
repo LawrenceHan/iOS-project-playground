@@ -107,6 +107,7 @@
 }
 
 - (void)moveTileWithFrame:(PuzzleFrame *)puzzleFrame nextStep:(NSInteger)nextStep direction:(NSString *)direction routesNext:(NSMutableArray *)routesNext {
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     __block NSMutableArray *previousFrameArray = [NSMutableArray arrayWithCapacity:puzzleFrame.frame.length];
     [puzzleFrame.frame enumerateSubstringsInRange:NSMakeRange(0, puzzleFrame.frame.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
         [previousFrameArray addObject:substring];
@@ -139,6 +140,9 @@
     
     [routesNext addObject:newPuzzleFrame];
     _totalStepCounts += 1;
+    // Your execution code
+    CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
+    NSLog(@"Dispatch took %f s", executionTime);
 }
 
 @end

@@ -16,6 +16,7 @@
 #import "CPPViewController.h"
 #include "nob_defer.h"
 #import "Puzzle.h"
+#import "CodeEvalL01.h"
 
 @interface BNRAppDelegate ()
 @property (nonatomic, strong) BNRRACTestViewController *rac_TestViewController;
@@ -177,12 +178,16 @@
 //            });
 //        }
 //    });
-    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
-    // Your execution code
+//    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+//    // Your execution code
     Puzzle *puzzle = [[Puzzle alloc] initWithBeginFrame:@"wrbbrrbbrrbbrrbb" endFrame:@"wbrbbrbrrbrbbrbr" columns:4 row:4];
     [puzzle calculateSteps];
-    CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
-    NSLog(@"Dispatch took %f s", executionTime);
+//    CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
+//    NSLog(@"Dispatch took %f s", executionTime);
+    
+//    NSArray *divers = @[@2, @7, @15];
+//    NSArray *resutls = [CodeEvalL01 doWithDivers:divers];
+//    NSLog(@"%@", resutls);
     
 #pragma mark - CPP
 //    self.cppVC = [CPPViewController new];
