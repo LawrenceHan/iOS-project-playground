@@ -12,13 +12,13 @@
 
 @property (nonatomic, readonly) NSString *beginFrame;
 @property (nonatomic, readonly) NSString *endFrame;
-@property (nonatomic, readonly) NSInteger columns;
-@property (nonatomic, readonly) NSInteger rows;
+@property (nonatomic, readonly) int columns;
+@property (nonatomic, readonly) int rows;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)new NS_UNAVAILABLE;
 
-- (instancetype)initWithBeginFrame:(NSString *)beginFrame endFrame:(NSString *)endFrame columns:(NSInteger)columns row:(NSInteger)rows;
+- (instancetype)initWithBeginFrame:(NSString *)beginFrame endFrame:(NSString *)endFrame columns:(int)columns row:(int)rows;
 - (void)calculateSteps;
 
 @end
