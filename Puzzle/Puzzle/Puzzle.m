@@ -11,8 +11,8 @@
 @interface PuzzleFrame : NSObject
 @property (nonatomic, copy) NSString *steps;
 @property (nonatomic, assign) char *frame;
-@property (nonatomic) NSInteger previousStep;
-@property (nonatomic) NSInteger currentStep;
+@property (nonatomic, assign) int previousStep;
+@property (nonatomic, assign) int currentStep;
 @end
 
 @implementation PuzzleFrame
@@ -35,7 +35,7 @@
     CFAbsoluteTime _executionTime;
 }
 
-- (instancetype)initWithBeginFrame:(NSString *)beginFrame endFrame:(NSString *)endFrame columns:(NSInteger)columns row:(NSInteger)rows {
+- (instancetype)initWithBeginFrame:(NSString *)beginFrame endFrame:(NSString *)endFrame columns:(int)columns row:(int)rows {
     self = [super init];
     if (self) {
         _beginFrame = beginFrame;
@@ -46,7 +46,7 @@
     return self;
 }
 
-- (NSInteger)totalTilesCount {
+- (int)totalTilesCount {
     return _columns * _rows;
 }
 
@@ -63,7 +63,7 @@
     
     const char *beginChar = _beginFrame.UTF8String;
     char *chars = malloc(_beginFrame.length);
-    strncpy(chars, beginChar, _beginFrame.length);
+    memcpy(chars, beginChar, _beginFrame.length);
     frame.frame = chars;
     [routes addObject:frame];
     _frameSnapshot[[NSString stringWithFormat:@"%s", chars]] = @(frame.steps.length);
@@ -73,9 +73,9 @@
         @autoreleasepool {
             NSMutableArray *routesNext = [NSMutableArray new];
             for (PuzzleFrame *previousFrame in routes) {
-                NSInteger previousStep = previousFrame.previousStep;
-                NSInteger currentStep = previousFrame.currentStep;
-                NSInteger nextStep = 0;
+                int previousStep = previousFrame.previousStep;
+                int currentStep = previousFrame.currentStep;
+                int nextStep = 0;
                 
                 // upward
                 nextStep = currentStep - 4;
@@ -114,14 +114,14 @@
     }
 }
 
-- (void)moveTileWithFrame:(PuzzleFrame *)puzzleFrame nextStep:(NSInteger)nextStep direction:(NSString *)direction routesNext:(NSMutableArray *)routesNext {
+- (void)moveTileWithFrame:(PuzzleFrame *)puzzleFrame nextStep:(int)nextStep direction:(NSString *)direction routesNext:(NSMutableArray *)routesNext {
     _startTime = CFAbsoluteTimeGetCurrent();
     
     char *chars = malloc(_endFrame.length);
-    strncpy(chars, puzzleFrame.frame, _endFrame.length);
+    memcpy(chars, puzzleFrame.frame, _endFrame.length);
     
     NSString *steps = [puzzleFrame.steps stringByAppendingString:direction];
-    NSInteger currentStep = puzzleFrame.currentStep;
+    int currentStep = puzzleFrame.currentStep;
     
     char temp = chars[currentStep];
     chars[currentStep] = chars[nextStep];

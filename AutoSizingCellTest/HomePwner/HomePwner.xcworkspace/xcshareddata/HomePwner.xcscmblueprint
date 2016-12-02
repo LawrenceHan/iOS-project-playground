@@ -9,7 +9,7 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "98CF0003-6BFF-492A-85FA-9123D356E699",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "68EA76552BF660A85F49D7DFF19740E9CC124EEE" : "iOS-project-playground",
+    "68EA76552BF660A85F49D7DFF19740E9CC124EEE" : "iOS-project-playground\/",
     "93E9C6543797A767A31ACC6C298B014A8D930767" : "iOS-project-playground\/AutoSizingCellTest\/HomePwner\/submodules\/LHPhotoBrowser\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "HomePwner",

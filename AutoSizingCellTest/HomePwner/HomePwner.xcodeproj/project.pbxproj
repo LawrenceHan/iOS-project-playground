@@ -115,14 +115,12 @@
 		025A65591C07072D00443AB1 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65581C07072D00443AB1 /* EventKit.framework */; };
 		025A655B1C07073300443AB1 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A655A1C07073300443AB1 /* EventKitUI.framework */; };
 		025A655D1C07073E00443AB1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A655C1C07073E00443AB1 /* QuartzCore.framework */; };
-		025A655F1C07078700443AB1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A655E1C07078700443AB1 /* StoreKit.framework */; };
 		025A65611C07078D00443AB1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65601C07078D00443AB1 /* SystemConfiguration.framework */; };
 		025A65631C07079C00443AB1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65621C07079C00443AB1 /* AudioToolbox.framework */; };
 		025A65651C0707A000443AB1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65641C0707A000443AB1 /* AVFoundation.framework */; };
 		025A65671C0707A500443AB1 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65661C0707A500443AB1 /* iAd.framework */; };
 		025A65691C0707AB00443AB1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65681C0707AB00443AB1 /* MessageUI.framework */; };
 		025A656B1C0707B700443AB1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A656A1C0707B700443AB1 /* MobileCoreServices.framework */; };
-		025A656D1C0707BB00443AB1 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A656C1C0707BB00443AB1 /* PassKit.framework */; };
 		025A656F1C0707C100443AB1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A656E1C0707C100443AB1 /* Social.framework */; };
 		025A65711C07080A00443AB1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025A65701C07080A00443AB1 /* CoreBluetooth.framework */; };
 		025A657B1C08389900443AB1 /* ADTestEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 025A657A1C08389900443AB1 /* ADTestEvent.m */; };
@@ -545,14 +543,12 @@
 		025A65581C07072D00443AB1 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		025A655A1C07073300443AB1 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		025A655C1C07073E00443AB1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		025A655E1C07078700443AB1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		025A65601C07078D00443AB1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		025A65621C07079C00443AB1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		025A65641C0707A000443AB1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		025A65661C0707A500443AB1 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		025A65681C0707AB00443AB1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		025A656A1C0707B700443AB1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		025A656C1C0707BB00443AB1 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		025A656E1C0707C100443AB1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		025A65701C07080A00443AB1 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		025A65791C08389900443AB1 /* ADTestEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTestEvent.h; sourceTree = "<group>"; };
@@ -1060,7 +1056,6 @@
 				025A65711C07080A00443AB1 /* CoreBluetooth.framework in Frameworks */,
 				025A656F1C0707C100443AB1 /* Social.framework in Frameworks */,
 				02E8AF2C1C08538E00495328 /* VungleSDK.framework in Frameworks */,
-				025A656D1C0707BB00443AB1 /* PassKit.framework in Frameworks */,
 				025A656B1C0707B700443AB1 /* MobileCoreServices.framework in Frameworks */,
 				02E8AF5E1C085A2400495328 /* Chartboost.framework in Frameworks */,
 				025A65691C0707AB00443AB1 /* MessageUI.framework in Frameworks */,
@@ -1069,7 +1064,6 @@
 				025A65631C07079C00443AB1 /* AudioToolbox.framework in Frameworks */,
 				027BCEC71C0843E800AD1789 /* MMAdSDK.framework in Frameworks */,
 				025A65611C07078D00443AB1 /* SystemConfiguration.framework in Frameworks */,
-				025A655F1C07078700443AB1 /* StoreKit.framework in Frameworks */,
 				025A655D1C07073E00443AB1 /* QuartzCore.framework in Frameworks */,
 				025A655B1C07073300443AB1 /* EventKitUI.framework in Frameworks */,
 				025A65591C07072D00443AB1 /* EventKit.framework in Frameworks */,
@@ -2166,14 +2160,12 @@
 				022E52DB1C101FDD006D02D5 /* WebKit.framework */,
 				025A65701C07080A00443AB1 /* CoreBluetooth.framework */,
 				025A656E1C0707C100443AB1 /* Social.framework */,
-				025A656C1C0707BB00443AB1 /* PassKit.framework */,
 				025A656A1C0707B700443AB1 /* MobileCoreServices.framework */,
 				025A65681C0707AB00443AB1 /* MessageUI.framework */,
 				025A65661C0707A500443AB1 /* iAd.framework */,
 				025A65641C0707A000443AB1 /* AVFoundation.framework */,
 				025A65621C07079C00443AB1 /* AudioToolbox.framework */,
 				025A65601C07078D00443AB1 /* SystemConfiguration.framework */,
-				025A655E1C07078700443AB1 /* StoreKit.framework */,
 				025A655C1C07073E00443AB1 /* QuartzCore.framework */,
 				025A655A1C07073300443AB1 /* EventKitUI.framework */,
 				025A65581C07072D00443AB1 /* EventKit.framework */,
@@ -2337,6 +2329,14 @@
 					520AA47A187C4EC00048F174 = {
 						DevelopmentTeam = 2L4985KKX7;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+							com.apple.Wallet = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
