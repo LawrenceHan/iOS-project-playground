@@ -177,6 +177,7 @@
 //            });
 //        }
 //    });
+    
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     // Your execution code
     Puzzle *puzzle = [[Puzzle alloc] initWithBeginFrame:@"wrbbrrbbrrbbrrbb" endFrame:@"wbrbbrbrrbrbbrbr" columns:4 row:4];

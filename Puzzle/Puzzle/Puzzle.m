@@ -63,7 +63,7 @@
     
     const char *beginChar = _beginFrame.UTF8String;
     char *chars = malloc(_beginFrame.length);
-    strncpy(chars, beginChar, _beginFrame.length);
+    memcpy(chars, beginChar, _beginFrame.length);
     frame.frame = chars;
     [routes addObject:frame];
     _frameSnapshot[[NSString stringWithFormat:@"%s", chars]] = @(frame.steps.length);
@@ -118,7 +118,7 @@
     _startTime = CFAbsoluteTimeGetCurrent();
     
     char *chars = malloc(_endFrame.length);
-    strncpy(chars, puzzleFrame.frame, _endFrame.length);
+    memcpy(chars, puzzleFrame.frame, _endFrame.length);
     
     NSString *steps = [puzzleFrame.steps stringByAppendingString:direction];
     NSInteger currentStep = puzzleFrame.currentStep;
