@@ -62,8 +62,8 @@
     frame.steps = @"";
     
     const char *beginChar = _beginFrame.UTF8String;
-    char *chars = malloc(_beginFrame.length);
-    strncpy(chars, beginChar, _beginFrame.length);
+    char *chars = malloc(_beginFrame.length+1);
+    memcpy(chars, beginChar, _beginFrame.length+1);
     frame.frame = chars;
     [routes addObject:frame];
     _frameSnapshot[[NSString stringWithFormat:@"%s", chars]] = @(frame.steps.length);
@@ -117,8 +117,8 @@
 - (void)moveTileWithFrame:(PuzzleFrame *)puzzleFrame nextStep:(NSInteger)nextStep direction:(NSString *)direction routesNext:(NSMutableArray *)routesNext {
     _startTime = CFAbsoluteTimeGetCurrent();
     
-    char *chars = malloc(_endFrame.length);
-    strncpy(chars, puzzleFrame.frame, _endFrame.length);
+    char *chars = malloc(_endFrame.length+1);
+    memcpy(chars, puzzleFrame.frame, _endFrame.length+1);
     
     NSString *steps = [puzzleFrame.steps stringByAppendingString:direction];
     NSInteger currentStep = puzzleFrame.currentStep;
@@ -134,14 +134,7 @@
             return;
         }
     } else {
-        BOOL possibleResult = YES;
-        for (int i = 0; i < _endFrame.length; i++) {
-            if (chars[i] != _endFrame.UTF8String[i]) {
-                possibleResult = NO;
-                break;
-            }
-        }
-        if (possibleResult) {
+        if (newFrame.hash == _endFrame.hash) {
             [_stepResults addObject:steps];
         }
         _frameSnapshot[newFrame] = @(steps.length);

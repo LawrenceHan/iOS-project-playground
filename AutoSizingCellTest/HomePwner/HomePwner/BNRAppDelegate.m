@@ -178,12 +178,12 @@
 //            });
 //        }
 //    });
-//    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
-//    // Your execution code
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+    // Your execution code
     Puzzle *puzzle = [[Puzzle alloc] initWithBeginFrame:@"wrbbrrbbrrbbrrbb" endFrame:@"wbrbbrbrrbrbbrbr" columns:4 row:4];
     [puzzle calculateSteps];
-//    CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
-//    NSLog(@"Dispatch took %f s", executionTime);
+    CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
+    NSLog(@"Dispatch took %f s", executionTime);
     
 //    NSArray *divers = @[@2, @7, @15];
 //    NSArray *resutls = [CodeEvalL01 doWithDivers:divers];
