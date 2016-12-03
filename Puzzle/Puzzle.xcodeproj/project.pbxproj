@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02B01E5A1DF2D20500FB5D2C /* EKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B01E591DF2D20500FB5D2C /* EKQueue.m */; };
 		02F0BED01DF1504200E1372F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F0BECF1DF1504200E1372F /* AppDelegate.m */; };
 		02F0BED31DF1504200E1372F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F0BED21DF1504200E1372F /* main.m */; };
 		02F0BED51DF1504200E1372F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02F0BED41DF1504200E1372F /* Assets.xcassets */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02B01E581DF2D20500FB5D2C /* EKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKQueue.h; sourceTree = "<group>"; };
+		02B01E591DF2D20500FB5D2C /* EKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKQueue.m; sourceTree = "<group>"; };
 		02F0BECB1DF1504200E1372F /* Puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F0BECE1DF1504200E1372F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		02F0BECF1DF1504200E1372F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -56,6 +59,8 @@
 		02F0BECD1DF1504200E1372F /* Puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				02B01E581DF2D20500FB5D2C /* EKQueue.h */,
+				02B01E591DF2D20500FB5D2C /* EKQueue.m */,
 				02F0BEE31DF1752900E1372F /* Puzzle.h */,
 				02F0BEE41DF1752900E1372F /* Puzzle.m */,
 				02F0BECE1DF1504200E1372F /* AppDelegate.h */,
@@ -148,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02F0BEE51DF1752900E1372F /* Puzzle.m in Sources */,
+				02B01E5A1DF2D20500FB5D2C /* EKQueue.m in Sources */,
 				02F0BED31DF1504200E1372F /* main.m in Sources */,
 				02F0BED01DF1504200E1372F /* AppDelegate.m in Sources */,
 			);
@@ -299,6 +305,7 @@
 				02F0BEDE1DF1504200E1372F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

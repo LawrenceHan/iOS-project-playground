@@ -18,9 +18,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    Puzzle *puzzle = [[Puzzle alloc] initWithBeginFrame:@"wrbbrrbbrrbbrrbb" endFrame:@"wbrbbrbrrbrbbrbr" columns:4 row:4];
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     // Your execution code
-    Puzzle *puzzle = [[Puzzle alloc] initWithBeginFrame:@"wrbbrrbbrrbbrrbb" endFrame:@"wbrbbrbrrbrbbrbr" columns:4 row:4];
     [puzzle calculateSteps];
     CFAbsoluteTime executionTime = (CFAbsoluteTimeGetCurrent() - startTime);
     NSLog(@"Dispatch took %f s", executionTime);
