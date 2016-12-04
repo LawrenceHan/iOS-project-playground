@@ -7,7 +7,6 @@
 //
 
 #import "Puzzle.h"
-#import "EKQueue.h"
 #import <pthread.h>
 
 //#define SHOWLOG
@@ -144,6 +143,7 @@
 
 
 - (int)getShareIndex {
+    
     pthread_mutex_lock(&_routesIndexLock);
     
     if (_routesIndex < _routesCount - 1) {
