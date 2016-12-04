@@ -8,6 +8,7 @@
 
 #import "Puzzle.h"
 #import <pthread.h>
+#include <sys/sysctl.h>
 
 //#define SHOWLOG
 
@@ -36,6 +37,7 @@
 @property (nonatomic, assign) int routesIndex;
 @property (nonatomic, strong) NSMutableArray *routesQueue;
 @property (nonatomic, strong) NSMutableArray *routesNextQueue;
+@property (nonatomic, assign) BOOL isThreadRunning;
 
 @end
 
@@ -46,6 +48,7 @@
     pthread_mutex_t _routesIndexLock;
     pthread_mutex_t _frameLock;
     pthread_mutex_t _stepResultLock;
+    pthread_mutex_t _timerLock;
 }
 
 - (instancetype)initWithBeginFrame:(NSString *)beginFrame endFrame:(NSString *)endFrame columns:(int)columns row:(int)rows {
@@ -59,6 +62,7 @@
         pthread_mutex_init(&_routesIndexLock, NULL);
         pthread_mutex_init(&_frameLock, NULL);
         pthread_mutex_init(&_stepResultLock, NULL);
+        pthread_mutex_init(&_timerLock, NULL);
     }
     return self;
 }
@@ -88,59 +92,83 @@
     [_routesQueue addObject:frame];
     _routesCount = (int)_routesQueue.count;
     _frameSnapshot[[NSString stringWithFormat:@"%s", chars]] = @(frame.steps.length);
-    //    _executionTime = 0.0;
+        _executionTime = 0.0;
+    
+    _isThreadRunning = YES;
+    int availableThreadCount = cpuCoreCount();
+    NSMutableArray *threads = [NSMutableArray arrayWithCapacity:availableThreadCount];
+    for (int i = 0; i < availableThreadCount; i++) {
+        NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(startCalcOnThread) object:nil];
+        thread.qualityOfService = NSQualityOfServiceUserInitiated;
+        thread.name = [NSString stringWithFormat:@"thread: %i", i];
+        [threads addObject:thread];
+        [thread start];
+    }
     
     _foundResults = NO;
     while (_foundResults == NO) {
-        int index = [self getShareIndex];
-        if (index == -1) continue;
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ @autoreleasepool {
-#ifdef SHOWLOG
-            NSLog(@"Thead started: %@", [NSThread currentThread]);
-#endif
-            PuzzleFrame *previousFrame = _routesQueue[index];
-//            NSLog(@"== Start steps: %@ thread: %@", previousFrame.steps, [NSThread currentThread]);
-            
-            int previousStep = previousFrame.previousStep;
-            int currentStep = previousFrame.currentStep;
-            int nextStep = 0;
-            
-            // upward
-            nextStep = currentStep - 4;
-            if (nextStep >= 0 && nextStep != previousStep) {
-                [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"U"];
-            }
-            
-            // downward
-            nextStep = currentStep + 4;
-            if (nextStep < [self totalTilesCount] && nextStep != previousStep) {
-                [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"D"];
-            }
-            
-            // leftward
-            nextStep = currentStep - 1;
-            if (currentStep % _columns - 1 >= 0 && nextStep != previousStep) {
-                [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"L"];
-            }
-            
-            // rightward
-            nextStep = currentStep + 1;
-            if (currentStep % _columns + 1 < _columns && nextStep != previousStep) {
-                [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"R"];
-            }
-            
-            pthread_mutex_lock(&_routesIndexLock);
-            _threadCount--;
-            pthread_mutex_unlock(&_routesIndexLock);
-            
-#ifdef SHOWLOG
-            NSLog(@"Thead finished: %@", [NSThread currentThread]);
-#endif
-        }});
+        [NSThread sleepForTimeInterval:0];
     }
 }
 
+- (void)startCalcOnThread {
+    while (_isThreadRunning) {
+        int index = [self getShareIndex];
+        int tempIndex = index;
+        if (index == -1) {
+            [NSThread sleepForTimeInterval:0];
+            continue;
+        }
+        
+#ifdef SHOWLOG
+        NSLog(@"Thead started: %@", [NSThread currentThread]);
+#endif
+        PuzzleFrame *previousFrame = _routesQueue[index];
+        NSString *tempSteps = previousFrame.steps;
+        //            NSLog(@"== Start steps: %@ thread: %@", previousFrame.steps, [NSThread currentThread]);
+        
+        int previousStep = previousFrame.previousStep;
+        int currentStep = previousFrame.currentStep;
+        int nextStep = 0;
+        
+        NSString *tempLog = [NSString stringWithFormat:@"bSteps: %@", tempSteps];
+        
+        // upward
+        nextStep = currentStep - 4;
+        if (nextStep >= 0 && nextStep != previousStep) {
+            [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"U" tempLog:tempLog tempIndex:tempIndex];
+        }
+        
+        // downward
+        nextStep = currentStep + 4;
+        if (nextStep < [self totalTilesCount] && nextStep != previousStep) {
+            [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"D" tempLog:tempLog tempIndex:tempIndex];
+        }
+        
+        // leftward
+        nextStep = currentStep - 1;
+        if (currentStep % _columns - 1 >= 0 && nextStep != previousStep) {
+            [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"L" tempLog:tempLog tempIndex:tempIndex];
+        }
+        
+        // rightward
+        nextStep = currentStep + 1;
+        if (currentStep % _columns + 1 < _columns && nextStep != previousStep) {
+            [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"R" tempLog:tempLog tempIndex:tempIndex];
+        }
+        
+        pthread_mutex_lock(&_routesIndexLock);
+        _threadCount--;
+        pthread_mutex_unlock(&_routesIndexLock);
+        
+#ifdef SHOWLOG
+        NSLog(@"Thead finished: %@", [NSThread currentThread]);
+#endif
+        
+        //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ @autoreleasepool {
+        //        }});
+    }
+}
 
 - (int)getShareIndex {
     
@@ -152,10 +180,12 @@
     } else {
         if (_threadCount == 0) {
             if (_stepResults.count > 0) {
-                for (NSString *result in _stepResults) {
-                    NSLog(@"Steps: %@, steps count: %ld == thread: %@", result, (long)result.length, [NSThread currentThread]);
-                }
+                _isThreadRunning = NO;
                 _foundResults = YES;
+                for (NSString *result in _stepResults) {
+                    NSLog(@"Steps: %@, steps count: %ld == thread: %@, execTime: %f s", result, (long)result.length, [NSThread currentThread].name, _executionTime);
+                }
+                [_stepResults removeAllObjects];
                 pthread_mutex_unlock(&_routesIndexLock);
                 return -1;
             } else {
@@ -176,8 +206,11 @@
     return _routesIndex;
 }
 
-- (void)moveTileWithFrame:(PuzzleFrame *)puzzleFrame nextStep:(int)nextStep direction:(NSString *)direction {
-    //    _startTime = CFAbsoluteTimeGetCurrent();
+- (void)moveTileWithFrame:(PuzzleFrame *)puzzleFrame nextStep:(int)nextStep direction:(NSString *)direction tempLog:(NSString *)tempLog tempIndex:(int)tempIndex {
+    
+    pthread_mutex_lock(&_timerLock);
+    _startTime = CFAbsoluteTimeGetCurrent();
+    pthread_mutex_unlock(&_timerLock);
     
     char *chars = malloc(_endFrame.length+1);
     memcpy(chars, puzzleFrame.frame, _endFrame.length+1);
@@ -190,9 +223,14 @@
     chars[nextStep] = temp;
     NSString *newFrame = [NSString stringWithFormat:@"%s", chars];
     
+    pthread_mutex_lock(&_timerLock);
+    _executionTime += (CFAbsoluteTimeGetCurrent() - _startTime);
+    pthread_mutex_unlock(&_timerLock);
+    
     if (newFrame.hash == _endFrame.hash) {
         pthread_mutex_lock(&_stepResultLock);
         [_stepResults addObject:steps];
+        NSLog(@"%@ step: %@ AStep: %@, idx: %i, %@", tempLog, direction, steps, tempIndex, [NSThread currentThread].name);
         pthread_mutex_unlock(&_stepResultLock);
     }
     
@@ -216,8 +254,20 @@
     pthread_mutex_lock(&_routesQueueLock);
     [_routesNextQueue addObject:newPuzzleFrame];
     pthread_mutex_unlock(&_routesQueueLock);
+}
+
+int cpuCoreCount() {
+    static int count = 0;
+    if (count == 0) {
+        size_t len;
+        unsigned int ncpu;
+        
+        len = sizeof(ncpu);
+        sysctlbyname("hw.ncpu", &ncpu, &len, NULL, 0);
+        count = ncpu;
+    }
     
-    //    _executionTime += (CFAbsoluteTimeGetCurrent() - _startTime);
+    return count;
 }
 
 @end
