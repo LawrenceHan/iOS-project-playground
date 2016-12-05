@@ -12,6 +12,7 @@
 		02F0BED51DF1504200E1372F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02F0BED41DF1504200E1372F /* Assets.xcassets */; };
 		02F0BED81DF1504200E1372F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02F0BED61DF1504200E1372F /* MainMenu.xib */; };
 		02F0BEE51DF1752900E1372F /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F0BEE41DF1752900E1372F /* Puzzle.m */; };
+		02F999E71DF51D85005DDA39 /* PUZTimeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F999E61DF51D85005DDA39 /* PUZTimeRecord.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		02F0BED91DF1504200E1372F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02F0BEE31DF1752900E1372F /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
 		02F0BEE41DF1752900E1372F /* Puzzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puzzle.m; sourceTree = "<group>"; };
+		02F999E51DF51D85005DDA39 /* PUZTimeRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUZTimeRecord.h; sourceTree = "<group>"; };
+		02F999E61DF51D85005DDA39 /* PUZTimeRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PUZTimeRecord.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,8 @@
 		02F0BECD1DF1504200E1372F /* Puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				02F999E51DF51D85005DDA39 /* PUZTimeRecord.h */,
+				02F999E61DF51D85005DDA39 /* PUZTimeRecord.m */,
 				02F0BEE31DF1752900E1372F /* Puzzle.h */,
 				02F0BEE41DF1752900E1372F /* Puzzle.m */,
 				02F0BECE1DF1504200E1372F /* AppDelegate.h */,
@@ -150,6 +155,7 @@
 				02F0BEE51DF1752900E1372F /* Puzzle.m in Sources */,
 				02F0BED31DF1504200E1372F /* main.m in Sources */,
 				02F0BED01DF1504200E1372F /* AppDelegate.m in Sources */,
+				02F999E71DF51D85005DDA39 /* PUZTimeRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
