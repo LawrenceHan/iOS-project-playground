@@ -61,7 +61,7 @@
 }
 
 - (NSString *)totalTimeElapsed:(NSString *)key {
-    return [NSString stringWithFormat:@"%@ total time: %f s", key, [(Record *)_records[key] executionTime]];
+    return [NSString stringWithFormat:@"%f s", [(Record *)_records[key] executionTime]];
 }
 
 @end
