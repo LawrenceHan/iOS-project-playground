@@ -103,7 +103,7 @@ static NSString *routesKey = @"routes";
     _frameSnapshot[[NSString stringWithFormat:@"%s", chars]] = @(frame.steps.length);
     
     _isThreadRunning = YES;
-    int availableThreadCount = 2;//cpuCoreCount();
+    int availableThreadCount = 4;//cpuCoreCount();
     NSMutableArray *threads = [NSMutableArray arrayWithCapacity:availableThreadCount];
     for (int i = 0; i < availableThreadCount; i++) {
         NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(startCalcOnThread) object:nil];
@@ -293,15 +293,18 @@ static NSString *routesKey = @"routes";
 #endif
     
     [_frameLock lock];
-    if (_frameSnapshot[newFrame] != nil) {
-        if ([_frameSnapshot[newFrame] integerValue] < steps.length) {
-            [_frameLock unlock];
+    NSNumber *length = _frameSnapshot[newFrame];
+    [_frameLock unlock];
+    
+    if (length != nil) {
+        if ([length integerValue] < steps.length) {
             return;
         }
     } else {
+        [_frameLock lock];
         _frameSnapshot[newFrame] = @(steps.length);
+        [_frameLock unlock];
     }
-    [_frameLock unlock];
     
 #ifdef SHOWLOG
     [_timeRecorder continueTimeRecord:frameKey];
