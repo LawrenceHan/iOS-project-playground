@@ -12,6 +12,6 @@
 
 - (void)beginTimeRecord:(NSString *)key;
 - (void)continueTimeRecord:(NSString *)key;
-- (NSString *)totalTimeElapsed:(NSString *)key;
+- (NSString *)totalTimeElapsed:(NSString *)key thread:(NSThread *)thread;
 
 @end

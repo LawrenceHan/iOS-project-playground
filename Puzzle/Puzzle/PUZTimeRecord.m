@@ -28,40 +28,36 @@
 @end
 
 @interface PUZTimeRecord ()
-@property (nonatomic, strong) NSMutableDictionary *records;
+@property (nonatomic, readonly) NSMutableDictionary *records;
 
 @end
 
 @implementation PUZTimeRecord
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _records = [NSMutableDictionary new];
-    }
-    return self;
+- (NSMutableDictionary *)records {
+    return [NSThread currentThread].threadDictionary;
 }
 
 - (void)beginTimeRecord:(NSString *)key {
     Record *record = nil;
-    if ([_records objectForKey:key] != nil) {
-        record = _records[key];
+    if ([[self records] objectForKey:key] != nil) {
+        record = [self records][key];
     } else {
         record = [Record new];
-        _records[key] = record;
+        [self records][key] = record;
     }
     record.lastUpdateTime = CFAbsoluteTimeGetCurrent();
 }
 
 - (void)continueTimeRecord:(NSString *)key {
     CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
-    Record *record = _records[key];
+    Record *record = [self records][key];
     record.executionTime += (currentTime - record.lastUpdateTime);
     record.lastUpdateTime = currentTime;
 }
 
-- (NSString *)totalTimeElapsed:(NSString *)key {
-    return [NSString stringWithFormat:@"%f s", [(Record *)_records[key] executionTime]];
+- (NSString *)totalTimeElapsed:(NSString *)key thread:(NSThread *)thread {
+    return [NSString stringWithFormat:@"%f s", [(Record *)thread.threadDictionary[key] executionTime]];
 }
 
 @end

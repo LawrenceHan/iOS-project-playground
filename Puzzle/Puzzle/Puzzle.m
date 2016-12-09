@@ -123,12 +123,12 @@ static NSString *routesKey = @"routes";
         for (NSThread *thread in threads) {
 #ifdef SHOWLOG
             NSLog(@"index:%@, char:%@, string:%@, hash:%@, frame:%@, routes:%@, %@",
-                  [_timeRecorder totalTimeElapsed:getIndexKey],
-                  [_timeRecorder totalTimeElapsed:charKey],
-                  [_timeRecorder totalTimeElapsed:stringKey],
-                  [_timeRecorder totalTimeElapsed:hashKey],
-                  [_timeRecorder totalTimeElapsed:frameKey],
-                  [_timeRecorder totalTimeElapsed:routesKey],
+                  [_timeRecorder totalTimeElapsed:getIndexKey thread:thread],
+                  [_timeRecorder totalTimeElapsed:charKey thread:thread],
+                  [_timeRecorder totalTimeElapsed:stringKey thread:thread],
+                  [_timeRecorder totalTimeElapsed:hashKey thread:thread],
+                  [_timeRecorder totalTimeElapsed:frameKey thread:thread],
+                  [_timeRecorder totalTimeElapsed:routesKey thread:thread],
                   thread.name);
 #endif
             [thread cancel];
