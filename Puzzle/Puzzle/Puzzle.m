@@ -11,6 +11,7 @@
 #import <libkern/OSAtomic.h>
 #import <os/lock.h>
 #import <pthread.h>
+#import "FastestThreadSafeDictionary.h"
 #include <sys/sysctl.h>
 #define SHOWLOG
 
@@ -31,7 +32,7 @@
 
 @interface Puzzle ()
 @property (nonatomic, assign) NSUInteger totalStepCounts;
-@property (nonatomic, strong) NSMutableDictionary *frameSnapshot;
+@property (nonatomic, strong) FastestThreadSafeDictionary *frameSnapshot;
 @property (nonatomic, strong) NSMutableArray *stepResults;
 @property (nonatomic, assign) BOOL foundResults;
 @property (nonatomic, assign) int threadCount;
@@ -60,7 +61,10 @@ static NSString *routesKey = @"routes";
     os_unfair_lock _routesIndexSpinLock;
     os_unfair_lock _routesQueueSpinLock;
     os_unfair_lock _frameSpinLock;
+    pthread_mutex_t _routesQueueMutexLock;
     pthread_mutex_t _routesIndexMutexLock;
+    pthread_mutex_t _frameMutexLock;
+    pthread_mutex_t _stepResultMutexLock;
     NSMutableDictionary *_moveTileCountDict;
     PUZTimeRecord *_timeRecorder;
 }
@@ -83,7 +87,10 @@ static NSString *routesKey = @"routes";
         _routesIndexSpinLock = OS_UNFAIR_LOCK_INIT;
         _routesQueueSpinLock = OS_UNFAIR_LOCK_INIT;
         _frameSpinLock = OS_UNFAIR_LOCK_INIT;
+        pthread_mutex_init(&_routesQueueMutexLock, NULL);
         pthread_mutex_init(&_routesIndexMutexLock, NULL);
+        pthread_mutex_init(&_frameMutexLock, NULL);
+        pthread_mutex_init(&_stepResultMutexLock, NULL);
         _moveTileCountDict = [NSMutableDictionary new];
     }
     return self;
@@ -96,7 +103,7 @@ static NSString *routesKey = @"routes";
 - (void)calculateSteps {
     _routesQueue = [NSArray new];
     _routesNextQueue = [NSMutableArray new];
-    _frameSnapshot = [NSMutableDictionary new];
+    _frameSnapshot = [FastestThreadSafeDictionary new];
     _stepResults = [NSMutableArray new];
     _totalStepCounts = 0;
     _threadCount = 0;
@@ -116,7 +123,7 @@ static NSString *routesKey = @"routes";
     _frameSnapshot[[NSString stringWithFormat:@"%s", chars]] = @(frame.steps.length);
     
     _isThreadRunning = YES;
-    int availableThreadCount = 4;//cpuCoreCount();
+    int availableThreadCount = 8;//cpuCoreCount();
     NSMutableArray *threads = [NSMutableArray arrayWithCapacity:availableThreadCount];
     for (int i = 0; i < availableThreadCount; i++) {
         NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(startCalcOnThread) object:nil];
@@ -131,21 +138,19 @@ static NSString *routesKey = @"routes";
         [NSThread sleepForTimeInterval:0];
     }
     
-    if (_isThreadRunning == NO) {
-        //        NSLog(@"Total MT_Count: %@", _moveTileCountDict[@"total"]);
-        for (NSThread *thread in threads) {
+    //        NSLog(@"Total MT_Count: %@", _moveTileCountDict[@"total"]);
+    for (NSThread *thread in threads) {
 #ifdef SHOWLOG
-            NSLog(@"index:%@, char:%@, string:%@, hash:%@, frame:%@, routes:%@, %@",
-                  [_timeRecorder totalTimeElapsed:getIndexKey thread:thread],
-                  [_timeRecorder totalTimeElapsed:charKey thread:thread],
-                  [_timeRecorder totalTimeElapsed:stringKey thread:thread],
-                  [_timeRecorder totalTimeElapsed:hashKey thread:thread],
-                  [_timeRecorder totalTimeElapsed:frameKey thread:thread],
-                  [_timeRecorder totalTimeElapsed:routesKey thread:thread],
-                  thread.name);
+        NSLog(@"index:%@, char:%@, string:%@, hash:%@, frame:%@, routes:%@, %@",
+              [_timeRecorder totalTimeElapsed:getIndexKey thread:thread],
+              [_timeRecorder totalTimeElapsed:charKey thread:thread],
+              [_timeRecorder totalTimeElapsed:stringKey thread:thread],
+              [_timeRecorder totalTimeElapsed:hashKey thread:thread],
+              [_timeRecorder totalTimeElapsed:frameKey thread:thread],
+              [_timeRecorder totalTimeElapsed:routesKey thread:thread],
+              thread.name);
 #endif
-            [thread cancel];
-        }
+        [thread cancel];
     }
 }
 
@@ -185,9 +190,11 @@ static NSString *routesKey = @"routes";
             }
             
             //        [_routesIndexLock lock];
-            os_unfair_lock_lock(&_routesIndexSpinLock);
+//            os_unfair_lock_lock(&_routesIndexSpinLock);
+            pthread_mutex_lock(&_routesIndexMutexLock);
             _threadCount -= 1;
-            os_unfair_lock_unlock(&_routesIndexSpinLock);
+            pthread_mutex_unlock(&_routesIndexMutexLock);
+//            os_unfair_lock_unlock(&_routesIndexSpinLock);
             //        [_routesIndexLock unlock];
         }
     }}
@@ -197,8 +204,9 @@ static NSString *routesKey = @"routes";
 #ifdef SHOWLOG
     [_timeRecorder beginTimeRecord:getIndexKey];
 #endif
-//    [_routesIndexLock lock];
-    os_unfair_lock_lock(&_routesIndexSpinLock);
+    //    [_routesIndexLock lock];
+//    os_unfair_lock_lock(&_routesIndexSpinLock);
+    pthread_mutex_lock(&_routesIndexMutexLock);
     if (_routesIndex < _routesCount - 1) {
         _routesIndex += 1;
         _threadCount += 1;
@@ -211,8 +219,9 @@ static NSString *routesKey = @"routes";
                     NSLog(@"Steps: %@, steps count: %ld == thread: %@", result, (long)result.length, [NSThread currentThread].name);
                 }
                 _stepResults = nil;
-//                [_routesIndexLock unlock];
-                os_unfair_lock_unlock(&_routesIndexSpinLock);
+                //                [_routesIndexLock unlock];
+//                os_unfair_lock_unlock(&_routesIndexSpinLock);
+                pthread_mutex_unlock(&_routesIndexMutexLock);
 #ifdef SHOWLOG
                 [_timeRecorder continueTimeRecord:getIndexKey];
 #endif
@@ -225,16 +234,18 @@ static NSString *routesKey = @"routes";
                 _routesCount = (int)_routesQueue.count;
             }
         } else {
-//            [_routesIndexLock unlock];
-            os_unfair_lock_unlock(&_routesIndexSpinLock);
+            //            [_routesIndexLock unlock];
+//            os_unfair_lock_unlock(&_routesIndexSpinLock);
+            pthread_mutex_unlock(&_routesIndexMutexLock);
 #ifdef SHOWLOG
             [_timeRecorder continueTimeRecord:getIndexKey];
 #endif
             return -1;
         }
     }
-    os_unfair_lock_unlock(&_routesIndexSpinLock);
-//    [_routesIndexLock unlock];
+//    os_unfair_lock_unlock(&_routesIndexSpinLock);
+    //    [_routesIndexLock unlock];
+    pthread_mutex_unlock(&_routesIndexMutexLock);
     
 #ifdef SHOWLOG
     [_timeRecorder continueTimeRecord:getIndexKey];
@@ -279,6 +290,7 @@ static NSString *routesKey = @"routes";
 #endif
     
     NSString *steps = [puzzleFrame.steps stringByAppendingString:direction];
+    NSInteger stepsLength = steps.length;
     int currentStep = puzzleFrame.currentStep;
     
     char temp = chars[currentStep];
@@ -295,10 +307,14 @@ static NSString *routesKey = @"routes";
 #endif
     
     if (newFrame.hash == _endFrame.hash) {
-        [_stepResultLock lock];
+//        [_stepResultLock lock];
+        pthread_mutex_lock(&_stepResultMutexLock);
         [_stepResults addObject:steps];
-        [_stepResultLock unlock];
+//        [_stepResultLock unlock];
+#ifdef SHOWLOG
         NSLog(@"%@ + step:%@ = %@, %@", puzzleFrame.steps, direction, steps, [NSThread currentThread].name);
+#endif
+        pthread_mutex_unlock(&_stepResultMutexLock);
     }
 #ifdef SHOWLOG
     [_timeRecorder continueTimeRecord:hashKey];
@@ -308,22 +324,26 @@ static NSString *routesKey = @"routes";
     [_timeRecorder beginTimeRecord:frameKey];
 #endif
     
-//    while(!OSAtomicCompareAndSwap32(0, 1, &_frameLockFlag));
-    os_unfair_lock_lock(&_frameSpinLock);
+    //    while(!OSAtomicCompareAndSwap32(0, 1, &_frameLockFlag));
+//    os_unfair_lock_lock(&_frameSpinLock);
+//    pthread_mutex_lock(&_frameMutexLock);
     NSInteger length = [[_frameSnapshot objectForKey:newFrame] integerValue];
-    os_unfair_lock_unlock(&_frameSpinLock);
-//    OSAtomicCompareAndSwap32(1, 0, &_frameLockFlag);
+//    pthread_mutex_unlock(&_frameMutexLock);
+//    os_unfair_lock_unlock(&_frameSpinLock);
+    //    OSAtomicCompareAndSwap32(1, 0, &_frameLockFlag);
     
     if (length != 0) {
-        if (length < steps.length) {
+        if (length < stepsLength) {
             return;
         }
     } else {
-//        while(!OSAtomicCompareAndSwap32(0, 1, &_frameLockFlag));
-        os_unfair_lock_lock(&_frameSpinLock);
-        [_frameSnapshot setObject:@(steps.length) forKey:newFrame];
-        os_unfair_lock_unlock(&_frameSpinLock);
-//        OSAtomicCompareAndSwap32(1, 0, &_frameLockFlag);
+        //        while(!OSAtomicCompareAndSwap32(0, 1, &_frameLockFlag));
+//        os_unfair_lock_lock(&_frameSpinLock);
+//        pthread_mutex_lock(&_frameMutexLock);
+        [_frameSnapshot setObject:@(stepsLength) forKey:newFrame];
+//        pthread_mutex_unlock(&_frameMutexLock);
+//        os_unfair_lock_unlock(&_frameSpinLock);
+        //        OSAtomicCompareAndSwap32(1, 0, &_frameLockFlag);
     }
     
 #ifdef SHOWLOG
@@ -340,11 +360,13 @@ static NSString *routesKey = @"routes";
     newPuzzleFrame.previousStep = currentStep;
     newPuzzleFrame.currentStep = nextStep;
     
-//    [_routesQueueLock lock];
-    os_unfair_lock_lock(&_routesQueueSpinLock);
+    //    [_routesQueueLock lock];
+//    os_unfair_lock_lock(&_routesQueueSpinLock);
+    pthread_mutex_lock(&_routesQueueMutexLock);
     [_routesNextQueue addObject:newPuzzleFrame];
-    os_unfair_lock_unlock(&_routesQueueSpinLock);
-//    [_routesQueueLock unlock];
+    pthread_mutex_unlock(&_routesQueueMutexLock);
+//    os_unfair_lock_unlock(&_routesQueueSpinLock);
+    //    [_routesQueueLock unlock];
     
 #ifdef SHOWLOG
     [_timeRecorder continueTimeRecord:routesKey];
