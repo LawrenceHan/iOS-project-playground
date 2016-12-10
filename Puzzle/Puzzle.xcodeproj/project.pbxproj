@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02B830641DFBE5D80063948B /* FastestThreadSafeDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B8305E1DFBE5D80063948B /* FastestThreadSafeDictionary.m */; };
+		02B830651DFBE5D80063948B /* PMutexThreadSafeDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B830601DFBE5D80063948B /* PMutexThreadSafeDictionary.m */; };
+		02B830661DFBE5D80063948B /* SpinLockThreadSafeDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B830621DFBE5D80063948B /* SpinLockThreadSafeDictionary.m */; };
+		02B830671DFBE5D80063948B /* TestTBThreadSafeDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B830631DFBE5D80063948B /* TestTBThreadSafeDic.m */; };
 		02F0BED01DF1504200E1372F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F0BECF1DF1504200E1372F /* AppDelegate.m */; };
 		02F0BED31DF1504200E1372F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F0BED21DF1504200E1372F /* main.m */; };
 		02F0BED51DF1504200E1372F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02F0BED41DF1504200E1372F /* Assets.xcassets */; };
@@ -16,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02B8305D1DFBE5D80063948B /* FastestThreadSafeDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastestThreadSafeDictionary.h; sourceTree = "<group>"; };
+		02B8305E1DFBE5D80063948B /* FastestThreadSafeDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastestThreadSafeDictionary.m; sourceTree = "<group>"; };
+		02B8305F1DFBE5D80063948B /* PMutexThreadSafeDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMutexThreadSafeDictionary.h; sourceTree = "<group>"; };
+		02B830601DFBE5D80063948B /* PMutexThreadSafeDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMutexThreadSafeDictionary.m; sourceTree = "<group>"; };
+		02B830611DFBE5D80063948B /* SpinLockThreadSafeDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinLockThreadSafeDictionary.h; sourceTree = "<group>"; };
+		02B830621DFBE5D80063948B /* SpinLockThreadSafeDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinLockThreadSafeDictionary.m; sourceTree = "<group>"; };
+		02B830631DFBE5D80063948B /* TestTBThreadSafeDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTBThreadSafeDic.m; sourceTree = "<group>"; };
 		02F0BECB1DF1504200E1372F /* Puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F0BECE1DF1504200E1372F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		02F0BECF1DF1504200E1372F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -59,6 +70,13 @@
 		02F0BECD1DF1504200E1372F /* Puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				02B8305D1DFBE5D80063948B /* FastestThreadSafeDictionary.h */,
+				02B8305E1DFBE5D80063948B /* FastestThreadSafeDictionary.m */,
+				02B8305F1DFBE5D80063948B /* PMutexThreadSafeDictionary.h */,
+				02B830601DFBE5D80063948B /* PMutexThreadSafeDictionary.m */,
+				02B830611DFBE5D80063948B /* SpinLockThreadSafeDictionary.h */,
+				02B830621DFBE5D80063948B /* SpinLockThreadSafeDictionary.m */,
+				02B830631DFBE5D80063948B /* TestTBThreadSafeDic.m */,
 				02F999E51DF51D85005DDA39 /* PUZTimeRecord.h */,
 				02F999E61DF51D85005DDA39 /* PUZTimeRecord.m */,
 				02F0BEE31DF1752900E1372F /* Puzzle.h */,
@@ -154,8 +172,12 @@
 			files = (
 				02F0BEE51DF1752900E1372F /* Puzzle.m in Sources */,
 				02F0BED31DF1504200E1372F /* main.m in Sources */,
+				02B830641DFBE5D80063948B /* FastestThreadSafeDictionary.m in Sources */,
 				02F0BED01DF1504200E1372F /* AppDelegate.m in Sources */,
 				02F999E71DF51D85005DDA39 /* PUZTimeRecord.m in Sources */,
+				02B830671DFBE5D80063948B /* TestTBThreadSafeDic.m in Sources */,
+				02B830651DFBE5D80063948B /* PMutexThreadSafeDictionary.m in Sources */,
+				02B830661DFBE5D80063948B /* SpinLockThreadSafeDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
