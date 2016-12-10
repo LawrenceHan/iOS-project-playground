@@ -10,7 +10,7 @@
 #import "PUZTimeRecord.h"
 #import <libkern/OSAtomic.h>
 #import <os/lock.h>
-//#import <pthread.h>
+#import <pthread.h>
 #include <sys/sysctl.h>
 #define SHOWLOG
 
@@ -56,7 +56,11 @@ static NSString *routesKey = @"routes";
     NSLock * _frameLock;
     NSLock * _stepResultLock;
     int32_t volatile _frameLockFlag;
+    int32_t volatile _routesIndexFlag;
     os_unfair_lock _routesIndexSpinLock;
+    os_unfair_lock _routesQueueSpinLock;
+    os_unfair_lock _frameSpinLock;
+    pthread_mutex_t _routesIndexMutexLock;
     NSMutableDictionary *_moveTileCountDict;
     PUZTimeRecord *_timeRecorder;
 }
@@ -75,7 +79,11 @@ static NSString *routesKey = @"routes";
         _stepResultLock = [[NSLock alloc] init];
         _timeRecorder = [PUZTimeRecord new];
         _frameLockFlag = 0;
+        _routesIndexFlag = 0;
         _routesIndexSpinLock = OS_UNFAIR_LOCK_INIT;
+        _routesQueueSpinLock = OS_UNFAIR_LOCK_INIT;
+        _frameSpinLock = OS_UNFAIR_LOCK_INIT;
+        pthread_mutex_init(&_routesIndexMutexLock, NULL);
         _moveTileCountDict = [NSMutableDictionary new];
     }
     return self;
@@ -120,7 +128,7 @@ static NSString *routesKey = @"routes";
     
     _foundResults = NO;
     while (_foundResults == NO) {
-        continue;
+        [NSThread sleepForTimeInterval:0];
     }
     
     if (_isThreadRunning == NO) {
@@ -145,42 +153,43 @@ static NSString *routesKey = @"routes";
     while (_isThreadRunning) { @autoreleasepool {
         int index = [self getShareIndex];
         if (index == -1) {
-            continue;
+            [NSThread sleepForTimeInterval:0];
+        } else {
+            PuzzleFrame *previousFrame = _routesQueue[index];
+            int previousStep = previousFrame.previousStep;
+            int currentStep = previousFrame.currentStep;
+            int nextStep = 0;
+            
+            // upward
+            nextStep = currentStep - 4;
+            if (nextStep >= 0 && nextStep != previousStep) {
+                [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"U"];
+            }
+            
+            // downward
+            nextStep = currentStep + 4;
+            if (nextStep < [self totalTilesCount] && nextStep != previousStep) {
+                [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"D"];
+            }
+            
+            // leftward
+            nextStep = currentStep - 1;
+            if (currentStep % _columns - 1 >= 0 && nextStep != previousStep) {
+                [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"L"];
+            }
+            
+            // rightward
+            nextStep = currentStep + 1;
+            if (currentStep % _columns + 1 < _columns && nextStep != previousStep) {
+                [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"R"];
+            }
+            
+            //        [_routesIndexLock lock];
+            os_unfair_lock_lock(&_routesIndexSpinLock);
+            _threadCount -= 1;
+            os_unfair_lock_unlock(&_routesIndexSpinLock);
+            //        [_routesIndexLock unlock];
         }
-        
-        PuzzleFrame *previousFrame = _routesQueue[index];
-        int previousStep = previousFrame.previousStep;
-        int currentStep = previousFrame.currentStep;
-        int nextStep = 0;
-        
-        // upward
-        nextStep = currentStep - 4;
-        if (nextStep >= 0 && nextStep != previousStep) {
-            [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"U"];
-        }
-        
-        // downward
-        nextStep = currentStep + 4;
-        if (nextStep < [self totalTilesCount] && nextStep != previousStep) {
-            [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"D"];
-        }
-        
-        // leftward
-        nextStep = currentStep - 1;
-        if (currentStep % _columns - 1 >= 0 && nextStep != previousStep) {
-            [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"L"];
-        }
-        
-        // rightward
-        nextStep = currentStep + 1;
-        if (currentStep % _columns + 1 < _columns && nextStep != previousStep) {
-            [self moveTileWithFrame:previousFrame nextStep:nextStep direction:@"R"];
-        }
-        
-        [_routesIndexLock lock];
-        _threadCount -= 1;
-        [_routesIndexLock unlock];
-        
     }}
 }
 
@@ -188,8 +197,8 @@ static NSString *routesKey = @"routes";
 #ifdef SHOWLOG
     [_timeRecorder beginTimeRecord:getIndexKey];
 #endif
-    [_routesIndexLock lock];
-//    os_unfair_lock_lock(&_routesIndexSpinLock);
+//    [_routesIndexLock lock];
+    os_unfair_lock_lock(&_routesIndexSpinLock);
     if (_routesIndex < _routesCount - 1) {
         _routesIndex += 1;
         _threadCount += 1;
@@ -202,8 +211,8 @@ static NSString *routesKey = @"routes";
                     NSLog(@"Steps: %@, steps count: %ld == thread: %@", result, (long)result.length, [NSThread currentThread].name);
                 }
                 _stepResults = nil;
-                [_routesIndexLock unlock];
-//                os_unfair_lock_unlock(&_routesIndexSpinLock);
+//                [_routesIndexLock unlock];
+                os_unfair_lock_unlock(&_routesIndexSpinLock);
 #ifdef SHOWLOG
                 [_timeRecorder continueTimeRecord:getIndexKey];
 #endif
@@ -216,16 +225,16 @@ static NSString *routesKey = @"routes";
                 _routesCount = (int)_routesQueue.count;
             }
         } else {
-            [_routesIndexLock unlock];
-//            os_unfair_lock_unlock(&_routesIndexSpinLock);
+//            [_routesIndexLock unlock];
+            os_unfair_lock_unlock(&_routesIndexSpinLock);
 #ifdef SHOWLOG
             [_timeRecorder continueTimeRecord:getIndexKey];
 #endif
             return -1;
         }
     }
-//    os_unfair_lock_unlock(&_routesIndexSpinLock);
-    [_routesIndexLock unlock];
+    os_unfair_lock_unlock(&_routesIndexSpinLock);
+//    [_routesIndexLock unlock];
     
 #ifdef SHOWLOG
     [_timeRecorder continueTimeRecord:getIndexKey];
@@ -299,18 +308,22 @@ static NSString *routesKey = @"routes";
     [_timeRecorder beginTimeRecord:frameKey];
 #endif
     
-    while(!OSAtomicCompareAndSwap32(0, 1, &_frameLockFlag));
+//    while(!OSAtomicCompareAndSwap32(0, 1, &_frameLockFlag));
+    os_unfair_lock_lock(&_frameSpinLock);
     NSInteger length = [[_frameSnapshot objectForKey:newFrame] integerValue];
-    OSAtomicCompareAndSwap32(1, 0, &_frameLockFlag);
+    os_unfair_lock_unlock(&_frameSpinLock);
+//    OSAtomicCompareAndSwap32(1, 0, &_frameLockFlag);
     
     if (length != 0) {
         if (length < steps.length) {
             return;
         }
     } else {
-        while(!OSAtomicCompareAndSwap32(0, 1, &_frameLockFlag));
+//        while(!OSAtomicCompareAndSwap32(0, 1, &_frameLockFlag));
+        os_unfair_lock_lock(&_frameSpinLock);
         [_frameSnapshot setObject:@(steps.length) forKey:newFrame];
-        OSAtomicCompareAndSwap32(1, 0, &_frameLockFlag);
+        os_unfair_lock_unlock(&_frameSpinLock);
+//        OSAtomicCompareAndSwap32(1, 0, &_frameLockFlag);
     }
     
 #ifdef SHOWLOG
@@ -327,9 +340,11 @@ static NSString *routesKey = @"routes";
     newPuzzleFrame.previousStep = currentStep;
     newPuzzleFrame.currentStep = nextStep;
     
-    [_routesQueueLock lock];
+//    [_routesQueueLock lock];
+    os_unfair_lock_lock(&_routesQueueSpinLock);
     [_routesNextQueue addObject:newPuzzleFrame];
-    [_routesQueueLock unlock];
+    os_unfair_lock_unlock(&_routesQueueSpinLock);
+//    [_routesQueueLock unlock];
     
 #ifdef SHOWLOG
     [_timeRecorder continueTimeRecord:routesKey];
