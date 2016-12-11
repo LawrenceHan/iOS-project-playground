@@ -224,6 +224,9 @@ static NSString * const endIndexKey = @"com.hanguang.app.puzzle.endIndexKey";
 //        NSLog(@"before: %@", _routesQueue);
         BOOL shouldSleep = [[NSThread currentThread].threadDictionary[endIndexKey] integerValue] == -1;
         if (shouldSleep) {
+#ifdef RecordTime
+            [_timeRecorder continueTimeRecord:getIndexKey];
+#endif
             [NSThread sleepForTimeInterval:0];
         } else {
             pthread_mutex_lock(&_routesIndexMutexLock);
@@ -241,7 +244,9 @@ static NSString * const endIndexKey = @"com.hanguang.app.puzzle.endIndexKey";
             
 //            NSLog(@"thread: %i, limit: %i, offset: %i, begin: %i, end: %i", threadIndex, indexLimit, indexOffset, beginIndex, endIndex);
             pthread_mutex_unlock(&_routesIndexMutexLock);
-            
+#ifdef RecordTime
+            [_timeRecorder continueTimeRecord:getIndexKey];
+#endif
             for (int index = beginIndex; index <= endIndex; index++) {
                 if (index >= _routesQueue.count) {
                     break;
@@ -289,9 +294,6 @@ static NSString * const endIndexKey = @"com.hanguang.app.puzzle.endIndexKey";
             //            os_unfair_lock_unlock(&_routesIndexSpinLock);
             //        [_routesIndexLock unlock];
         }
-#ifdef RecordTime
-        [_timeRecorder continueTimeRecord:getIndexKey];
-#endif
     }}
 }
 
@@ -428,6 +430,7 @@ static NSString * const endIndexKey = @"com.hanguang.app.puzzle.endIndexKey";
     //    OSAtomicCompareAndSwap32(1, 0, &_frameLockFlag);
     
     if (length != 0) {
+        return;
         if (length < stepsLength) {
             return;
         }
