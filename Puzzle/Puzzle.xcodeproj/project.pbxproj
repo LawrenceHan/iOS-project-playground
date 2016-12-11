@@ -27,6 +27,7 @@
 		02B830611DFBE5D80063948B /* SpinLockThreadSafeDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinLockThreadSafeDictionary.h; sourceTree = "<group>"; };
 		02B830621DFBE5D80063948B /* SpinLockThreadSafeDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinLockThreadSafeDictionary.m; sourceTree = "<group>"; };
 		02B830631DFBE5D80063948B /* TestTBThreadSafeDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTBThreadSafeDic.m; sourceTree = "<group>"; };
+		02B830681DFD16990063948B /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		02F0BECB1DF1504200E1372F /* Puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F0BECE1DF1504200E1372F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		02F0BECF1DF1504200E1372F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		02F0BECD1DF1504200E1372F /* Puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				02B830681DFD16990063948B /* MyPlayground.playground */,
 				02B8305D1DFBE5D80063948B /* FastestThreadSafeDictionary.h */,
 				02B8305E1DFBE5D80063948B /* FastestThreadSafeDictionary.m */,
 				02B8305F1DFBE5D80063948B /* PMutexThreadSafeDictionary.h */,
